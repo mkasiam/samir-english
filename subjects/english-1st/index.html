@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#5b55d9">
+<title>Class 7 • Easy English Writing</title>
+<style>
+:root{--ink:#20233b;--muted:#69708a;--purple:#625be7;--pink:#ff7ca8;--blue:#55b7ef;--green:#36b98b;--yellow:#ffc85a;--paper:#fff;--bg:#f4f5ff}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Bengali","Hind Siliguri",sans-serif;background:linear-gradient(160deg,#f4f2ff 0%,#f5fbff 52%,#fff7f4 100%);color:var(--ink);min-height:100vh}
+button{font:inherit;cursor:pointer;border:0}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-bottom:1px solid #e8e9f5;padding:10px 14px}
+.topinner{max-width:850px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:850;font-size:15px}
+.logo{width:38px;height:38px;border-radius:13px;background:linear-gradient(135deg,#655ee9,#ff83ae);display:grid;place-items:center;color:white;font-size:20px;box-shadow:0 5px 14px #6b60e544}
+.top-actions{display:flex;gap:7px}
+.small-btn{background:#f0efff;color:#514bd0;border-radius:12px;padding:9px 11px;font-size:13px;font-weight:750}
+main{max-width:850px;margin:0 auto;padding:20px 14px 40px}
+.hero{background:linear-gradient(125deg,#5d56df,#8a72ee 60%,#ee83b0);color:white;border-radius:25px;padding:24px 21px;position:relative;overflow:hidden;box-shadow:0 14px 35px #665ce533}
+.hero:after{content:"✦";position:absolute;right:22px;top:10px;font-size:86px;opacity:.18}
+.kicker{font-size:12px;font-weight:800;letter-spacing:1.2px;opacity:.85}
+.hero h1{font-size:clamp(25px,6vw,37px);line-height:1.15;margin:8px 0}
+.hero p{margin:0;max-width:550px;line-height:1.6;color:#f4f2ff;font-size:14px}
+.stats{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}
+.stat{background:#ffffff25;border:1px solid #ffffff35;border-radius:13px;padding:8px 11px;font-size:12px;font-weight:750}
+.section-title{display:flex;align-items:end;justify-content:space-between;margin:24px 2px 12px;gap:8px}
+.section-title h2{margin:0;font-size:20px}
+.section-title span{font-size:12px;color:var(--muted)}
+.batch-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.batch-card{background:white;border:1px solid #ececff;border-radius:19px;padding:15px;box-shadow:0 7px 20px #3c3b7610;text-align:left;transition:.2s;min-height:138px;position:relative;overflow:hidden}
+.batch-card:active{transform:scale(.98)}
+.batch-card .num{font-size:11px;font-weight:850;letter-spacing:.7px;color:var(--muted)}
+.batch-card h3{font-size:19px;margin:5px 0 8px}
+.batch-card p{font-size:12px;color:var(--muted);margin:0;line-height:1.5}
+.batch-card .count{position:absolute;right:12px;top:12px;border-radius:20px;background:#f2f1ff;color:#5d56d9;padding:5px 8px;font-size:11px;font-weight:800}
+.batch-card:nth-child(1){border-top:4px solid var(--pink)}.batch-card:nth-child(2){border-top:4px solid var(--blue)}.batch-card:nth-child(3){border-top:4px solid var(--green)}.batch-card:nth-child(4){border-top:4px solid var(--yellow)}
+.item-list{display:grid;gap:9px;margin-top:12px}
+.item-row{width:100%;display:flex;align-items:center;gap:11px;background:white;border:1px solid #eeeef7;border-radius:15px;padding:12px;text-align:left;box-shadow:0 4px 12px #30305a08}
+.item-row .icon{width:39px;height:39px;border-radius:13px;display:grid;place-items:center;font-size:18px;flex-shrink:0;background:#f0efff}
+.item-row:nth-child(3n+2) .icon{background:#fff0f5}.item-row:nth-child(3n) .icon{background:#eaf8ff}
+.item-row strong{display:block;font-size:14px}.item-row small{color:var(--muted);font-size:11px}
+.item-row .arrow{margin-left:auto;color:#7774c9;font-size:20px}
+.hidden{display:none!important}
+.backline{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:13px}
+.back-btn{background:white;color:#514bd0;border:1px solid #e7e6fa;border-radius:12px;padding:9px 12px;font-size:13px;font-weight:800}
+.progress-wrap{flex:1;text-align:right;font-size:11px;color:var(--muted)}
+.progress{height:7px;background:#e8e8f5;border-radius:20px;margin-top:5px;overflow:hidden}
+.progress>i{display:block;height:100%;background:linear-gradient(90deg,#625be7,#ff7ca8);border-radius:20px;transition:width .25s}
+.lesson-head{background:white;border:1px solid #ededf8;border-radius:22px;padding:19px;margin-bottom:13px;box-shadow:0 8px 22px #3838750b}
+.tag{display:inline-block;background:#f0efff;color:#5c55d8;border-radius:20px;padding:5px 9px;font-size:11px;font-weight:850}
+.lesson-head h1{font-size:clamp(23px,6vw,31px);margin:9px 0 4px}
+.lesson-head p{margin:0;color:var(--muted);font-size:13px}
+.controls{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.control-btn{padding:10px 12px;border-radius:12px;background:white;border:1px solid #e8e8f4;color:#4f4c87;font-size:12px;font-weight:800}
+.control-btn.primary{background:#625be7;color:white;border-color:#625be7}
+.sentence-list{display:grid;gap:10px}
+.sentence{background:white;border:1px solid #ededf7;border-radius:17px;padding:13px 13px 12px;box-shadow:0 4px 14px #34346d08;position:relative;overflow:hidden}
+.sentence:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent,#655ee9)}
+.sentence:nth-child(4n+1){--accent:#ff83ad}.sentence:nth-child(4n+2){--accent:#57b9ed}.sentence:nth-child(4n+3){--accent:#3bbd91}.sentence:nth-child(4n){--accent:#ffbf4c}
+.sentence-top{display:flex;align-items:flex-start;gap:9px}
+.snum{width:25px;height:25px;border-radius:9px;background:#f4f3ff;color:#5b55d9;display:grid;place-items:center;font-size:11px;font-weight:850;flex-shrink:0}
+.eng{font-size:16px;line-height:1.48;font-weight:750;flex:1;padding-top:1px}
+.speak-one{width:32px;height:32px;border-radius:11px;background:#eef8ff;color:#2082b7;font-size:15px;flex-shrink:0}
+.bangla{margin:10px 0 0 34px;padding:9px 11px;background:#fff7e9;border-radius:11px;color:#6f5427;font-size:14px;line-height:1.55}
+.bangla.hide{display:none}
+.footer-player{margin-top:15px;background:#242448;color:white;border-radius:20px;padding:16px}
+.footer-player h3{margin:0 0 5px;font-size:16px}
+.footer-player p{margin:0 0 12px;color:#c9c9e2;font-size:12px;line-height:1.5}
+.audio-actions{display:flex;gap:8px;flex-wrap:wrap}
+.audio-btn{background:#fff;color:#34345f;border-radius:12px;padding:11px 13px;font-size:12px;font-weight:850;flex:1;min-width:130px}
+.audio-btn.alt{background:#ffd36e;color:#3c3151}
+.nav-buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:13px}
+.nav-btn{padding:14px 12px;border-radius:15px;font-weight:850;font-size:14px}
+.nav-btn.prev{background:white;color:#5954b8;border:1px solid #e8e7f6}
+.nav-btn.next{background:linear-gradient(110deg,#625be7,#8b71eb);color:white;box-shadow:0 7px 16px #625be733}
+.nav-btn:disabled{opacity:.4;cursor:not-allowed}
+.note{font-size:11px;color:var(--muted);text-align:center;line-height:1.6;margin:14px 8px}
+.footer{text-align:center;color:#9294a9;font-size:11px;padding:10px 0 0}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#242448;color:white;padding:10px 14px;border-radius:12px;font-size:12px;box-shadow:0 8px 25px #1113;opacity:0;pointer-events:none;transition:.2s;z-index:30;max-width:90%;text-align:center}
+.toast.show{opacity:1}
+@media(min-width:650px){main{padding-top:28px}.batch-grid{gap:15px}.batch-card{padding:19px;min-height:150px}.sentence{padding:16px}.bangla{font-size:15px}}
+@media(max-width:390px){.brand{font-size:13px}.top-actions .small-btn{padding:8px;font-size:11px}.batch-grid{gap:8px}.batch-card{padding:12px;min-height:132px}.batch-card h3{font-size:16px}.eng{font-size:15px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topinner">
+    <div class="brand"><div class="logo">📚</div><span>Class 7 • Easy English</span></div>
+    <div class="top-actions">
+      <a href="../../index.html" class="small-btn" style="text-decoration:none;display:inline-flex;align-items:center;">← Subjects</a>
+      <button class="small-btn" id="homeTop">⌂ Home</button>
+      <button class="small-btn" id="stopTop">■ Stop Audio</button>
+    </div>
+  </div>
+</header>
+<main>
+  <section id="homeView">
+    <div class="hero">
+      <div class="kicker">ENGLISH WRITING • CLASS 7</div>
+      <h1>পড়ো, বোঝো,<br>শুনে শিখো! 🌈</h1>
+      <p>একটি বাক্য করে পড়ো। বাংলা অর্থ দেখে বুঝে নাও। অডিও শুনে উচ্চারণ অনুশীলন করো। পরীক্ষার প্রস্তুতি শুরু হোক সহজভাবে!</p>
+      <div class="stats"><div class="stat">১২টি Writing</div><div class="stat">৪টি Priority Batch</div><div class="stat">English + বাংলা</div></div>
+    </div>
+    <div class="section-title"><h2>তোমার পড়ার ব্যাচ</h2><span>প্রথমে Batch 1 পড়বে</span></div>
+    <div class="batch-grid" id="batchGrid"></div>
+    <div class="section-title"><h2 id="listHeading">সবগুলো Writing</h2><span>প্রায়োরিটি অনুযায়ী সাজানো</span></div>
+    <div id="homeItems" class="item-list"></div>
+    <p class="note">প্রতিটি Writing খুলে বাক্য ধরে পড়ো। নিচে English বা বাংলা অডিও শুনতে পারবে।</p>
+  </section>
+
+  <section id="lessonView" class="hidden">
+    <div class="backline">
+      <button class="back-btn" id="backHome">← সব Writing</button>
+      <div class="progress-wrap"><span id="progressText">১ / ১২</span><div class="progress"><i id="progressBar" style="width:8%"></i></div></div>
+    </div>
+    <div class="lesson-head">
+      <span class="tag" id="lessonTag">Batch 1 • Paragraph</span>
+      <h1 id="lessonTitle">A Rainy Day</h1>
+      <p id="lessonSub">প্রথম অগ্রাধিকার • বাক্য ধরে অনুশীলন</p>
+    </div>
+    <div class="controls">
+      <button class="control-btn" id="toggleBangla">বাংলা অর্থ লুকাও</button>
+      <button class="control-btn" id="englishOnly">শুধু English</button>
+      <button class="control-btn" id="showAll">সব বাংলা দেখাও</button>
+    </div>
+    <div class="sentence-list" id="sentenceList"></div>
+    <div class="footer-player">
+      <h3>🎧 শুনে শুনে অনুশীলন করো</h3>
+      <p>পুরো Writing একসাথে শুনতে নিচের বাটনে চাপ দাও। বাংলা অডিওর জন্য তোমার ফোন বা ব্রাউজারে বাংলা voice থাকতে হবে।</p>
+      <div class="audio-actions">
+        <button class="audio-btn" id="playEnglish">▶ English Audio</button>
+        <button class="audio-btn alt" id="playBangla">▶ বাংলা Audio</button>
+      </div>
+    </div>
+    <div class="nav-buttons">
+      <button class="nav-btn prev" id="prevBtn">← Previous</button>
+      <button class="nav-btn next" id="nextBtn">Next →</button>
+    </div>
+    <p class="note">টিপস: প্রথমে English পড়বে, তারপর বাংলা অর্থ দেখবে। শেষে অডিও শুনে নিজে নিজে বলার চেষ্টা করবে।</p>
+  </section>
+  <div class="footer">Made for easy mobile learning • Class 7 English Writing</div>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+const ITEMS = [{"id": "rainy-day", "batch": 1, "type": "Paragraph", "title": "A Rainy Day", "badge": "প্রথম অগ্রাধিকার", "sentences": [["A rainy day is a day of rain.", "যেদিন বৃষ্টি হয়, সেটি বৃষ্টির দিন।"], ["The sky is full of clouds.", "আকাশ মেঘে ভরা থাকে।"], ["It rains a lot.", "অনেক বৃষ্টি হয়।"], ["The roads become wet.", "রাস্তাগুলো ভিজে যায়।"], ["People use umbrellas.", "মানুষ ছাতা ব্যবহার করে।"], ["Some people stay at home.", "কিছু মানুষ বাড়িতে থাকে।"], ["Children cannot play outside.", "শিশুরা বাইরে খেলতে পারে না।"], ["I like to watch the rain.", "আমি বৃষ্টি দেখতে পছন্দ করি।"]]}, {"id": "devotion-mother", "batch": 1, "type": "Story", "title": "Devotion to Mother", "badge": "প্রথম অগ্রাধিকার", "sentences": [["Bayazid Bostami was a good boy.", "বায়েজিদ বোস্তামী একজন ভালো ছেলে ছিলেন।"], ["He loved his mother very much.", "তিনি তাঁর মাকে খুব ভালোবাসতেন।"], ["One night, his mother asked for water.", "এক রাতে তাঁর মা পানি চাইলেন।"], ["Bayazid went to get water.", "বায়েজিদ পানি আনতে গেলেন।"], ["He came back with a glass of water.", "তিনি এক গ্লাস পানি নিয়ে ফিরে এলেন।"], ["His mother was sleeping.", "তাঁর মা ঘুমাচ্ছিলেন।"], ["He did not wake her.", "তিনি তাঁকে জাগালেন না।"], ["He stood beside her bed.", "তিনি তাঁর বিছানার পাশে দাঁড়িয়ে রইলেন।"], ["He waited all night.", "তিনি সারা রাত অপেক্ষা করলেন।"], ["In the morning, his mother woke up.", "সকালে তাঁর মা ঘুম থেকে উঠলেন।"], ["She saw the glass of water.", "তিনি পানির গ্লাসটি দেখলেন।"], ["She was very happy.", "তিনি খুব খুশি হলেন।"], ["She prayed for her son.", "তিনি তাঁর ছেলের জন্য দোয়া করলেন।"], ["Moral: We should love our mother.", "নীতিকথা: আমাদের মাকে ভালোবাসা উচিত।"], ["We should respect our mother.", "আমাদের মাকে সম্মান করা উচিত।"]]}, {"id": "annual-exam", "batch": 1, "type": "Dialogue", "title": "Preparation for Annual Exam", "badge": "প্রথম অগ্রাধিকার", "sentences": [["Rafiq: Hello, Karim.", "রাফিক: হ্যালো, করিম।"], ["Rafiq: How are you?", "রাফিক: তুমি কেমন আছ?"], ["Karim: I am fine.", "করিম: আমি ভালো আছি।"], ["Karim: My annual exam is near.", "করিম: আমার বার্ষিক পরীক্ষা কাছে।"], ["Rafiq: Do you study every day?", "রাফিক: তুমি কি প্রতিদিন পড়াশোনা করো?"], ["Karim: Yes. I study every day.", "করিম: হ্যাঁ। আমি প্রতিদিন পড়াশোনা করি।"], ["Rafiq: What do you have to study?", "রাফিক: তোমাকে কী কী পড়তে হবে?"], ["Karim: I have to study English, Bangla, math.", "করিম: আমাকে ইংরেজি, বাংলা ও গণিত পড়তে হবে।"], ["Rafiq: Do you practise writing?", "রাফিক: তুমি কি লেখার অনুশীলন করো?"], ["Karim: Yes. I write answers every day.", "করিম: হ্যাঁ। আমি প্রতিদিন উত্তর লিখি।"], ["Rafiq: You should study well.", "রাফিক: তোমার ভালোভাবে পড়াশোনা করা উচিত।"], ["Karim: Yes. I should sleep early too.", "করিম: হ্যাঁ। আমার তাড়াতাড়ি ঘুমানোও উচিত।"], ["Rafiq: Best of luck.", "রাফিক: তোমার জন্য শুভকামনা।"], ["Karim: Thank you.", "করিম: ধন্যবাদ।"]]}, {"id": "postman", "batch": 2, "type": "Paragraph", "title": "A Postman", "badge": "দ্বিতীয় অগ্রাধিকার", "sentences": [["A postman is a person.", "একজন ডাকপিয়ন একজন ব্যক্তি।"], ["He brings letters to us.", "তিনি আমাদের কাছে চিঠি পৌঁছে দেন।"], ["He works in a post office.", "তিনি ডাকঘরে কাজ করেন।"], ["He goes to many houses.", "তিনি অনেক বাড়িতে যান।"], ["He gives letters to people.", "তিনি মানুষকে চিঠি দেন।"], ["He works in the sun.", "তিনি রোদে কাজ করেন।"], ["He works in the rain.", "তিনি বৃষ্টিতেও কাজ করেন।"], ["People wait for him.", "মানুষ তাঁর জন্য অপেক্ষা করে।"], ["He helps us in many ways.", "তিনি নানাভাবে আমাদের সাহায্য করেন।"], ["A postman is a useful person.", "একজন ডাকপিয়ন উপকারী ব্যক্তি।"], ["We should respect him.", "আমাদের তাঁকে সম্মান করা উচিত।"]]}, {"id": "two-friends-bear", "batch": 2, "type": "Story", "title": "Two Friends and a Bear", "badge": "দ্বিতীয় অগ্রাধিকার", "sentences": [["One day, two friends went to a forest.", "একদিন, দুই বন্ধু একটি বনে গেল।"], ["They saw a big bear.", "তারা একটি বড় ভালুক দেখল।"], ["One friend climbed a tree.", "একজন বন্ধু গাছে উঠল।"], ["The other friend could not climb the tree.", "অন্য বন্ধুটি গাছে উঠতে পারল না।"], ["He lay on the ground.", "সে মাটিতে শুয়ে পড়ল।"], ["He did not move.", "সে নড়াচড়া করল না।"], ["The bear came near him.", "ভালুকটি তার কাছে এল।"], ["It smelled him.", "এটি তাকে শুঁকল।"], ["The bear thought he was dead.", "ভালুকটি ভাবল সে মারা গেছে।"], ["The bear went away.", "ভালুকটি চলে গেল।"], ["The first friend came down from the tree.", "প্রথম বন্ধুটি গাছ থেকে নেমে এল।"], ["He asked, “What did the bear say?”", "সে জিজ্ঞেস করল, “ভালুকটি কী বলেছিল?”"], ["The other friend said, “A bad friend leaves you in danger.”", "অন্য বন্ধুটি বলল, “খারাপ বন্ধু তোমাকে বিপদে ফেলে চলে যায়।”"], ["Moral: A friend in need is a friend indeed.", "নীতিকথা: বিপদের বন্ধুই প্রকৃত বন্ধু।"]]}, {"id": "hobbies", "batch": 2, "type": "Dialogue", "title": "Hobbies", "badge": "দ্বিতীয় অগ্রাধিকার", "sentences": [["Rafiq: Hello, Karim.", "রাফিক: হ্যালো, করিম।"], ["Rafiq: What is your hobby?", "রাফিক: তোমার শখ কী?"], ["Karim: My hobby is reading books.", "করিম: আমার শখ বই পড়া।"], ["Karim: What is your hobby?", "করিম: তোমার শখ কী?"], ["Rafiq: I like playing cricket.", "রাফিক: আমি ক্রিকেট খেলতে পছন্দ করি।"], ["Karim: Do you play every day?", "করিম: তুমি কি প্রতিদিন খেলো?"], ["Rafiq: Yes. I play in the afternoon.", "রাফিক: হ্যাঁ। আমি বিকেলে খেলি।"], ["Karim: I like story books.", "করিম: আমি গল্পের বই পছন্দ করি।"], ["Rafiq: What do you do in your free time?", "রাফিক: অবসর সময়ে তুমি কী করো?"], ["Karim: I read books.", "করিম: আমি বই পড়ি।"], ["Karim: I also play football.", "করিম: আমি ফুটবলও খেলি।"], ["Rafiq: That is nice.", "রাফিক: এটি ভালো।"], ["Karim: Thank you.", "করিম: ধন্যবাদ।"]]}, {"id": "tea-stall", "batch": 3, "type": "Paragraph", "title": "A Tea Stall", "badge": "তৃতীয় অগ্রাধিকার", "sentences": [["A tea stall is a small shop.", "একটি চায়ের দোকান ছোট একটি দোকান।"], ["We see tea stalls near roads.", "আমরা রাস্তার পাশে চায়ের দোকান দেখি।"], ["People go there to drink tea.", "মানুষ সেখানে চা পান করতে যায়।"], ["They eat bread, cake, biscuits.", "তারা পাউরুটি, কেক ও বিস্কুট খায়।"], ["The shopkeeper makes tea.", "দোকানদার চা তৈরি করেন।"], ["People sit on small chairs.", "মানুষ ছোট চেয়ারে বসে।"], ["They talk with other people.", "তারা অন্য মানুষের সঙ্গে কথা বলে।"], ["A tea stall is a common place in Bangladesh.", "চায়ের দোকান বাংলাদেশের একটি পরিচিত স্থান।"]]}, {"id": "slow-steady", "batch": 3, "type": "Story", "title": "Slow and Steady Wins the Race", "badge": "তৃতীয় অগ্রাধিকার", "sentences": [["A hare was very fast.", "একটি খরগোশ খুব দ্রুত ছিল।"], ["A tortoise was very slow.", "একটি কচ্ছপ খুব ধীরে চলত।"], ["The hare laughed at the tortoise.", "খরগোশটি কচ্ছপকে নিয়ে হাসল।"], ["The tortoise asked for a race.", "কচ্ছপটি দৌড় প্রতিযোগিতার প্রস্তাব দিল।"], ["The hare ran very fast.", "খরগোশটি খুব দ্রুত দৌড়াল।"], ["The tortoise walked slowly.", "কচ্ছপটি ধীরে ধীরে হাঁটল।"], ["The hare sat under a tree.", "খরগোশটি একটি গাছের নিচে বসল।"], ["He slept there.", "সে সেখানে ঘুমিয়ে পড়ল।"], ["The tortoise kept walking.", "কচ্ছপটি হাঁটতে থাকল।"], ["He reached the end first.", "সে সবার আগে শেষ প্রান্তে পৌঁছাল।"], ["The hare woke up.", "খরগোশটি ঘুম থেকে উঠল।"], ["He ran fast.", "সে দ্রুত দৌড়াল।"], ["It was too late.", "তখন অনেক দেরি হয়ে গিয়েছিল।"], ["The tortoise won the race.", "কচ্ছপটি দৌড়ে জিতল।"], ["Moral: Slow and steady wins the race.", "নীতিকথা: ধীরে-সুস্থে ও নিয়মিত কাজ করলে সফলতা আসে।"]]}, {"id": "remove-illiteracy", "batch": 3, "type": "Dialogue", "title": "Removing Illiteracy", "badge": "তৃতীয় অগ্রাধিকার", "sentences": [["Rafiq: Hello, Karim. How are you?", "রাফিক: হ্যালো, করিম। তুমি কেমন আছ?"], ["Karim: I am fine.", "করিম: আমি ভালো আছি।"], ["Karim: How are you?", "করিম: তুমি কেমন আছ?"], ["Rafiq: I am fine.", "রাফিক: আমি ভালো আছি।"], ["Rafiq: Do you know about illiteracy?", "রাফিক: তুমি কি নিরক্ষরতা সম্পর্কে জানো?"], ["Karim: Yes.", "করিম: হ্যাঁ।"], ["Karim: It means a person cannot read.", "করিম: এর অর্থ একজন ব্যক্তি পড়তে পারে না।"], ["Karim: A person cannot write.", "করিম: একজন ব্যক্তি লিখতে পারে না।"], ["Rafiq: Why is it a problem?", "রাফিক: এটি কেন একটি সমস্যা?"], ["Karim: People cannot read books.", "করিম: মানুষ বই পড়তে পারে না।"], ["Karim: They cannot write.", "করিম: তারা লিখতে পারে না।"], ["Rafiq: How can we remove it?", "রাফিক: আমরা কীভাবে এটি দূর করতে পারি?"], ["Karim: We can teach people.", "করিম: আমরা মানুষকে শেখাতে পারি।"], ["Rafiq: We should help them.", "রাফিক: আমাদের তাদের সাহায্য করা উচিত।"], ["Karim: Yes. Every person should learn to read.", "করিম: হ্যাঁ। প্রত্যেক মানুষের পড়তে শেখা উচিত।"]]}, {"id": "national-flag", "batch": 4, "type": "Paragraph", "title": "Our National Flag", "badge": "চতুর্থ অগ্রাধিকার", "sentences": [["Our national flag is very beautiful.", "আমাদের জাতীয় পতাকা খুব সুন্দর।"], ["It is green.", "এটি সবুজ।"], ["It has a red circle.", "এর মধ্যে একটি লাল বৃত্ত আছে।"], ["The green colour shows our green land.", "সবুজ রং আমাদের সবুজ-শ্যামল দেশকে বোঝায়।"], ["The red circle is in the middle of the flag.", "পতাকার মাঝখানে লাল বৃত্তটি আছে।"], ["Our flag is a sign of our country.", "আমাদের পতাকা আমাদের দেশের পরিচয় বহন করে।"], ["We hoist our flag on national days.", "আমরা জাতীয় দিবসগুলোতে পতাকা উত্তোলন করি।"], ["We love our national flag.", "আমরা আমাদের জাতীয় পতাকাকে ভালোবাসি।"], ["We should respect our flag.", "আমাদের পতাকাকে সম্মান করা উচিত।"]]}, {"id": "thirsty-crow", "batch": 4, "type": "Story", "title": "A Thirsty Crow", "badge": "চতুর্থ অগ্রাধিকার", "sentences": [["One day, a crow was very thirsty.", "একদিন, একটি কাকের খুব পিপাসা পেল।"], ["It looked for water.", "এটি পানির খোঁজ করল।"], ["It saw a pot near a house.", "এটি একটি বাড়ির পাশে একটি কলসি দেখল।"], ["There was little water in the pot.", "কলসিতে অল্প পানি ছিল।"], ["The crow could not reach the water.", "কাকটি পানিতে ঠোঁট পৌঁছাতে পারল না।"], ["It saw some small stones.", "এটি কয়েকটি ছোট পাথর দেখল।"], ["It put the stones into the pot one by one.", "এটি একে একে পাথরগুলো কলসিতে ফেলল।"], ["The water came up.", "পানির স্তর ওপরে উঠে এল।"], ["The crow drank the water.", "কাকটি পানি পান করল।"], ["It was very happy.", "এটি খুব খুশি হলো।"], ["Moral: Where there is a will, there is a way.", "নীতিকথা: ইচ্ছা থাকলে উপায় হয়।"]]}, {"id": "borrowing-book", "batch": 4, "type": "Dialogue", "title": "Borrowing a Book", "badge": "চতুর্থ অগ্রাধিকার", "sentences": [["Rafiq: Hello, sir.", "রাফিক: হ্যালো, স্যার।"], ["Rafiq: I want to borrow a book.", "রাফিক: আমি একটি বই ধার নিতে চাই।"], ["Librarian: Which book do you want?", "গ্রন্থাগারিক: তুমি কোন বইটি চাও?"], ["Rafiq: I want an English story book.", "রাফিক: আমি একটি ইংরেজি গল্পের বই চাই।"], ["Librarian: Here is a book for you.", "গ্রন্থাগারিক: তোমার জন্য এই বইটি নাও।"], ["Rafiq: Can I take it home?", "রাফিক: আমি কি এটি বাড়িতে নিতে পারি?"], ["Librarian: Yes. You can take it for seven days.", "গ্রন্থাগারিক: হ্যাঁ। তুমি এটি সাত দিনের জন্য নিতে পারো।"], ["Rafiq: When should I return it?", "রাফিক: আমাকে কখন এটি ফেরত দিতে হবে?"], ["Librarian: Please return it next week.", "গ্রন্থাগারিক: দয়া করে আগামী সপ্তাহে এটি ফেরত দিও।"], ["Rafiq: Thank you, sir.", "রাফিক: ধন্যবাদ, স্যার।"], ["Librarian: You are welcome.", "গ্রন্থাগারিক: তোমাকে স্বাগতম।"]]}];
+const batchNames = {1:"First Priority",2:"Second Priority",3:"Third Priority",4:"Fourth Priority"};
+const batchBangla = {1:"প্রথম অগ্রাধিকার",2:"দ্বিতীয় অগ্রাধিকার",3:"তৃতীয় অগ্রাধিকার",4:"চতুর্থ অগ্রাধিকার"};
+const typeIcon = {Paragraph:"📝",Story:"📖",Dialogue:"💬"};
+let current = 0;
+let allBanglaVisible = true;
+let currentUtterance = null;
+const homeView=document.getElementById("homeView"), lessonView=document.getElementById("lessonView");
+const toastEl=document.getElementById("toast");
+
+function showToast(msg){toastEl.textContent=msg;toastEl.classList.add("show");setTimeout(()=>toastEl.classList.remove("show"),2400)}
+function stopSpeech(){if("speechSynthesis" in window){speechSynthesis.cancel();}currentUtterance=null}
+function speak(text,lang){
+  if(!("speechSynthesis" in window)){showToast("এই ব্রাউজারে অডিও সুবিধা নেই। Chrome ব্যবহার করে দেখো।");return}
+  stopSpeech();
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang=lang;
+  u.rate=0.82;
+  const voices=speechSynthesis.getVoices();
+  let voice=null;
+  if(lang.startsWith("bn")) voice=voices.find(v=>/^bn/i.test(v.lang));
+  else voice=voices.find(v=>/^en(-|_)?(GB|US)/i.test(v.lang))||voices.find(v=>/^en/i.test(v.lang));
+  if(voice)u.voice=voice;
+  u.onerror=()=>showToast("অডিও চালানো যায়নি। ফোনের voice settings পরীক্ষা করো।");
+  currentUtterance=u;
+  speechSynthesis.speak(u);
+}
+function buildHome(){
+  const grid=document.getElementById("batchGrid");
+  grid.innerHTML="";
+  for(let b=1;b<=4;b++){
+    const count=ITEMS.filter(x=>x.batch===b).length;
+    const names=ITEMS.filter(x=>x.batch===b).map(x=>x.title).join(" • ");
+    const btn=document.createElement("button");
+    btn.className="batch-card";
+    btn.innerHTML=`<span class="count">${count}টি</span><div class="num">BATCH ${b}</div><h3>${batchBangla[b]}</h3><p>${names}</p>`;
+    btn.addEventListener("click",()=>openLesson(ITEMS.findIndex(x=>x.batch===b)));
+    grid.appendChild(btn);
+  }
+  const list=document.getElementById("homeItems");list.innerHTML="";
+  ITEMS.forEach((item,i)=>{
+    const btn=document.createElement("button");btn.className="item-row";
+    btn.innerHTML=`<span class="icon">${typeIcon[item.type]}</span><span><strong>${item.title}</strong><small>Batch ${item.batch} • ${item.type}</small></span><span class="arrow">›</span>`;
+    btn.addEventListener("click",()=>openLesson(i));list.appendChild(btn);
+  });
+}
+function openLesson(index){
+  stopSpeech();current=Math.max(0,Math.min(index,ITEMS.length-1));
+  homeView.classList.add("hidden");lessonView.classList.remove("hidden");
+  renderLesson();window.scrollTo({top:0,behavior:"smooth"});
+}
+function renderLesson(){
+  const item=ITEMS[current];
+  document.getElementById("lessonTag").textContent=`Batch ${item.batch} • ${item.type}`;
+  document.getElementById("lessonTitle").textContent=item.title;
+  document.getElementById("lessonSub").textContent=`${batchBangla[item.batch]} • ${item.sentences.length}টি বাক্য`;
+  document.getElementById("progressText").textContent=`${current+1} / ${ITEMS.length}`;
+  document.getElementById("progressBar").style.width=((current+1)/ITEMS.length*100)+"%";
+  const list=document.getElementById("sentenceList");list.innerHTML="";
+  item.sentences.forEach((pair,i)=>{
+    const card=document.createElement("article");card.className="sentence";
+    card.innerHTML=`<div class="sentence-top"><span class="snum">${i+1}</span><div class="eng"></div><button class="speak-one" aria-label="বাক্য শুনুন">🔊</button></div><div class="bangla"></div>`;
+    card.querySelector(".eng").textContent=pair[0];
+    card.querySelector(".bangla").textContent=pair[1];
+    card.querySelector(".bangla").classList.toggle("hide",!allBanglaVisible);
+    card.querySelector(".speak-one").addEventListener("click",()=>speak(pair[0],"en-US"));
+    list.appendChild(card);
+  });
+  document.getElementById("toggleBangla").textContent=allBanglaVisible?"বাংলা অর্থ লুকাও":"বাংলা অর্থ দেখাও";
+  document.getElementById("prevBtn").disabled=current===0;
+  document.getElementById("nextBtn").textContent=current===ITEMS.length-1?"শেষ • Home ↗":"Next →";
+}
+function setBangla(show){
+  allBanglaVisible=show;
+  document.querySelectorAll(".bangla").forEach(el=>el.classList.toggle("hide",!show));
+  document.getElementById("toggleBangla").textContent=show?"বাংলা অর্থ লুকাও":"বাংলা অর্থ দেখাও";
+}
+function goHome(){stopSpeech();lessonView.classList.add("hidden");homeView.classList.remove("hidden");window.scrollTo({top:0,behavior:"smooth"})}
+document.getElementById("homeTop").addEventListener("click",goHome);
+document.getElementById("backHome").addEventListener("click",goHome);
+document.getElementById("stopTop").addEventListener("click",()=>{stopSpeech();showToast("অডিও বন্ধ করা হয়েছে।")});
+document.getElementById("toggleBangla").addEventListener("click",()=>setBangla(!allBanglaVisible));
+document.getElementById("englishOnly").addEventListener("click",()=>setBangla(false));
+document.getElementById("showAll").addEventListener("click",()=>setBangla(true));
+document.getElementById("prevBtn").addEventListener("click",()=>{if(current>0)openLesson(current-1)});
+document.getElementById("nextBtn").addEventListener("click",()=>{if(current<ITEMS.length-1)openLesson(current+1);else goHome()});
+document.getElementById("playEnglish").addEventListener("click",()=>speak(ITEMS[current].sentences.map(x=>x[0]).join(" "), "en-US"));
+document.getElementById("playBangla").addEventListener("click",()=>speak(ITEMS[current].sentences.map(x=>x[1]).join(" "), "bn-BD"));
+if("speechSynthesis" in window){speechSynthesis.onvoiceschanged=()=>{}}
+buildHome();
+</script>
+</body>
+</html>
