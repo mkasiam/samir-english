@@ -1,13 +1,352 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Class 7 Subject | Class 7 Learning</title>
+  <meta name="theme-color" content="#0284c7" />
+  <title>Class 7 • English 2nd Paper Writing</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/css/style.css" />
+  <style>
+    :root {
+      --subject-accent: #0284c7;
+    }
+
+    .eng2-hidden {
+      display: none !important;
+    }
+
+    .eng2-main {
+      padding: 20px 0 40px;
+    }
+
+    .eng2-section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 22px 2px 12px;
+      flex-wrap: wrap;
+    }
+
+    .eng2-section-head h2 {
+      margin: 0;
+      font-size: 1.15rem;
+      color: var(--text-primary);
+    }
+
+    .eng2-section-head span {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .eng2-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .eng2-stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      background: var(--bg-subtle);
+      color: var(--text-primary);
+      font-size: 0.82rem;
+      font-weight: 700;
+      border: 1px solid var(--border-color);
+    }
+
+    .eng2-batch-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .eng2-batch-card {
+      position: relative;
+      text-align: left;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-top: 4px solid var(--subject-accent);
+      border-radius: var(--radius-md);
+      padding: 15px;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      font-family: inherit;
+      width: 100%;
+    }
+
+    .eng2-batch-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .eng2-batch-card:nth-child(1) { border-top-color: #0284c7; }
+    .eng2-batch-card:nth-child(2) { border-top-color: #10b981; }
+    .eng2-batch-card:nth-child(3) { border-top-color: #f59e0b; }
+    .eng2-batch-card:nth-child(4) { border-top-color: #ec4899; }
+
+    .eng2-batch-num {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .eng2-batch-count {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      padding: 3px 9px;
+      border-radius: var(--radius-full);
+      background: var(--primary-light);
+      color: var(--subject-accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .eng2-batch-card h3 {
+      margin: 6px 0 6px;
+      font-size: 1.02rem;
+      color: var(--text-primary);
+    }
+
+    .eng2-batch-card p {
+      margin: 0;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      color: var(--text-secondary);
+    }
+
+    .eng2-filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .eng2-filter-btn {
+      padding: 7px 13px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-color);
+      background: var(--bg-surface);
+      color: var(--text-secondary);
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .eng2-filter-btn.is-active {
+      background: var(--subject-accent);
+      border-color: var(--subject-accent);
+      color: #ffffff;
+    }
+
+    .eng2-item-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .eng2-item-row {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 13px 14px;
+      text-align: left;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      font-family: inherit;
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .eng2-item-row:hover {
+      border-color: var(--subject-accent);
+      transform: translateY(-1px);
+    }
+
+    .eng2-item-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      background: var(--bg-subtle);
+    }
+
+    .eng2-item-info {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .eng2-item-info strong {
+      display: block;
+      font-size: 0.96rem;
+      color: var(--text-primary);
+    }
+
+    .eng2-item-info small {
+      display: block;
+      margin-top: 2px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .eng2-item-arrow {
+      color: var(--subject-accent);
+      font-size: 1.25rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .eng2-backline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .eng2-backline .progress-wrap {
+      flex: 1;
+      min-width: 160px;
+    }
+
+    .eng2-controls-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .eng2-rate-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: auto;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .eng2-rate-select {
+      padding: 7px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .eng2-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: var(--bg-subtle);
+      color: var(--subject-accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .eng2-line-pre {
+      white-space: pre-line;
+    }
+
+    .eng2-audio-card {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #ffffff;
+      border-color: #1e293b;
+    }
+
+    .eng2-audio-card h3 {
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+      color: #ffffff;
+    }
+
+    .eng2-audio-card p {
+      margin: 0 0 14px;
+      font-size: 0.86rem;
+      color: #cbd5e1;
+      line-height: 1.55;
+    }
+
+    .eng2-audio-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .eng2-audio-actions .btn {
+      flex: 1;
+      min-width: 140px;
+    }
+
+    .eng2-note {
+      margin: 14px 4px 0;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .eng2-footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      padding: 20px 0 8px;
+    }
+
+    .eng2-toast {
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0f172a;
+      color: #ffffff;
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 60;
+      max-width: 90%;
+      text-align: center;
+    }
+
+    .eng2-toast.is-visible {
+      opacity: 1;
+    }
+
+    @media (max-width: 480px) {
+      .eng2-batch-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .eng2-rate-group {
+        margin-left: 0;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -17,77 +356,676 @@
         <span>Class 7 Learning</span>
       </a>
       <div class="header-actions">
+        <button type="button" class="nav-pill eng2-hidden" id="homeTop">⌂ Writing Home</button>
+        <button type="button" class="nav-pill" id="stopTop">■ Stop Audio</button>
         <a href="../../index.html" class="nav-pill">&larr; All Subjects</a>
       </div>
     </div>
   </header>
 
-  <section class="subject-banner" id="subject-banner">
+  <section class="subject-banner">
     <div class="container subject-banner-inner">
       <div class="subject-title-row">
-        <div class="subject-title-icon" id="subject-icon" aria-hidden="true">📖</div>
+        <div class="subject-title-icon" aria-hidden="true">✍️</div>
         <div>
-          <h1 id="subject-title">Loading Subject...</h1>
-          <p id="subject-subtitle">Class 7 Interactive Learning Module</p>
+          <h1>English 2nd Paper</h1>
+          <p class="bn-text" lang="bn">সহজ ইংরেজি রাইটিং • Informal E-mail, Formal Application ও Composition</p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="container">
-    <div class="progress-wrap" id="progress-wrap">
-      <div class="progress-meta">
-        <span id="progress-text">Lesson 1 of 1</span>
-        <span id="progress-percent">0%</span>
+  <main class="container eng2-main">
+    <!-- HOME VIEW -->
+    <section id="homeView">
+      <div class="content-card">
+        <div class="content-card-header">
+          <span aria-hidden="true">🌈</span>
+          <h2 class="bn-text" lang="bn">পড়ো, বোঝো, শুনে শিখো!</h2>
+        </div>
+        <p class="bn-text" lang="bn">
+          একটি বাক্য করে পড়ো। বাংলা অর্থ দেখে বুঝে নাও। অডিও শুনে উচ্চারণ অনুশীলন করো। পরীক্ষার প্রস্তুতি শুরু হোক সহজভাবে!
+        </p>
+        <div class="eng2-stats">
+          <span class="eng2-stat-pill bn-text" lang="bn">১১টি Writing</span>
+          <span class="eng2-stat-pill bn-text" lang="bn">৪টি Priority Batch</span>
+          <span class="eng2-stat-pill">English + বাংলা</span>
+        </div>
       </div>
-      <div class="progress-track">
-        <div class="progress-fill" id="progress-fill"></div>
+
+      <div class="eng2-section-head">
+        <h2 class="bn-text" lang="bn">তোমার পড়ার ব্যাচ</h2>
+        <span class="bn-text" lang="bn">প্রথমে Batch 1 পড়বে</span>
       </div>
-    </div>
+      <div class="eng2-batch-grid" id="batchGrid"></div>
 
-    <div class="selector-panel" id="selector-panel">
-      <div class="control-group">
-        <label for="chapter-select" class="control-label">Chapter</label>
-        <select id="chapter-select" class="select-input"></select>
+      <div class="eng2-section-head">
+        <h2 id="listHeading" class="bn-text" lang="bn">সবগুলো Writing</h2>
+        <span class="bn-text" lang="bn">প্রায়োরিটি অনুযায়ী সাজানো</span>
       </div>
-      <div class="control-group">
-        <label for="topic-select" class="control-label">Topic</label>
-        <select id="topic-select" class="select-input"></select>
+
+      <div class="eng2-filter-row" id="typeFilters" role="tablist" aria-label="Filter by writing type">
+        <button type="button" class="eng2-filter-btn is-active" data-type="All">All (11)</button>
+        <button type="button" class="eng2-filter-btn" data-type="Informal E-mail">Informal E-mail (3)</button>
+        <button type="button" class="eng2-filter-btn" data-type="Formal Application">Formal Application (4)</button>
+        <button type="button" class="eng2-filter-btn" data-type="Composition">Composition (4)</button>
       </div>
-    </div>
 
-    <div class="learning-toolbar" id="learning-toolbar">
-      <button type="button" class="btn btn-secondary btn-sm" id="toggle-bn-btn">👁️ Hide Bangla</button>
-      <button type="button" class="btn btn-primary btn-sm" id="play-lesson-btn">▶️ Play Full Lesson</button>
-      <button type="button" class="btn btn-danger btn-sm" id="stop-audio-btn">⏹️ Stop</button>
-      <div class="speed-control">
-        <label for="speed-select">Speed</label>
-        <select id="speed-select" class="speed-select" aria-label="Speech speed">
-          <option value="0.75">0.75x</option>
-          <option value="1" selected>1x</option>
-          <option value="1.25">1.25x</option>
-        </select>
+      <div id="homeItems" class="eng2-item-list"></div>
+
+      <p class="eng2-note bn-text" lang="bn">
+        প্রতিটি Writing খুলে বাক্য ধরে পড়ো। নিচে English বা বাংলা অডিও শুনতে পারবে।
+      </p>
+    </section>
+
+    <!-- LESSON VIEW -->
+    <section id="lessonView" class="lesson-main eng2-hidden">
+      <div class="eng2-backline">
+        <button type="button" class="btn btn-secondary btn-sm" id="backHome">&larr; সব Writing</button>
+        <div class="progress-wrap">
+          <div class="progress-meta">
+            <span class="bn-text" lang="bn">অগ্রগতি</span>
+            <span id="progressText">1 / 11</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressBar" style="width: 9%"></div>
+          </div>
+        </div>
       </div>
-      <div class="audio-notice" id="audio-notice" role="status" aria-live="polite"></div>
-    </div>
 
-    <main class="lesson-main" id="lesson-main"></main>
+      <div class="content-card topic-header-card">
+        <span class="eng2-tag" id="lessonTag">Batch 1 • Informal E-mail</span>
+        <h1 id="lessonTitle">Early Rising</h1>
+        <p class="topic-subtitle bn-text" lang="bn" id="lessonSub">প্রথম অগ্রাধিকার • বাক্য ধরে অনুশীলন</p>
+      </div>
 
-    <nav class="lesson-nav" id="lesson-nav" aria-label="Lesson navigation">
-      <button type="button" class="btn btn-secondary" id="prev-topic-btn">&larr; Previous</button>
-      <button type="button" class="btn btn-primary" id="next-topic-btn">Next &rarr;</button>
-    </nav>
-  </div>
+      <div class="content-card">
+        <div class="eng2-controls-row">
+          <button type="button" class="btn btn-primary btn-sm bn-text" lang="bn" id="toggleBangla">বাংলা অর্থ লুকাও</button>
+          <button type="button" class="btn btn-secondary btn-sm bn-text" lang="bn" id="englishOnly">শুধু English</button>
+          <button type="button" class="btn btn-secondary btn-sm bn-text" lang="bn" id="showAll">সব বাংলা দেখাও</button>
+          <label class="eng2-rate-group">
+            <span>Speed:</span>
+            <select id="rateSelect" class="eng2-rate-select" aria-label="Speech speed">
+              <option value="0.75">0.75x (Slow)</option>
+              <option value="0.9" selected>0.9x (Clear)</option>
+              <option value="1">1.0x (Normal)</option>
+              <option value="1.15">1.15x (Fast)</option>
+            </select>
+          </label>
+        </div>
+      </div>
 
-  <footer class="site-footer" style="margin-top: 28px;">
-    <div class="container">
-      <p>Class 7 Complete Learning Platform &bull; <a href="../../index.html" style="color:inherit;">Return to Homepage</a></p>
-    </div>
-  </footer>
+      <div class="sentence-list" id="sentenceList"></div>
 
-  <script src="../../assets/js/subjects.js"></script>
-  <script src="./content.js"></script>
+      <div class="content-card eng2-audio-card">
+        <h3 class="bn-text" lang="bn">🎧 শুনে শুনে অনুশীলন করো</h3>
+        <p class="bn-text" lang="bn">
+          পুরো Writing একসাথে শুনতে নিচের বাটনে চাপ দাও। বাংলা অডিওর জন্য তোমার ফোন বা ব্রাউজারে বাংলা voice থাকতে হবে।
+        </p>
+        <div class="eng2-audio-actions">
+          <button type="button" class="btn btn-primary" id="playEnglish">▶ English Audio</button>
+          <button type="button" class="btn btn-secondary bn-text" lang="bn" id="playBangla">▶ বাংলা Audio</button>
+          <button type="button" class="btn btn-danger" id="stopLessonAudio">■ Stop</button>
+        </div>
+      </div>
+
+      <div class="lesson-nav">
+        <button type="button" class="btn btn-secondary" id="prevBtn">&larr; Previous</button>
+        <button type="button" class="btn btn-primary" id="nextBtn">Next &rarr;</button>
+      </div>
+
+      <p class="eng2-note bn-text" lang="bn">
+        টিপস: প্রথমে English পড়বে, তারপর বাংলা অর্থ দেখবে। শেষে অডিও শুনে নিজে নিজে বলার চেষ্টা করবে।
+      </p>
+    </section>
+
+    <div class="eng2-footer">Class 7 Learning Platform • English 2nd Paper Writing</div>
+  </main>
+
+  <div class="eng2-toast bn-text" lang="bn" id="toast" role="status" aria-live="polite"></div>
+
   <script src="../../assets/js/audio.js"></script>
-  <script src="../../assets/js/subject.js"></script>
+  <script>
+    const ITEMS = [
+      // BATCH 1
+      {
+        id: "early-rising",
+        batch: 1,
+        type: "Informal E-mail",
+        title: "Importance of Early Rising",
+        shortTitle: "Early Rising",
+        subtitle: "E-mail to Your Younger Brother",
+        sentences: [
+          ["To: brother@example.com\nSubject: Importance of Early Rising", "প্রাপক: brother@example.com\nবিষয়: সকালে ওঠার গুরুত্ব"],
+          ["Dear friend,", "প্রিয় বন্ধু,"],
+          ["I hope you are well.", "আশা করি তুমি ভালো আছ।"],
+          ["Today I want to tell you about early rising.", "আজ আমি তোমাকে সকালে ওঠা সম্পর্কে বলতে চাই।"],
+          ["Early rising is a good habit.", "সকালে ওঠা একটি ভালো অভ্যাস।"],
+          ["A person who gets up early has more time.", "যে ব্যক্তি সকালে ঘুম থেকে ওঠে, সে বেশি সময় পায়।"],
+          ["The morning air is fresh.", "সকালের বাতাস সতেজ থাকে।"],
+          ["We can walk in the morning.", "আমরা সকালে হাঁটতে পারি।"],
+          ["We can study with a fresh mind.", "আমরা সতেজ মনে পড়াশোনা করতে পারি।"],
+          ["Early rising keeps our body healthy.", "সকালে ওঠা আমাদের শরীর সুস্থ রাখে।"],
+          ["So, get up early every day.", "তাই প্রতিদিন সকালে উঠবে।"],
+          ["Your loving brother,\nRafiq", "তোমার স্নেহের ভাই,\nরাফিক"]
+        ]
+      },
+      {
+        id: "leave-of-absence",
+        batch: 1,
+        type: "Formal Application",
+        title: "Prayer for Leave of Absence",
+        shortTitle: "Leave of Absence",
+        subtitle: "Application to the Headmaster",
+        sentences: [
+          ["Date: ........................", "তারিখ: ........................"],
+          ["To\nThe Headmaster\nBhatra High School\nRamganj, Lakshmipur", "বরাবর\nপ্রধান শিক্ষক\nভাটরা উচ্চ বিদ্যালয়\nরামগঞ্জ, লক্ষ্মীপুর"],
+          ["Subject: Prayer for leave of absence", "বিষয়: অনুপস্থিতির ছুটির জন্য আবেদন"],
+          ["Sir,", "জনাব,"],
+          ["I am a student of Class 7 in your school.", "আমি আপনার বিদ্যালয়ের সপ্তম শ্রেণির একজন শিক্ষার্থী।"],
+          ["I was sick for three days.", "আমি তিন দিন অসুস্থ ছিলাম।"],
+          ["I could not attend school from 15 Oct to 18 Oct.", "১৫ অক্টোবর থেকে ১৮ অক্টোবর পর্যন্ত আমি বিদ্যালয়ে উপস্থিত থাকতে পারিনি।"],
+          ["I am sorry for my absence.", "আমার অনুপস্থিতির জন্য আমি দুঃখিত।"],
+          ["I am now well.", "আমি এখন সুস্থ আছি।"],
+          ["I, therefore, request you to kindly grant me leave for those three days.", "অতএব, অনুগ্রহ করে আমাকে ওই তিন দিনের ছুটি মঞ্জুর করার জন্য অনুরোধ করছি।"],
+          ["I shall be grateful to you.", "আমি আপনার নিকট কৃতজ্ঞ থাকব।"],
+          ["Yours obediently,\nRafiq\nClass: 7\nRoll: ........", "আপনার একান্ত অনুগত,\nরাফিক\nশ্রেণি: ৭ম\nরোল: ........"]
+        ]
+      },
+      {
+        id: "your-daily-life",
+        batch: 1,
+        type: "Composition",
+        title: "Your Daily Life",
+        shortTitle: "Your Daily Life",
+        subtitle: "Short Composition • 12 Sentences",
+        sentences: [
+          ["My name is Rafiq.", "আমার নাম রাফিক।"],
+          ["I am a student of Class 7.", "আমি সপ্তম শ্রেণির একজন শিক্ষার্থী।"],
+          ["I get up early in the morning.", "আমি খুব সকালে ঘুম থেকে উঠি।"],
+          ["I wash my face.", "আমি আমার মুখ ধুই।"],
+          ["I say my prayers.", "আমি নামাজ/প্রার্থনা আদায় করি।"],
+          ["I read my lessons.", "আমি আমার পড়া পড়ি।"],
+          ["I take my breakfast at 8 a.m.", "আমি সকাল ৮টায় নাশতা করি।"],
+          ["I go to school at 9 a.m.", "আমি সকাল ৯টায় বিদ্যালয়ে যাই।"],
+          ["I attend my classes.", "আমি আমার ক্লাসগুলোতে অংশগ্রহণ করি।"],
+          ["I come back home in the afternoon.", "আমি বিকেলে বাড়ি ফিরে আসি।"],
+          ["I play with my friends.", "আমি আমার বন্ধুদের সাথে খেলাধুলা করি।"],
+          ["I do my homework in the evening.", "আমি সন্ধ্যায় বাড়ির কাজ করি।"],
+          ["I have dinner at night.", "আমি রাতে রাতের খাবার খাই।"],
+          ["I go to bed early.", "আমি তাড়াতাড়ি ঘুমাতে যাই।"]
+        ]
+      },
+
+      // BATCH 2
+      {
+        id: "congratulations",
+        batch: 2,
+        type: "Informal E-mail",
+        title: "Congratulations on Your Success",
+        shortTitle: "Congratulations",
+        subtitle: "E-mail to a Friend on Brilliant Success",
+        sentences: [
+          ["To: friend@example.com\nSubject: Congratulations on Your Success", "প্রাপক: friend@example.com\nবিষয়: তোমার সাফল্যে অভিনন্দন"],
+          ["Dear friend,", "প্রিয় বন্ধু,"],
+          ["I am very happy to know about your brilliant success in the examination.", "পরীক্ষায় তোমার উজ্জ্বল সাফল্যের কথা জেনে আমি খুব খুশি হয়েছি।"],
+          ["You have got a very good result.", "তুমি খুব ভালো ফলাফল করেছ।"],
+          ["You worked hard for this result.", "এই ফলাফলের জন্য তুমি কঠোর পরিশ্রম করেছ।"],
+          ["I am proud of you.", "আমি তোমাকে নিয়ে গর্বিত।"],
+          ["I hope you will do well in the future.", "আশা করি ভবিষ্যতেও তুমি ভালো করবে।"],
+          ["Please give my love to your parents.", "তোমার বাবা-মাকে আমার সালাম ও ভালোবাসা দিও।"],
+          ["Take care.", "নিজের যত্ন নিও।"],
+          ["I hope to see you soon.", "আশা করি শীঘ্রই তোমার সাথে দেখা হবে।"],
+          ["Your loving friend,\nRafiq", "তোমার প্রিয় বন্ধু,\nরাফিক"]
+        ]
+      },
+      {
+        id: "transfer-certificate",
+        batch: 2,
+        type: "Formal Application",
+        title: "Prayer for a Transfer Certificate",
+        shortTitle: "Transfer Certificate",
+        subtitle: "Application to the Headmaster",
+        sentences: [
+          ["Date: ........................", "তারিখ: ........................"],
+          ["To\nThe Headmaster\nBhatra High School\nRamganj, Lakshmipur", "বরাবর\nপ্রধান শিক্ষক\nভাটরা উচ্চ বিদ্যালয়\nরামগঞ্জ, লক্ষ্মীপুর"],
+          ["Subject: Prayer for a transfer certificate", "বিষয়: ছাড়পত্রের (ট্রান্সফার সার্টিফিকেট) জন্য আবেদন"],
+          ["Sir,", "জনাব,"],
+          ["I am a student of Class 7 in your school.", "আমি আপনার বিদ্যালয়ের সপ্তম শ্রেণির একজন শিক্ষার্থী।"],
+          ["My father is a service holder.", "আমার বাবা একজন চাকরিজীবী।"],
+          ["He has been transferred to another town.", "তিনি অন্য একটি শহরে বদলি হয়েছেন।"],
+          ["Our family will move there soon.", "আমাদের পরিবার শীঘ্রই সেখানে চলে যাবে।"],
+          ["I cannot continue my studies in this school.", "আমি এই বিদ্যালয়ে আমার পড়াশোনা চালিয়ে যেতে পারব না।"],
+          ["I need a transfer certificate to get admission to a new school.", "নতুন বিদ্যালয়ে ভর্তি হওয়ার জন্য আমার একটি ছাড়পত্র প্রয়োজন।"],
+          ["I, therefore, request you to give me a transfer certificate.", "অতএব, আমাকে একটি ছাড়পত্র দেওয়ার জন্য আপনাকে অনুরোধ করছি।"],
+          ["I shall be grateful to you.", "আমি আপনার নিকট কৃতজ্ঞ থাকব।"],
+          ["Yours obediently,\nRafiq\nClass: 7\nRoll: ........", "আপনার একান্ত অনুগত,\nরাফিক\nশ্রেণি: ৭ম\nরোল: ........"]
+        ]
+      },
+      {
+        id: "student-life",
+        batch: 2,
+        type: "Composition",
+        title: "Student Life",
+        shortTitle: "Student Life",
+        subtitle: "Short Composition • 11 Sentences",
+        sentences: [
+          ["Student life is an important time.", "ছাত্রজীবন একটি গুরুত্বপূর্ণ সময়।"],
+          ["A student learns many things.", "একজন শিক্ষার্থী অনেক কিছু শেখে।"],
+          ["A student goes to school every day.", "একজন শিক্ষার্থী প্রতিদিন বিদ্যালয়ে যায়।"],
+          ["He or she reads books.", "সে বই পড়ে।"],
+          ["A student should obey teachers.", "একজন শিক্ষার্থীর শিক্ষকদের মান্য করা উচিত।"],
+          ["A student should respect parents.", "একজন শিক্ষার্থীর বাবা-মাকে সম্মান করা উচিত।"],
+          ["A student should be honest.", "একজন শিক্ষার্থীর সৎ হওয়া উচিত।"],
+          ["He or she should play games.", "তার খেলাধুলাও করা উচিত।"],
+          ["A student should help others.", "একজন শিক্ষার্থীর অন্যদের সাহায্য করা উচিত।"],
+          ["Good habits make a good student.", "ভালো অভ্যাস একজন ভালো শিক্ষার্থী তৈরি করে।"],
+          ["Student life prepares us for the future.", "ছাত্রজীবন আমাদের ভবিষ্যতের জন্য প্রস্তুত করে।"]
+        ]
+      },
+
+      // BATCH 3
+      {
+        id: "marriage-invitation",
+        batch: 3,
+        type: "Informal E-mail",
+        title: "Invitation to Sister's Marriage Ceremony",
+        shortTitle: "Marriage Invitation",
+        subtitle: "E-mail Inviting a Friend",
+        sentences: [
+          ["To: friend@example.com\nSubject: Invitation to My Sister's Marriage Ceremony", "প্রাপক: friend@example.com\nবিষয়: আমার বোনের বিয়ের অনুষ্ঠানে আমন্ত্রণ"],
+          ["Dear friend,", "প্রিয় বন্ধু,"],
+          ["I am happy to tell you that my elder sister’s marriage ceremony will be held on ........................", "আমি আনন্দের সাথে জানাচ্ছি যে আমার বড় বোনের বিয়ের অনুষ্ঠান আগামী ........................ তারিখে অনুষ্ঠিত হবে।"],
+          ["The ceremony will take place at our home.", "অনুষ্ঠানটি আমাদের বাড়িতে অনুষ্ঠিত হবে।"],
+          ["Many guests will come.", "অনেক অতিথি আসবেন।"],
+          ["I want you to come to the ceremony.", "আমি চাই তুমি অনুষ্ঠানে আসো।"],
+          ["Your presence will make me very happy.", "তোমার উপস্থিতি আমাকে খুব খুশি করবে।"],
+          ["Please come one day before the ceremony.", "অনুগ্রহ করে অনুষ্ঠানের একদিন আগে চলে এসো।"],
+          ["I am waiting for you.", "আমি তোমার জন্য অপেক্ষা করছি।"],
+          ["Your loving friend,\nRafiq", "তোমার প্রিয় বন্ধু,\nরাফিক"]
+        ]
+      },
+      {
+        id: "library-facilities",
+        batch: 3,
+        type: "Formal Application",
+        title: "Prayer for Increasing Library Facilities",
+        shortTitle: "Library Facilities",
+        subtitle: "Application to the Headmaster",
+        sentences: [
+          ["Date: ........................", "তারিখ: ........................"],
+          ["To\nThe Headmaster\nBhatra High School\nRamganj, Lakshmipur", "বরাবর\nপ্রধান শিক্ষক\nভাটরা উচ্চ বিদ্যালয়\nরামগঞ্জ, লক্ষ্মীপুর"],
+          ["Subject: Prayer for increasing library facilities", "বিষয়: পাঠাগারের সুযোগ-সুবিধা বৃদ্ধির জন্য আবেদন"],
+          ["Sir,", "জনাব,"],
+          ["I am a student of Class 7 in your school.", "আমি আপনার বিদ্যালয়ের সপ্তম শ্রেণির একজন শিক্ষার্থী।"],
+          ["Our school has a library.", "আমাদের বিদ্যালয়ে একটি পাঠাগার আছে।"],
+          ["But there are not enough books in it.", "কিন্তু সেখানে পর্যাপ্ত বই নেই।"],
+          ["We need more story books, science books, and newspapers.", "আমাদের আরও গল্পের বই, বিজ্ঞানের বই এবং সংবাদপত্র প্রয়োজন।"],
+          ["A good library helps us learn many things.", "একটি ভালো পাঠাগার আমাদের অনেক কিছু শিখতে সাহায্য করে।"],
+          ["I, therefore, request you to increase the library facilities.", "অতএব, পাঠাগারের সুযোগ-সুবিধা বৃদ্ধি করার জন্য আপনাকে অনুরোধ করছি।"],
+          ["I shall be grateful to you.", "আমি আপনার নিকট কৃতজ্ঞ থাকব।"],
+          ["Yours obediently,\nRafiq\nClass: 7\nRoll: ........", "আপনার একান্ত অনুগত,\nরাফিক\nশ্রেণি: ৭ম\nরোল: ........"]
+        ]
+      },
+      {
+        id: "journey-by-train",
+        batch: 3,
+        type: "Composition",
+        title: "A Journey by Train",
+        shortTitle: "A Journey by Train",
+        subtitle: "Short Composition • 12 Sentences",
+        sentences: [
+          ["Last month, I made a journey by train.", "গত মাসে আমি ট্রেনে ভ্রমণ করেছিলাম।"],
+          ["I went to Dhaka with my family.", "আমি আমার পরিবারের সাথে ঢাকায় গিয়েছিলাম।"],
+          ["We reached the station early.", "আমরা তাড়াতাড়ি স্টেশনে পৌঁছেছিলাম।"],
+          ["We bought our tickets.", "আমরা আমাদের টিকিট কিনেছিলাম।"],
+          ["The train came on time.", "ট্রেনটি সময়মতো এসেছিল।"],
+          ["We got on the train.", "আমরা ট্রেনে উঠেছিলাম।"],
+          ["I sat near a window.", "আমি একটি জানালার পাশে বসেছিলাম।"],
+          ["I saw trees, fields, rivers, and houses.", "আমি গাছপালা, মাঠ, নদী এবং ঘরবাড়ি দেখেছিলাম।"],
+          ["The train moved very fast.", "ট্রেনটি খুব দ্রুত চলছিল।"],
+          ["I enjoyed the journey very much.", "আমি ভ্রমণটি খুব উপভোগ করেছিলাম।"],
+          ["We reached Dhaka safely.", "আমরা নিরাপদে ঢাকায় পৌঁছেছিলাম।"],
+          ["It was a happy journey.", "এটি ছিল একটি আনন্দদায়ক ভ্রমণ।"]
+        ]
+      },
+
+      // BATCH 4
+      {
+        id: "opening-canteen",
+        batch: 4,
+        type: "Formal Application",
+        title: "Prayer for Opening a Canteen",
+        shortTitle: "Opening a Canteen",
+        subtitle: "Application to the Headmaster",
+        sentences: [
+          ["Date: ........................", "তারিখ: ........................"],
+          ["To\nThe Headmaster\nBhatra High School\nRamganj, Lakshmipur", "বরাবর\nপ্রধান শিক্ষক\nভাটরা উচ্চ বিদ্যালয়\nরামগঞ্জ, লক্ষ্মীপুর"],
+          ["Subject: Prayer for opening a canteen in the school campus", "বিষয়: বিদ্যালয় প্রাঙ্গণে একটি ক্যান্টিন খোলার জন্য আবেদন"],
+          ["Sir,", "জনাব,"],
+          ["I am a student of Class 7 in your school.", "আমি আপনার বিদ্যালয়ের সপ্তম শ্রেণির একজন শিক্ষার্থী।"],
+          ["There is no canteen on our school campus.", "আমাদের বিদ্যালয় প্রাঙ্গণে কোনো ক্যান্টিন নেই।"],
+          ["Many students stay at school for a long time.", "অনেক শিক্ষার্থী দীর্ঘ সময় বিদ্যালয়ে অবস্থান করে।"],
+          ["They need safe food and clean drinking water.", "তাদের নিরাপদ খাবার এবং বিশুদ্ধ পানীয় জলের প্রয়োজন।"],
+          ["A canteen will help the students.", "একটি ক্যান্টিন শিক্ষার্থীদের সাহায্য করবে।"],
+          ["I, therefore, request you to open a canteen on our school campus.", "অতএব, আমাদের বিদ্যালয় প্রাঙ্গণে একটি ক্যান্টিন খোলার জন্য আপনাকে অনুরোধ করছি।"],
+          ["I shall be grateful to you.", "আমি আপনার নিকট কৃতজ্ঞ থাকব।"],
+          ["Yours obediently,\nRafiq\nClass: 7\nRoll: ........", "আপনার একান্ত অনুগত,\nরাফিক\nশ্রেণি: ৭ম\nরোল: ........"]
+        ]
+      },
+      {
+        id: "newspaper",
+        batch: 4,
+        type: "Composition",
+        title: "Newspaper",
+        shortTitle: "Newspaper",
+        subtitle: "Short Composition • 9 Sentences",
+        sentences: [
+          ["A newspaper is a paper of news.", "সংবাদপত্র হলো খবরের কাগজ।"],
+          ["We read it every day.", "আমরা প্রতিদিন এটি পড়ি।"],
+          ["It gives us news from home and abroad.", "এটি আমাদের দেশ-বিদেশের খবর দেয়।"],
+          ["It tells us about sports, games, and weather.", "এটি আমাদের খেলাধুলা এবং আবহাওয়া সম্পর্কে জানায়।"],
+          ["It also gives us news about schools and people.", "এটি বিদ্যালয় এবং মানুষ সম্পর্কেও খবর দেয়।"],
+          ["We can learn many things from a newspaper.", "আমরা সংবাদপত্র থেকে অনেক কিছু শিখতে পারি।"],
+          ["There are many kinds of newspapers.", "অনেক ধরনের সংবাদপত্র রয়েছে।"],
+          ["We should read a good newspaper.", "আমাদের একটি ভালো সংবাদপত্র পড়া উচিত।"],
+          ["A newspaper is useful to us.", "সংবাদপত্র আমাদের জন্য উপকারী।"]
+        ]
+      }
+    ];
+
+    const batchBangla = {
+      1: "প্রথম অগ্রাধিকার",
+      2: "দ্বিতীয় অগ্রাধিকার",
+      3: "তৃতীয় অগ্রাধিকার",
+      4: "চতুর্থ অগ্রাধিকার"
+    };
+
+    const typeIcon = {
+      "Informal E-mail": "✉️",
+      "Formal Application": "📄",
+      "Composition": "📝"
+    };
+
+    let current = 0;
+    let activeFilter = "All";
+    let allBanglaVisible = true;
+    let toastTimer = null;
+
+    const homeView = document.getElementById("homeView");
+    const lessonView = document.getElementById("lessonView");
+    const homeTopBtn = document.getElementById("homeTop");
+    const toastEl = document.getElementById("toast");
+    const rateSelect = document.getElementById("rateSelect");
+
+    function showToast(msg) {
+      if (!msg) return;
+      toastEl.textContent = msg;
+      toastEl.classList.add("is-visible");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toastEl.classList.remove("is-visible");
+      }, 2800);
+    }
+
+    function cleanForSpeech(text) {
+      return text.replace(/\.{3,}/g, " ").replace(/\n+/g, ". ").trim();
+    }
+
+    function clearSpeakingState() {
+      document.querySelectorAll(".sentence-item.is-speaking").forEach((el) => {
+        el.classList.remove("is-speaking");
+      });
+    }
+
+    function stopAudio(silent = false) {
+      if (window.Class7Audio) {
+        window.Class7Audio.stop(() => {
+          clearSpeakingState();
+        });
+      } else {
+        clearSpeakingState();
+      }
+      if (!silent) {
+        showToast("অডিও বন্ধ করা হয়েছে।");
+      }
+    }
+
+    function speakSingle(text, lang, cardEl) {
+      if (!window.Class7Audio || !window.Class7Audio.isSupported) {
+        showToast("এই ব্রাউজারে অডিও সুবিধা নেই। Chrome ব্যবহার করে দেখো।");
+        return;
+      }
+      window.Class7Audio.setRate(parseFloat(rateSelect.value) || 0.9);
+      window.Class7Audio.speakText(cleanForSpeech(text), lang, {
+        onStart: () => {
+          clearSpeakingState();
+          if (cardEl) cardEl.classList.add("is-speaking");
+        },
+        onEnd: () => {
+          clearSpeakingState();
+        },
+        onNotice: (msg) => {
+          showToast(msg);
+        }
+      });
+    }
+
+    function playAll(lang) {
+      if (!window.Class7Audio || !window.Class7Audio.isSupported) {
+        showToast("এই ব্রাউজারে অডিও সুবিধা নেই। Chrome ব্যবহার করে দেখো।");
+        return;
+      }
+      const item = ITEMS[current];
+      const cards = document.querySelectorAll("#sentenceList .sentence-item");
+      const seq = item.sentences.map((pair, idx) => ({
+        text: cleanForSpeech(lang === "bn" ? pair[1] : pair[0]),
+        lang,
+        node: cards[idx]
+      }));
+
+      window.Class7Audio.setRate(parseFloat(rateSelect.value) || 0.9);
+      window.Class7Audio.playSequence(seq, {
+        onItemStart: (_index, seqItem) => {
+          clearSpeakingState();
+          if (seqItem && seqItem.node) {
+            seqItem.node.classList.add("is-speaking");
+          }
+        },
+        onFinish: () => {
+          clearSpeakingState();
+        },
+        onNotice: (msg) => {
+          showToast(msg);
+        }
+      });
+    }
+
+    function buildHome() {
+      const grid = document.getElementById("batchGrid");
+      grid.innerHTML = "";
+      for (let b = 1; b <= 4; b++) {
+        const batchItems = ITEMS.filter((x) => x.batch === b);
+        const names = batchItems.map((x) => x.shortTitle).join(" • ");
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "eng2-batch-card";
+        btn.innerHTML = `
+          <span class="eng2-batch-count bn-text" lang="bn">${batchItems.length}টি</span>
+          <div class="eng2-batch-num">BATCH ${b}</div>
+          <h3 class="bn-text" lang="bn">${batchBangla[b]}</h3>
+          <p>${names}</p>
+        `;
+        btn.addEventListener("click", () => {
+          const firstIdx = ITEMS.findIndex((x) => x.batch === b);
+          if (firstIdx !== -1) openLesson(firstIdx);
+        });
+        grid.appendChild(btn);
+      }
+
+      renderItemList();
+    }
+
+    function renderItemList() {
+      const list = document.getElementById("homeItems");
+      list.innerHTML = "";
+
+      const filtered = activeFilter === "All"
+        ? ITEMS
+        : ITEMS.filter((item) => item.type === activeFilter);
+
+      filtered.forEach((item) => {
+        const realIndex = ITEMS.indexOf(item);
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "eng2-item-row";
+        btn.innerHTML = `
+          <span class="eng2-item-icon" aria-hidden="true">${typeIcon[item.type] || "📄"}</span>
+          <span class="eng2-item-info">
+            <strong>${item.title}</strong>
+            <small>Batch ${item.batch} • ${item.type} • ${item.subtitle}</small>
+          </span>
+          <span class="eng2-item-arrow" aria-hidden="true">›</span>
+        `;
+        btn.addEventListener("click", () => openLesson(realIndex));
+        list.appendChild(btn);
+      });
+    }
+
+    function openLesson(index) {
+      stopAudio(true);
+      current = Math.max(0, Math.min(index, ITEMS.length - 1));
+      homeView.classList.add("eng2-hidden");
+      lessonView.classList.remove("eng2-hidden");
+      homeTopBtn.classList.remove("eng2-hidden");
+      renderLesson();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderLesson() {
+      const item = ITEMS[current];
+      document.getElementById("lessonTag").textContent = `Batch ${item.batch} • ${item.type}`;
+      document.getElementById("lessonTitle").textContent = item.title;
+      document.getElementById("lessonSub").textContent = `${batchBangla[item.batch]} • ${item.subtitle} • ${item.sentences.length}টি অংশ`;
+      document.getElementById("progressText").textContent = `${current + 1} / ${ITEMS.length}`;
+      document.getElementById("progressBar").style.width = ((current + 1) / ITEMS.length) * 100 + "%";
+
+      const list = document.getElementById("sentenceList");
+      list.innerHTML = "";
+
+      item.sentences.forEach((pair, i) => {
+        const card = document.createElement("article");
+        card.className = "sentence-item";
+
+        const top = document.createElement("div");
+        top.className = "sentence-top";
+
+        const tag = document.createElement("span");
+        tag.className = "speaker-tag";
+        tag.textContent = `${i + 1}`;
+
+        const en = document.createElement("div");
+        en.className = "sentence-en eng2-line-pre";
+        en.textContent = pair[0];
+
+        const audioActions = document.createElement("div");
+        audioActions.className = "sentence-audio-actions";
+
+        const speakEnBtn = document.createElement("button");
+        speakEnBtn.type = "button";
+        speakEnBtn.className = "btn btn-secondary btn-sm";
+        speakEnBtn.textContent = "🔊 EN";
+        speakEnBtn.setAttribute("aria-label", `Listen to part ${i + 1} in English`);
+        speakEnBtn.addEventListener("click", () => speakSingle(pair[0], "en", card));
+
+        const speakBnBtn = document.createElement("button");
+        speakBnBtn.type = "button";
+        speakBnBtn.className = "btn btn-secondary btn-sm bn-text";
+        speakBnBtn.setAttribute("lang", "bn");
+        speakBnBtn.textContent = "🔊 বাংলা";
+        speakBnBtn.setAttribute("aria-label", `Listen to part ${i + 1} in Bangla`);
+        speakBnBtn.addEventListener("click", () => speakSingle(pair[1], "bn", card));
+
+        audioActions.appendChild(speakEnBtn);
+        audioActions.appendChild(speakBnBtn);
+
+        top.appendChild(tag);
+        top.appendChild(en);
+        top.appendChild(audioActions);
+
+        const bn = document.createElement("div");
+        bn.className = "sentence-bn bn-text bn-block eng2-line-pre";
+        bn.setAttribute("lang", "bn");
+        bn.textContent = pair[1];
+
+        card.appendChild(top);
+        card.appendChild(bn);
+        list.appendChild(card);
+      });
+
+      lessonView.classList.toggle("bn-hidden", !allBanglaVisible);
+      document.getElementById("toggleBangla").textContent = allBanglaVisible
+        ? "বাংলা অর্থ লুকাও"
+        : "বাংলা অর্থ দেখাও";
+
+      const prevBtn = document.getElementById("prevBtn");
+      prevBtn.disabled = current === 0;
+      prevBtn.classList.toggle("btn-disabled", current === 0);
+
+      document.getElementById("nextBtn").textContent =
+        current === ITEMS.length - 1 ? "শেষ • Home ↗" : "Next →";
+    }
+
+    function setBangla(show) {
+      allBanglaVisible = show;
+      lessonView.classList.toggle("bn-hidden", !show);
+      document.getElementById("toggleBangla").textContent = show
+        ? "বাংলা অর্থ লুকাও"
+        : "বাংলা অর্থ দেখাও";
+    }
+
+    function goHome() {
+      stopAudio(true);
+      lessonView.classList.add("eng2-hidden");
+      homeTopBtn.classList.add("eng2-hidden");
+      homeView.classList.remove("eng2-hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    document.getElementById("typeFilters").addEventListener("click", (e) => {
+      const btn = e.target.closest(".eng2-filter-btn");
+      if (!btn) return;
+      activeFilter = btn.dataset.type;
+      document.querySelectorAll(".eng2-filter-btn").forEach((el) => {
+        el.classList.toggle("is-active", el === btn);
+      });
+      renderItemList();
+    });
+
+    homeTopBtn.addEventListener("click", goHome);
+    document.getElementById("backHome").addEventListener("click", goHome);
+    document.getElementById("stopTop").addEventListener("click", () => stopAudio(false));
+    document.getElementById("stopLessonAudio").addEventListener("click", () => stopAudio(false));
+    document.getElementById("toggleBangla").addEventListener("click", () => setBangla(!allBanglaVisible));
+    document.getElementById("englishOnly").addEventListener("click", () => setBangla(false));
+    document.getElementById("showAll").addEventListener("click", () => setBangla(true));
+    document.getElementById("prevBtn").addEventListener("click", () => {
+      if (current > 0) openLesson(current - 1);
+    });
+    document.getElementById("nextBtn").addEventListener("click", () => {
+      if (current < ITEMS.length - 1) openLesson(current + 1);
+      else goHome();
+    });
+    document.getElementById("playEnglish").addEventListener("click", () => playAll("en"));
+    document.getElementById("playBangla").addEventListener("click", () => playAll("bn"));
+    rateSelect.addEventListener("change", () => {
+      if (window.Class7Audio) {
+        window.Class7Audio.setRate(parseFloat(rateSelect.value) || 0.9);
+      }
+    });
+
+    buildHome();
+  </script>
 </body>
 </html>

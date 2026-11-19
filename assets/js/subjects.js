@@ -8,24 +8,13 @@
 
 window.CLASS7_SUBJECTS = [
   {
-    id: "english-1st",
-    name: "English First Paper",
-    nameBn: "ইংরেজি ১ম পত্র",
-    icon: "📘",
-    description: "Reading passages, dialogues, stories, Bangla meanings, and pronunciation practice.",
-    path: "subjects/english-1st/index.html",
-    status: "Available",
-    accentColor: "#2563eb",
-    bgTint: "#eff6ff"
-  },
-  {
     id: "english-2nd",
     name: "English Second Paper",
     nameBn: "ইংরেজি ২য় পত্র",
     icon: "✍️",
     description: "Grammar rules, parts of speech, tenses, composition, and writing exercises.",
     path: "subjects/english-2nd/index.html",
-    status: "Coming Soon",
+    status: "Available",
     accentColor: "#0284c7",
     bgTint: "#e0f2fe"
   },
@@ -105,5 +94,16 @@ window.CLASS7_SUBJECTS = [
     status: "Coming Soon",
     accentColor: "#db2777",
     bgTint: "#fdf2f8"
+  },
+  {
+    id: "english-1st",
+    name: "English First Paper",
+    nameBn: "ইংরেজি ১ম পত্র",
+    icon: "📘",
+    description: "Reading passages, dialogues, stories, Bangla meanings, and pronunciation practice.",
+    path: "subjects/english-1st/index.html",
+    status: "Available",
+    accentColor: "#2563eb",
+    bgTint: "#eff6ff"
   }
 ];
