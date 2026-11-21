@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class 7 Subject | Class 7 Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../../index.html" class="brand">
+        <span class="brand-badge" aria-hidden="true">🎓</span>
+        <span>Class 7 Learning</span>
+      </a>
+      <div class="header-actions">
+        <a href="../../index.html" class="nav-pill">&larr; All Subjects</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="subject-banner" id="subject-banner">
+    <div class="container subject-banner-inner">
+      <div class="subject-title-row">
+        <div class="subject-title-icon" id="subject-icon" aria-hidden="true">📖</div>
+        <div>
+          <h1 id="subject-title">Loading Subject...</h1>
+          <p id="subject-subtitle">Class 7 Interactive Learning Module</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="progress-wrap" id="progress-wrap">
+      <div class="progress-meta">
+        <span id="progress-text">Lesson 1 of 1</span>
+        <span id="progress-percent">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <div class="selector-panel" id="selector-panel">
+      <div class="control-group">
+        <label for="chapter-select" class="control-label">Chapter</label>
+        <select id="chapter-select" class="select-input"></select>
+      </div>
+      <div class="control-group">
+        <label for="topic-select" class="control-label">Topic</label>
+        <select id="topic-select" class="select-input"></select>
+      </div>
+    </div>
+
+    <div class="learning-toolbar" id="learning-toolbar">
+      <button type="button" class="btn btn-secondary btn-sm" id="toggle-bn-btn">👁️ Hide Bangla</button>
+      <button type="button" class="btn btn-primary btn-sm" id="play-lesson-btn">▶️ Play Full Lesson</button>
+      <button type="button" class="btn btn-danger btn-sm" id="stop-audio-btn">⏹️ Stop</button>
+      <div class="speed-control">
+        <label for="speed-select">Speed</label>
+        <select id="speed-select" class="speed-select" aria-label="Speech speed">
+          <option value="0.75">0.75x</option>
+          <option value="1" selected>1x</option>
+          <option value="1.25">1.25x</option>
+        </select>
+      </div>
+      <div class="audio-notice" id="audio-notice" role="status" aria-live="polite"></div>
+    </div>
+
+    <main class="lesson-main" id="lesson-main"></main>
+
+    <nav class="lesson-nav" id="lesson-nav" aria-label="Lesson navigation">
+      <button type="button" class="btn btn-secondary" id="prev-topic-btn">&larr; Previous</button>
+      <button type="button" class="btn btn-primary" id="next-topic-btn">Next &rarr;</button>
+    </nav>
+  </div>
+
+  <footer class="site-footer" style="margin-top: 28px;">
+    <div class="container">
+      <p>Class 7 Complete Learning Platform &bull; <a href="../../index.html" style="color:inherit;">Return to Homepage</a></p>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/subjects.js"></script>
+  <script src="./content.js"></script>
+  <script src="../../assets/js/audio.js"></script>
+  <script src="../../assets/js/subject.js"></script>
+</body>
+</html>

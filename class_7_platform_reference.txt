@@ -1,0 +1,215 @@
+================================================================================
+CLASS 7 COMPLETE LEARNING PLATFORM - SHARED ARCHITECTURE & DESIGN REFERENCE
+================================================================================
+Purpose: Provide this file to any developer or LLM when creating independent
+subject or chapter HTML pages (e.g., Mathematics, ICT, Science, Bangla) so
+that all pages match the platform's visual design, typography, colors,
+mobile-first layout, and shared JavaScript APIs without CSS/JS conflicts.
+
+--------------------------------------------------------------------------------
+1. FOLDER STRUCTURE & RELATIVE PATHS
+--------------------------------------------------------------------------------
+CLASS-7-LEARNING/
+├── index.html                  (Main homepage)
+├── assets/
+│   ├── css/style.css           (Shared CSS design system)
+│   ├── js/
+│   │   ├── subjects.js         (Subject registry: window.CLASS7_SUBJECTS)
+│   │   ├── home.js             (Homepage renderer)
+│   │   ├── subject.js          (Optional generic content.js renderer)
+│   │   └── audio.js            (Shared Web Speech API: window.Class7Audio)
+│   └── images/                 (Shared diagrams/images)
+└── subjects/
+    └── &lt;subject-slug&gt;/
+        └── index.html          (Subject entry page; may link to chapter HTMLs)
+
+Relative Path Rules:
+- From `subjects/<subject>/index.html`:
+  - Homepage: `../../index.html`
+  - Shared CSS: `../../assets/css/style.css`
+  - Shared Audio JS: `../../assets/js/audio.js`
+  - Shared Registry JS: `../../assets/js/subjects.js`
+- From `subjects/<subject>/<chapter>/index.html` (nested 1 level deeper):
+  - Prefix all shared paths with `../../../` instead of `../../`.
+- NEVER use root-absolute paths like `/assets/...` (breaks on GitHub Pages subpaths).
+
+--------------------------------------------------------------------------------
+2. REQUIRED IMPORTS IN EVERY CUSTOM HTML PAGE
+--------------------------------------------------------------------------------
+&lt;meta charset=&quot;UTF-8&quot; /&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot; /&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin /&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap&quot; rel=&quot;stylesheet&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../../assets/css/style.css&quot; /&gt;
+
+&lt;!-- Before &lt;/body&gt; --&gt;
+&lt;script src=&quot;../../assets/js/audio.js&quot;&gt;&lt;/script&gt;
+
+--------------------------------------------------------------------------------
+3. DESIGN TOKENS (CSS VARIABLES IN assets/css/style.css)
+--------------------------------------------------------------------------------
+Core Palette:
+  --bg-page:        #f4f7fb   (Main page background)
+  --bg-surface:     #ffffff   (Card background)
+  --bg-subtle:      #eef3fa   (Subtle panels / pills)
+  --text-primary:   #1e293b   (Headings & main text)
+  --text-secondary: #475569   (Subtitles & descriptions)
+  --text-muted:     #64748b   (Muted captions / footer)
+  --border-color:   #e2e8f0   (Card & input borders)
+
+Brand & Action Colors:
+  --primary:        #4f46e5   (Primary indigo)
+  --primary-dark:   #4338ca   (Hover / active indigo)
+  --primary-light:  #eef2ff   (Light indigo tint)
+  --secondary:      #0ea5e9   (Sky blue accent)
+  --success:        #10b981   (Green / correct)
+  --success-light:  #ecfdf5   (Light green tint)
+  --warning:        #f59e0b   (Amber / notice)
+  --warning-light:  #fffbeb   (Light amber tint)
+  --danger:         #ef4444   (Red / stop / wrong)
+  --danger-light:   #fef2f2   (Light red tint)
+
+Subject Theme Variable (SET THIS PER SUBJECT):
+  --subject-accent: &lt;hex&gt;     (Defaults to #4f46e5)
+  Example in &lt;style&gt; or JS:
+    document.documentElement.style.setProperty("--subject-accent", "#7c3aed");
+  Recommended Subject Accents:
+    - English 1st: #2563eb | English 2nd: #0284c7
+    - Bangla 1st:  #059669 | Bangla 2nd:  #16a34a
+    - Mathematics: #7c3aed | Science:     #0d9488
+    - BGS:         #d97706 | ICT:         #4f46e5
+    - Religion:    #db2777
+
+Typography:
+  --font-sans:   "Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, sans-serif
+  --font-bangla: "Noto Sans Bengali", "Hind Siliguri", "SolaimanLipi", "Kalpurush", sans-serif
+  --font-mono:   "JetBrains Mono", "Fira Code", ui-monospace, monospace
+
+Radii & Shadows:
+  --radius-sm:   10px         (Buttons, inputs, inner boxes)
+  --radius-md:   16px         (Content cards, toolbars)
+  --radius-lg:   22px         (Homepage subject cards)
+  --radius-full: 9999px       (Pills, badges, progress bars)
+  --shadow-sm:   0 2px 8px rgba(15, 23, 42, 0.05)
+  --shadow-md:   0 8px 24px rgba(15, 23, 42, 0.08)
+
+--------------------------------------------------------------------------------
+4. SHARED CSS CLASSES & HTML COMPONENT PATTERNS
+--------------------------------------------------------------------------------
+A. Sticky Header (with Back to Homepage link):
+&lt;header class=&quot;site-header&quot;&gt;
+  &lt;div class=&quot;container header-inner&quot;&gt;
+    &lt;a href=&quot;../../index.html&quot; class=&quot;brand&quot;&gt;
+      &lt;span class=&quot;brand-badge&quot; aria-hidden=&quot;true&quot;&gt;🎓&lt;/span&gt;
+      &lt;span&gt;Class 7 Learning&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;div class=&quot;header-actions&quot;&gt;
+      &lt;a href=&quot;../../index.html&quot; class=&quot;nav-pill&quot;&gt;&amp;larr; All Subjects&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/header&gt;
+
+B. Subject Banner (uses --subject-accent):
+&lt;section class=&quot;subject-banner&quot;&gt;
+  &lt;div class=&quot;container subject-banner-inner&quot;&gt;
+    &lt;div class=&quot;subject-title-row&quot;&gt;
+      &lt;div class=&quot;subject-title-icon&quot; aria-hidden=&quot;true&quot;&gt;📐&lt;/div&gt;
+      &lt;div&gt;
+        &lt;h1&gt;Mathematics&lt;/h1&gt;
+        &lt;p&gt;Chapter 5: Algebraic Formulae&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+C. Buttons (46px mobile-friendly min-height):
+  .btn                 Base button
+  .btn-primary         Themed with --subject-accent (fallback --primary)
+  .btn-secondary       Subtle gray/blue button with border
+  .btn-success         Green button
+  .btn-danger          Red button (used for Stop Audio)
+  .btn-disabled        Disabled state
+  .btn-sm              Compact button (38px height)
+  .btn-block           100% width button
+
+D. Bangla Typography & Visibility Toggle:
+  - Add class `bn-text` and `lang="bn"` to any Bangla text element.
+  - Add class `bn-block` to Bangla blocks that should hide when `.bn-hidden`
+    is toggled on a parent container (e.g. `.lesson-main.bn-hidden`).
+
+E. Content Cards & Domain-Specific Blocks (inside &lt;div class=&quot;container&quot;&gt;):
+  - .lesson-main              Vertical flex stack (18px gap)
+  - .content-card             White card container (16px radius, 18px padding)
+  - .content-card-header      Flex row with icon + &lt;h2&gt;
+  - .topic-header-card        Left-accented card for topic title + .topic-subtitle
+
+  Sentence / Dialogue / Audio Cards:
+  - .sentence-list > .sentence-item (add .is-speaking while audio plays)
+  - .sentence-top, .speaker-tag, .sentence-en, .sentence-bn, .sentence-audio-actions
+
+  Mathematics Blocks:
+  - .formula-box              Left-accented formula container
+  - .formula-expression       Monospace formula box with horizontal scroll if wide
+  - .steps-list               Numbered &lt;ol&gt; for step-by-step solutions
+
+  Science / ICT Blocks:
+  - .definition-item          Highlighted key term definition box
+  - .diagram-figure           Centered &lt;figure&gt; with responsive &lt;img&gt; and &lt;figcaption&gt;
+
+  Summary & Key Takeaways:
+  - .content-card.summary-box Gradient summary box
+  - .points-list              Bullet list for important points
+
+  Q&A & Interactive Practice:
+  - .qa-item > .qa-question + .qa-answer (toggle .is-open to reveal)
+  - .practice-options > .option-btn (add .is-correct or .is-wrong)
+  - .practice-feedback
+
+  Bottom Prev/Next Navigation:
+  - .lesson-nav               2-column grid for Previous / Next buttons
+
+  Progress Indicator:
+  - .progress-wrap > .progress-meta + .progress-track > .progress-fill
+
+--------------------------------------------------------------------------------
+5. SHARED JAVASCRIPT API (window.Class7Audio from assets/js/audio.js)
+--------------------------------------------------------------------------------
+Do NOT re-implement window.speechSynthesis. Use window.Class7Audio:
+
+1. Class7Audio.speakText(text, lang, callbacks)
+   - text: string to speak
+   - lang: "en" (uses en-US) or "bn" (uses bn-BD)
+   - callbacks (optional): { onStart(), onEnd(), onNotice(msg) }
+   - Automatically fires onNotice(msg) if Bangla voice is unavailable.
+
+2. Class7Audio.playSequence(items, callbacks)
+   - items: Array of objects, e.g. [{ text: "...", lang: "en", node: el }, ...]
+   - callbacks: { onItemStart(index, item), onFinish(), onNotice(msg) }
+
+3. Class7Audio.stop(onStop)
+   - Immediately cancels speechSynthesis and resets playback state.
+
+4. Class7Audio.setRate(rate)
+   - Sets speech speed (0.5 to 2.0, e.g., 0.75, 1, 1.25).
+
+5. Class7Audio.hasBanglaVoice() -> boolean
+6. Class7Audio.isPlaying()      -> boolean
+7. Class7Audio.isSupported      -> boolean
+
+--------------------------------------------------------------------------------
+6. NON-CONFLICT RULES FOR INDEPENDENT CHAPTER / SUBJECT PAGES
+--------------------------------------------------------------------------------
+1. Do NOT redefine global styles for `body`, `*`, `.container`, `.btn`,
+   `.content-card`, or `.site-header` in inline &lt;style&gt; tags—rely on
+   `assets/css/style.css`.
+2. If adding custom subject-specific CSS (e.g., an interactive ICT circuit or
+   Math graph), prefix custom classes with the subject slug (e.g., `.math-grid`,
+   `.ict-table`) so they never collide with shared classes.
+3. Ensure zero horizontal scrolling at 320px–375px mobile width. Wrap wide
+   tables or equations in `overflow-x: auto`.
+4. To register a new subject on the homepage, add one object to
+   `window.CLASS7_SUBJECTS` in `assets/js/subjects.js` with:
+   { id, name, nameBn, icon, description, path, status, accentColor, bgTint }
+   where status is "Available" or "Coming Soon".
+================================================================================

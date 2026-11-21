@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class 7 Complete Learning Platform | Bangladesh</title>
+  <meta name="description" content="Mobile-first interactive learning platform for Class 7 students in Bangladesh." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-badge" aria-hidden="true">🎓</span>
+        <span>Class 7 Learning</span>
+      </a>
+      <div class="header-actions">
+        <span class="nav-pill" id="header-progress-pill">NCTB Class 7</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="section-bar">
+      <div class="filter-pills" role="group" aria-label="Filter subjects by availability">
+        <button type="button" class="filter-btn active" data-filter="all">All</button>
+        <button type="button" class="filter-btn" data-filter="Available">Available</button>
+        <button type="button" class="filter-btn" data-filter="Coming Soon">Coming Soon</button>
+      </div>
+    </div>
+
+    <div class="subjects-grid" id="subjects-grid" aria-live="polite">
+      <!-- Subject cards rendered dynamically by assets/js/home.js -->
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Class 7 Complete Learning Platform &bull; Static Educational Hub for Bangladesh</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/subjects.js"></script>
+  <script src="assets/js/home.js"></script>
+</body>
+</html>
