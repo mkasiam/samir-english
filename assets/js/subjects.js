@@ -7,18 +7,7 @@
  */
 
 window.CLASS7_SUBJECTS = [
-  {
-    id: "english-2nd",
-    name: "English Second Paper",
-    nameBn: "ইংরেজি ২য় পত্র",
-    icon: "✍️",
-    description: "Grammar rules, parts of speech, tenses, composition, and writing exercises.",
-    path: "subjects/english-2nd/index.html",
-    status: "Available",
-    accentColor: "#0284c7",
-    bgTint: "#e0f2fe"
-  },
-  {
+{
     id: "bangla-1st",
     name: "Bangla First Paper",
     nameBn: "বাংলা ১ম পত্র",
@@ -39,6 +28,17 @@ window.CLASS7_SUBJECTS = [
     status: "Coming Soon",
     accentColor: "#16a34a",
     bgTint: "#dcfce7"
+  },
+  {
+    id: "english-2nd",
+    name: "English Second Paper",
+    nameBn: "ইংরেজি ২য় পত্র",
+    icon: "✍️",
+    description: "Grammar rules, parts of speech, tenses, composition, and writing exercises.",
+    path: "subjects/english-2nd/index.html",
+    status: "Available",
+    accentColor: "#0284c7",
+    bgTint: "#e0f2fe"
   },
   {
     id: "mathematics",
