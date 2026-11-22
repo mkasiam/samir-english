@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>বিরামচিহ্নের জাদুর শহর — অয়নের জাদুর বই</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-grad-1: #fff8eb;
+      --bg-grad-2: #eef7ff;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #475569;
+      --primary: #4f46e5;
+      --primary-dark: #3730a3;
+      --primary-light: #e0e7ff;
+      --accent-green: #16a34a;
+      --accent-green-bg: #dcfce7;
+      --accent-amber: #d97706;
+      --accent-amber-bg: #fef3c7;
+      --accent-rose: #e11d48;
+      --accent-rose-bg: #ffe4e6;
+      --accent-sky: #0284c7;
+      --accent-sky-bg: #e0f2fe;
+      --accent-purple: #7c3aed;
+      --accent-purple-bg: #ede9fe;
+      --border-soft: #e2e8f0;
+      --shadow-card: 0 12px 30px rgba(30, 41, 59, 0.08);
+      --shadow-btn: 0 4px 0 rgba(0, 0, 0, 0.14);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Hind Siliguri', 'Noto Sans Bengali', 'SolaimanLipi', 'Kalpurush', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, var(--bg-grad-1) 0%, var(--bg-grad-2) 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.6;
+      font-size: 18px;
+      overflow-x: hidden;
+    }
+
+    .en {
+      font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+      letter-spacing: 0.01em;
+    }
+
+    /* Top Navigation / HUD */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--border-soft);
+      padding: 10px 16px;
+    }
+
+    .topbar-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      padding: 4px 8px;
+      border-radius: 12px;
+      transition: background 0.2s;
+    }
+
+    .brand-btn:hover {
+      background: var(--primary-light);
+    }
+
+    .hud-stats {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .progress-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #f1f5f9;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .progress-track {
+      width: 90px;
+      height: 10px;
+      background: #cbd5e1;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+      border-radius: 999px;
+      transition: width 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .star-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-amber-bg);
+      color: #92400e;
+      border: 2px solid #fcd34d;
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 17px;
+      transition: transform 0.25s;
+    }
+
+    .star-pill.bump {
+      transform: scale(1.16);
+    }
+
+    .icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: #ffffff;
+      border: 2px solid var(--border-soft);
+      border-radius: 12px;
+      padding: 6px 12px;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .icon-btn:hover {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 900px;
+      margin: 24px auto 48px;
+      padding: 0 16px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      border: 2px solid #f1f5f9;
+      padding: 28px;
+      animation: fadeUp 0.35s ease-out;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: inherit;
+      font-size: 20px;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 16px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.12s, box-shadow 0.12s, filter 0.15s;
+      box-shadow: var(--shadow-btn);
+      text-decoration: none;
+    }
+
+    .btn:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.14);
+    }
+
+    .btn-primary {
+      background: linear-gradient(180deg, #6366f1 0%, #4f46e5 100%);
+      color: #ffffff;
+    }
+
+    .btn-green {
+      background: linear-gradient(180deg, #22c55e 0%, #16a34a 100%);
+      color: #ffffff;
+    }
+
+    .btn-amber {
+      background: linear-gradient(180deg, #fbbf24 0%, #d97706 100%);
+      color: #ffffff;
+    }
+
+    .btn-soft {
+      background: #f1f5f9;
+      color: var(--text-main);
+      box-shadow: 0 3px 0 #cbd5e1;
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Hero / Welcome Screen */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--accent-purple-bg);
+      color: var(--accent-purple);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 4.5vw, 40px);
+      line-height: 1.25;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 14px;
+    }
+
+    .hero-story {
+      font-size: 20px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .name-box {
+      background: #f8fafc;
+      border: 2px solid var(--border-soft);
+      border-radius: 16px;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+    }
+
+    .name-box label {
+      display: block;
+      font-weight: 700;
+      font-size: 17px;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+
+    .name-input {
+      width: 100%;
+      font-family: inherit;
+      font-size: 19px;
+      padding: 10px 14px;
+      border: 2px solid #cbd5e1;
+      border-radius: 12px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .name-input:focus {
+      border-color: var(--primary);
+    }
+
+    .hero-art {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #fef3c7 0%, #e0e7ff 100%);
+      border-radius: 24px;
+      padding: 20px;
+      border: 3px dashed #c7d2fe;
+    }
+
+    /* Castle Map (6 Doors + Final Boss) */
+    .map-header {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .map-header h2 {
+      font-size: 28px;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    .doors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .door-card {
+      position: relative;
+      background: #ffffff;
+      border: 3px solid var(--border-soft);
+      border-radius: 20px;
+      padding: 18px;
+      text-align: left;
+      cursor: pointer;
+      transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .door-card:hover:not(.locked) {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 22px rgba(79, 70, 229, 0.12);
+      border-color: var(--primary);
+    }
+
+    .door-card.completed {
+      background: #f0fdf4;
+      border-color: #86efac;
+    }
+
+    .door-card.locked {
+      background: #f8fafc;
+      opacity: 0.72;
+      cursor: not-allowed;
+    }
+
+    .door-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .door-symbol {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .door-status {
+      font-size: 14px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .status-open { background: var(--primary-light); color: var(--primary-dark); }
+    .status-done { background: var(--accent-green-bg); color: var(--accent-green); }
+    .status-lock { background: #e2e8f0; color: #64748b; }
+
+    .door-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .door-sub {
+      font-size: 16px;
+      color: var(--text-muted);
+    }
+
+    .boss-banner {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border: 3px solid #f59e0b;
+      border-radius: 22px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .boss-banner.locked {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      opacity: 0.8;
+    }
+
+    /* Concept Card (Teach First) */
+    .concept-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .concept-illustration {
+      background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%);
+      border-radius: 22px;
+      padding: 22px;
+      text-align: center;
+      border: 3px solid #dbeafe;
+    }
+
+    .concept-big-sign {
+      font-family: 'Poppins', sans-serif;
+      font-size: 72px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin: 8px 0;
+    }
+
+    .concept-tag {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .concept-heading {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+    }
+
+    .concept-desc {
+      font-size: 21px;
+      color: var(--text-main);
+      margin-bottom: 18px;
+    }
+
+    .examples-box {
+      background: #f8fafc;
+      border-left: 5px solid var(--primary);
+      border-radius: 14px;
+      padding: 14px 18px;
+      margin-bottom: 22px;
+    }
+
+    .examples-box h4 {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .example-line {
+      font-family: 'Poppins', sans-serif;
+      font-size: 21px;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .hl-mark {
+      display: inline-block;
+      background: #fef08a;
+      color: #b45309;
+      padding: 0 6px;
+      border-radius: 6px;
+      font-weight: 800;
+    }
+
+    /* Quiz / Mini-Game Screen */
+    .quiz-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .q-pills {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .q-dot {
+      width: 34px;
+      height: 12px;
+      border-radius: 999px;
+      background: #e2e8f0;
+      transition: background 0.25s, transform 0.25s;
+    }
+
+    .q-dot.active { background: var(--primary); transform: scaleY(1.15); }
+    .q-dot.done { background: var(--accent-green); }
+
+    .instruction-strip {
+      background: var(--accent-sky-bg);
+      color: #0369a1;
+      padding: 10px 16px;
+      border-radius: 14px;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sentence-stage {
+      background: #fffbeb;
+      border: 3px solid #fde68a;
+      border-radius: 22px;
+      padding: 28px 22px;
+      margin-bottom: 22px;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(22px, 3vw, 28px);
+      font-weight: 600;
+      line-height: 2;
+      color: #1e293b;
+    }
+
+    /* Interactive Slots */
+    .slot {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      height: 44px;
+      padding: 0 10px;
+      margin: 0 3px;
+      border-radius: 12px;
+      border: 3px dashed #6366f1;
+      background: #eef2ff;
+      color: #4f46e5;
+      font-family: 'Poppins', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      cursor: pointer;
+      vertical-align: middle;
+      transition: all 0.2s;
+      user-select: none;
+    }
+
+    .slot.tight {
+      min-width: 32px;
+      height: 38px;
+      padding: 0 5px;
+      margin: 0 1px;
+      font-size: 22px;
+    }
+
+    .slot.active {
+      border-style: solid;
+      border-color: #4f46e5;
+      background: #ffffff;
+      box-shadow: 0 0 0 5px rgba(99, 102, 241, 0.25);
+      animation: pulseGlow 1.4s infinite;
+    }
+
+    .slot.drag-over {
+      transform: scale(1.14);
+      background: #dbeafe;
+      border-color: #0284c7;
+    }
+
+    .slot.correct {
+      border-style: solid;
+      border-color: #16a34a;
+      background: #dcfce7;
+      color: #15803d;
+      animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: default;
+    }
+
+    .slot.wrong {
+      border-style: solid;
+      border-color: #e11d48;
+      background: #ffe4e6;
+      color: #be123c;
+      animation: shake 0.42s ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.22); }
+      50% { box-shadow: 0 0 0 8px rgba(99, 102, 241, 0.35); }
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.75); }
+      60% { transform: scale(1.22); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-7px); }
+      40% { transform: translateX(7px); }
+      60% { transform: translateX(-5px); }
+      80% { transform: translateX(5px); }
+    }
+
+    /* Sign Buttons */
+    .signs-tray {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .sign-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 12px 6px;
+      border-radius: 18px;
+      border: 3px solid transparent;
+      cursor: pointer;
+      font-family: inherit;
+      transition: transform 0.14s, box-shadow 0.14s;
+      box-shadow: 0 4px 0 rgba(0, 0, 0, 0.12);
+      user-select: none;
+    }
+
+    .sign-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .sign-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
+    }
+
+    .sign-char {
+      font-family: 'Poppins', sans-serif;
+      font-size: 30px;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .sign-label {
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .s-dot { background: #e0f2fe; border-color: #7dd3fc; color: #0369a1; }
+    .s-q   { background: #ede9fe; border-color: #c4b5fd; color: #6d28d9; }
+    .s-ex  { background: #ffe4e6; border-color: #fda4af; color: #be123c; }
+    .s-com { background: #dcfce7; border-color: #86efac; color: #15803d; }
+    .s-quo { background: #fef3c7; border-color: #fcd34d; color: #b45309; }
+    .s-apo { background: #fce7f3; border-color: #f9a8d4; color: #be185d; }
+
+    /* Feedback Box */
+    .feedback-box {
+      min-height: 68px;
+      border-radius: 16px;
+      padding: 14px 18px;
+      font-size: 20px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      transition: all 0.25s;
+      background: #f8fafc;
+      color: var(--text-muted);
+      border: 2px solid var(--border-soft);
+    }
+
+    .feedback-box.good {
+      background: var(--accent-green-bg);
+      color: #14532d;
+      border-color: #4ade80;
+    }
+
+    .feedback-box.oops {
+      background: var(--accent-rose-bg);
+      color: #881337;
+      border-color: #fb7185;
+    }
+
+    .quiz-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Final Boss Passage */
+    .boss-passage {
+      background: #fffbeb;
+      border: 3px solid #fbbf24;
+      border-radius: 22px;
+      padding: 22px 24px;
+      margin-bottom: 22px;
+      text-align: left;
+    }
+
+    .boss-line {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(20px, 2.6vw, 24px);
+      font-weight: 600;
+      line-height: 2.1;
+      padding: 6px 0;
+      border-bottom: 1px dashed #fde68a;
+    }
+
+    .boss-line:last-child {
+      border-bottom: none;
+    }
+
+    /* Certificate */
+    .certificate {
+      background: linear-gradient(135deg, #fffdf5 0%, #fef9e7 100%);
+      border: 10px double #d97706;
+      border-radius: 24px;
+      padding: 36px 28px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 16px 40px rgba(180, 83, 9, 0.14);
+    }
+
+    .cert-ribbon {
+      display: inline-block;
+      background: linear-gradient(90deg, #f59e0b, #d97706);
+      color: #ffffff;
+      font-weight: 700;
+      padding: 6px 22px;
+      border-radius: 999px;
+      font-size: 17px;
+      margin-bottom: 14px;
+    }
+
+    .cert-title {
+      font-size: clamp(26px, 4vw, 36px);
+      color: #92400e;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .cert-name {
+      font-size: clamp(28px, 4.5vw, 40px);
+      font-weight: 700;
+      color: var(--primary-dark);
+      border-bottom: 3px solid #fbbf24;
+      display: inline-block;
+      padding: 4px 28px;
+      margin: 12px 0 16px;
+    }
+
+    .cert-badges {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+
+    .cert-badge {
+      background: #ffffff;
+      border: 2px solid #fcd34d;
+      border-radius: 14px;
+      padding: 8px 14px;
+      font-weight: 700;
+      font-size: 18px;
+      color: #92400e;
+    }
+
+    /* Confetti Canvas */
+    #confetti-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    /* Responsive */
+    @media (max-width: 760px) {
+      .hero-grid,
+      .concept-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .signs-tray {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .card {
+        padding: 20px 16px;
+      }
+    }
+
+    /* Print Certificate cleanly */
+    @media print {
+      body {
+        background: #ffffff;
+      }
+      .topbar, .no-print {
+        display: none !important;
+      }
+      .container {
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+      }
+      .certificate {
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="confetti-canvas"></canvas>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <button class="brand-btn" id="btn-home" title="মূল মেনুতে যাও">
+        <span>🏰</span>
+        <span>বিরামচিহ্নের জাদুর শহর</span>
+      </button>
+      <div class="hud-stats">
+        <div class="progress-pill" title="অগ্রগতি">
+          <span id="progress-text">০/৭ ধাপ</span>
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+        </div>
+        <div class="star-pill" id="star-pill">
+          <span>⭐</span>
+          <span id="star-count">0</span>
+          <span>তারা</span>
+        </div>
+        <button class="icon-btn" id="btn-sound" aria-label="শব্দ চালু বা বন্ধ করো">
+          <span id="sound-icon">🔊</span>
+          <span id="sound-text">শব্দ চালু</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" id="app"></main>
+
+  <script>
+    // =========================================================
+    // 1. WEB AUDIO API SOUND ENGINE (100% Offline, No Files)
+    // =========================================================
+    const SoundFX = (() => {
+      let ctx = null;
+      let muted = false;
+
+      function ensureCtx() {
+        if (muted) return null;
+        if (!ctx) {
+          const AudioCtx = window.AudioContext || window.webkitAudioContext;
+          if (AudioCtx) ctx = new AudioCtx();
+        }
+        if (ctx && ctx.state === 'suspended') {
+          ctx.resume().catch(() => {});
+        }
+        return ctx;
+      }
+
+      function playTone(freq, duration, type = 'sine', startDelay = 0, vol = 0.18) {
+        const c = ensureCtx();
+        if (!c) return;
+        const now = c.currentTime + startDelay;
+        const osc = c.createOscillator();
+        const gain = c.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, now);
+        gain.gain.setValueAtTime(0.001, now);
+        gain.gain.exponentialRampToValueAtTime(vol, now + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+        osc.connect(gain);
+        gain.connect(c.destination);
+        osc.start(now);
+        osc.stop(now + duration + 0.02);
+      }
+
+      return {
+        isMuted: () => muted,
+        toggleMute: () => {
+          muted = !muted;
+          if (!muted) playTone(523.25, 0.12, 'triangle', 0, 0.14);
+          return muted;
+        },
+        pop: () => playTone(620, 0.08, 'sine', 0, 0.12),
+        correct: () => {
+          playTone(523.25, 0.14, 'triangle', 0, 0.18);
+          playTone(659.25, 0.16, 'triangle', 0.09, 0.18);
+          playTone(783.99, 0.24, 'triangle', 0.18, 0.2);
+        },
+        wrong: () => {
+          playTone(240, 0.16, 'sine', 0, 0.16);
+          playTone(190, 0.22, 'sine', 0.1, 0.15);
+        },
+        fanfare: () => {
+          [523.25, 659.25, 783.99, 1046.5].forEach((f, i) => {
+            playTone(f, 0.26, 'triangle', i * 0.11, 0.2);
+          });
+        }
+      };
+    })();
+
+    // =========================================================
+    // 2. CONFETTI CELEBRATION (Pure Canvas)
+    // =========================================================
+    function launchConfetti() {
+      const canvas = document.getElementById('confetti-canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const colors = ['#4f46e5', '#22c55e', '#f59e0b', '#ec4899', '#06b6d4'];
+      const pieces = Array.from({ length: 85 }, () => ({
+        x: Math.random() * canvas.width,
+        y: -20 - Math.random() * 140,
+        w: 8 + Math.random() * 8,
+        h: 6 + Math.random() * 6,
+        vx: (Math.random() - 0.5) * 4,
+        vy: 3 + Math.random() * 4.5,
+        rot: Math.random() * 360,
+        vrot: (Math.random() - 0.5) * 10,
+        color: colors[Math.floor(Math.random() * colors.length)]
+      }));
+
+      let frames = 0;
+      function tick() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pieces.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.rot += p.vrot;
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rot * Math.PI) / 180);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          ctx.restore();
+        });
+        frames++;
+        if (frames < 130) requestAnimationFrame(tick);
+        else ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+      tick();
+    }
+
+    // =========================================================
+    // 3. GAME DATA (Zero Grammar Jargon, Pure Emotion & Meaning)
+    // =========================================================
+    const SIGN_BUTTONS = [
+      { id: '.',   char: '.',   label: 'থামার চিহ্ন',        css: 's-dot' },
+      { id: '?',   char: '?',   label: 'প্রশ্ন করার চিহ্ন',   css: 's-q' },
+      { id: '!',   char: '!',   label: 'অবাক হওয়ার চিহ্ন',  css: 's-ex' },
+      { id: ',',   char: ',',   label: 'হালকা বিরতি',        css: 's-com' },
+      { id: '" "', char: '" "', label: 'মুখের কথার খাঁচা',   css: 's-quo' },
+      { id: "'",   char: "'",   label: 'মালিকানা ও ছোট চিহ্ন', css: 's-apo' }
+    ];
+
+    const CHAPTERS = [
+      {
+        id: 1,
+        doorName: 'দরজা ১: থামার চিহ্ন',
+        title: 'অধ্যায় ১: পূর্ণবিরতি বা Full Stop (.)',
+        sign: '.',
+        color: '#0284c7',
+        storyTag: 'জাদুর বইয়ের প্রথম পাতা',
+        concept: 'কথা শেষ হলে যেখানে পুরোপুরি থামতে হয়, সেখানে একটি ছোট্ট ফোঁটা বা Full Stop (.) বসে। যেমন হাঁটতে হাঁটতে গন্তব্যে পৌঁছে গেলে আমরা থেমে যাই, ঠিক তেমনই একটি সম্পূর্ণ কথা শেষ হলে এই ফোঁটা বসাতে হয়।',
+        examples: [
+          'I am a student<span class="hl-mark">.</span>',
+          'The sky is blue<span class="hl-mark">.</span>'
+        ],
+        questions: [
+          {
+            parts: ['I like to read story books', { ans: '.', praise: 'দারুণ! একটি সাধারণ কথা শেষ হয়েছে, তাই শেষে থামার চিহ্ন (.) বসেছে।', hint: 'এখানে কথাটি শেষ হয়েছে এবং কোনো প্রশ্ন বা অবাক হওয়ার ভাব নেই। কোন চিহ্ন বসবে?' }, ''],
+          },
+          {
+            parts: ['My name is Ayan', { ans: '.', praise: 'একদম ঠিক! অয়ন নিজের পরিচয় দিয়ে কথা শেষ করেছে, তাই Full Stop (.) বসেছে।', hint: 'সাধারণভাবে নিজের কথা বলা শেষ হলে ছোট্ট ফোঁটাটি বসাও!' }, ''],
+          },
+          {
+            parts: ['The sun is bright', { ans: '.', praise: 'শাবাশ! প্রথম কথাটি এখানেই শেষ হয়েছে।', hint: 'সূর্য উজ্জ্বল — এই কথাটি এখানে শেষ হয়েছে, তাই থামার চিহ্ন দাও।' }, ' Birds are singing', { ans: '.', praise: 'খুব সুন্দর! দ্বিতীয় কথাটিও শেষে Full Stop (.) দিয়ে শেষ হয়েছে।', hint: 'দ্বিতীয় বাক্যটির শেষেও পুরোপুরি থামতে হবে!' }, ''],
+          },
+          {
+            parts: ['We play football in the field', { ans: '.', praise: 'সঠিক! খেলাধুলার সাধারণ কথা শেষ হওয়ায় শেষে (.) বসেছে।', hint: 'এখানে শুধু একটি সাধারণ ঘটনার কথা বলা হয়েছে। শেষে কী বসবে?' }, ''],
+          },
+          {
+            parts: ['She has a red pen', { ans: '.', praise: 'বাহ! প্রথম কথাটি সুন্দরভাবে শেষ হয়েছে।', hint: 'প্রথম কথাটি এখানে শেষ, তাই থামার চিহ্ন বসাও।' }, ' It writes well', { ans: '.', praise: 'চমৎকার! দুটি আলাদা কথার শেষেই (.) বসেছে।', hint: 'দ্বিতীয় কথাটিও শেষ হয়েছে, এখানেও ছোট্ট ফোঁটা বসবে।' }, ''],
+          }
+        ]
+      },
+      {
+        id: 2,
+        doorName: 'দরজা ২: প্রশ্ন করার চিহ্ন',
+        title: 'অধ্যায় ২: প্রশ্নবোধক চিহ্ন বা Question Mark (?)',
+        sign: '?',
+        color: '#7c3aed',
+        storyTag: 'জাদুর বইয়ের দ্বিতীয় পাতা',
+        concept: 'যখন কেউ কিছু জানতে চায় বা প্রশ্ন করে (যেমন: কী, কেন, কোথায়, কে), তখন বাক্যের শেষে এই বাঁকানো চিহ্ন (?) বসে। কথা বলার সময় আমাদের গলার সুরও তখন একটু উপরে উঠে যায়!',
+        examples: [
+          'What is your name<span class="hl-mark">?</span>',
+          'Where do you live<span class="hl-mark">?</span>'
+        ],
+        questions: [
+          {
+            parts: ['What is your name', { ans: '?', praise: 'একদম ঠিক! এখানে কারো নাম জানতে চাওয়া হয়েছে, তাই প্রশ্নবোধক চিহ্ন (?) বসেছে।', hint: 'আরে! এখানে তো "তোমার নাম কী?" বলে প্রশ্ন করা হচ্ছে, তাই না?' }, ''],
+          },
+          {
+            parts: ['I live in Rajshahi', { ans: '.', praise: 'দারুণ ধরতে পেরেছ! এটি কোনো প্রশ্ন নয়, সাধারণ উত্তর—তাই (.) বসেছে।', hint: 'এখানে কিছু জানতে চাওয়া হয়নি, শুধু উত্তর দেওয়া হয়েছে। তাই কোন চিহ্ন বসবে?' }, ''],
+          },
+          {
+            parts: ['Where are you going', { ans: '?', praise: 'খুব সুন্দর! "কোথায় যাচ্ছ?"—প্রশ্ন করার জন্য (?) বসেছে।', hint: '"Where" দিয়ে কিছু জানতে চাওয়া হচ্ছে! বাঁকানো চিহ্নটি দাও।' }, ''],
+          },
+          {
+            parts: ['Do you like mangoes', { ans: '?', praise: 'শাবাশ! তুমি কি আম পছন্দ করো—এটি একটি প্রশ্ন, তাই (?) বসেছে।', hint: 'এখানে কারো পছন্দ সম্পর্কে জানতে চাওয়া হচ্ছে, তাই প্রশ্ন চিহ্ন বসবে!' }, ''],
+          },
+          {
+            parts: ['My mother cooks tasty food', { ans: '.', praise: 'সাবাস! মায়ের রান্নার সাধারণ কথা বলা হয়েছে, তাই থামার চিহ্ন (.) বসেছে।', hint: 'এখানে কি কোনো প্রশ্ন করা হয়েছে? না! তাই সাধারণ থামার চিহ্ন দাও।' }, ''],
+          }
+        ]
+      },
+      {
+        id: 3,
+        doorName: 'দরজা ৩: অবাক হওয়ার চিহ্ন',
+        title: 'অধ্যায় ৩: বিস্ময়সূচক চিহ্ন বা Exclamation Mark (!)',
+        sign: '!',
+        color: '#e11d48',
+        storyTag: 'জাদুর বইয়ের তৃতীয় পাতা',
+        concept: 'খুব খুশি হলে, অবাক হলে, ভয় পেলে বা ব্যথা পেলে মনের জোরালো ভাব বোঝাতে লম্বা দাগের নিচে ফোঁটা (!) বসে। যেমন খেলায় জিতলে আনন্দে চিৎকার করে উঠলে এই চিহ্ন ব্যবহার হয়!',
+        examples: [
+          'Hurrah<span class="hl-mark">!</span> We won the game.',
+          'Wow<span class="hl-mark">!</span> The bird is so pretty.'
+        ],
+        questions: [
+          {
+            parts: ['Hurrah', { ans: '!', praise: 'হুররে! আনন্দের জোরালো ভাব বোঝাতে Hurrah-এর পরে (!) বসেছে।', hint: '"Hurrah" বলে আনন্দে চিৎকার করা হয়েছে! অবাক বা খুশির চিহ্নটি বসাও।' }, ' We won the game.'],
+          },
+          {
+            parts: ['Wow', { ans: '!', praise: 'দারুণ! অবাক হয়ে "বাহ!" বলার জন্য Wow-এর পরে (!) বসেছে।', hint: 'অবাক হয়ে "Wow" বলা হয়েছে—এখানে কোন চিহ্ন বসবে?' }, ' The flower is very pretty.'],
+          },
+          {
+            parts: ['Alas', { ans: '!', praise: 'ঠিক ধরেছ! দুঃখ বা কষ্টের তীব্র অনুভূতি বোঝাতে Alas-এর পরে (!) বসেছে।', hint: '"Alas" মানে "হায়!"—এটি মনের গভীর দুঃখ বোঝাচ্ছে।' }, ' My cute cat is lost.'],
+          },
+          {
+            parts: ['Are you feeling happy today', { ans: '?', praise: 'শাবাশ! এটি একটি প্রশ্ন, তাই (?) বসাতে ভুল করোনি।', hint: 'এখানে জানতে চাওয়া হচ্ছে তুমি আজ খুশি কি না। প্রশ্ন চিহ্ন দাও!' }, ''],
+          },
+          {
+            parts: ['Oh', { ans: '!', praise: 'খুব ভালো! ব্যথা বা চমকে ওঠার ভাব বোঝাতে Oh-এর পরে (!) বসেছে।', hint: 'হঠাৎ চমকে বা ব্যথা পেয়ে "Oh" বলা হয়েছে—তাই (!)' }, ' I hurt my foot', { ans: '.', praise: 'একদম ঠিক! শেষে সাধারণভাবে কথা শেষ হওয়ায় (.) বসেছে।', hint: 'বাক্যের একদম শেষে পুরোপুরি থামতে হবে।' }, ''],
+          }
+        ]
+      },
+      {
+        id: 4,
+        doorName: 'দরজা ৪: হালকা বিরতি',
+        title: 'অধ্যায় ৪: হালকা বিরতি বা Comma (,)',
+        sign: ',',
+        color: '#16a34a',
+        storyTag: 'জাদুর বইয়ের চতুর্থ পাতা',
+        concept: 'একসাথে অনেকগুলো জিনিসের নাম বললে বা কাউকে নাম ধরে ডাকলে একটু দম নেওয়ার জন্য ছোট্ট বাঁকানো চিহ্ন (,) বসে। এতে কথা জড়িয়ে যায় না এবং শুনতেও পরিষ্কার লাগে!',
+        examples: [
+          'I like mango<span class="hl-mark">,</span> banana, and apple.',
+          'Samir<span class="hl-mark">,</span> come here.'
+        ],
+        questions: [
+          {
+            parts: ['I like mango', { ans: ',', praise: 'বাহ! আম আর কলা আলাদা করতে একটু দম নেওয়ার জন্য Comma (,) বসেছে।', hint: 'একসাথে অনেকগুলো ফলের নাম বলা হচ্ছে, তাই মাঝখানে একটু দম নিতে হবে!' }, ' banana, and apple.'],
+          },
+          {
+            parts: ['Samir', { ans: ',', praise: 'একদম ঠিক! সামিরকে নাম ধরে ডাকার পর একটু থামার জন্য (,) বসেছে।', hint: 'এখানে সামিরকে নাম ধরে ডাকা হয়েছে। নামের পরে হালকা বিরতি দাও!' }, ' please open the door.'],
+          },
+          {
+            parts: ['We saw a tiger', { ans: ',', praise: 'চমৎকার! বাঘ আর হরিণের নামের মাঝে হালকা বিরতি (,) বসেছে।', hint: 'বাঘ, হরিণ, আর বানর—তালিকার মাঝখানে একটু থামতে হবে।' }, ' a deer, and a monkey.'],
+          },
+          {
+            parts: ['Rina', { ans: ',', praise: 'খুব সুন্দর! রিনাকে ডাকার পর হালকা বিরতি (,) বসেছে।', hint: 'রিনাকে নাম ধরে ডাকা হয়েছে, তাই নামের পরে (,) বসবে।' }, ' where is your bag', { ans: '?', praise: 'শাবাশ! শেষে প্রশ্ন করা হয়েছে বলে (?) বসেছে।', hint: 'ব্যাগ কোথায় জানতে চাওয়া হয়েছে—তাই প্রশ্ন চিহ্ন দাও!' }, ''],
+          },
+          {
+            parts: ['My bag has a pen', { ans: ',', praise: 'দারুণ! কলম আর পেন্সিল আলাদা করতে Comma (,) বসেছে।', hint: 'তালিকার জিনিসগুলো আলাদা করতে হালকা বিরতি দাও।' }, ' a pencil, and a book.'],
+          }
+        ]
+      },
+      {
+        id: 5,
+        doorName: 'দরজা ৫: মুখের কথা',
+        title: 'অধ্যায় ৫: মুখের কথা বা Inverted Comma (" ")',
+        sign: '" "',
+        color: '#d97706',
+        storyTag: 'জাদুর বইয়ের পঞ্চম পাতা',
+        concept: 'গল্পের ভেতরে কেউ যখন সরাসরি নিজের মুখের কথা বলে, তখন তার কথাগুলোকে দুই পাশ থেকে এই চিহ্ন (" ") দিয়ে আটকে রাখতে হয়। যেন তার মুখের কথাগুলো একটা জাদুর খাঁচায় সুন্দর করে সাজানো থাকে!',
+        examples: [
+          'Mother said, <span class="hl-mark">"</span>Eat your rice.<span class="hl-mark">"</span>',
+          'Ayan asked, <span class="hl-mark">"</span>Can I play?<span class="hl-mark">"</span>'
+        ],
+        questions: [
+          {
+            parts: ['Mother said, ', { ans: '" "', display: '“', praise: 'দারুণ! মায়ের মুখের কথা এখান থেকেই শুরু হয়েছে।', hint: 'মায়ের মুখের কথা শুরু হচ্ছে, তাই কথার খাঁচা (" ") বসাও!' }, 'Eat your rice.', { ans: '" "', display: '”', praise: 'একদম ঠিক! মায়ের কথা শেষ হওয়ায় খাঁচা বন্ধ করা হলো।', hint: 'মায়ের কথা এখানে শেষ—এপাশেও (" ") বসিয়ে খাঁচা বন্ধ করো!' }, ''],
+          },
+          {
+            parts: ['Father said, ', { ans: '" "', display: '“', praise: 'খুব ভালো! বাবার মুখের কথা এখান থেকে শুরু।', hint: 'বাবার সরাসরি কথা শুরু হচ্ছে, এখানে (" ") বসাও।' }, 'Read your book.', { ans: '" "', display: '”', praise: 'শাবাশ! বাবার কথা পুরোপুরি খাঁচায় আটকে দেওয়া হয়েছে।', hint: 'কথা শেষ হয়েছে, তাই এপাশেও (" ") বসাও।' }, ''],
+          },
+          {
+            parts: ['Rina asked, ', { ans: '" "', display: '“', praise: 'সাবাস! রিনার মুখের প্রশ্ন শুরু হলো।', hint: 'রিনার মুখের কথা শুরু করতে (" ") দাও।' }, 'Are you ready?', { ans: '" "', display: '”', praise: 'চমৎকার! প্রশ্নটি খাঁচার ভেতর সুন্দরভাবে আটকে গেছে।', hint: 'রিনার কথা শেষ—এবার (" ") দিয়ে আটকে দাও।' }, ''],
+          },
+          {
+            parts: ['The teacher said, ', { ans: '" "', display: '“', praise: 'বাহ! শিক্ষকের বলা কথা এখান থেকে শুরু।', hint: 'শিক্ষকের মুখের কথা শুরু হচ্ছে, (" ") বসাও।' }, 'Be honest.', { ans: '" "', display: '”', praise: 'একদম সঠিক! পুরো কথাটি দুই পাশ থেকে আটকানো হয়েছে।', hint: 'কথা শেষ হওয়ায় (" ") দিয়ে বন্ধ করো।' }, ''],
+          },
+          {
+            parts: ['Ayan shouted, ', { ans: '" "', display: '“', praise: 'দারুণ! অয়নের মুখের কথা শুরু হলো।', hint: 'অয়নের মুখের কথা শুরু করতে (" ") দাও।' }, 'Look at the moon!', { ans: '" "', display: '”', praise: 'জাদুকরী! অয়নের বলা কথাটি সুন্দরভাবে সাজানো হয়েছে।', hint: 'অয়নের কথা শেষ—এপাশেও (" ") দাও!' }, ''],
+          }
+        ]
+      },
+      {
+        id: 6,
+        doorName: 'দরজা ৬: মালিকানা ও ছোট চিহ্ন',
+        title: 'অধ্যায় ৬: মালিকানা ও ছোট করার চিহ্ন বা Apostrophe (\')',
+        sign: "'",
+        color: '#db2777',
+        storyTag: 'জাদুর বইয়ের ষষ্ঠ পাতা',
+        concept: 'কোনো জিনিস কার সেটা বোঝাতে (যেমন: রাহিমের বই = Rahim\'s book) অথবা দুটি শব্দ জোড়া লাগিয়ে ছোট করতে (যেমন: do not = don\'t) উপরে এই ফোঁটা (\') বসে। এটি অক্ষরের মাথার উপরে থাকে!',
+        examples: [
+          'This is Rahim<span class="hl-mark">\'</span>s book.',
+          'I don<span class="hl-mark">\'</span>t know.'
+        ],
+        questions: [
+          {
+            parts: ['This is Karim', { ans: "'", tight: true, praise: 'একদম ঠিক! কলমটি করিমের—মালিকানা বোঝাতে করিমের পর (\') বসেছে।', hint: 'কলমটি কার? করিমের! তাই Karim আর s-এর মাঝে উপরে ফোঁটা (\') দাও।' }, 's pen.'],
+          },
+          {
+            parts: ['I', { ans: "'", tight: true, praise: 'শাবাশ! I am ছোট হয়ে I\'m হয়েছে।', hint: '"I am" কে ছোট করে লিখতে মাঝে উপরের ফোঁটা (\') বসে।' }, 'm very happy today.'],
+          },
+          {
+            parts: ['Please don', { ans: "'", tight: true, praise: 'দারুণ! do not জোড়া লেগে ছোট হয়ে don\'t হয়েছে।', hint: '"do not" ছোট করে লেখা হয়েছে! n আর t-এর মাঝে কী বসবে?' }, 't make a noise.'],
+          },
+          {
+            parts: ['Look at Ayan', { ans: "'", tight: true, praise: 'খুব সুন্দর! জাদুর বইটি অয়নের, তাই Ayan\'s হয়েছে।', hint: 'বইটি কার? অয়নের! মালিকানা বোঝাতে (\') বসাও।' }, 's magic book.'],
+          },
+          {
+            parts: ['It', { ans: "'", tight: true, praise: 'চমৎকার! It is ছোট হয়ে It\'s হয়েছে।', hint: '"It is" কে ছোট করতে t আর s-এর মাঝে (\') বসবে।' }, 's a sunny morning.'],
+          }
+        ]
+      }
+    ];
+
+    const BOSS_LINES = [
+      {
+        parts: ['One morning Ayan met his friend Rina', { ans: '.', praise: 'দারুণ! প্রথম লাইনটি সাধারণ থামার চিহ্ন (.) দিয়ে শেষ হয়েছে।', hint: 'একটি সাধারণ কথা শেষ হলে কী বসে?' }, '']
+      },
+      {
+        parts: [
+          'Rina asked',
+          { ans: ',', praise: 'সাবাস! রিনা বলার পর একটু থামতে (,) বসেছে।', hint: 'মুখের কথা শুরু হওয়ার আগে হালকা বিরতি দাও।' },
+          ' ',
+          { ans: '" "', display: '“', praise: 'ঠিক! রিনার মুখের কথা শুরু হলো।', hint: 'রিনার মুখের কথা শুরু করতে (" ") দাও।' },
+          'Where are you going',
+          { ans: '?', praise: 'খুব ভালো! রিনা প্রশ্ন করেছে, তাই (?) বসেছে।', hint: 'রিনা "কোথায় যাচ্ছ?" জিজ্ঞেস করেছে!' },
+          { ans: '" "', display: '”', praise: 'একদম ঠিক! রিনার কথা এখানে শেষ।', hint: 'রিনার কথা শেষ—খাঁচা (" ") বন্ধ করো।' },
+          ''
+        ]
+      },
+      {
+        parts: [
+          'Ayan said',
+          { ans: ',', praise: 'দারুণ! মুখের কথার আগে হালকা বিরতি (,)', hint: 'বলার পরে হালকা বিরতি (,) দাও।' },
+          ' ',
+          { ans: '" "', display: '“', praise: 'সঠিক! অয়নের কথা শুরু হলো।', hint: 'অয়নের মুখের কথা শুরু করতে (" ") দাও।' },
+          'I am going to Karim',
+          { ans: "'", tight: true, praise: 'শাবাশ! করিমের বাড়ি বোঝাতে (\') বসেছে।', hint: 'বাড়িটি কার? করিমের! মালিকানা চিহ্ন (\') দাও।' },
+          's house',
+          { ans: '.', praise: 'খুব সুন্দর! অয়নের কথা শেষ হওয়ায় (.) বসেছে।', hint: 'অয়নের বাক্য শেষ হয়েছে, তাই থামার চিহ্ন (.) দাও।' },
+          { ans: '" "', display: '”', praise: 'চমৎকার! অয়নের কথা খাঁচায় বন্ধ হলো।', hint: 'অয়নের মুখের কথা শেষ করতে (" ") দাও।' },
+          ''
+        ]
+      },
+      {
+        parts: [
+          'Rina smiled and said',
+          { ans: ',', praise: 'ঠিক! মুখের কথার আগে হালকা বিরতি (,)', hint: 'কথা বলার আগে হালকা বিরতি (,) বসে।' },
+          ' ',
+          { ans: '" "', display: '“', praise: 'দারুণ! রিনার কথা শুরু হলো।', hint: 'মুখের কথা শুরু করতে (" ") দাও।' },
+          'Wow',
+          { ans: '!', praise: 'বাহ! খুশি ও অবাক হয়ে "Wow!" বলেছে।', hint: 'খুশি বা অবাক হওয়ার চিহ্ন (!) দাও।' },
+          ' Can I come too',
+          { ans: '?', praise: 'একদম ঠিক! রিনা সাথে যেতে চেয়ে প্রশ্ন করেছে (?)', hint: 'সে কি সাথে যেতে পারে? এটি একটি প্রশ্ন!' },
+          { ans: '" "', display: '”', praise: 'খুব ভালো! রিনার কথা শেষ।', hint: 'মুখের কথা শেষ করতে (" ") বসাও।' },
+          ''
+        ]
+      },
+      {
+        parts: [
+          'They took a pen',
+          { ans: ',', praise: 'শাবাশ! কলম আর বই আলাদা করতে (,) বসেছে।', hint: 'তালিকার জিনিস আলাদা করতে হালকা বিরতি (,) দাও।' },
+          ' a book, and a sweet mango',
+          { ans: '.', praise: 'জাদুকরী! গল্পের শেষ লাইনটি (.) দিয়ে সম্পন্ন হলো!', hint: 'গল্পের একদম শেষে পুরোপুরি থামার চিহ্ন (.) দাও।' },
+          ''
+        ]
+      }
+    ];
+
+    // =========================================================
+    // 4. APPLICATION STATE
+    // =========================================================
+    const state = {
+      screen: 'welcome', // 'welcome' | 'map' | 'concept' | 'quiz' | 'chapterDone' | 'boss' | 'certificate'
+      playerName: 'ছোট্ট বন্ধু',
+      stars: 0,
+      unlockedUpTo: 1, // 1..6, 7 = boss unlocked
+      completedChapters: [], // array of chapter IDs 1..6
+      bossCompleted: false,
+      currentChapterId: 1,
+      currentQIndex: 0,
+      // Quiz slot state
+      slotValues: {}, // key -> filled sign char
+      slotWrong: {},  // key -> boolean
+      activeSlotKey: null,
+      feedback: { type: 'neutral', text: 'উপরের ঝলমলে খালি ঘরে ক্লিক করো, তারপর নিচ থেকে সঠিক চিহ্নটি বেছে নাও!' },
+      mistakesCount: 0,
+      totalCorrectAttempts: 0
+    };
+
+    try {
+      const saved = localStorage.getItem('ayan_punctuation_save_v1');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed && typeof parsed === 'object') {
+          state.playerName = parsed.playerName || state.playerName;
+          state.stars = parsed.stars || 0;
+          state.unlockedUpTo = parsed.unlockedUpTo || 1;
+          state.completedChapters = Array.isArray(parsed.completedChapters) ? parsed.completedChapters : [];
+          state.bossCompleted = !!parsed.bossCompleted;
+        }
+      }
+    } catch (e) {}
+
+    function saveProgress() {
+      try {
+        localStorage.setItem('ayan_punctuation_save_v1', JSON.stringify({
+          playerName: state.playerName,
+          stars: state.stars,
+          unlockedUpTo: state.unlockedUpTo,
+          completedChapters: state.completedChapters,
+          bossCompleted: state.bossCompleted
+        }));
+      } catch (e) {}
+    }
+
+    // =========================================================
+    // 5. SVG ILLUSTRATIONS (Crisp, Offline, Expressive)
+    // =========================================================
+    function svgAyanAndBook() {
+      return `
+        <svg viewBox="0 0 260 220" width="240" height="200" aria-hidden="true">
+          <!-- Magic Glow -->
+          <circle cx="130" cy="110" r="88" fill="#fef08a" opacity="0.45"/>
+          <circle cx="130" cy="110" r="65" fill="#fde047" opacity="0.3"/>
+          <!-- Open Magic Book -->
+          <path d="M55 155 Q92 140 130 155 Q168 140 205 155 L205 188 Q168 174 130 188 Q92 174 55 188 Z" fill="#ffffff" stroke="#4f46e5" stroke-width="4" stroke-linejoin="round"/>
+          <line x1="130" y1="155" x2="130" y2="188" stroke="#4f46e5" stroke-width="3"/>
+          <!-- Floating Marks -->
+          <text x="68" y="82" font-family="Poppins, sans-serif" font-size="28" font-weight="800" fill="#e11d48">!</text>
+          <text x="180" y="75" font-family="Poppins, sans-serif" font-size="28" font-weight="800" fill="#7c3aed">?</text>
+          <text x="48" y="130" font-family="Poppins, sans-serif" font-size="26" font-weight="800" fill="#16a34a">,</text>
+          <text x="195" y="128" font-family="Poppins, sans-serif" font-size="24" font-weight="800" fill="#d97706">""</text>
+          <!-- Ayan Character -->
+          <circle cx="130" cy="86" r="34" fill="#fed7aa" stroke="#ea580c" stroke-width="3"/>
+          <!-- Hair -->
+          <path d="M96 82 Q102 45 134 48 Q162 48 164 82 Q148 64 130 68 Q112 64 96 82 Z" fill="#1e293b"/>
+          <!-- Eyes -->
+          <circle cx="118" cy="86" r="4.5" fill="#1e293b"/>
+          <circle cx="142" cy="86" r="4.5" fill="#1e293b"/>
+          <circle cx="119.5" cy="84.5" r="1.5" fill="#ffffff"/>
+          <circle cx="143.5" cy="84.5" r="1.5" fill="#ffffff"/>
+          <!-- Smile -->
+          <path d="M118 100 Q130 110 142 100" fill="none" stroke="#9a3412" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- Shirt -->
+          <path d="M95 148 Q102 120 130 120 Q158 120 165 148 Z" fill="#4f46e5"/>
+          <!-- Stars -->
+          <text x="95" y="42" font-size="20">✨</text>
+          <text x="155" y="42" font-size="20">⭐</text>
+        </svg>
+      `;
+    }
+
+    function svgChapterConcept(ch) {
+      const emojis = { 1: '🛑', 2: '🤔', 3: '🤩', 4: '🍃', 5: '💬', 6: '👑' };
+      return `
+        <div class="concept-illustration">
+          <div style="font-size: 46px; line-height: 1.2;">${emojis[ch.id] || '✨'}</div>
+          <div class="concept-big-sign" style="color: ${ch.color};">${ch.sign}</div>
+          <div style="font-weight: 700; color: #334155; font-size: 18px;">${ch.doorName}</div>
+        </div>
+      `;
+    }
+
+    // =========================================================
+    // 6. HELPERS
+    // =========================================================
+    function toBanglaDigits(num) {
+      const map = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+      return String(num).replace(/\d/g, d => map[d]);
+    }
+
+    function updateHUD() {
+      const completedCount = state.completedChapters.length + (state.bossCompleted ? 1 : 0);
+      document.getElementById('progress-text').textContent = `${toBanglaDigits(completedCount)}/৭ ধাপ`;
+      document.getElementById('progress-fill').style.width = `${Math.round((completedCount / 7) * 100)}%`;
+
+      const starEl = document.getElementById('star-count');
+      if (starEl.textContent !== String(state.stars)) {
+        starEl.textContent = state.stars;
+        const pill = document.getElementById('star-pill');
+        pill.classList.add('bump');
+        setTimeout(() => pill.classList.remove('bump'), 300);
+      }
+
+      const muted = SoundFX.isMuted();
+      document.getElementById('sound-icon').textContent = muted ? '🔇' : '🔊';
+      document.getElementById('sound-text').textContent = muted ? 'শব্দ বন্ধ' : 'শব্দ চালু';
+    }
+
+    function getCurrentSlots(isBoss = false) {
+      if (isBoss) {
+        const list = [];
+        BOSS_LINES.forEach((line, lIdx) => {
+          line.parts.forEach((part, pIdx) => {
+            if (typeof part === 'object') {
+              list.push({ key: `b_${lIdx}_${pIdx}`, part });
+            }
+          });
+        });
+        return list;
+      } else {
+        const ch = CHAPTERS.find(c => c.id === state.currentChapterId);
+        const q = ch.questions[state.currentQIndex];
+        const list = [];
+        q.parts.forEach((part, pIdx) => {
+          if (typeof part === 'object') {
+            list.push({ key: `q_${pIdx}`, part });
+          }
+        });
+        return list;
+      }
+    }
+
+    function resetQuestionSlots(isBoss = false) {
+      state.slotValues = {};
+      state.slotWrong = {};
+      const slots = getCurrentSlots(isBoss);
+      state.activeSlotKey = slots.length ? slots[0].key : null;
+      state.feedback = {
+        type: 'neutral',
+        text: isBoss
+          ? 'চূড়ান্ত পরীক্ষা! প্রতিটি খালি ঘরে ক্লিক করে সঠিক চিহ্নটি বসাও।'
+          : 'উপরের খালি ঘরে ক্লিক করো, তারপর নিচ থেকে সঠিক চিহ্নটি বেছে নাও!'
+      };
+    }
+
+    function startChapter(chapterId) {
+      SoundFX.pop();
+      state.currentChapterId = chapterId;
+      state.currentQIndex = 0;
+      state.screen = 'concept';
+      render();
+    }
+
+    function startQuiz() {
+      SoundFX.pop();
+      state.currentQIndex = 0;
+      state.screen = 'quiz';
+      resetQuestionSlots(false);
+      render();
+    }
+
+    function startBoss() {
+      SoundFX.pop();
+      state.screen = 'boss';
+      resetQuestionSlots(true);
+      render();
+    }
+
+    function handlePlaceSign(signId, targetKey = null, isBoss = false) {
+      const key = targetKey || state.activeSlotKey;
+      const slots = getCurrentSlots(isBoss);
+      const target = slots.find(s => s.key === key);
+      if (!target) return;
+
+      // Already solved? Skip
+      if (state.slotValues[key] === target.part.ans) return;
+
+      if (signId === target.part.ans) {
+        // Correct!
+        SoundFX.correct();
+        state.slotValues[key] = signId;
+        state.slotWrong[key] = false;
+        state.stars += 10;
+        state.totalCorrectAttempts += 1;
+        saveProgress();
+
+        state.feedback = {
+          type: 'good',
+          text: `🎉 ${target.part.praise} (+১০ তারা)`
+        };
+
+        // Move activeSlotKey to next unsolved slot
+        const nextUnsolved = slots.find(s => state.slotValues[s.key] !== s.part.ans);
+        state.activeSlotKey = nextUnsolved ? nextUnsolved.key : null;
+
+        render();
+      } else {
+        // Wrong!
+        SoundFX.wrong();
+        state.slotWrong[key] = true;
+        state.slotValues[key] = signId;
+        state.mistakesCount += 1;
+        state.feedback = {
+          type: 'oops',
+          text: `💡 ${target.part.hint}`
+        };
+        render();
+
+        setTimeout(() => {
+          if (state.slotWrong[key]) {
+            delete state.slotValues[key];
+            state.slotWrong[key] = false;
+            render();
+          }
+        }, 550);
+      }
+    }
+
+    function isAllSolved(isBoss = false) {
+      const slots = getCurrentSlots(isBoss);
+      return slots.every(s => state.slotValues[s.key] === s.part.ans);
+    }
+
+    // =========================================================
+    // 7. RENDER VIEWS
+    // =========================================================
+    function render() {
+      updateHUD();
+      const app = document.getElementById('app');
+
+      if (state.screen === 'welcome') {
+        app.innerHTML = `
+          <section class="card">
+            <div class="hero-grid">
+              <div>
+                <span class="hero-badge">🏰 ছোটদের ইংরেজি বিরামচিহ্নের গল্প</span>
+                <h1 class="hero-title">বিরামচিহ্নের জাদুর শহর</h1>
+                <p class="hero-story">
+                  ছোট্ট ছেলে <strong>অয়ন</strong> একটি পুরোনো, ভাঙা জাদুর বই খুঁজে পেয়েছে! বইয়ের সব বিরামচিহ্ন পালিয়ে যাওয়ায় বাক্যগুলো এলোমেলো হয়ে গেছে।
+                  জাদুর দুর্গের <strong>৬টি দরজা</strong> খুলে বইটি ঠিক করতে অয়নকে সাহায্য করবে?
+                </p>
+                <div class="name-box">
+                  <label for="player-name-input">তোমার সুন্দর নামটি লেখো (সনদে থাকবে):</label>
+                  <input id="player-name-input" class="name-input" type="text" maxlength="32" value="${escapeHtml(state.playerName)}" placeholder="যেমন: তানহা বা রাফি" />
+                </div>
+                <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                  <button class="btn btn-primary" id="btn-start-adventure">
+                    <span>🚪</span>
+                    <span>জাদুর দুর্গে চলো!</span>
+                  </button>
+                </div>
+              </div>
+              <div class="hero-art">
+                ${svgAyanAndBook()}
+              </div>
+            </div>
+          </section>
+        `;
+
+        document.getElementById('player-name-input').addEventListener('input', (e) => {
+          state.playerName = e.target.value.trim() || 'ছোট্ট বন্ধু';
+          saveProgress();
+        });
+        document.getElementById('btn-start-adventure').addEventListener('click', () => {
+          SoundFX.pop();
+          state.screen = 'map';
+          render();
+        });
+        return;
+      }
+
+      if (state.screen === 'map') {
+        const allSixDone = state.completedChapters.length === 6;
+        app.innerHTML = `
+          <section class="card">
+            <div class="map-header">
+              <h2>🏰 জাদুর দুর্গের ৬টি দরজা</h2>
+              <p style="color: var(--text-muted); font-size: 19px;">একটি করে দরজা খোলো, নিয়ম শেখো আর জাদুর তারা জেতো!</p>
+            </div>
+
+            <div class="doors-grid">
+              ${CHAPTERS.map(ch => {
+                const isDone = state.completedChapters.includes(ch.id);
+                const isUnlocked = ch.id <= state.unlockedUpTo || isDone;
+                const statusBadge = isDone
+                  ? '<span class="door-status status-done">✅ সম্পন্ন</span>'
+                  : isUnlocked
+                    ? '<span class="door-status status-open">🔓 খোলা</span>'
+                    : '<span class="door-status status-lock">🔒 তালাবদ্ধ</span>';
+
+                return `
+                  <button class="door-card ${isDone ? 'completed' : ''} ${!isUnlocked ? 'locked' : ''}" data-ch="${ch.id}" ${!isUnlocked ? 'disabled' : ''}>
+                    <div class="door-top">
+                      <div class="door-symbol" style="background:${ch.color};">${ch.sign}</div>
+                      ${statusBadge}
+                    </div>
+                    <div class="door-title">${ch.doorName}</div>
+                    <div class="door-sub">${ch.title.replace(/^অধ্যায় \d+: /, '')}</div>
+                  </button>
+                `;
+              }).join('')}
+            </div>
+
+            <div class="boss-banner ${allSixDone ? '' : 'locked'}">
+              <div>
+                <h3 style="font-size: 22px; color: #92400e; margin-bottom: 4px;">
+                  👑 চূড়ান্ত পরীক্ষা: জাদুর বই পুনরুদ্ধার!
+                </h3>
+                <p style="font-size: 17px; color: #78350f;">
+                  ${allSixDone
+                    ? 'সবগুলো দরজা খোলা হয়েছে! এবার ৫ লাইনের একটি গল্প ঠিক করে জাদুকর সনদ জিতে নাও।'
+                    : '৬টি দরজা শেষ করলেই এই চূড়ান্ত পরীক্ষাটি খুলে যাবে!'}
+                </p>
+              </div>
+              <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <button class="btn btn-amber" id="btn-start-boss" ${allSixDone ? '' : 'disabled'}>
+                  <span>${allSixDone ? '🚀 পরীক্ষা শুরু করো' : '🔒 তালাবদ্ধ'}</span>
+                </button>
+                ${state.bossCompleted ? `<button class="btn btn-green" id="btn-view-cert">🏆 সনদ দেখো</button>` : ''}
+              </div>
+            </div>
+          </section>
+        `;
+
+        app.querySelectorAll('.door-card[data-ch]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const id = Number(btn.getAttribute('data-ch'));
+            startChapter(id);
+          });
+        });
+
+        const bossBtn = document.getElementById('btn-start-boss');
+        if (bossBtn && allSixDone) {
+          bossBtn.addEventListener('click', startBoss);
+        }
+        const certBtn = document.getElementById('btn-view-cert');
+        if (certBtn) {
+          certBtn.addEventListener('click', () => {
+            SoundFX.pop();
+            state.screen = 'certificate';
+            render();
+          });
+        }
+        return;
+      }
+
+      if (state.screen === 'concept') {
+        const ch = CHAPTERS.find(c => c.id === state.currentChapterId);
+        app.innerHTML = `
+          <section class="card">
+            <div class="concept-layout">
+              ${svgChapterConcept(ch)}
+              <div>
+                <span class="concept-tag">📖 ${ch.storyTag} • গল্প ও নিয়ম</span>
+                <h2 class="concept-heading">${ch.title}</h2>
+                <p class="concept-desc">${ch.concept}</p>
+                <div class="examples-box">
+                  <h4>সহজ উদাহরণ দেখো:</h4>
+                  ${ch.examples.map(ex => `<div class="example-line">👉 ${ex}</div>`).join('')}
+                </div>
+                <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                  <button class="btn btn-soft" id="btn-back-map">← দরজার ম্যাপ</button>
+                  <button class="btn btn-green" id="btn-go-quiz">🎮 খেলা শুরু করি! (৫টি প্রশ্ন)</button>
+                </div>
+              </div>
+            </div>
+          </section>
+        `;
+
+        document.getElementById('btn-back-map').addEventListener('click', () => {
+          SoundFX.pop();
+          state.screen = 'map';
+          render();
+        });
+        document.getElementById('btn-go-quiz').addEventListener('click', startQuiz);
+        return;
+      }
+
+      if (state.screen === 'quiz') {
+        const ch = CHAPTERS.find(c => c.id === state.currentChapterId);
+        const q = ch.questions[state.currentQIndex];
+        const solved = isAllSolved(false);
+
+        app.innerHTML = `
+          <section class="card">
+            <div class="quiz-top">
+              <div>
+                <span style="font-weight:700; color:var(--primary-dark); font-size:19px;">${ch.doorName}</span>
+                <span style="color:var(--text-muted); font-size:17px;"> • প্রশ্ন ${toBanglaDigits(state.currentQIndex + 1)}/${toBanglaDigits(ch.questions.length)}</span>
+              </div>
+              <div class="q-pills">
+                ${ch.questions.map((_, i) => `
+                  <div class="q-dot ${i < state.currentQIndex ? 'done' : i === state.currentQIndex ? 'active' : ''}"></div>
+                `).join('')}
+              </div>
+            </div>
+
+            <div class="instruction-strip">
+              <span>✨</span>
+              <span>খালি ঘরটিতে ক্লিক করো, তারপর নিচের সঠিক বিরামচিহ্নটিতে ট্যাপ করো (বা টেনে বসাও)!</span>
+            </div>
+
+            <div class="sentence-stage">
+              ${q.parts.map((part, pIdx) => {
+                if (typeof part === 'string') return `<span>${part}</span>`;
+                const key = `q_${pIdx}`;
+                const val = state.slotValues[key];
+                const isCorrect = val === part.ans;
+                const isWrong = !!state.slotWrong[key];
+                const isActive = state.activeSlotKey === key && !isCorrect;
+                const shownText = isCorrect
+                  ? (part.display || val)
+                  : (val ? val : '?');
+                return `<span class="slot ${part.tight ? 'tight' : ''} ${isActive ? 'active' : ''} ${isCorrect ? 'correct' : ''} ${isWrong ? 'wrong' : ''}" data-slot-key="${key}" title="এখানে চিহ্ন বসাও">${shownText}</span>`;
+              }).join('')}
+            </div>
+
+            <div class="signs-tray">
+              ${SIGN_BUTTONS.map(btn => `
+                <button class="sign-btn ${btn.css}" draggable="true" data-sign="${escapeAttr(btn.id)}">
+                  <span class="sign-char">${btn.char}</span>
+                  <span class="sign-label">${btn.label}</span>
+                </button>
+              `).join('')}
+            </div>
+
+            <div class="feedback-box ${state.feedback.type}">
+              <span>${state.feedback.text}</span>
+            </div>
+
+            <div class="quiz-actions">
+              <button class="btn btn-soft" id="btn-review-rule">📖 নিয়মটা আবার দেখি</button>
+              ${solved ? `
+                <button class="btn btn-green" id="btn-next-q">
+                  ${state.currentQIndex < ch.questions.length - 1 ? 'পরের প্রশ্ন →' : 'দরজা খোলো! 🎉'}
+                </button>
+              ` : ''}
+            </div>
+          </section>
+        `;
+
+        bindInteractiveBoard(false);
+
+        document.getElementById('btn-review-rule').addEventListener('click', () => {
+          SoundFX.pop();
+          state.screen = 'concept';
+          render();
+        });
+
+        const nextBtn = document.getElementById('btn-next-q');
+        if (nextBtn) {
+          nextBtn.addEventListener('click', () => {
+            if (state.currentQIndex < ch.questions.length - 1) {
+              SoundFX.pop();
+              state.currentQIndex += 1;
+              resetQuestionSlots(false);
+              render();
+            } else {
+              // Chapter Completed!
+              SoundFX.fanfare();
+              launchConfetti();
+              if (!state.completedChapters.includes(ch.id)) {
+                state.completedChapters.push(ch.id);
+              }
+              if (state.unlockedUpTo <= ch.id) {
+                state.unlockedUpTo = ch.id + 1;
+              }
+              saveProgress();
+              state.screen = 'chapterDone';
+              render();
+            }
+          });
+        }
+        return;
+      }
+
+      if (state.screen === 'chapterDone') {
+        const ch = CHAPTERS.find(c => c.id === state.currentChapterId);
+        const hasNext = ch.id < 6;
+        app.innerHTML = `
+          <section class="card" style="text-align:center; padding: 36px 24px;">
+            <div style="font-size: 64px; margin-bottom: 10px;">🎉</div>
+            <h2 style="font-size: 32px; color: var(--accent-green); margin-bottom: 10px;">
+              শাবাশ! ${ch.doorName} খোলা হয়েছে!
+            </h2>
+            <p style="font-size: 20px; color: var(--text-muted); max-width: 580px; margin: 0 auto 24px;">
+              তুমি অয়নের জাদুর বইয়ে <strong>${ch.sign}</strong> চিহ্নটি সফলভাবে ফিরিয়ে এনেছ।
+              ${hasNext ? 'চলো, এবার পরের দরজায় যাই!' : 'তুমি সবগুলো দরজা খুলে ফেলেছ! এবার চূড়ান্ত পরীক্ষার পালা!'}
+            </p>
+            <div style="display:flex; justify-content:center; gap:14px; flex-wrap:wrap;">
+              <button class="btn btn-soft" id="btn-to-map">🏰 দুর্গের ম্যাপ</button>
+              ${hasNext
+                ? `<button class="btn btn-primary" id="btn-next-chapter">পরের অধ্যায় (অধ্যায় ${toBanglaDigits(ch.id + 1)}) →</button>`
+                : `<button class="btn btn-amber" id="btn-go-boss">👑 চূড়ান্ত পরীক্ষা শুরু করো!</button>`
+              }
+            </div>
+          </section>
+        `;
+
+        document.getElementById('btn-to-map').addEventListener('click', () => {
+          SoundFX.pop();
+          state.screen = 'map';
+          render();
+        });
+        const nextChBtn = document.getElementById('btn-next-chapter');
+        if (nextChBtn) {
+          nextChBtn.addEventListener('click', () => startChapter(ch.id + 1));
+        }
+        const goBossBtn = document.getElementById('btn-go-boss');
+        if (goBossBtn) {
+          goBossBtn.addEventListener('click', startBoss);
+        }
+        return;
+      }
+
+      if (state.screen === 'boss') {
+        const slots = getCurrentSlots(true);
+        const solvedCount = slots.filter(s => state.slotValues[s.key] === s.part.ans).length;
+        const allDone = solvedCount === slots.length;
+
+        app.innerHTML = `
+          <section class="card">
+            <div class="quiz-top">
+              <div>
+                <h2 style="font-size: 24px; color: #92400e;">👑 চূড়ান্ত পরীক্ষা: অয়নের ৫ লাইনের গল্প</h2>
+                <p style="font-size: 16px; color: var(--text-muted);">সবগুলো চিহ্ন ঠিক করে জাদুর বইটি সম্পূর্ণ করো! (${toBanglaDigits(solvedCount)}/${toBanglaDigits(slots.length)}টি ঠিক হয়েছে)</p>
+              </div>
+              <button class="btn btn-soft" id="btn-boss-map" style="padding: 8px 16px; font-size: 16px;">← ম্যাপ</button>
+            </div>
+
+            <div class="boss-passage">
+              ${BOSS_LINES.map((line, lIdx) => `
+                <div class="boss-line">
+                  ${line.parts.map((part, pIdx) => {
+                    if (typeof part === 'string') return `<span>${part}</span>`;
+                    const key = `b_${lIdx}_${pIdx}`;
+                    const val = state.slotValues[key];
+                    const isCorrect = val === part.ans;
+                    const isWrong = !!state.slotWrong[key];
+                    const isActive = state.activeSlotKey === key && !isCorrect;
+                    const shownText = isCorrect
+                      ? (part.display || val)
+                      : (val ? val : '?');
+                    return `<span class="slot ${part.tight ? 'tight' : ''} ${isActive ? 'active' : ''} ${isCorrect ? 'correct' : ''} ${isWrong ? 'wrong' : ''}" data-slot-key="${key}">${shownText}</span>`;
+                  }).join('')}
+                </div>
+              `).join('')}
+            </div>
+
+            <div class="signs-tray">
+              ${SIGN_BUTTONS.map(btn => `
+                <button class="sign-btn ${btn.css}" draggable="true" data-sign="${escapeAttr(btn.id)}">
+                  <span class="sign-char">${btn.char}</span>
+                  <span class="sign-label">${btn.label}</span>
+                </button>
+              `).join('')}
+            </div>
+
+            <div class="feedback-box ${state.feedback.type}">
+              <span>${state.feedback.text}</span>
+            </div>
+
+            ${allDone ? `
+              <div style="text-align:center;">
+                <button class="btn btn-green" id="btn-claim-cert">🏆 তোমার জাদুকর সনদ গ্রহণ করো!</button>
+              </div>
+            ` : ''}
+          </section>
+        `;
+
+        bindInteractiveBoard(true);
+
+        document.getElementById('btn-boss-map').addEventListener('click', () => {
+          SoundFX.pop();
+          state.screen = 'map';
+          render();
+        });
+
+        const claimBtn = document.getElementById('btn-claim-cert');
+        if (claimBtn) {
+          claimBtn.addEventListener('click', () => {
+            SoundFX.fanfare();
+            launchConfetti();
+            state.bossCompleted = true;
+            saveProgress();
+            state.screen = 'certificate';
+            render();
+          });
+        }
+        return;
+      }
+
+      if (state.screen === 'certificate') {
+        const today = new Date().toLocaleDateString('bn-BD', {
+          year: 'numeric', month: 'long', day: 'numeric'
+        });
+        app.innerHTML = `
+          <section class="certificate">
+            <div class="cert-ribbon">✨ বিরামচিহ্নের জাদুর শহর • বিজয়ী সনদ ✨</div>
+            <h1 class="cert-title">Punctuation Master Certificate</h1>
+            <p style="font-size: 20px; color: #78350f;">এই সনদপত্রের মাধ্যমে ঘোষণা করা হচ্ছে যে</p>
+            <div class="cert-name" id="cert-name-display">${escapeHtml(state.playerName)}</div>
+            <p style="font-size: 20px; color: #334155; max-width: 620px; margin: 0 auto;">
+              অয়নের জাদুর বইয়ের ৬টি দরজা খুলে এবং চূড়ান্ত পরীক্ষায় সফলভাবে সব বিরামচিহ্ন বসিয়ে
+              মোট <strong>⭐ ${state.stars}টি জাদুর তারা</strong> অর্জন করেছে!
+            </p>
+
+            <div class="cert-badges">
+              <div class="cert-badge">. Full Stop</div>
+              <div class="cert-badge">? Question Mark</div>
+              <div class="cert-badge">! Exclamation</div>
+              <div class="cert-badge">, Comma</div>
+              <div class="cert-badge">" " Inverted Comma</div>
+              <div class="cert-badge">' Apostrophe</div>
+            </div>
+
+            <p style="font-size: 16px; color: #64748b; margin-top: 10px;">
+              তারিখ: ${today} • অয়ন ও জাদুর বইয়ের পক্ষ থেকে শুভেচ্ছা!
+            </p>
+
+            <div class="no-print" style="margin-top: 26px; display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+              <button class="btn btn-amber" id="btn-print-cert">🖨️ প্রিন্ট / সেভ করো</button>
+              <button class="btn btn-primary" id="btn-cert-map">🏰 দুর্গের ম্যাপে যাও</button>
+              <button class="btn btn-soft" id="btn-reset-game">🔄 নতুন করে খেলো</button>
+            </div>
+          </section>
+        `;
+
+        document.getElementById('btn-print-cert').addEventListener('click', () => window.print());
+        document.getElementById('btn-cert-map').addEventListener('click', () => {
+          SoundFX.pop();
+          state.screen = 'map';
+          render();
+        });
+        document.getElementById('btn-reset-game').addEventListener('click', () => {
+          SoundFX.pop();
+          state.stars = 0;
+          state.unlockedUpTo = 1;
+          state.completedChapters = [];
+          state.bossCompleted = false;
+          state.screen = 'welcome';
+          saveProgress();
+          render();
+        });
+      }
+    }
+
+    function bindInteractiveBoard(isBoss) {
+      const slots = document.querySelectorAll('.slot[data-slot-key]');
+      slots.forEach(slotEl => {
+        const key = slotEl.getAttribute('data-slot-key');
+        slotEl.addEventListener('click', () => {
+          if (slotEl.classList.contains('correct')) return;
+          SoundFX.pop();
+          state.activeSlotKey = key;
+          render();
+        });
+
+        slotEl.addEventListener('dragover', (e) => {
+          if (slotEl.classList.contains('correct')) return;
+          e.preventDefault();
+          slotEl.classList.add('drag-over');
+        });
+        slotEl.addEventListener('dragleave', () => slotEl.classList.remove('drag-over'));
+        slotEl.addEventListener('drop', (e) => {
+          e.preventDefault();
+          slotEl.classList.remove('drag-over');
+          const signId = e.dataTransfer.getData('text/plain');
+          if (signId) handlePlaceSign(signId, key, isBoss);
+        });
+      });
+
+      document.querySelectorAll('.sign-btn[data-sign]').forEach(btn => {
+        const signId = btn.getAttribute('data-sign');
+        btn.addEventListener('click', () => handlePlaceSign(signId, null, isBoss));
+        btn.addEventListener('dragstart', (e) => {
+          e.dataTransfer.setData('text/plain', signId);
+        });
+      });
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function escapeAttr(str) {
+      return String(str).replace(/"/g, '&quot;');
+    }
+
+    // Global HUD listeners
+    document.getElementById('btn-home').addEventListener('click', () => {
+      SoundFX.pop();
+      state.screen = 'welcome';
+      render();
+    });
+
+    document.getElementById('btn-sound').addEventListener('click', () => {
+      SoundFX.toggleMute();
+      updateHUD();
+    });
+
+    // Initial render
+    window.addEventListener('DOMContentLoaded', render);
+  </script>
+</body>
+</html>
