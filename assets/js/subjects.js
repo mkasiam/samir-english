@@ -7,17 +7,6 @@
  */
 
 window.CLASS7_SUBJECTS = [
-{
-    id: "bangla-1st",
-    name: "Bangla First Paper",
-    nameBn: "বাংলা ১ম পত্র",
-    icon: "📗",
-    description: "গদ্য, কবিতা, শব্দার্থ, সাহিত্যিক ব্যাখ্যা এবং পাঠ সারসংক্ষেপ।",
-    path: "subjects/bangla-1st/index.html",
-    status: "Available",
-    accentColor: "#059669",
-    bgTint: "#ecfdf5"
-  },
   {
     id: "bangla-2nd",
     name: "Bangla Second Paper",
@@ -25,20 +14,9 @@ window.CLASS7_SUBJECTS = [
     icon: "📝",
     description: "বাংলা ব্যাকরণ, সন্ধি, সমাস, রচনা ও অনুচ্ছেদ অনুশীলন।",
     path: "subjects/bangla-2nd/index.html",
-    status: "Coming Soon",
+    status: "Available",
     accentColor: "#16a34a",
     bgTint: "#dcfce7"
-  },
-  {
-    id: "english-2nd",
-    name: "English Second Paper",
-    nameBn: "ইংরেজি ২য় পত্র",
-    icon: "✍️",
-    description: "Grammar rules, parts of speech, tenses, composition, and writing exercises.",
-    path: "subjects/english-2nd/index.html",
-    status: "Available",
-    accentColor: "#0284c7",
-    bgTint: "#e0f2fe"
   },
   {
     id: "mathematics",
@@ -105,5 +83,27 @@ window.CLASS7_SUBJECTS = [
     status: "Available",
     accentColor: "#2563eb",
     bgTint: "#eff6ff"
+  },
+  {
+    id: "bangla-1st",
+    name: "Bangla First Paper",
+    nameBn: "বাংলা ১ম পত্র",
+    icon: "📗",
+    description: "গদ্য, কবিতা, শব্দার্থ, সাহিত্যিক ব্যাখ্যা এবং পাঠ সারসংক্ষেপ।",
+    path: "subjects/bangla-1st/index.html",
+    status: "Available",
+    accentColor: "#059669",
+    bgTint: "#ecfdf5"
+  },
+  {
+    id: "english-2nd",
+    name: "English Second Paper",
+    nameBn: "ইংরেজি ২য় পত্র",
+    icon: "✍️",
+    description: "Grammar rules, parts of speech, tenses, composition, and writing exercises.",
+    path: "subjects/english-2nd/index.html",
+    status: "Available",
+    accentColor: "#0284c7",
+    bgTint: "#e0f2fe"
   }
 ];
