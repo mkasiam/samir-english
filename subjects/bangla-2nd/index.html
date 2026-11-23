@@ -893,7 +893,7 @@
       <section class="section-block">
         <div class="section-heading">
           <h2>✍️ ২. নির্মিতি অংশ</h2>
-          <span class="section-badge">৭টি বিভাগ • প্রশ্ন ও উত্তরসহ</span>
+          <span class="section-badge">৫টি বিভাগ • প্রশ্ন ও উত্তরসহ</span>
         </div>
         <div class="card-grid" id="nirmitiCategoryGrid"></div>
       </section>
@@ -935,7 +935,17 @@
                 নিয়ম: প্রথম চেষ্টায় সঠিক হলে <strong>+১০ পয়েন্ট</strong>! ভুল করলে প্রতি ভুলে <strong>-৩ পয়েন্ট</strong> কাটা যাবে।
               </div>
             </div>
-            <div class="score-pill">অধ্যায় স্কোর: <span id="chapterMcqScore">0</span></div>
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+              <div class="score-pill">অধ্যায় স্কোর: <span id="chapterMcqScore">0</span></div>
+              <button type="button" class="btn btn-secondary btn-sm" id="btnResetMcq">🔄 টেস্ট রিসেট</button>
+            </div>
+          </div>
+          <div id="mcqResetConfirm" class="hidden" style="margin-bottom:12px; padding:10px 12px; background:#fffbeb; border:1px solid #fde68a; border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+            <span style="font-size:0.86rem; font-weight:700; color:#92400e;">এই অধ্যায়ের সব উত্তর ও পয়েন্ট মুছে নতুন করে শুরু করবেন?</span>
+            <div style="display:flex; gap:8px;">
+              <button type="button" class="btn btn-danger btn-sm" id="btnConfirmResetMcq">হ্যাঁ, রিসেট করুন</button>
+              <button type="button" class="btn btn-secondary btn-sm" id="btnCancelResetMcq">বাতিল</button>
+            </div>
           </div>
           <div class="progress-track">
             <div class="progress-fill" id="mcqProgressFill" style="width:14%"></div>
@@ -1545,9 +1555,9 @@
       },
       {
         id: "potro",
-        title: "পত্র / আবেদনপত্র",
+        title: "আবেদনপত্র",
         icon: "✉️",
-        desc: "পরীক্ষায় লেখার উপযোগী সহজ ও ছোট পত্র/আবেদনপত্র (৬টি)।",
+        desc: "পরীক্ষায় লেখার উপযোগী সহজ ও ছোট আবেদনপত্র (৩টি) ও ১টি নমুনা পত্র।",
         items: [
           {
             title: "ক) বার্ষিক পরীক্ষার ফল জানিয়ে পিতার নিকট একটি পত্র",
@@ -1864,7 +1874,8 @@
 
       const nGrid = document.getElementById("nirmitiCategoryGrid");
       nGrid.innerHTML = "";
-      NIRMITI_CATEGORIES.forEach(cat => {
+      const VISIBLE_NIRMITI_IDS = ["sarangsho", "bhab", "onucched", "potro", "probondho"];
+      NIRMITI_CATEGORIES.filter(cat => VISIBLE_NIRMITI_IDS.includes(cat.id)).forEach(cat => {
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = "home-card";
@@ -1875,7 +1886,7 @@
             <p>${cat.desc}</p>
           </div>
           <div class="card-meta-row">
-            <span>মোট ${cat.items.length}টি বিষয়</span>
+            <span>${cat.id === "potro" ? "৩টি আবেদনপত্র + ১টি নমুনা পত্র" : `মোট ${cat.items.length}টি বিষয়`}</span>
             <span>পড়ুন ও শুনুন →</span>
           </div>
         `;
@@ -1913,6 +1924,7 @@
       document.getElementById("paneSummary").classList.toggle("hidden", tab !== "summary");
       document.getElementById("paneMcq").classList.toggle("hidden", tab !== "mcq");
 
+      document.getElementById("mcqResetConfirm").classList.add("hidden");
       if (tab === "summary") renderSummaryAll();
       else renderMcqStage();
     }
@@ -2059,18 +2071,50 @@
 
       const list = document.getElementById("nirmitiItemsContainer");
       list.innerHTML = "";
-      cat.items.forEach((item, idx) => {
-        const badgeText = item.pages ? "২ পৃষ্ঠা →" : "এক পেজে →";
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "item-btn";
-        btn.innerHTML = `
-          <span>${item.title}</span>
-          <span style="color:var(--subject-accent-dark); font-size:0.85rem; flex-shrink:0;">${badgeText}</span>
+      if (cat.id === "potro") {
+        const abedonIndices = [2, 3, 4];
+        abedonIndices.forEach((idx, pos) => {
+          const item = cat.items[idx];
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "item-btn";
+          btn.innerHTML = `
+            <span>${item.title}</span>
+            <span style="color:var(--subject-accent-dark); font-size:0.85rem; flex-shrink:0;">এক পেজে →</span>
+          `;
+          btn.addEventListener("click", () => openNirmitiReader(idx));
+          list.appendChild(btn);
+        });
+
+        const refHeading = document.createElement("div");
+        refHeading.style.cssText = "margin-top:14px; padding:10px 14px; background:var(--warning-light); border:1px solid #fde68a; border-radius:var(--radius-sm); font-size:0.88rem; font-weight:700; color:#92400e;";
+        refHeading.textContent = "📌 নমুনা পত্র (রেফারেন্স — যদি পরীক্ষায় পত্র আসে তবে কীভাবে লিখতে হয় তা দেখার জন্য):";
+        list.appendChild(refHeading);
+
+        const refItem = cat.items[0];
+        const refBtn = document.createElement("button");
+        refBtn.type = "button";
+        refBtn.className = "item-btn";
+        refBtn.innerHTML = `
+          <span>${refItem.title}</span>
+          <span style="color:var(--subject-accent-dark); font-size:0.85rem; flex-shrink:0;">নমুনা দেখুন →</span>
         `;
-        btn.addEventListener("click", () => openNirmitiReader(idx));
-        list.appendChild(btn);
-      });
+        refBtn.addEventListener("click", () => openNirmitiReader(0));
+        list.appendChild(refBtn);
+      } else {
+        cat.items.forEach((item, idx) => {
+          const badgeText = item.pages ? "২ পৃষ্ঠা →" : "এক পেজে →";
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "item-btn";
+          btn.innerHTML = `
+            <span>${item.title}</span>
+            <span style="color:var(--subject-accent-dark); font-size:0.85rem; flex-shrink:0;">${badgeText}</span>
+          `;
+          btn.addEventListener("click", () => openNirmitiReader(idx));
+          list.appendChild(btn);
+        });
+      }
 
       switchView("nirmitiList");
     }
@@ -2221,6 +2265,25 @@
         renderMcqStage();
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
+    });
+
+    document.getElementById("btnResetMcq").addEventListener("click", () => {
+      document.getElementById("mcqResetConfirm").classList.toggle("hidden");
+    });
+
+    document.getElementById("btnCancelResetMcq").addEventListener("click", () => {
+      document.getElementById("mcqResetConfirm").classList.add("hidden");
+    });
+
+    document.getElementById("btnConfirmResetMcq").addEventListener("click", () => {
+      if (!state.activeChapterId) return;
+      state.mcqProgress[state.activeChapterId] = {};
+      state.mcqStage = 0;
+      saveState();
+      document.getElementById("mcqResetConfirm").classList.add("hidden");
+      renderMcqStage();
+      updateScoreUI();
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
     document.getElementById("btnNrSpeak").addEventListener("click", () => {
