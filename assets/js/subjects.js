@@ -69,7 +69,7 @@ window.CLASS7_SUBJECTS = [
     icon: "🕊️",
     description: "Moral values, ethics, stories, and character-building lessons.",
     path: "subjects/religion/index.html",
-    status: "Avaiable",
+    status: "Available",
     accentColor: "#db2777",
     bgTint: "#fdf2f8"
   },
