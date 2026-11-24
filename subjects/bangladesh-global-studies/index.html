@@ -1,93 +1,1599 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Class 7 Subject | Class 7 Learning</title>
+  <title>বাংলাদেশ ও বিশ্বপরিচয় (৭ম শ্রেণি) — Class 7 Learning</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-page: #f4f7fb;
+      --bg-surface: #ffffff;
+      --bg-subtle: #eef3fa;
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
+      --primary-light: #eef2ff;
+      --subject-accent: #d97706;
+      --subject-accent-dark: #b45309;
+      --subject-accent-light: #fffbeb;
+      --success: #10b981;
+      --success-light: #ecfdf5;
+      --warning: #f59e0b;
+      --warning-light: #fffbeb;
+      --danger: #ef4444;
+      --danger-light: #fef2f2;
+      --font-sans: "Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+      --font-bangla: "Noto Sans Bengali", "Hind Siliguri", "SolaimanLipi", "Kalpurush", sans-serif;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 22px;
+      --radius-full: 9999px;
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-bangla), var(--font-sans);
+      background: var(--bg-page);
+      color: var(--text-primary);
+      font-size: 15.5px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 14px;
+    }
+
+    /* Sticky Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      min-height: 56px;
+      padding: 8px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: var(--subject-accent-light);
+      border: 1px solid #fde68a;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      flex-shrink: 0;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      background: var(--bg-subtle);
+      color: var(--text-primary);
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s;
+    }
+    .nav-pill:hover { background: #e2e8f0; }
+
+    .score-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      background: var(--subject-accent-light);
+      color: var(--subject-accent-dark);
+      border: 1px solid #fcd34d;
+      font-size: 13.5px;
+      font-weight: 700;
+    }
+
+    /* Subject Banner */
+    .subject-banner {
+      background: linear-gradient(135deg, #b45309 0%, #d97706 55%, #f59e0b 100%);
+      color: #ffffff;
+      padding: 18px 0 20px;
+      margin-bottom: 16px;
+    }
+
+    .subject-title-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .subject-title-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .subject-banner h1 {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .subject-banner p {
+      font-size: 13.5px;
+      opacity: 0.94;
+      margin-top: 2px;
+    }
+
+    /* Stats Strip */
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 12px;
+      padding: 8px 10px;
+      text-align: center;
+    }
+
+    .stat-val {
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .stat-lbl {
+      font-size: 11.5px;
+      opacity: 0.92;
+      margin-top: 2px;
+    }
+
+    /* Cards & Layout */
+    .main-wrap {
+      padding-bottom: 44px;
+    }
+
+    .section-heading {
+      font-size: 16.5px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 18px 0 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .chapter-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 640px) {
+      .chapter-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .chapter-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-align: left;
+      width: 100%;
+      font-family: inherit;
+    }
+
+    .chapter-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: #fbbf24;
+    }
+
+    .chapter-card-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .chapter-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--subject-accent-light);
+      border: 1px solid #fde68a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .chapter-num {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--subject-accent-dark);
+      text-transform: uppercase;
+    }
+
+    .chapter-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.35;
+    }
+
+    .chapter-desc {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .chapter-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .mini-badge {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: var(--radius-full);
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+    }
+
+    .mini-badge.done {
+      background: var(--success-light);
+      color: #065f46;
+    }
+
+    /* Model Test Cards */
+    .mt-card {
+      border-left: 4px solid var(--primary);
+    }
+    .mt-card.gan {
+      border-left-color: #0d9488;
+    }
+
+    /* Content Card */
+    .content-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 14px;
+    }
+
+    .topic-header-card {
+      border-left: 4px solid var(--subject-accent);
+    }
+
+    .topic-header-card h2 {
+      font-size: 17.5px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .topic-subtitle {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      margin-top: 3px;
+    }
+
+    /* Tabs */
+    .main-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      background: var(--bg-surface);
+      padding: 6px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tab-btn {
+      padding: 10px 6px;
+      border: none;
+      border-radius: var(--radius-sm);
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: inherit;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+      min-height: 44px;
+    }
+
+    .tab-btn.active {
+      background: var(--subject-accent);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(217, 119, 6, 0.25);
+    }
+
+    /* Sub-section Pills (৫টি পর্ব) */
+    .part-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .part-pill {
+      flex: 1 1 auto;
+      min-width: 72px;
+      padding: 8px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-color);
+      background: var(--bg-surface);
+      color: var(--text-secondary);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s;
+    }
+
+    .part-pill.active {
+      background: var(--text-primary);
+      color: #ffffff;
+      border-color: var(--text-primary);
+    }
+
+    .part-pill.completed {
+      border-color: var(--success);
+      color: #065f46;
+      background: var(--success-light);
+    }
+    .part-pill.completed.active {
+      background: var(--success);
+      color: #ffffff;
+    }
+
+    /* Audio Toolbar */
+    .audio-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: var(--subject-accent-light);
+      border: 1px solid #fde68a;
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      margin-bottom: 14px;
+    }
+
+    .audio-bar-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--subject-accent-dark);
+    }
+
+    .speed-group {
+      display: inline-flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .speed-btn {
+      padding: 4px 9px;
+      border-radius: var(--radius-full);
+      border: 1px solid #fcd34d;
+      background: #ffffff;
+      color: var(--text-primary);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .speed-btn.active {
+      background: var(--subject-accent);
+      color: #ffffff;
+      border-color: var(--subject-accent);
+    }
+
+    /* Summary Cards */
+    .summary-card {
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .summary-card.is-speaking {
+      border-color: var(--subject-accent);
+      box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
+    }
+
+    .summary-card-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .summary-card-title {
+      font-size: 15.5px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+
+    .points-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .points-list li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 15px;
+      color: var(--text-primary);
+      line-height: 1.65;
+    }
+
+    .points-list li::before {
+      content: "•";
+      position: absolute;
+      left: 3px;
+      top: 0;
+      color: var(--subject-accent);
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 44px;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-sm {
+      min-height: 36px;
+      padding: 6px 12px;
+      font-size: 13px;
+    }
+
+    .btn-primary {
+      background: var(--subject-accent);
+      color: #ffffff;
+    }
+    .btn-primary:hover { background: var(--subject-accent-dark); }
+
+    .btn-secondary {
+      background: var(--bg-subtle);
+      color: var(--text-primary);
+      border-color: var(--border-color);
+    }
+    .btn-secondary:hover { background: #e2e8f0; }
+
+    .btn-success {
+      background: var(--success);
+      color: #ffffff;
+    }
+
+    .btn-danger {
+      background: var(--danger);
+      color: #ffffff;
+    }
+
+    /* Progress Bar */
+    .progress-wrap {
+      margin-bottom: 14px;
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 8px;
+      border-radius: var(--radius-full);
+      background: var(--border-color);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--subject-accent);
+      border-radius: var(--radius-full);
+      transition: width 0.25s ease;
+    }
+
+    /* MCQ Styles */
+    .mcq-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 15px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .mcq-source-tag {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    .mcq-q {
+      font-size: 15.5px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .practice-options {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    @media (min-width: 540px) {
+      .practice-options { grid-template-columns: 1fr 1fr; }
+    }
+
+    .option-btn {
+      width: 100%;
+      min-height: 44px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border-color);
+      background: #ffffff;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 14.5px;
+      font-weight: 500;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.45;
+      transition: all 0.15s;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: var(--subject-accent);
+      background: var(--subject-accent-light);
+    }
+
+    .option-btn.is-correct {
+      background: var(--success-light);
+      border-color: var(--success);
+      color: #065f46;
+      font-weight: 700;
+    }
+
+    .option-btn.is-wrong {
+      background: var(--danger-light);
+      border-color: var(--danger);
+      color: #991b1b;
+    }
+
+    .option-letter {
+      font-weight: 700;
+      color: var(--subject-accent-dark);
+      flex-shrink: 0;
+    }
+
+    .practice-feedback {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+
+    .practice-feedback.ok {
+      background: var(--success-light);
+      border: 1px solid #a7f3d0;
+      color: #065f46;
+    }
+
+    .practice-feedback.err {
+      background: var(--danger-light);
+      border: 1px solid #fecaca;
+      color: #991b1b;
+    }
+
+    /* Ganmulok (Active Recall) */
+    .qa-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 15px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .qa-question {
+      font-size: 15.5px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    .qa-answer {
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-subtle);
+      border-left: 3px solid var(--subject-accent);
+      font-size: 14.5px;
+      color: var(--text-primary);
+      line-height: 1.6;
+      display: none;
+    }
+
+    .qa-answer.is-open {
+      display: block;
+    }
+
+    .qa-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .qa-rate-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .qa-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+    }
+    .qa-status-badge.known { background: var(--success-light); color: #065f46; }
+    .qa-status-badge.missed { background: var(--danger-light); color: #991b1b; }
+
+    /* Toolbar Row */
+    .toolbar-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    /* Toast Notice */
+    .toast-notice {
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1e293b;
+      color: #ffffff;
+      padding: 10px 16px;
+      border-radius: var(--radius-full);
+      font-size: 13.5px;
+      font-weight: 600;
+      box-shadow: var(--shadow-md);
+      z-index: 100;
+      max-width: 92vw;
+      text-align: center;
+      display: none;
+    }
+    .toast-notice.show { display: block; }
+
+    .hidden { display: none !important; }
+  </style>
 </head>
 <body>
+
   <header class="site-header">
     <div class="container header-inner">
-      <a href="../../index.html" class="brand">
+      <button type="button" class="brand" id="btnHomeBrand">
         <span class="brand-badge" aria-hidden="true">🎓</span>
-        <span>Class 7 Learning</span>
-      </a>
+        <span>Class 7 BGS</span>
+      </button>
       <div class="header-actions">
-        <a href="../../index.html" class="nav-pill">&larr; All Subjects</a>
+        <button type="button" class="nav-pill hidden" id="btnBackHome">&larr; সব অধ্যায়</button>
+        <span class="score-pill" id="headerPoints">⭐ ০ পয়েন্ট</span>
       </div>
     </div>
   </header>
 
-  <section class="subject-banner" id="subject-banner">
-    <div class="container subject-banner-inner">
+  <section class="subject-banner">
+    <div class="container">
       <div class="subject-title-row">
-        <div class="subject-title-icon" id="subject-icon" aria-hidden="true">📖</div>
+        <div class="subject-title-icon" aria-hidden="true">🌏</div>
         <div>
-          <h1 id="subject-title">Loading Subject...</h1>
-          <p id="subject-subtitle">Class 7 Interactive Learning Module</p>
+          <h1>বাংলাদেশ ও বিশ্বপরিচয় (৭ম শ্রেণি)</h1>
+          <p id="bannerSubtitle">অধ্যায়ভিত্তিক সারসংক্ষেপ, অডিও, গেমিফাইড MCQ, জ্ঞানমূলক ও মডেল টেস্ট</p>
+        </div>
+      </div>
+      <div class="stats-strip">
+        <div class="stat-box">
+          <div class="stat-val" id="statPoints">০</div>
+          <div class="stat-lbl">মোট পয়েন্ট</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="statCorrect">০</div>
+          <div class="stat-lbl">সঠিক উত্তর</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="statStreak">০</div>
+          <div class="stat-lbl">বর্তমান স্ট্রিক</div>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="container">
-    <div class="progress-wrap" id="progress-wrap">
-      <div class="progress-meta">
-        <span id="progress-text">Lesson 1 of 1</span>
-        <span id="progress-percent">0%</span>
-      </div>
-      <div class="progress-track">
-        <div class="progress-fill" id="progress-fill"></div>
-      </div>
-    </div>
+  <main class="container main-wrap" id="appMain"></main>
 
-    <div class="selector-panel" id="selector-panel">
-      <div class="control-group">
-        <label for="chapter-select" class="control-label">Chapter</label>
-        <select id="chapter-select" class="select-input"></select>
-      </div>
-      <div class="control-group">
-        <label for="topic-select" class="control-label">Topic</label>
-        <select id="topic-select" class="select-input"></select>
-      </div>
-    </div>
+  <div class="toast-notice" id="toastNotice" role="status" aria-live="polite"></div>
 
-    <div class="learning-toolbar" id="learning-toolbar">
-      <button type="button" class="btn btn-secondary btn-sm" id="toggle-bn-btn">👁️ Hide Bangla</button>
-      <button type="button" class="btn btn-primary btn-sm" id="play-lesson-btn">▶️ Play Full Lesson</button>
-      <button type="button" class="btn btn-danger btn-sm" id="stop-audio-btn">⏹️ Stop</button>
-      <div class="speed-control">
-        <label for="speed-select">Speed</label>
-        <select id="speed-select" class="speed-select" aria-label="Speech speed">
-          <option value="0.75">0.75x</option>
-          <option value="1" selected>1x</option>
-          <option value="1.25">1.25x</option>
-        </select>
-      </div>
-      <div class="audio-notice" id="audio-notice" role="status" aria-live="polite"></div>
-    </div>
+  <script>
+    const APP_DATA = {"chapters": [{"id": "ch4", "number": "চতুর্থ অধ্যায়", "title": "বাংলাদেশের অর্থনীতি", "shortTitle": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি", "icon": "🏭", "desc": "অনানুষ্ঠানিক অর্থনৈতিক কাজ, শিল্পের শ্রেণিবিভাগ, আমদানি-রপ্তানি ও কৃষিপণ্য প্রক্রিয়াজাতকরণ", "summaries": [{"title": "পাঠ ১: গ্রাম ও শহরের অনানুষ্ঠানিক অর্থনৈতিক কার্যাবলি", "points": ["অর্থনৈতিক মূল্য রয়েছে এমন যেকোনো কাজ, সেবা বা বিনিময়কে অর্থনৈতিক কার্যক্রম বলে।", "যেসব কাজের পূর্ব মজুরি নির্ধারিত নয়, করের আওতায় আনা কঠিন এবং সরকার কর্তৃক নিয়ন্ত্রিত নয়—তাকে অনানুষ্ঠানিক কার্যক্রম বা অর্থনীতির প্রথাগত খাত বলে।", "গ্রামের অনানুষ্ঠানিক কাজ: নিজের জমিতে চাষাবাদ, কামার-কুমারের কাজ, কুটির শিল্প, ছোটোখাটো দোকান। দেশের মোট খাদ্য চাহিদার বড় অংশ কৃষকরাই উৎপাদন করেন।", "শহরের অনানুষ্ঠানিক কাজ: ছোটো দোকান, ফুটপাতে হকারি, ফেরিওয়ালা, রিকশা বা ঠেলাগাড়ি চালক, মুটে, মিস্ত্রি, জোগালি ও বাসাবাড়ির কাজ।", "উচ্চবিত্ত ও মধ্যবিত্ত শ্রেণির লোকেরা সাধারণত সরকারি-বেসরকারি চাকরি ও ব্যবসা-বাণিজ্যের মতো আনুষ্ঠানিক কাজে নিয়োজিত থাকেন।"]}, {"title": "পাঠ ২: বাংলাদেশের শিল্প (শিল্পনীতি ২০১৬ অনুযায়ী)", "points": ["পাকিস্তান আমলে নারায়ণগঞ্জে প্রতিষ্ঠিত হয় পৃথিবীর সর্ববৃহৎ পাটকল 'আদমজি জুট মিলস'।", "বৃহৎ শিল্প: জমি ও কারখানা ভবন ব্যতীত স্থায়ী সম্পদ ৫০ কোটি টাকার অধিক কিংবা ৩০০ জনের অধিক শ্রমিক (তৈরি পোশাক/শ্রমঘন ব্যতীত)। যেমন: পাট, বস্ত্র, চিনি, সিমেন্ট, সার, রেল, বিদ্যুৎ।", "মাঝারি শিল্প: স্থায়ী সম্পদ ১৫ কোটি টাকার অধিক থেকে ৫০ কোটি টাকা কিংবা ১২১ থেকে ৩০০ জন শ্রমিক। যেমন: হালকা ইঞ্জিনিয়ারিং, সিল্ক, সিরামিক, কোল্ডস্টোরেজ বা হিমাগার।", "ক্ষুদ্র শিল্প: স্থায়ী সম্পদ ৭৫ লক্ষ টাকা থেকে ১৫ কোটি টাকা কিংবা ৩১ থেকে ১২০ জন শ্রমিক। যেমন: চাল কল, ছোটো জুতা বা প্লাস্টিক কারখানা, খাদ্য প্রক্রিয়াজাত শিল্প।", "কুটিরশিল্প: মালিক নিজে বা পরিবারের সদস্যরা উৎপাদন ও বিপণন করেন। যেমন: তাঁতবস্ত্র, মাটির জিনিস, বাঁশ-বেত-কাঠের কাজ, মিষ্টির প্যাকেট ও আগরবাতি।"]}, {"title": "পাঠ ২ (অংশ ২): শিল্পের অবদান ও সম্ভাবনা", "points": ["তৈরি পোশাক শিল্পের প্রসার লক্ষ লক্ষ মানুষ বিশেষ করে নারীদের জন্য কর্মসংস্থানের সুযোগ তৈরি করেছে।", "বাংলাদেশে অপেক্ষাকৃত কম মজুরিতে দক্ষ ও অদক্ষ শ্রমিক পাওয়া যায়, যা বিদেশি বিনিয়োগকারীদের আকৃষ্ট করে।", "বিদেশি বিনিয়োগ বাড়াতে সরকার রপ্তানি প্রক্রিয়াকরণ অঞ্চল (EPZ) প্রতিষ্ঠা এবং 'ওয়ান স্টপ সার্ভিস' চালু করেছে।", "শিল্পের উন্নয়নে নিরাপদ কর্মপরিবেশ, শ্রমিক অধিকার রক্ষা এবং পরিবেশ দূষণ রোধে সরকারি নজরদারি জরুরি।"]}, {"title": "পাঠ ৩: বাংলাদেশের আমদানি ও রপ্তানি", "points": ["বিদেশ থেকে পণ্য আনা হলো আমদানি এবং বিদেশে পণ্য পাঠানো হলো রপ্তানি—এই দুইয়ের নাম বৈদেশিক বাণিজ্য। যে দেশের আমদানির চেয়ে রপ্তানি বেশি, তাকে উন্নত দেশ ধরা হয়।", "আন্তর্জাতিক বাণিজ্য তদারকি করে বিশ্ব বাণিজ্য সংস্থা (WTO) এবং আঞ্চলিক সংস্থা দক্ষিণ এশীয় মুক্ত বাণিজ্য এলাকা (SAFTA)।", "প্রধান আমদানি পণ্য: চাল, গম, ডাল, তৈলবীজ, তুলা, অপরিশোধিত পেট্রোল, ভোজ্যতেল, সার, যন্ত্রপাতি ও সুতা। ২০২৩-২৪ অর্থবছরে আমদানি ব্যয় ৬৬,৭২৫ মিলিয়ন ডলার (সবচেয়ে বেশি চীন থেকে)।", "প্রধান রপ্তানি পণ্য: তৈরি পোশাক (শীর্ষে), কাঁচা পাট ও পাটজাত দ্রব্য, হিমায়িত চিংড়ি, ওষুধ, চা ও চামড়াজাত দ্রব্য। ২০২৩-২৪ অর্থবছরে রপ্তানি আয় ৪৪,৪৭৫ মিলিয়ন ডলার (বড় ক্রেতা যুক্তরাষ্ট্র)।", "বাংলাদেশি বিজ্ঞানীরা পাটের 'জেনোম' বা জন্মরহস্য আবিষ্কার করায় পাট রপ্তানির সম্ভাবনা আবার উজ্জ্বল হয়েছে।"]}, {"title": "পাঠ ৪: কৃষিপণ্য প্রক্রিয়াজাতকরণ শিল্প", "points": ["বিজ্ঞান ও প্রযুক্তি ব্যবহার করে যেকোনো পণ্যকে অন্য পণ্যে রূপান্তর ও সংরক্ষণের প্রক্রিয়াকে প্রক্রিয়াজাতকরণ বলে।", "সনাতন পদ্ধতিতে মুড়ি, চিড়া, শুঁটকি, পিঠা, চাল, দই, মাঠা তৈরি হতো; কিন্তু এতে সংরক্ষণ ও স্বাস্থ্যসম্মত পরীক্ষার সমস্যা ছিল।", "আধুনিক পদ্ধতিতে পাটখড়ি থেকে পারটেক্স, টমেটো সংরক্ষণে কোল্ড স্টোরেজ, টিনজাত মাছ এবং দুধ থেকে মিষ্টি, দই, মাখন ও পনির তৈরি হচ্ছে।", "প্রক্রিয়াজাতকরণ শিল্পের সমস্যা: প্রযুক্তিজ্ঞান ও গবেষণার অভাব, দক্ষ উদ্যোক্তা ও শ্রমিকের অভাব, পরিবহণ ত্রুটি, ব্যবস্থাপনা ও সংরক্ষণের অভাব। যেকোনো উন্নয়নকে হতে হবে টেকসই।"]}], "mcqs": [{"q": "কোন অর্থনৈতিক কার্যক্রমকে অর্থনীতির প্রথাগত খাত বলা হয়?", "opts": ["আনুষ্ঠানিক খাত", "অনানুষ্ঠানিক খাত", "ব্যাংকিং খাত", "রপ্তানি খাত"], "ans": 1, "exp": "অতীতকাল থেকে চলে আসছে বলে অনানুষ্ঠানিক কার্যক্রমকে অর্থনীতির প্রথাগত খাতও বলা হয়।"}, {"q": "নিচের কোনটি অনানুষ্ঠানিক অর্থনৈতিক কাজের উদাহরণ?", "opts": ["সরকারি চাকরি", "ব্যাংকিং সেবা", "ফুটপাতে হকারি", "বেসরকারি অফিস চাকরি"], "ans": 2, "exp": "ফুটপাতে হকারি, নিজের জমিতে কাজ, কামার-কুমারের কাজ ইত্যাদি অনানুষ্ঠানিক অর্থনৈতিক কাজ।"}, {"q": "গ্রামের মানুষের জীবিকার প্রধান উৎস কী?", "opts": ["শিল্প", "কৃষি", "চাকরি", "বৈদেশিক বাণিজ্য"], "ans": 1, "exp": "বাংলাদেশ কৃষিপ্রধান দেশ এবং গ্রামের অধিকাংশ মানুষের জীবিকার প্রধান উৎস কৃষি।"}, {"q": "শহরের উচ্চবিত্ত ও মধ্যবিত্ত শ্রেণির লোকেরা সাধারণত কোন কাজে নিয়োজিত?", "opts": ["অনানুষ্ঠানিক কাজে", "আনুষ্ঠানিক কাজে", "ভাসমান কাজে", "কুটির শিল্পে"], "ans": 1, "exp": "উচ্চবিত্ত ও মধ্যবিত্তরা সাধারণত সরকারি-বেসরকারি চাকরি ও ব্যবসা-বাণিজ্যের মতো আনুষ্ঠানিক কাজে নিয়োজিত।"}, {"q": "পৃথিবীর সর্ববৃহৎ পাটকল 'আদমজি জুট মিলস' কোথায় প্রতিষ্ঠিত হয়েছিল?", "opts": ["খুলনায়", "চট্টগ্রামে", "নারায়ণগঞ্জে", "ঢাকায়"], "ans": 2, "exp": "পাকিস্তান সৃষ্টির পর পূর্ববাংলার নারায়ণগঞ্জে পৃথিবীর সর্ববৃহৎ পাটকল আদমজি জুট মিলস প্রতিষ্ঠিত হয়।"}, {"q": "বাংলাদেশের অর্থনীতির মূল চালিকাশক্তি হিসেবে প্রথম থেকেই কোন খাতের ওপর নির্ভরতা বেশি?", "opts": ["অনানুষ্ঠানিক খাত", "তথ্যপ্রযুক্তি খাত", "ভারী শিল্প খাত", "পর্যটন খাত"], "ans": 0, "exp": "প্রথম থেকেই বাংলাদেশের অর্থনীতি অনানুষ্ঠানিক খাতের ওপর বেশি নির্ভরশীল।"}, {"q": "শিল্পনীতি ২০১৬ অনুযায়ী বৃহৎ শিল্পের স্থায়ী সম্পদের মূল্য কত টাকার অধিক?", "opts": ["১৫ কোটি টাকা", "৩০ কোটি টাকা", "৫০ কোটি টাকা", "৭৫ লক্ষ টাকা"], "ans": 2, "exp": "শিল্পনীতি ২০১৬ অনুযায়ী জমি ও ভবন ব্যতীত স্থায়ী সম্পদের মূল্য ৫০ কোটি টাকার অধিক হলে তা বৃহৎ শিল্প।"}, {"q": "তৈরি পোশাক/শ্রমঘন শিল্প ব্যতীত বৃহৎ শিল্পে কতজনের অধিক শ্রমিক নিয়োজিত থাকে?", "opts": ["১২০ জন", "২০০ জন", "৩০০ জন", "৫০০ জন"], "ans": 2, "exp": "বৃহৎ শিল্প প্রতিষ্ঠানে ৩০০ জনের অধিক শ্রমিক নিয়োজিত থাকে।"}, {"q": "মাঝারি শিল্পে কতজন শ্রমিক নিয়োজিত থাকে?", "opts": ["৩১-১২০ জন", "১২১-৩০০ জন", "১০-৩০ জন", "৩০০ জনের বেশি"], "ans": 1, "exp": "মাঝারি শিল্পে ১২১ থেকে ৩০০ জন শ্রমিক নিয়োজিত থাকে এবং স্থায়ী সম্পদ ১৫ থেকে ৫০ কোটি টাকা।"}, {"q": "ক্ষুদ্র শিল্পে স্থায়ী সম্পদের মূল্য কত টাকা?", "opts": ["১০ লক্ষ থেকে ৫০ লক্ষ", "৭৫ লক্ষ থেকে ১৫ কোটি", "১৫ কোটি থেকে ৫০ কোটি", "৫০ কোটি টাকার বেশি"], "ans": 1, "exp": "ক্ষুদ্র শিল্পে স্থায়ী সম্পদের মূল্য ৭৫ লক্ষ টাকা থেকে ১৫ কোটি টাকা এবং শ্রমিক ৩১-১২০ জন।"}, {"q": "কোল্ডস্টোরেজ বা হিমাগার কোন ধরনের শিল্পের উদাহরণ?", "opts": ["ক্ষুদ্র শিল্প", "কুটির শিল্প", "মাঝারি শিল্প", "বৃহৎ শিল্প"], "ans": 2, "exp": "হালকা ইঞ্জিনিয়ারিং, সিল্ক, সিরামিক ও কোল্ডস্টোরেজ মাঝারি শিল্পের উদাহরণ।"}, {"q": "তাঁতবস্ত্র, মাটির জিনিসপত্র ও আগরবাতি কোন শিল্পের অন্তর্ভুক্ত?", "opts": ["ক্ষুদ্র শিল্প", "মাঝারি শিল্প", "কুটির শিল্প", "বৃহৎ শিল্প"], "ans": 2, "exp": "মালিক নিজে বা পরিবারের সদস্যরা মিলে উৎপাদন ও বিপণন করলে তা কুটিরশিল্প, যেমন: তাঁতবস্ত্র ও আগরবাতি।"}, {"q": "কোন শিল্পের প্রসার বাংলাদেশে বিশেষ করে নারীদের জন্য বিশাল কর্মসংস্থানের সুযোগ করেছে?", "opts": ["পাট শিল্প", "তৈরি পোশাক শিল্প", "চিনি শিল্প", "সার শিল্প"], "ans": 1, "exp": "সাম্প্রতিককালে তৈরি পোশাক শিল্পের প্রসার লক্ষ লক্ষ নারীর কর্মসংস্থানের সুযোগ করে দিয়েছে।"}, {"q": "বিদেশি বিনিয়োগকারীদের আকৃষ্ট করতে সরকার দেশে কী প্রতিষ্ঠা করেছে?", "opts": ["EPZ", "WTO", "SAFTA", "BSEC"], "ans": 0, "exp": "বিদেশি বিনিয়োগকারীদের আকৃষ্ট করতে সরকার দেশে কয়েকটি রপ্তানি প্রক্রিয়াকরণ অঞ্চল (EPZ) প্রতিষ্ঠা করেছে।"}, {"q": "WTO-এর পূর্ণরূপ কী?", "opts": ["World Transport Organisation", "World Trade Organisation", "World Tax Office", "Western Trade Organisation"], "ans": 1, "exp": "WTO-এর পূর্ণরূপ হলো World Trade Organisation (বিশ্ব বাণিজ্য সংস্থা)।"}, {"q": "SAFTA-এর পূর্ণরূপ কী?", "opts": ["South Asian Free Trade Area", "South Asian Food Trade Act", "South African Free Trade Area", "Southern Asia Finance Trade"], "ans": 0, "exp": "SAFTA হলো South Asian Free Trade Area (দক্ষিণ এশীয় মুক্ত বাণিজ্য এলাকা)।"}, {"q": "কোন ধরনের দেশকে উন্নত দেশ ধরা হয়?", "opts": ["যাদের রপ্তানির চেয়ে আমদানি বেশি", "যাদের আমদানির চেয়ে রপ্তানি বেশি", "যারা শুধু কৃষি কাজ করে", "যারা কোনো বাণিজ্য করে না"], "ans": 1, "exp": "যে দেশের আমদানির চেয়ে রপ্তানির পরিমাণ বেশি তাকে উন্নত দেশ ধরা হয়।"}, {"q": "শিল্পখাতে বিদেশি বিনিয়োগ উৎসাহিত করতে সরকার কোন সেবা চালু করেছে?", "opts": ["ওয়ান স্টপ সার্ভিস", "টোল ফ্রি সার্ভিস", "হোম ডেলিভারি", "অনলাইন ব্যাংকিং"], "ans": 0, "exp": "বন্দর সুবিধা, বিদ্যুৎ-গ্যাস উন্নতির পাশাপাশি সরকার ওয়ান স্টপ সার্ভিস চালু করেছে।"}, {"q": "২০২৩-২০২৪ অর্থবছরে বাংলাদেশ মোট কত মিলিয়ন ডলারের পণ্য আমদানি করেছে?", "opts": ["৪৪,৪৭৫ মিলিয়ন ডলার", "৫৬,০৬০ মিলিয়ন ডলার", "৬৬,৭২৫ মিলিয়ন ডলার", "৪০,৭৩২ মিলিয়ন ডলার"], "ans": 2, "exp": "২০২৩-২৪ অর্থবছরে বাংলাদেশ ৬৬,৭২৫ মিলিয়ন মার্কিন ডলারের পণ্য সামগ্রী আমদানি করেছে।"}, {"q": "বাংলাদেশ সবচেয়ে বেশি পণ্য আমদানি করে কোন দেশ থেকে?", "opts": ["ভারত", "জাপান", "চীন", "যুক্তরাষ্ট্র"], "ans": 2, "exp": "২০২৩-২৪ অর্থবছরের তথ্য অনুযায়ী বাংলাদেশ সবচেয়ে বেশি পণ্য আমদানি করেছে চীন থেকে।"}, {"q": "২০২৩-২০২৪ অর্থবছরে বাংলাদেশের মোট রপ্তানি আয় কত ছিল?", "opts": ["৪০,৫৪০ মিলিয়ন ডলার", "৪৪,৪৭৫ মিলিয়ন ডলার", "৬৬,৭২৫ মিলিয়ন ডলার", "৩৪,৬৫৬ মিলিয়ন ডলার"], "ans": 1, "exp": "২০২৩-২৪ অর্থবছরে বাংলাদেশের মোট রপ্তানি আয় হয়েছে ৪৪,৪৭৫ মিলিয়ন মার্কিন ডলার।"}, {"q": "বাংলাদেশের রপ্তানি আয়ে বর্তমানে শীর্ষে রয়েছে কোন খাত?", "opts": ["পাট খাত", "তৈরি পোশাক খাত", "হিমায়িত চিংড়ি", "ওষুধ শিল্প"], "ans": 1, "exp": "২০২৩-২৪ অর্থবছরে রপ্তানি আয়ে শীর্ষে ছিল তৈরি পোশাক খাত।"}, {"q": "বাংলাদেশের রপ্তানি পণ্যের সবচেয়ে বড় ক্রেতা কোন দেশ?", "opts": ["চীন", "যুক্তরাজ্য", "যুক্তরাষ্ট্র", "জার্মানি"], "ans": 2, "exp": "বাংলাদেশের পণ্যের বড়ো ক্রেতা হলো যুক্তরাষ্ট্র।"}, {"q": "বাংলাদেশি বিজ্ঞানীরা সম্প্রতি কোন ফসলের 'জেনোম' বা জন্মরহস্য আবিষ্কার করেছেন?", "opts": ["ধান", "পাট", "গম", "চা"], "ans": 1, "exp": "বাংলাদেশি বিজ্ঞানীদের দ্বারা পাটের 'জেনোম' বা জন্মরহস্য আবিষ্কার হওয়ায় পাট রপ্তানির সম্ভাবনা বেড়েছে।"}, {"q": "বিজ্ঞান ও প্রযুক্তি ব্যবহার করে পণ্যকে অন্য পণ্যে রূপান্তর ও সংরক্ষণের প্রক্রিয়াকে কী বলে?", "opts": ["বিপণন", "প্রক্রিয়াজাতকরণ", "আমদানি", "শিল্পায়ন"], "ans": 1, "exp": "বিজ্ঞান ও প্রযুক্তি ব্যবহার করে যেকোনো পণ্যকে অন্য পণ্যে রূপান্তর ও সংরক্ষণের প্রক্রিয়াকে প্রক্রিয়াজাতকরণ বলে।"}, {"q": "নিচের কোনটি সনাতন পদ্ধতির খাদ্য প্রক্রিয়াজাতকরণের উদাহরণ?", "opts": ["টিনজাত মাছ", "পারটেক্স তৈরি", "মুড়ি, চিড়া ও শুঁটকি", "পাস্তুরিত দুধ"], "ans": 2, "exp": "পূর্বের সনাতন পদ্ধতিতে মানুষ মুড়ি, চিড়া, শুঁটকি, পিঠা, চাল, দই ও মাঠা তৈরি করতো।"}, {"q": "পাটখড়ি প্রক্রিয়াজাত করে নিচের কোন পণ্যটি তৈরি করা হয়?", "opts": ["কাগজ", "পারটেক্স", "সুতা", "প্লাস্টিক"], "ans": 1, "exp": "পাটখড়ি থেকে পারটেক্স প্রক্রিয়াজাতকরণ শিল্প গড়ে দেশ লাভবান হচ্ছে।"}, {"q": "টমেটো সারা বছর সংরক্ষণের জন্য কী তৈরি করা হচ্ছে?", "opts": ["হিমায়িত কারখানা", "কোল্ড স্টোরেজ", "গুদাম ঘর", "সাইলো"], "ans": 1, "exp": "টমেটো সংরক্ষণ করার জন্য কোল্ড স্টোরেজ তৈরি হচ্ছে, ফলে ক্রেতারা সারা বছর টমেটো পাচ্ছেন।"}, {"q": "দুধ প্রক্রিয়াজাত শিল্প থেকে নিচের কোনটি তৈরি সম্ভব হচ্ছে?", "opts": ["মিষ্টি, দই, মাখন ও পনির", "পারটেক্স", "ভোজ্যতেল", "চিনি"], "ans": 0, "exp": "দুধের প্রক্রিয়াজাত শিল্প থেকে মিষ্টি, দই, মাখন, পনিরসহ শিশু খাদ্যের জোগান দেওয়া সম্ভব হচ্ছে।"}, {"q": "কৃষিপণ্য প্রক্রিয়াজাতকরণ শিল্পের যেকোনো উন্নয়ন কেমন হতে হবে?", "opts": ["ব্যয়বহুল", "দ্রুত", "টেকসই", "সাময়িক"], "ans": 2, "exp": "অতিরিক্ত সার, কীটনাশক ও বিদ্যুৎ ব্যবহারে পরিবেশের ক্ষতি না করে যেকোনো উন্নয়নকে হতে হবে টেকসই।"}], "ganmulok": [{"q": "অর্থনৈতিক কার্যক্রম কাকে বলে?", "a": "অর্থনৈতিক মূল্য রয়েছে এমন যেকোনো কাজ, সেবা বা বিনিময়কে অর্থনৈতিক কার্যক্রম বলা হয়।"}, {"q": "অনানুষ্ঠানিক অর্থনৈতিক কার্যক্রম কাকে বলে?", "a": "যেসব কাজের জন্য পূর্ব মজুরি নির্ধারিত নয়, করের আওতায় আনা কঠিন এবং সরকার কর্তৃক নিয়ন্ত্রিত নয়, তাকে অনানুষ্ঠানিক অর্থনৈতিক কার্যক্রম বলে।"}, {"q": "অর্থনীতির প্রথাগত খাত বলতে কী বোঝায়?", "a": "অতীতকাল থেকে চলে আসছে বলে অনানুষ্ঠানিক অর্থনৈতিক কার্যক্রমকে অর্থনীতির প্রথাগত খাত বলা হয়।"}, {"q": "শহরের ভাসমান বা অস্থায়ী মানুষ কারা?", "a": "শহরের যেসব বিত্তহীন মানুষের নিজস্ব বা স্থায়ী বাসাবাড়ি নেই এবং বস্তি, ফুটপাত, পার্ক বা রেলস্টেশনে বাস করে, তারাই ভাসমান বা অস্থায়ী মানুষ।"}, {"q": "আদমজি জুট মিলস কোথায় অবস্থিত ছিল?", "a": "পাকিস্তান আমলে পূর্ববাংলার নারায়ণগঞ্জে পৃথিবীর সর্ববৃহৎ পাটকল আদমজি জুট মিলস প্রতিষ্ঠিত হয়েছিল।"}, {"q": "বৃহৎ শিল্প কাকে বলে?", "a": "শিল্পনীতি ২০১৬ অনুযায়ী যেসব প্রতিষ্ঠানে জমি ও ভবন ব্যতীত স্থায়ী সম্পদের মূল্য ৫০ কোটি টাকার অধিক কিংবা ৩০০ জনের অধিক শ্রমিক কাজ করে, তাকে বৃহৎ শিল্প বলে।"}, {"q": "মাঝারি শিল্পে শ্রমিক সংখ্যা কত?", "a": "মাঝারি শিল্পে ১২১ থেকে ৩০০ জন শ্রমিক নিয়োজিত থাকে (স্থায়ী সম্পদ ১৫ থেকে ৫০ কোটি টাকা)।"}, {"q": "ক্ষুদ্র শিল্পের দুটি উদাহরণ দাও।", "a": "চাল কল, ছোটো ছোটো জুতা বা প্লাস্টিক কারখানা এবং খাদ্য প্রক্রিয়াজাত শিল্প ক্ষুদ্র শিল্পের উদাহরণ।"}, {"q": "কুটিরশিল্প কাকে বলে?", "a": "যে শিল্পে উৎপাদন ও বিপণনের কাজটি প্রধানত মালিক নিজে বা তার পরিবারের সদস্যরাই করে থাকেন, তাকে কুটিরশিল্প বলে।"}, {"q": "EPZ-এর পূর্ণরূপ কী?", "a": "EPZ-এর পূর্ণরূপ হলো Export Processing Zone বা রপ্তানি প্রক্রিয়াকরণ অঞ্চল।"}, {"q": "বৈদেশিক বাণিজ্য কাকে বলে?", "a": "বিদেশ থেকে পণ্য আমদানি এবং বিদেশে পণ্য রপ্তানি করার নামই বৈদেশিক বাণিজ্য।"}, {"q": "কোন দেশকে উন্নত দেশ হিসেবে ধরা হয়?", "a": "যে দেশের আমদানির চেয়ে রপ্তানির পরিমাণ বেশি, তাকে উন্নত দেশ ধরা হয়।"}, {"q": "WTO ও SAFTA-এর পূর্ণরূপ লেখো।", "a": "WTO = World Trade Organisation এবং SAFTA = South Asian Free Trade Area।"}, {"q": "বাংলাদেশ সবচেয়ে বেশি পণ্য আমদানি করে কোন দেশ থেকে?", "a": "বাংলাদেশ সবচেয়ে বেশি পণ্য আমদানি করে চীন থেকে।"}, {"q": "বাংলাদেশের প্রধান রপ্তানি পণ্য ও বড় ক্রেতা দেশ কোনটি?", "a": "বাংলাদেশের রপ্তানি আয়ে শীর্ষে রয়েছে তৈরি পোশাক খাত এবং পণ্যের বড় ক্রেতা হলো যুক্তরাষ্ট্র।"}, {"q": "২০২৩-২৪ অর্থবছরে বাংলাদেশের আমদানি ব্যয় ও রপ্তানি আয় কত ছিল?", "a": "২০২৩-২৪ অর্থবছরে আমদানি ব্যয় ছিল ৬৬,৭২৫ মিলিয়ন ডলার এবং রপ্তানি আয় ছিল ৪৪,৪৭৫ মিলিয়ন ডলার।"}, {"q": "প্রক্রিয়াজাতকরণ শিল্প কাকে বলে?", "a": "বিজ্ঞান ও প্রযুক্তি ব্যবহারের মাধ্যমে যেকোনো পণ্যকে অন্য পণ্যে রূপান্তর ও সংরক্ষণের প্রক্রিয়াকে প্রক্রিয়াজাতকরণ বলে এবং যেসব প্রতিষ্ঠান তা করে সেগুলো প্রক্রিয়াজাতকরণ শিল্প।"}, {"q": "পাটখড়ি প্রক্রিয়াজাত করে কী তৈরি করা হয়?", "a": "পাটখড়ি থেকে পারটেক্স প্রক্রিয়াজাতকরণ শিল্প গড়ে তোলা হয়েছে।"}, {"q": "সনাতন পদ্ধতির কয়েকটি প্রক্রিয়াজাত খাদ্যের নাম লেখো।", "a": "মুড়ি, চিড়া, শুঁটকি, পিঠা, চাল, দই ও মাঠা সনাতন পদ্ধতির প্রক্রিয়াজাত খাদ্য।"}, {"q": "কৃষিপণ্য প্রক্রিয়াজাতকরণ শিল্পের দুটি প্রধান সমস্যা উল্লেখ করো।", "a": "প্রযুক্তিজ্ঞান ও গবেষণার অভাব এবং দক্ষ উদ্যোক্তা ও শ্রমিকের অভাব।"}]}, {"id": "ch8", "number": "অষ্টম অধ্যায়", "title": "বাংলাদেশের সামাজিক সমস্যা", "shortTitle": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা", "icon": "⚖️", "desc": "যৌতুক প্রথার ধারণা ও আইন, সামাজিক আন্দোলন, এবং বাল্যবিবাহের কারণ, প্রভাব ও প্রতিরোধ আইন", "summaries": [{"title": "পাঠ ১: যৌতুকের ধারণা, কারণ ও প্রভাব", "points": ["বিয়ের সময় বর বা কনে বিপরীত পক্ষের কাছ থেকে যে অর্থ বা সম্পত্তি দাবি করে ও গ্রহণ করে, তাকেই যৌতুক বলে।", "প্রাচীন চীন ও এথেন্সে বিয়ের পর কনে স্বামীর ঘরে অর্থসম্পদ বা যৌতুক নিয়ে যেত এবং সেখানে এটিকে সামাজিক মর্যাদা হিসেবে দেখা হতো।", "বাংলাদেশে যৌতুক প্রথার প্রধান কারণ দারিদ্র্য। এছাড়া নারীর মর্যাদাকে কম ভাবা, অজ্ঞতা এবং আইনের যথাযথ প্রয়োগ না হওয়াও অন্যতম কারণ।", "যৌতুকের প্রভাবে বিবাহিত নারীর ওপর নির্যাতন, দাম্পত্য কলহ, বিবাহবিচ্ছেদ, প্রাণহানি এবং সমাজে অপরাধ প্রবণতা ও বহুবিবাহ বাড়ে। যৌতুক দেওয়া ও নেওয়া দুই-ই সমান অপরাধ।"]}, {"title": "পাঠ ২: যৌতুক নিরোধ আইন", "points": ["যৌতুক বন্ধ করার জন্য বাংলাদেশে ১৯৮০ সালে 'যৌতুক নিরোধ আইন' প্রণয়ন করা হয়।", "১৯৮০ সালের আইন অনুযায়ী যৌতুক প্রদান বা গ্রহণ বা দাবি করলে সর্বোচ্চ ১ বছরের কারাদণ্ড বা ৫ হাজার টাকা অর্থদণ্ড বা উভয় দণ্ড হতে পারে। সহায়তাকারীও একই শাস্তি পাবে।", "১৯৮৬ সালে সংশোধিত যৌতুক নিরোধ আইন অনুযায়ী অপরাধী সর্বনিম্ন ১ বছর এবং সর্বোচ্চ ৫ বছরের কারাদণ্ডে দণ্ডিত হবে।", "১৯৮৩ সালের নারী ও শিশু নির্যাতন দমন আইন অনুযায়ী যৌতুকের কারণে নারীর মৃত্যু ঘটালে বা চেষ্টা করলে মৃত্যুদণ্ড বা যাবজ্জীবন কারাদণ্ড ও অর্থদণ্ডের বিধান রয়েছে।"]}, {"title": "পাঠ ৩: যৌতুক প্রতিরোধে সামাজিক আন্দোলন", "points": ["সামাজিক আন্দোলন হলো সংগঠিত সামাজিক প্রতিরোধ। কেবল আইন দিয়ে নয়, পরিবার ও সমাজকে সচেতন করে যৌতুক প্রতিরোধ করতে হবে।", "পরিবারের কন্যাসন্তানসহ সবাইকে উচ্চতর শিক্ষা গ্রহণে উদ্বুদ্ধ করতে হবে, কারণ আত্মনির্ভরশীল হলে যৌতুকের অভিশাপ তাদের স্পর্শ করতে পারবে না।", "প্রতিবেশী ও পাড়া-মহল্লায় যৌতুকের কুফল তুলে ধরে সবার মধ্যে যৌতুকবিরোধী মনোভাব গড়ে তুলতে হবে।"]}, {"title": "পাঠ ৪: বাল্যবিবাহের ধারণা ও কারণ", "points": ["যে বিয়েতে বর ও কনে উভয়ই শিশু অথবা যেকোনো একজন শিশু, তাকে বাল্যবিবাহ বলে।", "বাল্যবিবাহ নিরোধ আইন ১৯২৯ (ও ২০১৪) অনুযায়ী শিশু বলতে ১৮ বছরের কম বয়সী মেয়ে এবং ২১ বছরের কম বয়সের ছেলেকে বোঝায়।", "বাংলাদেশে বাল্যবিবাহের প্রধান কারণ দারিদ্র্য। দরিদ্র পিতা ব্যয়ভার বহন করতে না পেরে মেয়েকে দ্রুত বিয়ে দেন।", "দারিদ্র্য ছাড়াও সমাজে নিরাপত্তার অভাব, বাবা-মা বা দাদি-নানির শখ এবং যৌতুক (কম বয়সী বউ নিলে বেশি যৌতুক বা সহজে পাওয়া যায় এই মানসিকতা) বাল্যবিবাহের কারণ।"]}, {"title": "পাঠ ৫: বাল্যবিবাহের প্রভাব, প্রতিরোধ ও আইন-২০১৭", "points": ["বাল্যবিবাহের ফলে মানসিক ও শারীরিক পরিপক্কতার আগেই কিশোরী মা হয়, ফলে পুষ্টিহীন শিশুর জন্ম হয় এবং মাতৃমৃত্যু ও শিশুমৃত্যুর হার বৃদ্ধি পায়।", "বাল্যবিবাহ নিরোধ আইন-২০১৭ অনুযায়ী কোনো প্রাপ্তবয়স্ক ব্যক্তি বাল্যবিবাহ করলে ২ বছর কারাদণ্ড বা ১ লক্ষ টাকা অর্থদণ্ড বা উভয় দণ্ডে দণ্ডিত হবেন।", "কোনো অপ্রাপ্তবয়স্ক নারী বা পুরুষ বাল্যবিবাহ করলে ১ মাস কারাদণ্ড বা ৫০ হাজার টাকা জরিমানা বা উভয় দণ্ড হবে।", "পিতা-মাতা, অভিভাবক বা অন্য কেউ বাল্যবিবাহ সম্পাদন বা পরিচালনা করলে সর্বোচ্চ ২ বছর কারাদণ্ড বা ৫০ হাজার টাকা জরিমানা বা উভয় দণ্ড হবে।"]}], "mcqs": [{"q": "বিয়ের সময় বর বা কনে বিপরীত পক্ষের কাছ থেকে যে অর্থ বা সম্পত্তি দাবি করে তাকে কী বলে?", "opts": ["মোহরানা", "উপহার", "যৌতুক", "অনুদান"], "ans": 2, "exp": "বিয়ের সময় বিপরীত পক্ষের কাছ থেকে দাবি ও গ্রহণ করা অর্থ বা সম্পত্তিকেই যৌতুক বলে।"}, {"q": "প্রাচীন কোন কোন দেশে কনে স্বামীর ঘরে যৌতুক নিয়ে যেত?", "opts": ["ভারত ও নেপাল", "চীন ও এথেন্স", "মিশর ও জাপান", "রোম ও ফ্রান্স"], "ans": 1, "exp": "প্রাচীন চীনে ও এথেন্সে বিয়ের পর কনে স্বামীর ঘরে অর্থসম্পদ ও যৌতুক নিয়ে যেত।"}, {"q": "প্রাচীন এথেন্সে যৌতুক গ্রহণকে কী হিসেবে দেখা হতো?", "opts": ["অপরাধ", "সামাজিক মর্যাদা", "কুসংস্কার", "ধর্মীয় আচার"], "ans": 1, "exp": "প্রাচীন এথেন্সে যৌতুক গ্রহণকে সামাজিক মর্যাদা হিসেবে দেখা হতো।"}, {"q": "বাংলাদেশে যৌতুক প্রথার প্রধান কারণ হিসেবে কোনটিকে মনে করা হয়?", "opts": ["শিক্ষা", "দারিদ্র্য", "নগরায়ণ", "শিল্পায়ন"], "ans": 1, "exp": "বাংলাদেশে যৌতুক প্রথার পেছনে প্রধান কারণ হলো দারিদ্র্য।"}, {"q": "বাংলাদেশের বিবাহ আইনে যৌতুক দেওয়া ও নেওয়া কেমন কাজ?", "opts": ["শুধু নেওয়া অপরাধ", "শুধু দেওয়া অপরাধ", "দুই-ই সমান অপরাধ", "কোনোটিই অপরাধ নয়"], "ans": 2, "exp": "বাংলাদেশের বিবাহ আইনে যৌতুক দেওয়া ও নেওয়া দুই-ই নিষিদ্ধ এবং সমান অপরাধ।"}, {"q": "বিবাহিত নারীর প্রতি অত্যাচার ও সহিংসতার মূল কারণ কী?", "opts": ["যৌতুক", "বেকারত্ব", "অশিক্ষা", "শহরায়ন"], "ans": 0, "exp": "বিবাহিত নারীর প্রতি অত্যাচার ও সহিংসতার মূল কারণ যৌতুক।"}, {"q": "বাংলাদেশে যৌতুক নিরোধ আইন কত সালে প্রণয়ন করা হয়?", "opts": ["১৯৭৪ সালে", "১৯৮০ সালে", "১৯৮৩ সালে", "১৯৮৬ সালে"], "ans": 1, "exp": "যৌতুক বন্ধ করার জন্য বাংলাদেশে ১৯৮০ সালে যৌতুক নিরোধ আইন প্রণয়ন করা হয়।"}, {"q": "১৯৮০ সালের যৌতুক নিরোধ আইনে সর্বোচ্চ কত বছরের কারাদণ্ডের বিধান ছিল?", "opts": ["৬ মাস", "১ বছর", "২ বছর", "৫ বছর"], "ans": 1, "exp": "১৯৮০ সালের আইন অনুযায়ী সর্বোচ্চ ১ বছরের কারাদণ্ড বা ৫ হাজার টাকা অর্থদণ্ড হতে পারে।"}, {"q": "১৯৮০ সালের যৌতুক নিরোধ আইনে অর্থদণ্ডের পরিমাণ কত ছিল?", "opts": ["১ হাজার টাকা", "৫ হাজার টাকা", "১০ হাজার টাকা", "৫০ হাজার টাকা"], "ans": 1, "exp": "১৯৮০ সালের আইনে সর্বোচ্চ ১ বছরের কারাদণ্ড বা ৫ হাজার টাকা অর্থদণ্ডের কথা বলা হয়েছে।"}, {"q": "কত সালে যৌতুক নিরোধ আইন সংশোধন করা হয়?", "opts": ["১৯৮২ সালে", "১৯৮৩ সালে", "১৯৮৬ সালে", "১৯৯০ সালে"], "ans": 2, "exp": "১৯৮৬ সালে যৌতুক নিরোধ আইন সংশোধন করা হয়েছে।"}, {"q": "১৯৮৬ সালের সংশোধিত যৌতুক নিরোধ আইনে সর্বনিম্ন ও সর্বোচ্চ কারাদণ্ড কত?", "opts": ["১ থেকে ৩ বছর", "১ থেকে ৫ বছর", "২ থেকে ৫ বছর", "৬ মাস থেকে ২ বছর"], "ans": 1, "exp": "সংশোধিত ১৯৮৬ সালের আইন অনুযায়ী অপরাধী সর্বনিম্ন ১ বছর এবং সর্বোচ্চ ৫ বছরের কারাদণ্ডে দণ্ডিত হবে।"}, {"q": "১৯৮৩ সালের নারী ও শিশু নির্যাতন দমন আইনে যৌতুকের কারণে মৃত্যু ঘটালে সর্বোচ্চ শাস্তি কী?", "opts": ["৫ বছর কারাদণ্ড", "১০ বছর কারাদণ্ড", "মৃত্যুদণ্ড বা যাবজ্জীবন কারাদণ্ড", "৫০ হাজার টাকা জরিমানা"], "ans": 2, "exp": "১৯৮৩ সালের আইনের বিধান অনুযায়ী মৃত্যুদণ্ড বা যাবজ্জীবন কারাদণ্ড ও অর্থদণ্ডে দণ্ডিত করা যাবে।"}, {"q": "যৌতুক আদান-প্রদানে সহায়তাকারীর শাস্তি কেমন হয়?", "opts": ["কোনো শাস্তি নেই", "অর্ধেক শাস্তি", "একই শাস্তি", "শুধু সতর্কতা"], "ans": 2, "exp": "যৌতুক আদান-প্রদানে সহায়তাকারীও মূল অপরাধীর মতো একই শাস্তি পাবে।"}, {"q": "সামাজিক আন্দোলন কী?", "opts": ["রাজনৈতিক মিছিল", "সংগঠিত সামাজিক প্রতিরোধ", "সরকারি আইন", "অর্থনৈতিক জরিপ"], "ans": 1, "exp": "সামাজিক আন্দোলন হচ্ছে সংগঠিত সামাজিক প্রতিরোধ।"}, {"q": "কীভাবে কন্যাসন্তানকে যৌতুকের অভিশাপ থেকে মুক্ত রাখা সম্ভব?", "opts": ["অল্প বয়সে বিয়ে দিয়ে", "উচ্চতর শিক্ষায় আত্মনির্ভরশীল করে", "বেশি টাকা জমিয়ে", "ঘরে আটকে রেখে"], "ans": 1, "exp": "উচ্চতর শিক্ষা গ্রহণে উদ্বুদ্ধ করে আত্মনির্ভরশীল করলে যৌতুকের অভিশাপ তাদের স্পর্শ করতে পারবে না।"}, {"q": "যৌতুক প্রতিরোধ করার জন্য প্রথমেই কাকে সচেতন করতে হবে?", "opts": ["পুলিশকে", "পরিবারকে", "বিদেশিদের", "আদালতকে"], "ans": 1, "exp": "যৌতুক প্রতিরোধ করার জন্য প্রথমেই সচেতন করতে হবে পরিবারকে।"}, {"q": "সমাজে যৌতুক সমস্যার মূলে কোন কোন সামাজিক ব্যাধি জড়িত?", "opts": ["বাল্যবিবাহ ও বহুবিবাহ", "শিল্পায়ন", "নগরায়ণ", "খেলাধুলা"], "ans": 0, "exp": "সমাজে দারিদ্র্য, দুর্নীতি, অপরাধ প্রবণতা, বাল্যবিবাহ ও বহুবিবাহের মূলে রয়েছে যৌতুক সমস্যা।"}, {"q": "ধনী পিতামাতা কেন মেয়ের বিয়েতে বিপুল অঙ্কের যৌতুক দেন?", "opts": ["আইন মানতে", "মেয়ে স্বামীর ঘরে মাথা উঁচু করে থাকবে ভেবে", "দারিদ্র্যের কারণে", "সরকারের নির্দেশে"], "ans": 1, "exp": "ধনী পিতামাতার ধারণা যৌতুকের কারণে তাদের কন্যা স্বামীর ঘরে মাথা উঁচু করে থাকবে।"}, {"q": "বাল্যবিবাহ নিরোধ আইন ১৯২৯ অনুযায়ী মেয়েদের বিয়ের সর্বনিম্ন বয়স কত?", "opts": ["১৬ বছর", "১৮ বছর", "২০ বছর", "২১ বছর"], "ans": 1, "exp": "আইন অনুযায়ী ১৮ বছরের কম বয়সী মেয়েকে শিশু বোঝায়, তাই মেয়ের সর্বনিম্ন বয়স ১৮ বছর।"}, {"q": "আইন অনুযায়ী ছেলেদের ক্ষেত্রে কত বছরের কম বয়স হলে তাকে শিশু বলা হয়?", "opts": ["১৮ বছর", "১৯ বছর", "২০ বছর", "২১ বছর"], "ans": 3, "exp": "ছেলের বয়স ২১ বছরের কম হলে সে বিয়েকে বাল্যবিবাহ বলে গণ্য করা হয়।"}, {"q": "বাংলাদেশে বাল্যবিবাহের প্রধান কারণ কোনটি?", "opts": ["দারিদ্র্য", "শিক্ষার প্রসার", "প্রযুক্তির ব্যবহার", "যানজট"], "ans": 0, "exp": "বাংলাদেশে বাল্যবিবাহের প্রধান কারণ হচ্ছে দারিদ্র্য।"}, {"q": "দারিদ্র্য ছাড়াও নিচের কোনটি বাল্যবিবাহের একটি কারণ?", "opts": ["শিল্পের প্রসার", "নিরাপত্তার অভাব ও অভিভাবকের শখ", "উচ্চশিক্ষা", "চাকরির সুযোগ"], "ans": 1, "exp": "সমাজে নিরাপত্তার অভাব, বাবা-মা বা দাদি-নানির শখ এবং যৌতুক বাল্যবিবাহের কারণ।"}, {"q": "কখন একটি বিয়েকে বাল্যবিবাহ বলে গণ্য করা হয়?", "opts": ["শুধু বর ২১-এর কম হলে", "শুধু কনে ১৮-এর কম হলে", "বর ২১ বা কনে ১৮-এর কম হলে", "উভয়েই ৩০-এর বেশি হলে"], "ans": 2, "exp": "উভয়েই অথবা যেকোনো একজন আইন অনুমোদিত বয়সের চেয়ে কম হলেই তা বাল্যবিবাহ।"}, {"q": "বাল্যবিবাহের ফলে কোন হার বৃদ্ধি পায়?", "opts": ["শিক্ষার হার", "মাতৃমৃত্যু ও শিশুমৃত্যুর হার", "গড় আয়ু", "মাথাপিছু আয়"], "ans": 1, "exp": "কিশোরী মা পুষ্টিহীনতার শিকার হয়ে দুর্বল শিশু জন্ম দেয়, ফলে মাতৃমৃত্যু ও শিশুমৃত্যুর হার বৃদ্ধি পায়।"}, {"q": "বাল্যবিবাহ নিরোধ আইন-২০১৭ অনুযায়ী প্রাপ্তবয়স্ক ব্যক্তি এ অপরাধ করলে কত বছর কারাদণ্ড হয়?", "opts": ["১ বছর", "২ বছর", "৩ বছর", "৫ বছর"], "ans": 1, "exp": "বাল্যবিবাহ নিরোধ আইন-২০১৭ অনুযায়ী প্রাপ্তবয়স্ক ব্যক্তির ২ বছর কারাদণ্ড বা ১ লক্ষ টাকা অর্থদণ্ড বা উভয় দণ্ড হয়।"}, {"q": "২০১৭ সালের আইনে প্রাপ্তবয়স্ক ব্যক্তির অর্থদণ্ডের পরিমাণ কত?", "opts": ["২০ হাজার টাকা", "৫০ হাজার টাকা", "১ লক্ষ টাকা", "২ লক্ষ টাকা"], "ans": 2, "exp": "প্রাপ্তবয়স্ক ব্যক্তি বাল্যবিবাহ করলে ২ বছর কারাদণ্ড বা ১ লক্ষ টাকা অর্থদণ্ড বা উভয় দণ্ডে দণ্ডিত হবেন।"}, {"q": "অপ্রাপ্তবয়স্ক নারী বা পুরুষ বাল্যবিবাহ করলে ২০১৭ সালের আইনে কী শাস্তি হয়?", "opts": ["১ মাস কারাদণ্ড বা ৫০ হাজার টাকা জরিমানা", "১ বছর কারাদণ্ড", "৬ মাস কারাদণ্ড", "কোনো শাস্তি নেই"], "ans": 0, "exp": "অপ্রাপ্তবয়স্ক নারী বা পুরুষ বাল্যবিবাহ করলে ১ মাস কারাদণ্ড বা ৫০ হাজার টাকা জরিমানা বা উভয় দণ্ড হয়।"}, {"q": "পিতা-মাতা বা অভিভাবক বাল্যবিবাহ পরিচালনা করলে সর্বোচ্চ কত বছর কারাদণ্ড হতে পারে?", "opts": ["৬ মাস", "১ বছর", "২ বছর", "৩ বছর"], "ans": 2, "exp": "পিতা-মাতা, অভিভাবক বা পরিচালনাকারী সর্বোচ্চ ২ বছর কারাদণ্ড বা ৫০ হাজার টাকা জরিমানা বা উভয় দণ্ডে দণ্ডিত হবেন।"}, {"q": "বাল্যবিবাহ প্রতিরোধে সবচেয়ে গুরুত্বপূর্ণ ভূমিকা কে পালন করবে?", "opts": ["একটি আত্মনির্ভরশীল জাতি", "শুধু বিদেশি সংস্থা", "শুধু আদালত", "বড়ো ব্যবসায়ী"], "ans": 0, "exp": "ছেলেমেয়ে প্রত্যেকে নিজের পায়ে দাঁড়ালে অর্থাৎ একটি আত্মনির্ভরশীল জাতি বাল্যবিবাহ প্রতিরোধে গুরুত্বপূর্ণ ভূমিকা রাখবে।"}, {"q": "যৌতুকের পাশাপাশি বাল্যবিবাহ রোধে পরিবারের কী করণীয়?", "opts": ["সন্তানদের উপযুক্ত শিক্ষায় শিক্ষিত করা", "দ্রুত বিয়ে দেওয়া", "কথা না বলা", "শহরে চলে যাওয়া"], "ans": 0, "exp": "উপযুক্ত শিক্ষায় শিক্ষিত হলে তারা সচেতন হবে এবং বাল্যবিবাহের কুফল সম্পর্কে জানবে।"}], "ganmulok": [{"q": "যৌতুক কাকে বলে?", "a": "বিয়ের সময় বর বা কনে বিপরীত পক্ষের কাছ থেকে যে অর্থ বা সম্পত্তি দাবি করে ও গ্রহণ করে তাকেই যৌতুক বলে।"}, {"q": "প্রাচীন কোন দেশে যৌতুক গ্রহণকে সামাজিক মর্যাদা হিসেবে দেখা হতো?", "a": "প্রাচীন এথেন্সে (এবং প্রাচীন চীনেও কনে স্বামীর ঘরে যৌতুক নিয়ে যেত)।"}, {"q": "বাংলাদেশে যৌতুক প্রথার প্রধান কারণ কী?", "a": "বাংলাদেশে যৌতুক প্রথার প্রধান কারণ হচ্ছে দারিদ্র্য।"}, {"q": "যৌতুকের দুটি সামাজিক কুফল লেখো।", "a": "বিবাহিত নারীর ওপর নির্যাতন-সহিংসতা এবং বিবাহবিচ্ছেদ বা প্রাণহানির মতো ঘটনা ঘটে।"}, {"q": "বাংলাদেশে কত সালে যৌতুক নিরোধ আইন প্রণয়ন করা হয়?", "a": "১৯৮০ সালে বাংলাদেশে যৌতুক নিরোধ আইন প্রণয়ন করা হয়।"}, {"q": "১৯৮০ সালের যৌতুক নিরোধ আইনে শাস্তির বিধান কী ছিল?", "a": "সর্বোচ্চ ১ বছরের কারাদণ্ড বা ৫ হাজার টাকা অর্থদণ্ড অথবা উভয় দণ্ড।"}, {"q": "১৯৮৬ সালের সংশোধিত যৌতুক নিরোধ আইনে কী শাস্তির বিধান রাখা হয়েছে?", "a": "যৌতুক প্রদান বা গ্রহণ করলে অপরাধী সর্বনিম্ন ১ বছর এবং সর্বোচ্চ ৫ বছরের কারাদণ্ডে দণ্ডিত হবে।"}, {"q": "১৯৮৩ সালের নারী ও শিশু নির্যাতন দমন আইনে যৌতুকের কারণে মৃত্যু ঘটালে কী শাস্তি?", "a": "মৃত্যুদণ্ড বা যাবজ্জীবন কারাদণ্ড এবং অর্থদণ্ডের বিধান রাখা হয়েছে।"}, {"q": "সামাজিক আন্দোলন কী?", "a": "সামাজিক আন্দোলন হচ্ছে সংগঠিত সামাজিক প্রতিরোধ।"}, {"q": "কীভাবে নারীদের যৌতুকের অভিশাপ থেকে রক্ষা করা যায়?", "a": "কন্যাসন্তানসহ সবাইকে উচ্চতর শিক্ষায় শিক্ষিত ও আত্মনির্ভরশীল করে তোলার মাধ্যমে।"}, {"q": "বাল্যবিবাহ কাকে বলে?", "a": "যে বিয়েতে বর ও কনে উভয়ই শিশু অথবা বর ও কনের মধ্যে যেকোনো একজন শিশু, তাকে বাল্যবিবাহ বলে।"}, {"q": "আইন অনুযায়ী শিশু বলতে কত বছর বয়সীদের বোঝায়?", "a": "১৮ বছরের কম বয়সী মেয়ে এবং ২১ বছরের কম বয়সী ছেলেকে শিশু বোঝায়।"}, {"q": "বাংলাদেশে বাল্যবিবাহের প্রধান কারণ কী?", "a": "বাংলাদেশে বাল্যবিবাহের প্রধান কারণ হচ্ছে দারিদ্র্য।"}, {"q": "দারিদ্র্য ছাড়া বাল্যবিবাহের দুটি কারণ উল্লেখ করো।", "a": "সমাজে নিরাপত্তার অভাব এবং বাবা-মা বা দাদি-নানির শখ (এছাড়া যৌতুকও অন্যতম কারণ)।"}, {"q": "বাল্যবিবাহের দুটি ক্ষতিকর প্রভাব লেখো।", "a": "কিশোরী মা পুষ্টিহীনতার শিকার হয়ে দুর্বল শিশুর জন্ম দেয় এবং মাতৃমৃত্যু ও শিশুমৃত্যুর হার বৃদ্ধি পায়।"}, {"q": "কত সালে সর্বশেষ বাল্যবিবাহ নিরোধ আইন প্রণীত হয়?", "a": "২০১৭ সালে (বাল্যবিবাহ নিরোধ আইন-২০১৭)।"}, {"q": "বাল্যবিবাহ নিরোধ আইন-২০১৭ অনুযায়ী প্রাপ্তবয়স্ক ব্যক্তির শাস্তি কী?", "a": "২ বছর কারাদণ্ড বা ১ লক্ষ টাকা অর্থদণ্ড অথবা উভয় দণ্ড।"}, {"q": "২০১৭ সালের আইনে অপ্রাপ্তবয়স্ক নারী বা পুরুষ বাল্যবিবাহ করলে কী শাস্তি?", "a": "১ মাস কারাদণ্ড বা ৫০ হাজার টাকা জরিমানা অথবা উভয় দণ্ড।"}, {"q": "পিতা-মাতা বা অভিভাবক বাল্যবিবাহ পরিচালনা করলে ২০১৭ সালের আইনে শাস্তি কী?", "a": "সর্বোচ্চ ২ বছর কারাদণ্ড বা ৫০ হাজার টাকা জরিমানা অথবা উভয় দণ্ড।"}, {"q": "বাল্যবিবাহ প্রতিরোধে শিক্ষার ভূমিকা কী?", "a": "শিশু-কিশোররা শিক্ষিত হলে তারা সচেতন হয়, বাল্যবিবাহের কুফল বুঝতে পারে এবং নিজের পায়ে দাঁড়িয়ে এটি প্রতিরোধ করতে পারে।"}]}, {"id": "ch9", "number": "নবম অধ্যায়", "title": "বাংলাদেশে প্রবীণ ও নারীর অধিকার", "shortTitle": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার", "icon": "🤝", "desc": "প্রবীণদের অধিকার ও সমস্যা, কল্যাণমূলক কার্যক্রম, নারীর অবস্থান, অধিকার ও সরকারি পদক্ষেপ", "summaries": [{"title": "পাঠ ১: প্রবীণ অধিকারের ধারণা ও অধিকারসমূহ", "points": ["অধিকার হলো সমাজ ও রাষ্ট্র কর্তৃক স্বীকৃত সুযোগ-সুবিধা। জাতিসংঘ ১৯৪৮ সালের ১০ই ডিসেম্বর 'মানবাধিকারের সার্বজনীন ঘোষণাপত্র' প্রকাশ করে।", "আমাদের দেশে সাধারণত ষাটোর্ধ্ব (৬০ বছর বা তার বেশি) বয়সের মানুষকে প্রবীণ বলে গণ্য করা হয়।", "বাংলাদেশে সরকারি চাকরি থেকে অবসরের বয়স ৫৯ বছর, বিচারপতিদের জন্য ৬৭ বছর এবং বিশ্ববিদ্যালয়ের শিক্ষক ও কিছু পেশাজীবীদের জন্য ৬৫ বছর।", "জাতিসংঘ প্রতি বছরের ১ অক্টোবরকে 'আন্তর্জাতিক প্রবীণ দিবস' হিসেবে ঘোষণা করেছে।", "প্রবীণদের অধিকারগুলো প্রধানত চার ধরনের: স্বাধীনতা সংশ্লিষ্ট, অংশগ্রহণ সংশ্লিষ্ট, পরিচর্যা সংশ্লিষ্ট এবং উন্নয়ন ও মর্যাদা সংশ্লিষ্ট অধিকার।"]}, {"title": "পাঠ ২: প্রবীণদের সমস্যা", "points": ["পারিবারিক সমস্যা: শিল্পায়ন ও নগরায়ণের ফলে একান্নবর্তী পরিবার ভেঙে ছোটো পরিবার হচ্ছে, ফলে প্রবীণরা নিঃসঙ্গ ও বিমর্ষ বোধ করেন এবং সেবার অভাব দেখা দেয়।", "অর্থনৈতিক সমস্যা: আয়-রোজগারের সুযোগ না থাকা ও সম্পত্তি বণ্টনের কারণে অনেক প্রবীণ সন্তানদের ওপর নির্ভরশীল হয়ে অসহায় হয়ে পড়েন।", "শারীরিক সমস্যা: বার্ধক্যে শারীরিক শক্তি কমে আসে, নানা রোগব্যাধি বাসা বাঁধে কিন্তু প্রয়োজনীয় চিকিৎসা ও ওষুধ কেনার সামর্থ্য অনেকের থাকে না।", "সামাজিক-সাংস্কৃতিক ও মনস্তাত্ত্বিক সমস্যা: মূল্যবোধের অবক্ষয় ও আত্মকেন্দ্রিকতায় প্রবীণদের মতামতকে গুরুত্ব দেওয়া হয় না; ফলে তাদের মধ্যে হীনম্মন্যতা ও স্মৃতিবিভ্রম দেখা দেয়।"]}, {"title": "পাঠ ৩: বাংলাদেশে প্রবীণদের কল্যাণমূলক কার্যক্রম", "points": ["বর্তমানে বাংলাদেশে প্রবীণদের সংখ্যা প্রায় এক কোটি। বিশ্বের ৫০টিরও বেশি দেশের মোট জনসংখ্যা এর চেয়ে কম।", "বেসরকারি প্রতিষ্ঠান: ঢাকার শেরেবাংলা নগরে অবস্থিত 'প্রবীণ হিতৈষী সংঘ ও জরাবিজ্ঞান প্রতিষ্ঠান' স্বাস্থ্যসেবা, পুনর্বাসন ও পাঠাগার সেবা দেয়। 'বাংলাদেশ অবসরপ্রাপ্ত সরকারি কল্যাণ সমিতি' বিনা সুদে ঋণ দেয়।", "সরকারি কার্যক্রম: (১) অবসর ভাতা (পেনশন), (২) বয়স্ক ভাতা—মহিলাদের সর্বনিম্ন বয়স ৬২ বছর ও পুরুষদের ৬৫ বছর, প্রতি মাসে ৬৫০ টাকা হারে ভাতা দেওয়া হয়, (৩) বিধবা ও স্বামী নিগৃহীতা ভাতা (বয়সের বাধ্যবাধকতা নেই)।", "সরকার 'পিতা-মাতার ভরণ-পোষণ আইন, ২০১৩' প্রণয়ন করেছে; এতে পিতার অবর্তমানে দাদা-দাদীকে এবং মাতার অবর্তমানে নানা-নানীকেও ভরণ-পোষণের বাধ্যবাধকতা রয়েছে।"]}, {"title": "পাঠ ৪ ও ৫: নারী অধিকার, অবস্থান ও গুরুত্ব", "points": ["নারী অধিকার মানবাধিকার। সমাজে নারী-পুরুষ সমান অধিকার নিশ্চিত না হওয়ার প্রধান কারণ হলো নারী অধিকার সম্পর্কে আমাদের অজ্ঞতা।", "বাংলাদেশের মোট জনসংখ্যার প্রায় অর্ধেক নারী। নারী অধিকার প্রতিষ্ঠার অগ্রদূত বেগম রোকেয়া সমাজের নারী ও পুরুষকে একটি গাড়ির দুটি চাকার সাথে তুলনা করেছেন।", "ফরাসি সেনাপতি ও রাষ্ট্রনায়ক নেপোলিয়ন বোনাপার্ট বলেছেন, 'আমাকে একজন শিক্ষিত মা দাও, আমি তোমাদেরকে একটি সভ্য, শিক্ষিত জাতি উপহার দেওয়ার প্রতিশ্রুতি দিব।'", "নারীর অধিকারের মধ্যে রয়েছে জাতীয় জীবনের সর্বস্তরে অংশগ্রহণ, আইনের চোখে সমতা, শিক্ষাপ্রতিষ্ঠান ও সরকারি চাকরিতে সমান সুযোগ এবং ব্যক্তিস্বাধীনতা।"]}, {"title": "পাঠ ৬: নারী অধিকার প্রতিষ্ঠায় সরকারি পদক্ষেপসমূহ", "points": ["উচ্চ মাধ্যমিক শ্রেণি পর্যন্ত মেয়েদের বিনা বেতনে লেখাপড়ার সুযোগ এবং উপবৃত্তির ব্যবস্থা করা হয়েছে।", "সন্তানের পরিচয় নির্ধারণে পূর্বে শুধু বাবার নাম লেখার নিয়ম থাকলেও বর্তমানে মায়ের নাম লেখা বাধ্যতামূলক করা হয়েছে।", "নারী নির্যাতন ও অ্যাসিড সন্ত্রাস রোধে সরকার কঠোর আইন প্রবর্তন করেছে।", "কর্মস্থলে নারীর মাতৃত্বকালীন ছুটির সময় বাড়িয়ে ৬ মাস করা হয়েছে।"]}], "mcqs": [{"q": "জাতিসংঘ কত সালে মানবাধিকারের সার্বজনীন ঘোষণাপত্র প্রকাশ করে?", "opts": ["১৯৪৫ সালে", "১৯৪৮ সালে", "১৯৫২ সালে", "১৯৭৪ সালে"], "ans": 1, "exp": "জাতিসংঘ ১৯৪৮ সালের ১০ই ডিসেম্বর মানবাধিকারের সার্বজনীন ঘোষণাপত্র প্রকাশ করে।"}, {"q": "আমাদের দেশে সাধারণত কত বছর বয়সের মানুষকে প্রবীণ বলে গণ্য করা হয়?", "opts": ["৫০ বছর", "৫৫ বছর", "ষাটোর্ধ্ব (৬০ বছর+)", "৭০ বছর"], "ans": 2, "exp": "আমাদের দেশে সাধারণত ষাটোর্ধ্ব বয়সের মানুষকে প্রবীণ বলে গণ্য করা হয়।"}, {"q": "বাংলাদেশে সরকারি চাকরি থেকে অবসরের বয়স কত?", "opts": ["৫৭ বছর", "৫৯ বছর", "৬০ বছর", "৬৫ বছর"], "ans": 1, "exp": "বাংলাদেশে সরকারি চাকরি থেকে অবসরের বয়স ৫৯ বছর।"}, {"q": "বাংলাদেশে বিচারপতিদের অবসরের বয়সসীমা কত বছর?", "opts": ["৫৯ বছর", "৬২ বছর", "৬৫ বছর", "৬৭ বছর"], "ans": 3, "exp": "বিচারপতিদের জন্য অবসরের বয়স ৬৭ বছর এবং বিশ্ববিদ্যালয়ের শিক্ষকদের জন্য ৬৫ বছর।"}, {"q": "বিশ্ববিদ্যালয়ের শিক্ষক ও কিছু পেশাজীবীদের অবসরের বয়সসীমা কত?", "opts": ["৫৯ বছর", "৬২ বছর", "৬৫ বছর", "৬৭ বছর"], "ans": 2, "exp": "বিশ্ববিদ্যালয়ের শিক্ষক ও কোনো কোনো পেশাজীবীদের জন্য অবসরের সীমা ৬৫ বছর।"}, {"q": "কত তারিখে 'আন্তর্জাতিক প্রবীণ দিবস' পালিত হয়?", "opts": ["১ অক্টোবর", "১০ ডিসেম্বর", "২৪ অক্টোবর", "৮ মার্চ"], "ans": 0, "exp": "জাতিসংঘ প্রতি বছরের ১ অক্টোবরকে 'আন্তর্জাতিক প্রবীণ দিবস' হিসেবে ঘোষণা করেছে।"}, {"q": "কোনটি প্রবীণদের স্বাধীনতা সংশ্লিষ্ট অধিকার?", "opts": ["নীতি নির্ধারণে অংশগ্রহণ", "পর্যাপ্ত খাদ্য, আশ্রয় ও স্বাস্থ্যসেবা", "সংগঠন গড়ে তোলা", "আশ্রয়কেন্দ্রে সেবা"], "ans": 1, "exp": "পর্যাপ্ত খাদ্য, পানীয়, আশ্রয়, বস্ত্র, স্বাস্থ্যসেবা ও আয়-উপার্জনের অধিকার স্বাধীনতা সংশ্লিষ্ট অধিকার।"}, {"q": "প্রবীণদের পারিবারিক সমস্যার মূল কারণ কী?", "opts": ["একান্নবর্তী পরিবার ভেঙে ছোটো পরিবার হওয়া", "জনসংখ্যা বৃদ্ধি", "শিক্ষার হার বৃদ্ধি", "চাকরির সুযোগ"], "ans": 0, "exp": "শিল্পায়ন ও নগরায়ণের ফলে একান্নবর্তী পরিবার ভেঙে ছোটো পরিবারে পরিণত হওয়ায় প্রবীণরা নিঃসঙ্গ হচ্ছেন।"}, {"q": "সমাজে ও পরিবারে প্রবীণদের কোণঠাসা অবস্থা তাদের মধ্যে কীসের জন্ম দেয়?", "opts": ["উৎসাহের", "হীনম্মন্যতার", "অহংকারের", "সাহসের"], "ans": 1, "exp": "কোণঠাসা অবস্থা প্রবীণদের মধ্যে হীনম্মন্যতার জন্ম দেয় এবং স্মৃতিবিভ্রম বাড়তি সমস্যা সৃষ্টি করে।"}, {"q": "বর্তমানে বাংলাদেশে প্রবীণদের সংখ্যা প্রায় কত?", "opts": ["৫০ লক্ষ", "এক কোটি", "দুই কোটি", "তিন কোটি"], "ans": 1, "exp": "বর্তমানে বাংলাদেশে প্রবীণদের সংখ্যা প্রায় এক কোটি।"}, {"q": "প্রবীণ হিতৈষী সংঘ ও জরাবিজ্ঞান প্রতিষ্ঠান ঢাকার কোথায় অবস্থিত?", "opts": ["মতিঝিল", "উত্তরা", "শেরেবাংলা নগর", "ধানমন্ডি"], "ans": 2, "exp": "প্রবীণ হিতৈষী সংঘ ও জরাবিজ্ঞান প্রতিষ্ঠান ঢাকার শেরেবাংলা নগরে অবস্থিত।"}, {"q": "কোন প্রতিষ্ঠান প্রবীণদের বিনা সুদে ঋণ প্রদান করে থাকে?", "opts": ["রোটারি ক্লাব", "বাংলাদেশ অবসরপ্রাপ্ত সরকারি কল্যাণ সমিতি", "ঝরাপাতা", "মা ও শিশু নিবাস"], "ans": 1, "exp": "বাংলাদেশ অবসরপ্রাপ্ত সরকারি কল্যাণ সমিতি প্রবীণদের স্বাস্থ্য, শিক্ষা অনুদানসহ বিনা সুদে ঋণ দেয়।"}, {"q": "বয়স্ক ভাতা পেতে হলে মহিলাদের সর্বনিম্ন বয়স কত হতে হয়?", "opts": ["৫৯ বছর", "৬০ বছর", "৬২ বছর", "৬৫ বছর"], "ans": 2, "exp": "বয়স্ক ভাতার ক্ষেত্রে সর্বনিম্ন বয়স মহিলাদের ৬২ বছর এবং পুরুষদের ৬৫ বছর।"}, {"q": "বয়স্ক ভাতা পেতে হলে পুরুষদের সর্বনিম্ন বয়স কত?", "opts": ["৫৯ বছর", "৬২ বছর", "৬৫ বছর", "৬৭ বছর"], "ans": 2, "exp": "বয়স্ক ভাতার ক্ষেত্রে পুরুষদের সর্বনিম্ন বয়স ৬৫ বছর।"}, {"q": "পাঠ্যবই অনুযায়ী বয়স্ক ভাতা প্রতি মাসে কত টাকা হারে প্রদান করা হয়?", "opts": ["৫০০ টাকা", "৬৫০ টাকা", "১০০০ টাকা", "১২০০ টাকা"], "ans": 1, "exp": "দেশের সকল ইউনিয়নের ওয়ার্ডের অসহায় বয়োজ্যেষ্ঠদের প্রতি মাসে ৬৫০ টাকা হারে বয়স্ক ভাতা দেওয়া হয়।"}, {"q": "কোন ভাতা প্রাপ্তির ক্ষেত্রে বয়সের কোনো বাধ্যবাধকতা নেই?", "opts": ["বয়স্ক ভাতা", "অবসর ভাতা", "বিধবা ও স্বামী নিগৃহীতা ভাতা", "মুক্তিযোদ্ধা ভাতা"], "ans": 2, "exp": "বিধবা ও স্বামী নিগৃহীতা মহিলাদের ভাতা প্রাপ্তির ক্ষেত্রে বয়সের কোনো বাধ্যবাধকতা নেই।"}, {"q": "কত সালে পিতা-মাতার ভরণ-পোষণ আইন প্রণয়ন করা হয়?", "opts": ["২০১০ সালে", "২০১৩ সালে", "২০১৫ সালে", "২০১৭ সালে"], "ans": 1, "exp": "প্রবীণদের অধিকার নিশ্চিত করতে সরকার পিতা-মাতার ভরণ-পোষণ আইন, ২০১৩ প্রণয়ন করেছে।"}, {"q": "পিতা-মাতার ভরণ-পোষণ আইনে পিতার অবর্তমানে কাকে ভরণ-পোষণের বাধ্যবাধকতা আছে?", "opts": ["চাচা-চাচী", "মামা-মামী", "দাদা-দাদী", "প্রতিবেশী"], "ans": 2, "exp": "আইনে পিতার অবর্তমানে দাদা-দাদীকে এবং মাতার অবর্তমানে নানা-নানীকে ভরণ-পোষণের বাধ্যবাধকতা রয়েছে।"}, {"q": "মানবাধিকারের সার্বজনীন ঘোষণাপত্র জাতিসংঘ কত তারিখে অনুমোদন করে?", "opts": ["১০ই ডিসেম্বর ১৯৪৮", "২৪শে অক্টোবর ১৯৪৫", "১লা অক্টোবর ১৯৯০", "১৫ই আগস্ট ১৯৪৭"], "ans": 0, "exp": "জাতিসংঘ ১৯৪৮ সালের ১০ই ডিসেম্বর মানবাধিকারের সার্বজনীন ঘোষণাপত্র অনুমোদন করে।"}, {"q": "বাস্তবে নারী-পুরুষ সমান অধিকার নিশ্চিত না হওয়ার প্রধান কারণ কী?", "opts": ["আইনের অভাব", "নারী অধিকার সম্পর্কে আমাদের অজ্ঞতা", "অর্থনৈতিক সংকট", "জনসংখ্যা কম হওয়া"], "ans": 1, "exp": "বাস্তবে নারী-পুরুষ সমান অধিকার নিশ্চিত না হওয়ার প্রধান কারণ হলো নারী অধিকার সম্পর্কে আমাদের অজ্ঞতা।"}, {"q": "বাংলাদেশের মোট জনসংখ্যার প্রায় কত অংশ নারী?", "opts": ["এক-তৃতীয়াংশ", "প্রায় অর্ধেক", "এক-চতুর্থাংশ", "তিন-চতুর্থাংশ"], "ans": 1, "exp": "বাংলাদেশে মোট জনসংখ্যার প্রায় অর্ধেক হলো নারী।"}, {"q": "নারী অধিকার প্রতিষ্ঠার অগ্রদূত বেগম রোকেয়া নারী ও পুরুষকে কীসের সাথে তুলনা করেছেন?", "opts": ["দুটি নদীর", "একটি গাড়ির দুটি চাকার", "দুটি পাহাড়ের", "একটি গাছের দুটি ডালের"], "ans": 1, "exp": "বেগম রোকেয়া সমাজের নারী ও পুরুষকে একটি গাড়ির দুটি চাকার সাথে তুলনা করেছেন।"}, {"q": "'আমাকে একজন শিক্ষিত মা দাও, আমি তোমাদেরকে একটি সভ্য, শিক্ষিত জাতি উপহার দেওয়ার প্রতিশ্রুতি দিব'—উক্তিটি কার?", "opts": ["বেগম রোকেয়া", "আব্রাহাম লিংকন", "নেপোলিয়ন বোনাপার্ট", "উইনস্টন চার্চিল"], "ans": 2, "exp": "ফরাসি সেনাপতি ও রাষ্ট্রনায়ক নেপোলিয়ন বোনাপার্ট এই বিখ্যাত উক্তিটি করেছেন।"}, {"q": "গ্রামাঞ্চলে ভালো ছাত্রী হয়েও মেয়েরা কেন উচ্চশিক্ষার সুযোগ পায় না?", "opts": ["স্কুল না থাকায়", "কম বয়সে বিয়ে দেওয়ার কারণে", "বইয়ের অভাবে", "আগ্রহ না থাকায়"], "ans": 1, "exp": "বিশেষ করে গ্রামাঞ্চলে কম বয়সে মেয়েদের বিয়ে দেওয়া হয় বলে তারা মাধ্যমিক স্তরের বেশি পড়তে পারে না।"}, {"q": "কোন শ্রেণি পর্যন্ত মেয়েদের বিনা বেতনে লেখাপড়ার সুযোগ দেওয়া হয়েছে?", "opts": ["প্রাথমিক", "নিম্ন মাধ্যমিক", "উচ্চ মাধ্যমিক", "স্নাতক"], "ans": 2, "exp": "উচ্চ মাধ্যমিক শ্রেণি পর্যন্ত মেয়েদের বিনা বেতনে লেখাপড়ার সুযোগ ও উপবৃত্তির ব্যবস্থা করা হয়েছে।"}, {"q": "সন্তানের পরিচয় নির্ধারণে বর্তমানে কী বাধ্যতামূলক করা হয়েছে?", "opts": ["দাদার নাম", "মায়ের নাম লেখা", "গ্রামের নাম", "রক্তের গ্রুপ"], "ans": 1, "exp": "পূর্বে শুধু বাবার নাম লেখার নিয়ম ছিল, বর্তমানে সন্তানের পরিচয়ে মায়ের নাম লেখা বাধ্যতামূলক করা হয়েছে।"}, {"q": "কর্মস্থলে নারীর মাতৃত্বকালীন ছুটির সময় বাড়িয়ে কত মাস করা হয়েছে?", "opts": ["৩ মাস", "৪ মাস", "৬ মাস", "৮ মাস"], "ans": 2, "exp": "কর্মস্থলে নারীর মাতৃত্বকালীন ছুটির সময় বাড়িয়ে ৬ মাস করা হয়েছে।"}, {"q": "নারী নির্যাতন ও কী রোধে সরকার কঠোর আইন প্রবর্তন করেছে?", "opts": ["যানজট", "অ্যাসিড সন্ত্রাস", "দূষণ", "বেকারত্ব"], "ans": 1, "exp": "নারী নির্যাতন ও অ্যাসিড সন্ত্রাস রোধে সরকার কঠোর আইন প্রবর্তন করেছে।"}, {"q": "বাংলাদেশের সংবিধান ও সরকারি চাকরির ক্ষেত্রে নারী-পুরুষের অবস্থান কেমন?", "opts": ["পুরুষের অগ্রাধিকার", "সমান অধিকার", "নারীর কম সুযোগ", "নির্দিষ্ট নয়"], "ans": 1, "exp": "সরকারি চাকরি লাভে ও আইনের চোখে নারী-পুরুষের অধিকার সমান।"}, {"q": "বাংলাদেশের নারীরা যে অধিকার সম্পর্কে সচেতন হচ্ছে তার বড় প্রমাণ কী?", "opts": ["বিদেশে ভ্রমণ", "বিভিন্ন সভা-সমিতি, সংগঠন ও আন্দোলনে অংশগ্রহণ", "শুধু ঘরে থাকা", "কম কথা বলা"], "ans": 1, "exp": "বিভিন্ন সভা-সমিতি-সংগঠন ও আন্দোলনে নারীদের অংশগ্রহণই তাদের সচেতনতার বড় প্রমাণ।"}], "ganmulok": [{"q": "অধিকার কাকে বলে?", "a": "অধিকার হলো সমাজ ও রাষ্ট্র কর্তৃক স্বীকৃত কতগুলো সুযোগ-সুবিধা, যা ভোগের মাধ্যমে নাগরিকের ব্যক্তিত্বের বিকাশ ঘটে।"}, {"q": "জাতিসংঘ কত সালের কত তারিখে মানবাধিকারের সার্বজনীন ঘোষণাপত্র প্রকাশ করে?", "a": "১৯৪৮ সালের ১০ই ডিসেম্বর।"}, {"q": "আমাদের দেশে কাদেরকে প্রবীণ বলে গণ্য করা হয়?", "a": "সাধারণত ষাটোর্ধ্ব (৬০ বছর বা তদূর্ধ্ব) বয়সের মানুষকে প্রবীণ বলে গণ্য করা হয়।"}, {"q": "বাংলাদেশে সরকারি চাকরি, বিশ্ববিদ্যালয়ের শিক্ষক ও বিচারপতিদের অবসরের বয়স কত?", "a": "সরকারি চাকরিতে ৫৯ বছর, বিশ্ববিদ্যালয়ের শিক্ষকদের ৬৫ বছর এবং বিচারপতিদের ৬৭ বছর।"}, {"q": "আন্তর্জাতিক প্রবীণ দিবস কবে পালিত হয়?", "a": "প্রতি বছরের ১ অক্টোবর।"}, {"q": "প্রবীণদের দুটি স্বাধীনতা সংশ্লিষ্ট অধিকার লেখো।", "a": "পর্যাপ্ত খাদ্য, পানীয়, আশ্রয়, বস্ত্র ও স্বাস্থ্যসেবা পাওয়ার অধিকার এবং আয়-উপার্জন করার অধিকার।"}, {"q": "প্রবীণদের পারিবারিক সমস্যার মূল কারণ কী?", "a": "শিল্পায়ন ও নগরায়ণের ফলে একান্নবর্তী পরিবার ভেঙে ছোটো পরিবারে পরিণত হওয়া।"}, {"q": "বাংলাদেশে প্রবীণদের সংখ্যা প্রায় কত?", "a": "প্রায় এক কোটি (যা বিশ্বের ৫০টিরও বেশি দেশের মোট জনসংখ্যার চেয়ে বেশি)।"}, {"q": "প্রবীণ হিতৈষী সংঘ ও জরাবিজ্ঞান প্রতিষ্ঠান কোথায় অবস্থিত?", "a": "ঢাকার শেরেবাংলা নগরে অবস্থিত।"}, {"q": "কোন প্রতিষ্ঠান প্রবীণদের বিনা সুদে ঋণ প্রদান করে?", "a": "বাংলাদেশ অবসরপ্রাপ্ত সরকারি কল্যাণ সমিতি।"}, {"q": "বয়স্ক ভাতা পাওয়ার সর্বনিম্ন বয়স ও ভাতার পরিমাণ কত?", "a": "মহিলাদের ক্ষেত্রে ৬২ বছর ও পুরুষদের ক্ষেত্রে ৬৫ বছর; প্রতি মাসে ৬৫০ টাকা হারে।"}, {"q": "পিতা-মাতার ভরণ-পোষণ আইন কত সালে প্রণীত হয়?", "a": "২০১৩ সালে (পিতার অবর্তমানে দাদা-দাদী ও মাতার অবর্তমানে নানা-নানীকেও ভরণ-পোষণের বিধান আছে)।"}, {"q": "নারী অধিকার কী?", "a": "নারী অধিকার হলো নারীর জন্য প্রদত্ত সেই সমস্ত সুযোগ-সুবিধা, যা রাষ্ট্র কর্তৃক স্বীকৃত।"}, {"q": "বাস্তবে নারী-পুরুষের সমান অধিকার নিশ্চিত না হওয়ার প্রধান কারণ কী?", "a": "নারী অধিকার সম্পর্কে আমাদের অজ্ঞতা।"}, {"q": "বেগম রোকেয়া সমাজের নারী ও পুরুষকে কীসের সাথে তুলনা করেছেন?", "a": "একটি গাড়ির দুটি চাকার সাথে (দুটি চাকা সমানতালে না চললে গাড়ি যেমন থেমে যাবে, নারী পিছিয়ে থাকলে সমাজও পিছিয়ে যাবে)।"}, {"q": "'আমাকে একজন শিক্ষিত মা দাও, আমি তোমাদেরকে একটি সভ্য, শিক্ষিত জাতি উপহার দেওয়ার প্রতিশ্রুতি দিব'—কার উক্তি?", "a": "ফরাসি সেনাপতি ও রাষ্ট্রনায়ক নেপোলিয়ন বোনাপার্টের।"}, {"q": "বাংলাদেশে নারীর দুটি সাংবিধানিক বা মৌলিক অধিকার লেখো।", "a": "আইনের চোখে সমান আশ্রয় লাভের অধিকার এবং সরকারি চাকরি লাভে সমান অধিকার।"}, {"q": "মেয়েদের শিক্ষার প্রসারে সরকার কী ব্যবস্থা নিয়েছে?", "a": "উচ্চ মাধ্যমিক শ্রেণি পর্যন্ত বিনা বেতনে লেখাপড়ার সুযোগ ও উপবৃত্তির ব্যবস্থা।"}, {"q": "সন্তানের পরিচয় নির্ধারণে সরকার কী নতুন নিয়ম চালু করেছে?", "a": "পূর্বে শুধু বাবার নাম লেখার নিয়ম থাকলেও বর্তমানে মায়ের নাম লেখা বাধ্যতামূলক করা হয়েছে।"}, {"q": "কর্মস্থলে নারীর মাতৃত্বকালীন ছুটি বাড়িয়ে কত মাস করা হয়েছে?", "a": "৬ মাস করা হয়েছে।"}]}, {"id": "ch10", "number": "দশম অধ্যায়", "title": "এশিয়ার কয়েকটি দেশ", "shortTitle": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ", "icon": "🌏", "desc": "বাংলাদেশের সাথে ভারত, চীন, জাপান, কোরিয়া ও মালয়েশিয়ার পরিচিতি, অর্থনীতি ও বন্ধুত্বের সম্পর্ক", "summaries": [{"title": "পাঠ ১ (ক): ভারত — পরিচয় ও বাংলাদেশের সাথে সম্পর্ক", "points": ["ভারত বাংলাদেশের নিকটতম প্রতিবেশী ও দক্ষিণ এশিয়ার একটি বৃহৎ রাষ্ট্র। এর রাজধানী নয়াদিল্লি।", "আয়তন ৩২ লক্ষ ৮৭ হাজার ২৪০ বর্গ কি.মি. এবং লোকসংখ্যা ১৪৪ কোটি ১৭ লক্ষ। উত্তরে হিমালয় পর্বতমালা ও দক্ষিণে ভারত মহাসাগর।", "ইংরেজদের দু'শ বছরের শাসনের পর ১৯৪৭ সালের ১৫ই আগস্ট ভারত স্বাধীনতা লাভ করে।", "ভারত পৃথিবীর বৃহত্তম গণতান্ত্রিক দেশ। এর প্রায় ৭০% লোক গ্রামে ও ৩০% লোক শহরে বাস করে।", "প্রাচীন নিদর্শন: অজন্তা পর্বতগুহার চিত্রকর্ম, আগ্রার তাজমহল, দিল্লির কুতুব মিনার ও লালকেল্লা। ভারতের সাথে বাংলাদেশের বাণিজ্য ও বন্ধুত্বপূর্ণ সম্পর্ক রয়েছে।"]}, {"title": "পাঠ ১ (খ): চীন — পরিচয়, অর্থনীতি ও সম্পর্ক", "points": ["চীন পূর্ব-এশিয়ার দেশ; রাষ্ট্রীয় নাম 'গণপ্রজাতন্ত্রী চীন' এবং স্থানীয় নাম 'ঝুংগুয়া'। রাজধানী বেইজিং।", "আয়তন প্রায় ৯৫ লক্ষ ৯৮ হাজার ৮৯ বর্গ কি.মি. (আয়তনের দিক থেকে বিশ্বের তৃতীয় বৃহত্তম দেশ) এবং জনসংখ্যা ১৪২ কোটি ৫২ লক্ষ।", "বিশ্বের সর্বোচ্চ শৃঙ্গ মাউন্ট এভারেস্ট নেপাল ও চীনের সীমান্ত বরাবর অবস্থিত। হোয়াংহো ও ইয়াংসি চীনের বৃহত্তম নদী।", "জনসংখ্যার ৯৫% হান চাইনিজ ও ৯৫% মান্দারিন (চীনা) ভাষায় কথা বলে; এছাড়াও আরও ৫৬টি জাতি বাস করে।", "চীন ২২টি প্রদেশ ও ৫টি স্বায়ত্তশাসিত অঞ্চলে বিভক্ত। শিক্ষার হার ৯৭%। বাংলাদেশের সাথে শিল্প, বাণিজ্য ও বিনিয়োগে চীনের সহযোগিতার সম্পর্ক রয়েছে।"]}, {"title": "পাঠ ২ (ক): জাপান — সূর্যোদয়ের দেশ", "points": ["জাপান পূর্ব এশিয়ার একটি দ্বীপময় দেশ; ছোটো-বড়ো প্রায় ৪ হাজার দ্বীপ নিয়ে গঠিত। প্রধান ৪টি দ্বীপ: হোক্কাইডো, হনসু, শিকোকু এবং কিউশু।", "রাষ্ট্রীয় নাম 'কিংডম অব জাপান' ও স্থানীয় নাম 'নিহন' বা 'নিপ্পন'। রাজধানী টোকিও। জাপানকে 'সূর্যোদয়ের দেশ' বলা হয়।", "আয়তন ৩ লক্ষ ৭৭ হাজার ৭০৮ বর্গ কি.মি., লোকসংখ্যা ১২ কোটি ২৬ লক্ষ। ৯৯% মানুষ জাপানি ভাষায় কথা বলে।", "জাপানের শিক্ষার হার ১০০% (৬-১৫ বছর পর্যন্ত শিক্ষা বাধ্যতামূলক), মাথাপিছু আয় ৩৩,৯৫৬ মার্কিন ডলার এবং জাতিগত ধর্ম 'সিন্টো'।", "শিল্পে জাপান বিশ্বের শীর্ষস্থানে আছে। বাংলাদেশের রাস্তা-ব্রিজ নির্মাণ ও শিল্প উন্নয়নে জাপান প্রধান সহযোগী।"]}, {"title": "পাঠ ২ (খ): কোরিয়া — উপদ্বীপ ও সম্পর্ক", "points": ["এশিয়া মহাদেশের উত্তর-পূর্ব কোণে কোরিয়ান উপদ্বীপের অবস্থান; দুই অংশ মিলে দ্বীপের সংখ্যা প্রায় তিন হাজার।", "দ্বিতীয় বিশ্বযুদ্ধের পর কোরিয়া দুই ভাগে বিভক্ত হয়: দক্ষিণ কোরিয়া (কোরিয়া প্রজাতন্ত্র) ও উত্তর কোরিয়া (গণপ্রজাতন্ত্রী কোরিয়া)।", "কোরিয়ানরা জাতিগতভাবে একটি ভাষাগোষ্ঠীর—সবাই একই কোরিয়ান ভাষায় কথা বলে ও লেখে।", "প্রধান শিল্প পণ্য: রাসায়নিক পণ্য, যন্ত্রপাতি, জাহাজ ও মোটরগাড়ি, ইলেকট্রনিক্স সামগ্রী।", "দক্ষিণ কোরিয়া বাংলাদেশকে রাস্তা-ঘাট, ব্রিজ নির্মাণ ও শিল্প-উন্নয়নে যথেষ্ট সহযোগিতা করে আসছে।"]}, {"title": "পাঠ ২ (গ): মালয়েশিয়া — পরিচয় ও শ্রমবাজার", "points": ["মালয়েশিয়া দক্ষিণ-পূর্ব এশিয়ার দেশ; এটি ১৩টি প্রদেশ ও ৩টি ফেডারেল অঞ্চল নিয়ে গঠিত।", "রাজধানী কুয়ালালামপুর। অন্যান্য প্রধান শহর ও সমুদ্রবন্দর: জর্জটাউন, মালাক্কা, জহর বারু, পেনাং, ইপো এবং কুচিং।", "অর্থনীতি প্রধানত শিল্প ও সেবাখাত নির্ভর। প্রধান শিল্পপণ্য: রাবার, সার, চীনামাটির দ্রব্য; খনিজ সম্পদ: টিন, লোহা ও পেট্রোল।", "বাংলাদেশের বিভিন্ন EPZ-এ মালয়েশিয়া অনেক অর্থ বিনিয়োগ করেছে এবং মালয়েশিয়ার শ্রমবাজারে বাংলাদেশের অনেক লোক কর্মরত।"]}], "mcqs": [{"q": "ভারতের রাজধানী শহরের নাম কী?", "opts": ["মুম্বাই", "কলকাতা", "নয়াদিল্লি", "আগ্রা"], "ans": 2, "exp": "ভারতের রাজধানীর নাম নয়াদিল্লি।"}, {"q": "ভারত কত সালে ইংরেজ শাসন থেকে স্বাধীনতা লাভ করে?", "opts": ["১৯৪৫ সালের ১৫ আগস্ট", "১৯৪৭ সালের ১৫ আগস্ট", "১৯৪৮ সালের ১০ ডিসেম্বর", "১৯৫২ সালের ২১ ফেব্রুয়ারি"], "ans": 1, "exp": "ইংরেজদের দু'শ বছরের শাসনের পর ১৯৪৭ সালের ১৫ই আগস্ট ভারত স্বাধীনতা লাভ করে।"}, {"q": "ভারতের উত্তরে কোন পর্বতমালা অবস্থিত?", "opts": ["হিন্দুকুশ", "সুলেমান", "হিমালয়", "আরাকান"], "ans": 2, "exp": "ভারতের উত্তরে রয়েছে পৃথিবীর বৃহত্তম হিমালয় পর্বতমালা।"}, {"q": "ভারতের প্রায় কত ভাগ লোক গ্রামে বাস করে?", "opts": ["৩০ ভাগ", "৫০ ভাগ", "৭০ ভাগ", "৮০ ভাগ"], "ans": 2, "exp": "ভারতের প্রায় ৭০ ভাগ লোক গ্রামে এবং ৩০ ভাগ লোক শহরে বাস করে।"}, {"q": "পৃথিবীর বৃহত্তম গণতান্ত্রিক দেশ কোনটি?", "opts": ["চীন", "যুক্তরাষ্ট্র", "ভারত", "জাপান"], "ans": 2, "exp": "ভারত পৃথিবীর বৃহত্তম গণতান্ত্রিক দেশ।"}, {"q": "ভারতের আয়তন কত বর্গ কিলোমিটার?", "opts": ["৩২ লক্ষ ৮৭ হাজার ২৪০", "৯৫ লক্ষ ৯৮ হাজার ৮৯", "৩ লক্ষ ৭৭ হাজার ৭০৮", "১ লক্ষ ৪৭ হাজার ৫৭০"], "ans": 0, "exp": "ভারতের আয়তন ৩২ লক্ষ ৮৭ হাজার ২৪০ বর্গ কি.মি. এবং লোকসংখ্যা ১৪৪ কোটি ১৭ লক্ষ।"}, {"q": "চীনের স্থানীয় নাম কী?", "opts": ["নিপ্পন", "ঝুংগুয়া", "কোরিয়া", "মান্দারিন"], "ans": 1, "exp": "চীনের রাষ্ট্রীয় নাম গণপ্রজাতন্ত্রী চীন, আর স্থানীয় নাম ঝুংগুয়া।"}, {"q": "আয়তনের দিক থেকে চীন বিশ্বের কততম বৃহত্তম দেশ?", "opts": ["প্রথম", "দ্বিতীয়", "তৃতীয়", "চতুর্থ"], "ans": 2, "exp": "আয়তনের দিক থেকে চীন বিশ্বের তৃতীয় বৃহত্তম দেশ (প্রায় ৯৫ লক্ষ ৯৮ হাজার ৮৯ বর্গ কি.মি.)।"}, {"q": "চীনের সংখ্যাগরিষ্ঠ মানুষের ভাষা কী?", "opts": ["হান", "মান্দারিন", "তিব্বতি", "ক্যান্টনিজ"], "ans": 1, "exp": "চীনের জনসমষ্টির শতকরা ৯৫ ভাগ মান্দারিন (চীনা) ভাষায় কথা বলে।"}, {"q": "চীনের বৃহত্তম দুটি নদী কোনটি?", "opts": ["গঙ্গা ও যমুনা", "হোয়াংহো ও ইয়াংসি", "মেকং ও সালউইন", "সিন্ধু ও ব্রহ্মপুত্র"], "ans": 1, "exp": "হোয়াংহো ও ইয়াংসি চীনের বৃহত্তম নদী।"}, {"q": "প্রশাসনিক দিক থেকে চীনকে কয়টি প্রদেশ ও কয়টি স্বায়ত্তশাসিত অঞ্চলে ভাগ করা হয়েছে?", "opts": ["২০টি প্রদেশ ও ৩টি অঞ্চল", "২২টি প্রদেশ ও ৫টি স্বায়ত্তশাসিত অঞ্চল", "১৩টি প্রদেশ ও ৩টি অঞ্চল", "২৫টি প্রদেশ ও ২টি অঞ্চল"], "ans": 1, "exp": "চীনকে ২২টি প্রদেশ এবং ৫টি স্বায়ত্তশাসিত অঞ্চলে ভাগ করা হয়েছে।"}, {"q": "বিশ্বের সর্বোচ্চ শৃঙ্গ মাউন্ট এভারেস্ট কোন দুটি দেশের সীমান্তে অবস্থিত?", "opts": ["ভারত ও চীন", "নেপাল ও চীন", "ভুটান ও ভারত", "রাশিয়া ও চীন"], "ans": 1, "exp": "বিশ্বের সর্বোচ্চ শৃঙ্গ মাউন্ট এভারেস্ট নেপাল ও চীনের সীমান্ত বরাবর অবস্থিত।"}, {"q": "জাপানের স্থানীয় নাম কী?", "opts": ["ঝুংগুয়া", "নিহন বা নিপ্পন", "সিন্টো", "টোকিও"], "ans": 1, "exp": "জাপানের রাষ্ট্রীয় নাম কিংডম অব জাপান ও স্থানীয় নাম নিহন বা নিপ্পন।"}, {"q": "কোন দেশকে 'সূর্যোদয়ের দেশ' বলা হয়?", "opts": ["চীন", "দক্ষিণ কোরিয়া", "জাপান", "মালয়েশিয়া"], "ans": 2, "exp": "এশিয়া মহাদেশের একেবারে পূর্ব প্রান্তে অবস্থিত বলে জাপানকে 'সূর্যোদয়ের দেশ' বলা হয়।"}, {"q": "জাপান ছোটো-বড়ো প্রায় কতটি দ্বীপ নিয়ে গঠিত?", "opts": ["দুই হাজার", "তিন হাজার", "চার হাজার", "পাঁচ হাজার"], "ans": 2, "exp": "জাপান ছোটো-বড়ো প্রায় চার হাজার দ্বীপ নিয়ে গঠিত।"}, {"q": "জাপানিদের জাতিগত ধর্মের নাম কী?", "opts": ["বৌদ্ধ", "সিন্টো", "কনফুসিয়াস", "তাও"], "ans": 1, "exp": "জাপানিদের জাতিগত ধর্মের নাম সিন্টো।"}, {"q": "জাপানের শিক্ষার হার কত শতাংশ?", "opts": ["৯৫%", "৯৭%", "৯৯%", "১০০%"], "ans": 3, "exp": "জাপানের শিক্ষার হার একশত ভাগ (১০০%) এবং ৬-১৫ বছর বয়স পর্যন্ত শিক্ষা বাধ্যতামূলক।"}, {"q": "নিচের কোনটি জাপানের প্রধান চারটি দ্বীপের একটি নয়?", "opts": ["হোক্কাইডো", "হনসু", "শিকোকু", "কুচিং"], "ans": 3, "exp": "জাপানের প্রধান চারটি দ্বীপ হলো হোক্কাইডো, হনসু, শিকোকু ও কিউশু; কুচিং মালয়েশিয়ার শহর।"}, {"q": "কোন যুদ্ধের পর কোরিয়া দুই ভাগে বিভক্ত হয়ে যায়?", "opts": ["প্রথম বিশ্বযুদ্ধ", "দ্বিতীয় বিশ্বযুদ্ধ", "ভিয়েতনাম যুদ্ধ", "স্নায়ুযুদ্ধ"], "ans": 1, "exp": "দ্বিতীয় বিশ্বযুদ্ধের পরে কোরিয়া দক্ষিণ কোরিয়া ও উত্তর কোরিয়া নামে দুই ভাগে বিভক্ত হয়।"}, {"q": "দক্ষিণ কোরিয়ার সরকারি নাম কী?", "opts": ["গণপ্রজাতন্ত্রী কোরিয়া", "কোরিয়া প্রজাতন্ত্র", "কিংডম অব কোরিয়া", "ইউনাইটেড কোরিয়া"], "ans": 1, "exp": "একটি দক্ষিণ কোরিয়া (কোরিয়া প্রজাতন্ত্র) এবং অপরটি উত্তর কোরিয়া (গণপ্রজাতন্ত্রী কোরিয়া)।"}, {"q": "দুই অংশ মিলে কোরিয়ার দ্বীপের সংখ্যা প্রায় কত?", "opts": ["এক হাজার", "দুই হাজার", "তিন হাজার", "চার হাজার"], "ans": 2, "exp": "দুই অংশ মিলে কোরিয়ার দ্বীপের সংখ্যা প্রায় তিন হাজার।"}, {"q": "কোরিয়ায় কত ধরনের ঋতু বিদ্যমান?", "opts": ["দুই ধরনের", "তিন ধরনের", "চার ধরনের", "ছয় ধরনের"], "ans": 2, "exp": "কোরিয়ায় চার ধরনের ঋতু বিদ্যমান (নভেম্বর-মার্চ শীতকাল, জুন-আগস্ট প্রচুর বৃষ্টি)।"}, {"q": "কোরিয়ার উত্তর সীমান্তের অধিকাংশ কোন দেশের সাথে যুক্ত?", "opts": ["জাপান", "চীন", "মঙ্গোলিয়া", "ভিয়েতনাম"], "ans": 1, "exp": "উত্তর সীমান্তের অধিকাংশই চীনের সাথে এবং কিছু অংশ রাশিয়ার সাথে যুক্ত।"}, {"q": "কোন কোরিয়া বাংলাদেশকে রাস্তা-ঘাট, ব্রিজ নির্মাণ ও শিল্প উন্নয়নে সহযোগিতা করে?", "opts": ["উত্তর কোরিয়া", "দক্ষিণ কোরিয়া", "উভয় কোরিয়া", "কোনোটিই নয়"], "ans": 1, "exp": "দক্ষিণ কোরিয়া বাংলাদেশকে রাস্তা-ঘাট, ব্রিজ নির্মাণ ও শিল্প-উন্নয়নে যথেষ্ট সহযোগিতা করে।"}, {"q": "মালয়েশিয়া কয়টি প্রদেশ ও কয়টি ফেডারেল অঞ্চল নিয়ে গঠিত?", "opts": ["১০টি প্রদেশ ও ২টি অঞ্চল", "১৩টি প্রদেশ ও ৩টি ফেডারেল অঞ্চল", "২২টি প্রদেশ ও ৫টি অঞ্চল", "৮টি প্রদেশ ও ৪টি অঞ্চল"], "ans": 1, "exp": "মালয়েশিয়া ১৩টি প্রদেশ ও ৩টি ফেডারেল অঞ্চল নিয়ে গঠিত।"}, {"q": "মালয়েশিয়ার রাজধানীর নাম কী?", "opts": ["পেনাং", "কুচিং", "কুয়ালালামপুর", "মালাক্কা"], "ans": 2, "exp": "মালয়েশিয়ার রাজধানীর নাম কুয়ালালামপুর।"}, {"q": "কুচিং কোন দেশের প্রধান সমুদ্রবন্দর?", "opts": ["কোরিয়া", "ভারত", "জাপান", "মালয়েশিয়া"], "ans": 3, "exp": "জর্জটাউন, মালাক্কা, কুচিং এবং পেনাং মালয়েশিয়ার প্রধান সমুদ্রবন্দর।"}, {"q": "মালয়েশিয়ার প্রধান শিল্পপণ্য কোনটি?", "opts": ["পাট ও চিনি", "রাবার, সার ও চীনামাটির দ্রব্য", "জাহাজ ও গাড়ি", "সিল্ক ও কাগজ"], "ans": 1, "exp": "মালয়েশিয়ার প্রধান শিল্পপণ্যের মধ্যে রাবার, সার ও চীনামাটির দ্রব্য উল্লেখযোগ্য।"}, {"q": "মালয়েশিয়ার প্রধান খনিজ সম্পদ কোনগুলো?", "opts": ["টিন, লোহা এবং পেট্রোল", "সোনা ও হীরা", "তামা ও চুনাপাথর", "কয়লা ও দস্তা"], "ans": 0, "exp": "মালয়েশিয়ার খনিজ সম্পদের মধ্যে টিন, লোহা এবং পেট্রোল উল্লেখযোগ্য।"}, {"q": "বাংলাদেশের সঙ্গে মালয়েশিয়ার অর্থনৈতিক সম্পর্কের একটি বড় ক্ষেত্র কী?", "opts": ["EPZ-এ বিনিয়োগ ও শ্রমবাজার", "গম রপ্তানি", "জাহাজ আমদানি", "চা রপ্তানি"], "ans": 0, "exp": "বাংলাদেশের বিভিন্ন EPZ-এ মালয়েশিয়া বিনিয়োগ করেছে এবং মালয়েশিয়ার শ্রমবাজারে অনেক বাংলাদেশি কর্মরত।"}], "ganmulok": [{"q": "ভারতের রাজধানী ও আয়তন কত?", "a": "রাজধানী নয়াদিল্লি এবং আয়তন ৩২ লক্ষ ৮৭ হাজার ২৪০ বর্গ কিলোমিটার।"}, {"q": "ভারত কত সালের কত তারিখে স্বাধীনতা লাভ করে?", "a": "১৯৪৭ সালের ১৫ই আগস্ট।"}, {"q": "ভারতের দুটি প্রাচীন ঐতিহাসিক নিদর্শনের নাম লেখো।", "a": "আগ্রার তাজমহল এবং দিল্লির কুতুব মিনার (এছাড়া অজন্তা পর্বতগুহা ও লালকেল্লা)।"}, {"q": "ভারতের প্রায় কত শতাংশ লোক গ্রামে ও শহরে বাস করে?", "a": "প্রায় ৭০ ভাগ লোক গ্রামে এবং ৩০ ভাগ লোক শহরে বাস করে।"}, {"q": "চীনের রাষ্ট্রীয় নাম ও স্থানীয় নাম কী?", "a": "রাষ্ট্রীয় নাম গণপ্রজাতন্ত্রী চীন এবং স্থানীয় নাম ঝুংগুয়া।"}, {"q": "আয়তনের দিক থেকে চীন বিশ্বে কততম এবং রাজধানী কী?", "a": "বিশ্বের তৃতীয় বৃহত্তম দেশ; রাজধানী বেইজিং।"}, {"q": "চীনের অধিকাংশ মানুষ কোন জাতিগোষ্ঠীর ও কোন ভাষায় কথা বলে?", "a": "৯৫ ভাগ হান চাইনিজ বংশোদ্ভূত এবং ৯৫ ভাগ মান্দারিন (চীনা) ভাষায় কথা বলে।"}, {"q": "চীনের দুটি বৃহত্তম নদীর নাম লেখো।", "a": "হোয়াংহো ও ইয়াংসি।"}, {"q": "জাপানের স্থানীয় নাম ও রাজধানী কী?", "a": "স্থানীয় নাম নিহন বা নিপ্পন এবং রাজধানী টোকিও।"}, {"q": "জাপানকে 'সূর্যোদয়ের দেশ' বলা হয় কেন?", "a": "এশিয়া মহাদেশের একেবারে পূর্ব প্রান্তে অবস্থিত হওয়ায় জাপানকে 'সূর্যোদয়ের দেশ' বলা হয়।"}, {"q": "জাপানের প্রধান চারটি দ্বীপের নাম লেখো।", "a": "হোক্কাইডো, হনসু, শিকোকু এবং কিউশু।"}, {"q": "জাপানিদের জাতিগত ধর্মের নাম ও শিক্ষার হার কত?", "a": "জাতিগত ধর্ম সিন্টো এবং শিক্ষার হার একশত ভাগ (১০০%)।"}, {"q": "কোরিয়া কখন এবং কোন দুটি দেশে বিভক্ত হয়?", "a": "দ্বিতীয় বিশ্বযুদ্ধের পর দক্ষিণ কোরিয়া (কোরিয়া প্রজাতন্ত্র) ও উত্তর কোরিয়া (গণপ্রজাতন্ত্রী কোরিয়া)—এই দুই ভাগে বিভক্ত হয়।"}, {"q": "কোরিয়ার দ্বীপের সংখ্যা প্রায় কত?", "a": "দুই অংশ মিলে কোরিয়ার দ্বীপের সংখ্যা প্রায় তিন হাজার।"}, {"q": "কোরিয়ার দুটি প্রধান শিল্প পণ্যের নাম লেখো।", "a": "জাহাজ ও মোটরগাড়ি এবং ইলেকট্রনিক্স সামগ্রী (এছাড়া রাসায়নিক পণ্য ও যন্ত্রপাতি)।"}, {"q": "বাংলাদেশের উন্নয়নে দক্ষিণ কোরিয়ার ভূমিকা কী?", "a": "দক্ষিণ কোরিয়া বাংলাদেশকে রাস্তা-ঘাট, ব্রিজ নির্মাণ ও শিল্প-উন্নয়নে যথেষ্ট সহযোগিতা করে আসছে।"}, {"q": "মালয়েশিয়া কয়টি প্রদেশ ও ফেডারেল অঞ্চল নিয়ে গঠিত?", "a": "১৩টি প্রদেশ ও ৩টি ফেডারেল অঞ্চল নিয়ে গঠিত।"}, {"q": "মালয়েশিয়ার রাজধানী ও দুটি প্রধান সমুদ্রবন্দরের নাম লেখো।", "a": "রাজধানী কুয়ালালামপুর; দুটি প্রধান সমুদ্রবন্দর হলো জর্জটাউন ও কুচিং (এছাড়া মালাক্কা ও পেনাং)।"}, {"q": "মালয়েশিয়ার প্রধান খনিজ সম্পদ কী কী?", "a": "টিন, লোহা এবং পেট্রোল।"}, {"q": "বাংলাদেশের সাথে মালয়েশিয়ার অর্থনৈতিক সম্পর্কের দুটি দিক লেখো।", "a": "বাংলাদেশের EPZ-এ মালয়েশিয়ার বিনিয়োগ এবং মালয়েশিয়ার শ্রমবাজারে বাংলাদেশের অনেক লোকের কর্মসংস্থান।"}]}, {"id": "ch11", "number": "একাদশ অধ্যায়", "title": "বাংলাদেশ ও আন্তর্জাতিক সহযোগিতা", "shortTitle": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা", "icon": "🕊️", "desc": "আন্তর্জাতিক সহযোগিতার গুরুত্ব, জাতিসংঘের গঠন, উদ্দেশ্য, নীতি, কার্যক্রম ও শান্তিরক্ষা বাহিনীতে বাংলাদেশ", "summaries": [{"title": "পাঠ ১: আন্তর্জাতিক সহযোগিতার ধারণা ও গুরুত্ব", "points": ["কোনো দেশই সম্পূর্ণ আত্মনির্ভরশীল নয়; শিক্ষা, স্বাস্থ্য, কৃষি, পরিবেশ ও অর্থনীতির সমস্যা সমাধানে দেশগুলো পারস্পরিক সহযোগিতা গড়ে তোলে।", "এই সহযোগিতার ফলে গড়ে উঠেছে জাতিসংঘ, ওআইসি, কমনওয়েলথ, ইউনিসেফ ও ইউনেস্কোর মতো আন্তর্জাতিক সংস্থা।", "জাতিসংঘের 'সহস্রাব্দ উন্নয়ন লক্ষ্যমাত্রা' (MDG) ২০১৫ সালে মেয়াদ উত্তীর্ণ হওয়ার পর ২০১৬ সাল থেকে 'টেকসই উন্নয়ন লক্ষ্যমাত্রা' (SDG)-এর যাত্রা শুরু হয়।"]}, {"title": "পাঠ ২: জাতিসংঘ প্রতিষ্ঠার পটভূমি ও গঠন", "points": ["প্রথম বিশ্বযুদ্ধ (১৯১৪) ও দ্বিতীয় বিশ্বযুদ্ধের (১৯৩৯) ধ্বংসলীলা থেকে মুক্তি পেতে বিশ্ব শান্তি প্রতিষ্ঠার উদ্যোগ নেওয়া হয়। প্রথম বিশ্বযুদ্ধের পর ১৯২০ সালে 'সম্মিলিত জাতিপুঞ্জ' বা লীগ অব নেশনস গঠিত হলেও তা স্থায়ী হয়নি।", "তৎকালীন ব্রিটিশ প্রধানমন্ত্রী উইনস্টন চার্চিল এবং যুক্তরাষ্ট্রের প্রেসিডেন্ট রুজভেল্টের উদ্যোগে ১৯৪৫ সালের ২৪শে অক্টোবর জাতিসংঘ প্রতিষ্ঠিত হয়।", "শুরুতে সদস্য সংখ্যা ছিল ৫১, বর্তমানে ১৯৩। বাংলাদেশ ১৯৭৪ সালে জাতিসংঘের সদস্যপদ লাভ করে। সদর দপ্তর যুক্তরাষ্ট্রের নিউইয়র্ক শহরে।", "জাতিসংঘের ৬টি শাখা: (১) সাধারণ পরিষদ, (২) সচিবালয়, (৩) অছি পরিষদ, (৪) আন্তর্জাতিক আদালত, (৫) অর্থনৈতিক ও সামাজিক পরিষদ, (৬) নিরাপত্তা পরিষদ।", "প্রথম মহাসচিব নরওয়ের ট্রিগভেলি; বর্তমান (জানুয়ারি ২০১৭ হতে) পর্তুগালের অ্যান্টনিও গুতেরেস। নিরাপত্তা পরিষদের স্থায়ী সদস্য ৫টি: যুক্তরাষ্ট্র, যুক্তরাজ্য, রাশিয়া, ফ্রান্স ও গণচীন। বাংলাদেশ দুইবার অস্থায়ী সদস্য হয়েছে।"]}, {"title": "পাঠ ২ (অংশ ২): পতাকা, ভাষা ও সমুদ্রসীমা রায়", "points": ["জাতিসংঘের নিজস্ব পতাকা হালকা নীল রঙের; মাঝখানে সাদার ভেতরে বিশ্বের বৃত্তাকার মানচিত্র এবং এর দুই পাশে দুটি জলপাই পাতার ঝাড় রয়েছে।", "জাতিসংঘের দাপ্তরিক ভাষা ৬টি: আরবি, চাইনিজ, ইংরেজি, ফরাসি, রাশিয়ান ও স্প্যানিশ (তবে ইংরেজির ওপর বেশি গুরুত্ব দেওয়া হয়)।", "২০১২ সালে বঙ্গোপসাগরের সমুদ্রসীমা সংক্রান্ত মামলায় আন্তর্জাতিক আদালতে বাংলাদেশ নিজের পক্ষে রায় পায়।"]}, {"title": "পাঠ ৩ ও ৪: জাতিসংঘের উদ্দেশ্য, মৌলিক নীতি ও কাজ", "points": ["উদ্দেশ্য: বিশ্বশান্তি ও নিরাপত্তা নিশ্চিত করা, মৌলিক অধিকারের প্রতি শ্রদ্ধা গড়ে তোলা, আন্তর্জাতিক সহযোগিতা বৃদ্ধি এবং ঔপনিবেশিক রাষ্ট্রগুলোকে স্বাধীনতা দেওয়া।", "জাতিসংঘের ৭টি মৌলিক নীতি আছে—সব সদস্য রাষ্ট্র সমান মর্যাদা ও সার্বভৌমত্বের অধিকারী, আন্তর্জাতিক বিরোধের শান্তিপূর্ণ মীমাংসা, বল প্রয়োগ না করা এবং কোনো রাষ্ট্রের অভ্যন্তরীণ বিষয়ে হস্তক্ষেপ না করা।", "কাজ: আগ্রাসী রাষ্ট্রের বিরুদ্ধে অর্থনৈতিক ও কূটনৈতিক অবরোধ আরোপ, শান্তিরক্ষা বাহিনী মোতায়েন এবং আন্তর্জাতিক আদালতের মাধ্যমে বিরোধ নিষ্পত্তি।"]}, {"title": "পাঠ ৫ ও ৬: বিশ্বশান্তি ও শান্তিরক্ষা বাহিনীতে বাংলাদেশ", "points": ["জাতিসংঘ প্রতিষ্ঠার পর আর কোনো বিশ্বযুদ্ধ সংঘটিত হয়নি। নিরাপত্তা পরিষদ বিশ্বশান্তি রক্ষার প্রধান দায়িত্ব পালন করে। জাতিসংঘের তত্ত্বাবধানে দক্ষিণ সুদান স্বাধীনতা অর্জন করে।", "বাংলাদেশ সর্বপ্রথম ১৯৮৮ সালে জাতিসংঘ শান্তিরক্ষা বাহিনীতে সশস্ত্রবাহিনীর সদস্য প্রেরণ করে।", "২০২৪ সালের মে মাস পর্যন্ত বাংলাদেশের সেনা, নৌ, বিমান ও পুলিশ বাহিনীর সদস্যরা ৪৩টি দেশে শান্তি মিশনে কাজ করেছে এবং মোট ১,৯৪,৮৫৬ জন সদস্য পাঠিয়েছে।", "শান্তিরক্ষার কাজে অংশ নিয়ে ২০২৪ সালের মে পর্যন্ত ১৬৮ জন বাংলাদেশি সদস্য নিহত হয়েছেন। নারী সদস্যরাও দক্ষতার সাথে ভূমিকা রাখছেন।"]}], "mcqs": [{"q": "'সহস্রাব্দ উন্নয়ন লক্ষ্যমাত্রা'র মেয়াদ কত সালে উত্তীর্ণ হয়?", "opts": ["২০১০ সালে", "২০১২ সালে", "২০১৫ সালে", "২০১৬ সালে"], "ans": 2, "exp": "সহস্রাব্দ উন্নয়ন লক্ষ্যমাত্রা ২০১৫ সালে মেয়াদ উত্তীর্ণ হওয়ার পর ২০১৬ সালে টেকসই উন্নয়ন লক্ষ্যমাত্রার যাত্রা শুরু হয়।"}, {"q": "'টেকসই উন্নয়ন লক্ষ্যমাত্রা'র যাত্রা কত সাল থেকে শুরু হয়?", "opts": ["২০১৫ সাল", "২০১৬ সাল", "২০১৭ সাল", "২০২০ সাল"], "ans": 1, "exp": "টেকসই উন্নয়ন লক্ষ্যমাত্রার যাত্রা ২০১৬ সাল হতে শুরু হয়।"}, {"q": "প্রথম বিশ্বযুদ্ধ কত সালে শুরু হয়?", "opts": ["১৯১৪ সালে", "১৯২০ সালে", "১৯৩৯ সালে", "১৯৪৫ সালে"], "ans": 0, "exp": "প্রথম বিশ্বযুদ্ধ ১৯১৪ সালে এবং দ্বিতীয় বিশ্বযুদ্ধ ১৯৩৯ সালে শুরু হয়।"}, {"q": "প্রথম বিশ্বযুদ্ধের পর বিশ্বশান্তি প্রতিষ্ঠার জন্য ১৯২০ সালে কোন সংস্থা গঠিত হয়েছিল?", "opts": ["জাতিসংঘ", "সম্মিলিত জাতিপুঞ্জ (লীগ অব নেশনস)", "কমনওয়েলথ", "ওআইসি"], "ans": 1, "exp": "প্রথম বিশ্বযুদ্ধের পর ১৯২০ সালে গঠিত হয়েছিল সম্মিলিত জাতিপুঞ্জ বা লীগ অব নেশনস।"}, {"q": "দ্বিতীয় বিশ্বযুদ্ধ কত সালে শুরু হয়?", "opts": ["১৯১৪ সালে", "১৯২০ সালে", "১৯৩৯ সালে", "১৯৪৫ সালে"], "ans": 2, "exp": "দ্বিতীয় বিশ্বযুদ্ধ ১৯৩৯ সালে শুরু হয়।"}, {"q": "কোন দেশের ওপর দ্বিতীয় বিশ্বযুদ্ধে পারমাণবিক বোমা ফেলা হয়েছিল?", "opts": ["জার্মানি", "জাপান", "চীন", "ইতালি"], "ans": 1, "exp": "দ্বিতীয় বিশ্বযুদ্ধে জাপান পারমাণবিক বোমার আঘাতে ক্ষতবিক্ষত হয়ে যায়।"}, {"q": "জাতিসংঘ কত সালের কত তারিখে প্রতিষ্ঠা লাভ করে?", "opts": ["১৯৪৫ সালের ২৪ অক্টোবর", "১৯৪৮ সালের ১০ ডিসেম্বর", "১৯২০ সালের ১০ জানুয়ারি", "১৯৭৪ সালের ১৭ সেপ্টেম্বর"], "ans": 0, "exp": "১৯৪৫ সালের ২৪শে অক্টোবর তারিখে জাতিসংঘ প্রতিষ্ঠা লাভ করে।"}, {"q": "কোন দুই নেতার উদ্যোগে জাতিসংঘ প্রতিষ্ঠার প্রচেষ্টা শুরু হয়?", "opts": ["উইনস্টন চার্চিল ও রুজভেল্ট", "লিঙ্কন ও চার্চিল", "নেপোলিয়ন ও রুজভেল্ট", "ট্রিগভেলি ও গুতেরেস"], "ans": 0, "exp": "ব্রিটিশ প্রধানমন্ত্রী উইনস্টন চার্চিল এবং যুক্তরাষ্ট্রের প্রেসিডেন্ট রুজভেল্টের উদ্যোগে জাতিসংঘ প্রতিষ্ঠিত হয়।"}, {"q": "শুরুতে জাতিসংঘের সদস্য সংখ্যা কত ছিল?", "opts": ["৪৫টি", "৫১টি", "১৯৩টি", "৭৪টি"], "ans": 1, "exp": "শুরুতে জাতিসংঘের সদস্য সংখ্যা ছিল ৫১ এবং বর্তমানে এর সদস্য সংখ্যা ১৯৩।"}, {"q": "বাংলাদেশ কত সালে জাতিসংঘের সদস্যপদ লাভ করে?", "opts": ["১৯৭১ সালে", "১৯৭২ সালে", "১৯৭৪ সালে", "১৯৮৮ সালে"], "ans": 2, "exp": "বাংলাদেশ ১৯৭৪ সালে জাতিসংঘের সদস্যপদ লাভ করে।"}, {"q": "জাতিসংঘের সদর দপ্তর কোথায় অবস্থিত?", "opts": ["লন্ডন", "জেনেভা", "নিউইয়র্ক", "প্যারিস"], "ans": 2, "exp": "জাতিসংঘের সদর দপ্তর যুক্তরাষ্ট্রের নিউইয়র্ক শহরে অবস্থিত।"}, {"q": "জাতিসংঘ মোট কয়টি সংস্থা বা শাখা নিয়ে গঠিত?", "opts": ["৪টি", "৫টি", "৬টি", "৭টি"], "ans": 2, "exp": "জাতিসংঘ মোট ছয়টি সংস্থা বা শাখা নিয়ে গঠিত।"}, {"q": "জাতিসংঘের প্রথম মহাসচিব কে ছিলেন?", "opts": ["অ্যান্টনিও গুতেরেস", "ট্রিগভেলি", "বান কি মুন", "কফি আনান"], "ans": 1, "exp": "নরওয়ের অধিবাসী ট্রিগভেলি ছিলেন জাতিসংঘের প্রথম মহাসচিব।"}, {"q": "জাতিসংঘের বর্তমান মহাসচিব অ্যান্টনিও গুতেরেস কোন দেশের নাগরিক?", "opts": ["নরওয়ে", "পর্তুগাল", "স্পেন", "ফ্রান্স"], "ans": 1, "exp": "বর্তমান (জানুয়ারি ২০১৭ হতে) মহাসচিব অ্যান্টনিও গুতেরেস পর্তুগালের নাগরিক।"}, {"q": "নিরাপত্তা পরিষদের স্থায়ী সদস্য রাষ্ট্র কয়টি?", "opts": ["৩টি", "৫টি", "৭টি", "১০টি"], "ans": 1, "exp": "নিরাপত্তা পরিষদের স্থায়ী সদস্য ৫টি: যুক্তরাষ্ট্র, যুক্তরাজ্য, রাশিয়া, ফ্রান্স ও গণচীন।"}, {"q": "বাংলাদেশ কতবার নিরাপত্তা পরিষদের অস্থায়ী সদস্য হিসেবে দায়িত্ব পালন করেছে?", "opts": ["একবার", "দুইবার", "তিনবার", "চারবার"], "ans": 1, "exp": "বাংলাদেশ দুইবার নিরাপত্তা পরিষদের অস্থায়ী সদস্যের দায়িত্ব পালন করেছে।"}, {"q": "কত সালে বঙ্গোপসাগরের সমুদ্রসীমা মামলায় আন্তর্জাতিক আদালতে বাংলাদেশ নিজের পক্ষে রায় পায়?", "opts": ["২০১০ সালে", "২০১২ সালে", "২০১৪ সালে", "২০১৬ সালে"], "ans": 1, "exp": "২০১২ সালে বঙ্গোপসাগরের সমুদ্রসীমা আন্তর্জাতিক আদালতে বাংলাদেশ নিজের পক্ষে রায় পায়।"}, {"q": "জাতিসংঘের দাপ্তরিক ভাষা কয়টি?", "opts": ["৪টি", "৫টি", "৬টি", "৭টি"], "ans": 2, "exp": "জাতিসংঘের দাপ্তরিক ভাষা ছয়টি: আরবি, চাইনিজ, ইংরেজি, ফরাসি, রাশিয়ান ও স্প্যানিশ।"}, {"q": "জাতিসংঘের পতাকার রং কেমন?", "opts": ["গাঢ় সবুজ", "হালকা নীল", "সাদা ও লাল", "হলুদ"], "ans": 1, "exp": "জাতিসংঘের পতাকাটি হালকা নীল রঙের; মাঝখানে সাদার ভেতরে বিশ্বের বৃত্তাকার মানচিত্র রয়েছে।"}, {"q": "জাতিসংঘের পতাকার মানচিত্রের দুই পাশে কী রয়েছে?", "opts": ["দুটি তারকা", "দুটি জলপাই পাতার ঝাড়", "দুটি পাখি", "দুটি গমের শিষ"], "ans": 1, "exp": "মানচিত্রের দুই পাশে দুটি জলপাই পাতার ঝাড় দিয়ে বেষ্টিত রয়েছে।"}, {"q": "জাতিসংঘের মৌলিক নীতি কয়টি?", "opts": ["৫টি", "৬টি", "৭টি", "৮টি"], "ans": 2, "exp": "জাতিসংঘের সাতটি মৌলিক নীতি আছে।"}, {"q": "বিশ্বশান্তি রক্ষার প্রধান দায়িত্ব জাতিসংঘের কোন শাখার?", "opts": ["সাধারণ পরিষদ", "অছি পরিষদ", "নিরাপত্তা পরিষদ", "সচিবালয়"], "ans": 2, "exp": "বিশ্বশান্তি রক্ষার প্রধান দায়িত্ব নিরাপত্তা পরিষদের।"}, {"q": "জাতিসংঘের তত্ত্বাবধানে কোন দেশ দীর্ঘ গৃহযুদ্ধের পর স্বাধীনতা অর্জন করে?", "opts": ["দক্ষিণ সুদান", "পূর্ব তিমুর", "কঙ্গো", "হাইতি"], "ans": 0, "exp": "দীর্ঘদিনের গৃহযুদ্ধের অবসান ঘটিয়ে জাতিসংঘের তত্ত্বাবধানে দক্ষিণ সুদান স্বাধীনতা অর্জন করে।"}, {"q": "জাতিসংঘের দাপ্তরিক ভাষাগুলোর মধ্যে কোন ভাষার ওপর বেশি গুরুত্বারোপ করা হয়?", "opts": ["ফরাসি", "ইংরেজি", "আরবি", "চাইনিজ"], "ans": 1, "exp": "ছয়টি দাপ্তরিক ভাষার মধ্যে ইংরেজি ভাষার ওপর বেশি গুরুত্বারোপ করা হয়ে থাকে।"}, {"q": "বাংলাদেশ সর্বপ্রথম কত সালে জাতিসংঘ শান্তিরক্ষা বাহিনীতে সশস্ত্রবাহিনীর সদস্য প্রেরণ করে?", "opts": ["১৯৭৪ সালে", "১৯৮০ সালে", "১৯৮৮ সালে", "১৯৯১ সালে"], "ans": 2, "exp": "বাংলাদেশ সর্বপ্রথম ১৯৮৮ সালে শান্তিরক্ষা বাহিনীতে সশস্ত্রবাহিনীর সদস্য প্রেরণ করে।"}, {"q": "২০২৪ সালের মে পর্যন্ত বাংলাদেশের শান্তিরক্ষীরা কতটি দেশে কাজ করেছে?", "opts": ["২৫টি দেশে", "৩৫টি দেশে", "৪৩টি দেশে", "৫১টি দেশে"], "ans": 2, "exp": "২০২৪ সালের মে মাস পর্যন্ত বাংলাদেশের সশস্ত্রবাহিনী ও পুলিশ বাহিনীর সদস্যরা ৪৩টি দেশে শান্তি মিশনে কাজ করছে।"}, {"q": "২০২৪ সালের মে পর্যন্ত বাংলাদেশ জাতিসংঘ শান্তিরক্ষা বাহিনীতে মোট কতজন সদস্য পাঠিয়েছে?", "opts": ["১,৬৮,০০০ জন", "১,৯৪,৮৫৬ জন", "১,৫০,০০০ জন", "২,১০,০০০ জন"], "ans": 1, "exp": "২০২৪ সালের মে পর্যন্ত বাংলাদেশ মোট ১,৯৪,৮৫৬ জন সদস্য পাঠিয়েছে।"}, {"q": "২০২৪ সালের মে পর্যন্ত শান্তিরক্ষা বাহিনীতে অংশ নিয়ে বাংলাদেশের কতজন সদস্য নিহত হয়েছেন?", "opts": ["১২০ জন", "১৪৫ জন", "১৬৮ জন", "১৮০ জন"], "ans": 2, "exp": "২০২৪ সালের মে পর্যন্ত বাংলাদেশের ১৬৮ জন সদস্য বিভিন্ন দুর্ঘটনা ও শান্তিরক্ষার যুদ্ধে নিহত হয়েছেন।"}, {"q": "নিচের কোন দেশে বাংলাদেশ শান্তিরক্ষা বাহিনী কাজ করেছে?", "opts": ["কঙ্গো ও হাইতি", "জাপান ও কোরিয়া", "ভারত ও চীন", "জার্মানি ও ফ্রান্স"], "ans": 0, "exp": "কঙ্গো, হাইতি, আইভোরি কোস্ট, পূর্ব তিমুর, সুদান, সিয়েরালিয়ন, লাইবেরিয়া প্রভৃতি দেশে কাজ করেছে।"}, {"q": "জাতিসংঘের কোন সংস্থা বিশ্বকে নিরক্ষরতা থেকে মুক্ত করতে কাজ করছে?", "opts": ["নিরাপত্তা পরিষদ", "ইউনেস্কো ও ইউনিসেফ", "অছি পরিষদ", "আন্তর্জাতিক আদালত"], "ans": 1, "exp": "বিশ্বকে নিরক্ষরতা থেকে মুক্ত করার জন্য জাতিসংঘ ইউনেস্কো ও ইউনিসেফের মাধ্যমে কার্যক্রম বাস্তবায়ন করছে।"}], "ganmulok": [{"q": "সহস্রাব্দ উন্নয়ন লক্ষ্যমাত্রা (MDG) ও টেকসই উন্নয়ন লক্ষ্যমাত্রা (SDG)-এর সময়কাল কী?", "a": "সহস্রাব্দ উন্নয়ন লক্ষ্যমাত্রা ২০১৫ সালে মেয়াদ উত্তীর্ণ হয় এবং ২০১৬ সাল থেকে টেকসই উন্নয়ন লক্ষ্যমাত্রার যাত্রা শুরু হয়।"}, {"q": "প্রথম ও দ্বিতীয় বিশ্বযুদ্ধ কত সালে শুরু হয়েছিল?", "a": "প্রথম বিশ্বযুদ্ধ ১৯১৪ সালে এবং দ্বিতীয় বিশ্বযুদ্ধ ১৯৩৯ সালে শুরু হয়।"}, {"q": "সম্মিলিত জাতিপুঞ্জ বা লীগ অব নেশনস কত সালে গঠিত হয়?", "a": "প্রথম বিশ্বযুদ্ধের পর বিশ্বশান্তি প্রতিষ্ঠার জন্য ১৯২০ সালে গঠিত হয়েছিল।"}, {"q": "জাতিসংঘ কবে এবং কাদের উদ্যোগে প্রতিষ্ঠিত হয়?", "a": "ব্রিটিশ প্রধানমন্ত্রী উইনস্টন চার্চিল ও যুক্তরাষ্ট্রের প্রেসিডেন্ট রুজভেল্টের উদ্যোগে ১৯৪৫ সালের ২৪শে অক্টোবর জাতিসংঘ প্রতিষ্ঠিত হয়।"}, {"q": "জাতিসংঘের প্রধান ছয়টি শাখার নাম লেখো।", "a": "সাধারণ পরিষদ, সচিবালয়, অছি পরিষদ, আন্তর্জাতিক আদালত, অর্থনৈতিক ও সামাজিক পরিষদ এবং নিরাপত্তা পরিষদ।"}, {"q": "শুরুতে ও বর্তমানে জাতিসংঘের সদস্য সংখ্যা কত?", "a": "শুরুতে ৫১টি এবং বর্তমানে ১৯৩টি।"}, {"q": "জাতিসংঘের সদর দপ্তর কোথায় এবং বাংলাদেশ কত সালে সদস্যপদ লাভ করে?", "a": "সদর দপ্তর যুক্তরাষ্ট্রের নিউইয়র্ক শহরে; বাংলাদেশ ১৯৭৪ সালে সদস্যপদ লাভ করে।"}, {"q": "জাতিসংঘের প্রথম ও বর্তমান মহাসচিবের নাম কী?", "a": "প্রথম মহাসচিব নরওয়ের ট্রিগভেলি এবং বর্তমান মহাসচিব পর্তুগালের অ্যান্টনিও গুতেরেস।"}, {"q": "নিরাপত্তা পরিষদের স্থায়ী সদস্য রাষ্ট্রগুলো কী কী?", "a": "যুক্তরাষ্ট্র, যুক্তরাজ্য, রাশিয়া, ফ্রান্স ও গণচীন (এই ৫টি)।"}, {"q": "জাতিসংঘের পতাকার বর্ণনা দাও।", "a": "পতাকাটি হালকা নীল রঙের; মাঝখানে সাদার ভেতরে বিশ্বের বৃত্তাকার মানচিত্র এবং এর দুই পাশে দুটি জলপাই পাতার ঝাড় রয়েছে।"}, {"q": "জাতিসংঘের দাপ্তরিক ভাষা ছয়টি কী কী?", "a": "আরবি, চাইনিজ, ইংরেজি, ফরাসি, রাশিয়ান ও স্প্যানিশ।"}, {"q": "২০১২ সালে আন্তর্জাতিক আদালতে বাংলাদেশ কোন বিষয়ে রায় পায়?", "a": "২০১২ সালে বঙ্গোপসাগরের সমুদ্রসীমা সংক্রান্ত মামলায় আন্তর্জাতিক আদালতে বাংলাদেশ নিজের পক্ষে রায় পায়।"}, {"q": "জাতিসংঘের দুটি প্রধান উদ্দেশ্য লেখো।", "a": "বিশ্বশান্তি, শৃঙ্খলা ও নিরাপত্তা নিশ্চিত করা এবং জাতি-ধর্ম-বর্ণ নির্বিশেষে সকলের মৌলিক অধিকারের প্রতি সম্মান গড়ে তোলা।"}, {"q": "জাতিসংঘের মৌলিক নীতি কয়টি? এর একটি নীতি লেখো।", "a": "মৌলিক নীতি ৭টি। যেমন: জাতিসংঘের সকল সদস্য রাষ্ট্র সমান মর্যাদা ও সার্বভৌমত্বের অধিকারী হবে।"}, {"q": "বিশ্বশান্তি রক্ষার প্রধান দায়িত্ব জাতিসংঘের কোন শাখার?", "a": "নিরাপত্তা পরিষদের।"}, {"q": "জাতিসংঘের তত্ত্বাবধানে কোন দেশ স্বাধীনতা অর্জন করে?", "a": "দীর্ঘদিনের গৃহযুদ্ধের অবসান ঘটিয়ে দক্ষিণ সুদান স্বাধীনতা অর্জন করে।"}, {"q": "বাংলাদেশ সর্বপ্রথম কত সালে শান্তিরক্ষা বাহিনীতে সদস্য প্রেরণ করে?", "a": "১৯৮৮ সালে।"}, {"q": "২০২৪ সালের মে পর্যন্ত বাংলাদেশ কতটি দেশে শান্তি মিশনে কাজ করেছে?", "a": "৪৩টি দেশে (যেমন: কঙ্গো, হাইতি, সুদান, সিয়েরালিয়ন, লাইবেরিয়া প্রভৃতি)।"}, {"q": "২০২৪ সালের মে পর্যন্ত বাংলাদেশ মোট কতজন শান্তিরক্ষী পাঠিয়েছে?", "a": "মোট ১,৯৪,৮৫৬ জন সদস্য পাঠিয়েছে।"}, {"q": "২০২৪ সালের মে পর্যন্ত শান্তিরক্ষা মিশনে বাংলাদেশের কতজন সদস্য নিহত হয়েছেন?", "a": "১৬৮ জন সদস্য বিভিন্ন দুর্ঘটনা ও শান্তিরক্ষার যুদ্ধে নিহত হয়েছেন।"}]}], "mcqModelTests": [{"id": "mcq_mt_1", "title": "MCQ মডেল টেস্ট ১", "subtitle": "৫টি অধ্যায় থেকে বাছাইকৃত ৩০টি বহুনির্বাচনি প্রশ্ন", "questions": [{"q": "কোন অর্থনৈতিক কার্যক্রমকে অর্থনীতির প্রথাগত খাত বলা হয়?", "opts": ["আনুষ্ঠানিক খাত", "অনানুষ্ঠানিক খাত", "ব্যাংকিং খাত", "রপ্তানি খাত"], "ans": 1, "exp": "অতীতকাল থেকে চলে আসছে বলে অনানুষ্ঠানিক কার্যক্রমকে অর্থনীতির প্রথাগত খাতও বলা হয়।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "নিচের কোনটি অনানুষ্ঠানিক অর্থনৈতিক কাজের উদাহরণ?", "opts": ["সরকারি চাকরি", "ব্যাংকিং সেবা", "ফুটপাতে হকারি", "বেসরকারি অফিস চাকরি"], "ans": 2, "exp": "ফুটপাতে হকারি, নিজের জমিতে কাজ, কামার-কুমারের কাজ ইত্যাদি অনানুষ্ঠানিক অর্থনৈতিক কাজ।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "গ্রামের মানুষের জীবিকার প্রধান উৎস কী?", "opts": ["শিল্প", "কৃষি", "চাকরি", "বৈদেশিক বাণিজ্য"], "ans": 1, "exp": "বাংলাদেশ কৃষিপ্রধান দেশ এবং গ্রামের অধিকাংশ মানুষের জীবিকার প্রধান উৎস কৃষি।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "শহরের উচ্চবিত্ত ও মধ্যবিত্ত শ্রেণির লোকেরা সাধারণত কোন কাজে নিয়োজিত?", "opts": ["অনানুষ্ঠানিক কাজে", "আনুষ্ঠানিক কাজে", "ভাসমান কাজে", "কুটির শিল্পে"], "ans": 1, "exp": "উচ্চবিত্ত ও মধ্যবিত্তরা সাধারণত সরকারি-বেসরকারি চাকরি ও ব্যবসা-বাণিজ্যের মতো আনুষ্ঠানিক কাজে নিয়োজিত।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "পৃথিবীর সর্ববৃহৎ পাটকল 'আদমজি জুট মিলস' কোথায় প্রতিষ্ঠিত হয়েছিল?", "opts": ["খুলনায়", "চট্টগ্রামে", "নারায়ণগঞ্জে", "ঢাকায়"], "ans": 2, "exp": "পাকিস্তান সৃষ্টির পর পূর্ববাংলার নারায়ণগঞ্জে পৃথিবীর সর্ববৃহৎ পাটকল আদমজি জুট মিলস প্রতিষ্ঠিত হয়।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "বাংলাদেশের অর্থনীতির মূল চালিকাশক্তি হিসেবে প্রথম থেকেই কোন খাতের ওপর নির্ভরতা বেশি?", "opts": ["অনানুষ্ঠানিক খাত", "তথ্যপ্রযুক্তি খাত", "ভারী শিল্প খাত", "পর্যটন খাত"], "ans": 0, "exp": "প্রথম থেকেই বাংলাদেশের অর্থনীতি অনানুষ্ঠানিক খাতের ওপর বেশি নির্ভরশীল।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "বিয়ের সময় বর বা কনে বিপরীত পক্ষের কাছ থেকে যে অর্থ বা সম্পত্তি দাবি করে তাকে কী বলে?", "opts": ["মোহরানা", "উপহার", "যৌতুক", "অনুদান"], "ans": 2, "exp": "বিয়ের সময় বিপরীত পক্ষের কাছ থেকে দাবি ও গ্রহণ করা অর্থ বা সম্পত্তিকেই যৌতুক বলে।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "প্রাচীন কোন কোন দেশে কনে স্বামীর ঘরে যৌতুক নিয়ে যেত?", "opts": ["ভারত ও নেপাল", "চীন ও এথেন্স", "মিশর ও জাপান", "রোম ও ফ্রান্স"], "ans": 1, "exp": "প্রাচীন চীনে ও এথেন্সে বিয়ের পর কনে স্বামীর ঘরে অর্থসম্পদ ও যৌতুক নিয়ে যেত।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "প্রাচীন এথেন্সে যৌতুক গ্রহণকে কী হিসেবে দেখা হতো?", "opts": ["অপরাধ", "সামাজিক মর্যাদা", "কুসংস্কার", "ধর্মীয় আচার"], "ans": 1, "exp": "প্রাচীন এথেন্সে যৌতুক গ্রহণকে সামাজিক মর্যাদা হিসেবে দেখা হতো।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "বাংলাদেশে যৌতুক প্রথার প্রধান কারণ হিসেবে কোনটিকে মনে করা হয়?", "opts": ["শিক্ষা", "দারিদ্র্য", "নগরায়ণ", "শিল্পায়ন"], "ans": 1, "exp": "বাংলাদেশে যৌতুক প্রথার পেছনে প্রধান কারণ হলো দারিদ্র্য।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "বাংলাদেশের বিবাহ আইনে যৌতুক দেওয়া ও নেওয়া কেমন কাজ?", "opts": ["শুধু নেওয়া অপরাধ", "শুধু দেওয়া অপরাধ", "দুই-ই সমান অপরাধ", "কোনোটিই অপরাধ নয়"], "ans": 2, "exp": "বাংলাদেশের বিবাহ আইনে যৌতুক দেওয়া ও নেওয়া দুই-ই নিষিদ্ধ এবং সমান অপরাধ।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "বিবাহিত নারীর প্রতি অত্যাচার ও সহিংসতার মূল কারণ কী?", "opts": ["যৌতুক", "বেকারত্ব", "অশিক্ষা", "শহরায়ন"], "ans": 0, "exp": "বিবাহিত নারীর প্রতি অত্যাচার ও সহিংসতার মূল কারণ যৌতুক।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "জাতিসংঘ কত সালে মানবাধিকারের সার্বজনীন ঘোষণাপত্র প্রকাশ করে?", "opts": ["১৯৪৫ সালে", "১৯৪৮ সালে", "১৯৫২ সালে", "১৯৭৪ সালে"], "ans": 1, "exp": "জাতিসংঘ ১৯৪৮ সালের ১০ই ডিসেম্বর মানবাধিকারের সার্বজনীন ঘোষণাপত্র প্রকাশ করে।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "আমাদের দেশে সাধারণত কত বছর বয়সের মানুষকে প্রবীণ বলে গণ্য করা হয়?", "opts": ["৫০ বছর", "৫৫ বছর", "ষাটোর্ধ্ব (৬০ বছর+)", "৭০ বছর"], "ans": 2, "exp": "আমাদের দেশে সাধারণত ষাটোর্ধ্ব বয়সের মানুষকে প্রবীণ বলে গণ্য করা হয়।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "বাংলাদেশে সরকারি চাকরি থেকে অবসরের বয়স কত?", "opts": ["৫৭ বছর", "৫৯ বছর", "৬০ বছর", "৬৫ বছর"], "ans": 1, "exp": "বাংলাদেশে সরকারি চাকরি থেকে অবসরের বয়স ৫৯ বছর।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "বাংলাদেশে বিচারপতিদের অবসরের বয়সসীমা কত বছর?", "opts": ["৫৯ বছর", "৬২ বছর", "৬৫ বছর", "৬৭ বছর"], "ans": 3, "exp": "বিচারপতিদের জন্য অবসরের বয়স ৬৭ বছর এবং বিশ্ববিদ্যালয়ের শিক্ষকদের জন্য ৬৫ বছর।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "বিশ্ববিদ্যালয়ের শিক্ষক ও কিছু পেশাজীবীদের অবসরের বয়সসীমা কত?", "opts": ["৫৯ বছর", "৬২ বছর", "৬৫ বছর", "৬৭ বছর"], "ans": 2, "exp": "বিশ্ববিদ্যালয়ের শিক্ষক ও কোনো কোনো পেশাজীবীদের জন্য অবসরের সীমা ৬৫ বছর।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "কত তারিখে 'আন্তর্জাতিক প্রবীণ দিবস' পালিত হয়?", "opts": ["১ অক্টোবর", "১০ ডিসেম্বর", "২৪ অক্টোবর", "৮ মার্চ"], "ans": 0, "exp": "জাতিসংঘ প্রতি বছরের ১ অক্টোবরকে 'আন্তর্জাতিক প্রবীণ দিবস' হিসেবে ঘোষণা করেছে।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "ভারতের রাজধানী শহরের নাম কী?", "opts": ["মুম্বাই", "কলকাতা", "নয়াদিল্লি", "আগ্রা"], "ans": 2, "exp": "ভারতের রাজধানীর নাম নয়াদিল্লি।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "ভারত কত সালে ইংরেজ শাসন থেকে স্বাধীনতা লাভ করে?", "opts": ["১৯৪৫ সালের ১৫ আগস্ট", "১৯৪৭ সালের ১৫ আগস্ট", "১৯৪৮ সালের ১০ ডিসেম্বর", "১৯৫২ সালের ২১ ফেব্রুয়ারি"], "ans": 1, "exp": "ইংরেজদের দু'শ বছরের শাসনের পর ১৯৪৭ সালের ১৫ই আগস্ট ভারত স্বাধীনতা লাভ করে।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "ভারতের উত্তরে কোন পর্বতমালা অবস্থিত?", "opts": ["হিন্দুকুশ", "সুলেমান", "হিমালয়", "আরাকান"], "ans": 2, "exp": "ভারতের উত্তরে রয়েছে পৃথিবীর বৃহত্তম হিমালয় পর্বতমালা।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "ভারতের প্রায় কত ভাগ লোক গ্রামে বাস করে?", "opts": ["৩০ ভাগ", "৫০ ভাগ", "৭০ ভাগ", "৮০ ভাগ"], "ans": 2, "exp": "ভারতের প্রায় ৭০ ভাগ লোক গ্রামে এবং ৩০ ভাগ লোক শহরে বাস করে।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "পৃথিবীর বৃহত্তম গণতান্ত্রিক দেশ কোনটি?", "opts": ["চীন", "যুক্তরাষ্ট্র", "ভারত", "জাপান"], "ans": 2, "exp": "ভারত পৃথিবীর বৃহত্তম গণতান্ত্রিক দেশ।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "ভারতের আয়তন কত বর্গ কিলোমিটার?", "opts": ["৩২ লক্ষ ৮৭ হাজার ২৪০", "৯৫ লক্ষ ৯৮ হাজার ৮৯", "৩ লক্ষ ৭৭ হাজার ৭০৮", "১ লক্ষ ৪৭ হাজার ৫৭০"], "ans": 0, "exp": "ভারতের আয়তন ৩২ লক্ষ ৮৭ হাজার ২৪০ বর্গ কি.মি. এবং লোকসংখ্যা ১৪৪ কোটি ১৭ লক্ষ।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "'সহস্রাব্দ উন্নয়ন লক্ষ্যমাত্রা'র মেয়াদ কত সালে উত্তীর্ণ হয়?", "opts": ["২০১০ সালে", "২০১২ সালে", "২০১৫ সালে", "২০১৬ সালে"], "ans": 2, "exp": "সহস্রাব্দ উন্নয়ন লক্ষ্যমাত্রা ২০১৫ সালে মেয়াদ উত্তীর্ণ হওয়ার পর ২০১৬ সালে টেকসই উন্নয়ন লক্ষ্যমাত্রার যাত্রা শুরু হয়।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}, {"q": "'টেকসই উন্নয়ন লক্ষ্যমাত্রা'র যাত্রা কত সাল থেকে শুরু হয়?", "opts": ["২০১৫ সাল", "২০১৬ সাল", "২০১৭ সাল", "২০২০ সাল"], "ans": 1, "exp": "টেকসই উন্নয়ন লক্ষ্যমাত্রার যাত্রা ২০১৬ সাল হতে শুরু হয়।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}, {"q": "প্রথম বিশ্বযুদ্ধ কত সালে শুরু হয়?", "opts": ["১৯১৪ সালে", "১৯২০ সালে", "১৯৩৯ সালে", "১৯৪৫ সালে"], "ans": 0, "exp": "প্রথম বিশ্বযুদ্ধ ১৯১৪ সালে এবং দ্বিতীয় বিশ্বযুদ্ধ ১৯৩৯ সালে শুরু হয়।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}, {"q": "প্রথম বিশ্বযুদ্ধের পর বিশ্বশান্তি প্রতিষ্ঠার জন্য ১৯২০ সালে কোন সংস্থা গঠিত হয়েছিল?", "opts": ["জাতিসংঘ", "সম্মিলিত জাতিপুঞ্জ (লীগ অব নেশনস)", "কমনওয়েলথ", "ওআইসি"], "ans": 1, "exp": "প্রথম বিশ্বযুদ্ধের পর ১৯২০ সালে গঠিত হয়েছিল সম্মিলিত জাতিপুঞ্জ বা লীগ অব নেশনস।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}, {"q": "দ্বিতীয় বিশ্বযুদ্ধ কত সালে শুরু হয়?", "opts": ["১৯১৪ সালে", "১৯২০ সালে", "১৯৩৯ সালে", "১৯৪৫ সালে"], "ans": 2, "exp": "দ্বিতীয় বিশ্বযুদ্ধ ১৯৩৯ সালে শুরু হয়।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}, {"q": "কোন দেশের ওপর দ্বিতীয় বিশ্বযুদ্ধে পারমাণবিক বোমা ফেলা হয়েছিল?", "opts": ["জার্মানি", "জাপান", "চীন", "ইতালি"], "ans": 1, "exp": "দ্বিতীয় বিশ্বযুদ্ধে জাপান পারমাণবিক বোমার আঘাতে ক্ষতবিক্ষত হয়ে যায়।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}]}, {"id": "mcq_mt_2", "title": "MCQ মডেল টেস্ট ২", "subtitle": "৫টি অধ্যায় থেকে বাছাইকৃত ৩০টি বহুনির্বাচনি প্রশ্ন", "questions": [{"q": "শিল্পনীতি ২০১৬ অনুযায়ী বৃহৎ শিল্পের স্থায়ী সম্পদের মূল্য কত টাকার অধিক?", "opts": ["১৫ কোটি টাকা", "৩০ কোটি টাকা", "৫০ কোটি টাকা", "৭৫ লক্ষ টাকা"], "ans": 2, "exp": "শিল্পনীতি ২০১৬ অনুযায়ী জমি ও ভবন ব্যতীত স্থায়ী সম্পদের মূল্য ৫০ কোটি টাকার অধিক হলে তা বৃহৎ শিল্প।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "তৈরি পোশাক/শ্রমঘন শিল্প ব্যতীত বৃহৎ শিল্পে কতজনের অধিক শ্রমিক নিয়োজিত থাকে?", "opts": ["১২০ জন", "২০০ জন", "৩০০ জন", "৫০০ জন"], "ans": 2, "exp": "বৃহৎ শিল্প প্রতিষ্ঠানে ৩০০ জনের অধিক শ্রমিক নিয়োজিত থাকে।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "মাঝারি শিল্পে কতজন শ্রমিক নিয়োজিত থাকে?", "opts": ["৩১-১২০ জন", "১২১-৩০০ জন", "১০-৩০ জন", "৩০০ জনের বেশি"], "ans": 1, "exp": "মাঝারি শিল্পে ১২১ থেকে ৩০০ জন শ্রমিক নিয়োজিত থাকে এবং স্থায়ী সম্পদ ১৫ থেকে ৫০ কোটি টাকা।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "ক্ষুদ্র শিল্পে স্থায়ী সম্পদের মূল্য কত টাকা?", "opts": ["১০ লক্ষ থেকে ৫০ লক্ষ", "৭৫ লক্ষ থেকে ১৫ কোটি", "১৫ কোটি থেকে ৫০ কোটি", "৫০ কোটি টাকার বেশি"], "ans": 1, "exp": "ক্ষুদ্র শিল্পে স্থায়ী সম্পদের মূল্য ৭৫ লক্ষ টাকা থেকে ১৫ কোটি টাকা এবং শ্রমিক ৩১-১২০ জন।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "কোল্ডস্টোরেজ বা হিমাগার কোন ধরনের শিল্পের উদাহরণ?", "opts": ["ক্ষুদ্র শিল্প", "কুটির শিল্প", "মাঝারি শিল্প", "বৃহৎ শিল্প"], "ans": 2, "exp": "হালকা ইঞ্জিনিয়ারিং, সিল্ক, সিরামিক ও কোল্ডস্টোরেজ মাঝারি শিল্পের উদাহরণ।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "তাঁতবস্ত্র, মাটির জিনিসপত্র ও আগরবাতি কোন শিল্পের অন্তর্ভুক্ত?", "opts": ["ক্ষুদ্র শিল্প", "মাঝারি শিল্প", "কুটির শিল্প", "বৃহৎ শিল্প"], "ans": 2, "exp": "মালিক নিজে বা পরিবারের সদস্যরা মিলে উৎপাদন ও বিপণন করলে তা কুটিরশিল্প, যেমন: তাঁতবস্ত্র ও আগরবাতি।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "বাংলাদেশে যৌতুক নিরোধ আইন কত সালে প্রণয়ন করা হয়?", "opts": ["১৯৭৪ সালে", "১৯৮০ সালে", "১৯৮৩ সালে", "১৯৮৬ সালে"], "ans": 1, "exp": "যৌতুক বন্ধ করার জন্য বাংলাদেশে ১৯৮০ সালে যৌতুক নিরোধ আইন প্রণয়ন করা হয়।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "১৯৮০ সালের যৌতুক নিরোধ আইনে সর্বোচ্চ কত বছরের কারাদণ্ডের বিধান ছিল?", "opts": ["৬ মাস", "১ বছর", "২ বছর", "৫ বছর"], "ans": 1, "exp": "১৯৮০ সালের আইন অনুযায়ী সর্বোচ্চ ১ বছরের কারাদণ্ড বা ৫ হাজার টাকা অর্থদণ্ড হতে পারে।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "১৯৮০ সালের যৌতুক নিরোধ আইনে অর্থদণ্ডের পরিমাণ কত ছিল?", "opts": ["১ হাজার টাকা", "৫ হাজার টাকা", "১০ হাজার টাকা", "৫০ হাজার টাকা"], "ans": 1, "exp": "১৯৮০ সালের আইনে সর্বোচ্চ ১ বছরের কারাদণ্ড বা ৫ হাজার টাকা অর্থদণ্ডের কথা বলা হয়েছে।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "কত সালে যৌতুক নিরোধ আইন সংশোধন করা হয়?", "opts": ["১৯৮২ সালে", "১৯৮৩ সালে", "১৯৮৬ সালে", "১৯৯০ সালে"], "ans": 2, "exp": "১৯৮৬ সালে যৌতুক নিরোধ আইন সংশোধন করা হয়েছে।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "১৯৮৬ সালের সংশোধিত যৌতুক নিরোধ আইনে সর্বনিম্ন ও সর্বোচ্চ কারাদণ্ড কত?", "opts": ["১ থেকে ৩ বছর", "১ থেকে ৫ বছর", "২ থেকে ৫ বছর", "৬ মাস থেকে ২ বছর"], "ans": 1, "exp": "সংশোধিত ১৯৮৬ সালের আইন অনুযায়ী অপরাধী সর্বনিম্ন ১ বছর এবং সর্বোচ্চ ৫ বছরের কারাদণ্ডে দণ্ডিত হবে।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "১৯৮৩ সালের নারী ও শিশু নির্যাতন দমন আইনে যৌতুকের কারণে মৃত্যু ঘটালে সর্বোচ্চ শাস্তি কী?", "opts": ["৫ বছর কারাদণ্ড", "১০ বছর কারাদণ্ড", "মৃত্যুদণ্ড বা যাবজ্জীবন কারাদণ্ড", "৫০ হাজার টাকা জরিমানা"], "ans": 2, "exp": "১৯৮৩ সালের আইনের বিধান অনুযায়ী মৃত্যুদণ্ড বা যাবজ্জীবন কারাদণ্ড ও অর্থদণ্ডে দণ্ডিত করা যাবে।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "কোনটি প্রবীণদের স্বাধীনতা সংশ্লিষ্ট অধিকার?", "opts": ["নীতি নির্ধারণে অংশগ্রহণ", "পর্যাপ্ত খাদ্য, আশ্রয় ও স্বাস্থ্যসেবা", "সংগঠন গড়ে তোলা", "আশ্রয়কেন্দ্রে সেবা"], "ans": 1, "exp": "পর্যাপ্ত খাদ্য, পানীয়, আশ্রয়, বস্ত্র, স্বাস্থ্যসেবা ও আয়-উপার্জনের অধিকার স্বাধীনতা সংশ্লিষ্ট অধিকার।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "প্রবীণদের পারিবারিক সমস্যার মূল কারণ কী?", "opts": ["একান্নবর্তী পরিবার ভেঙে ছোটো পরিবার হওয়া", "জনসংখ্যা বৃদ্ধি", "শিক্ষার হার বৃদ্ধি", "চাকরির সুযোগ"], "ans": 0, "exp": "শিল্পায়ন ও নগরায়ণের ফলে একান্নবর্তী পরিবার ভেঙে ছোটো পরিবারে পরিণত হওয়ায় প্রবীণরা নিঃসঙ্গ হচ্ছেন।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "সমাজে ও পরিবারে প্রবীণদের কোণঠাসা অবস্থা তাদের মধ্যে কীসের জন্ম দেয়?", "opts": ["উৎসাহের", "হীনম্মন্যতার", "অহংকারের", "সাহসের"], "ans": 1, "exp": "কোণঠাসা অবস্থা প্রবীণদের মধ্যে হীনম্মন্যতার জন্ম দেয় এবং স্মৃতিবিভ্রম বাড়তি সমস্যা সৃষ্টি করে।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "বর্তমানে বাংলাদেশে প্রবীণদের সংখ্যা প্রায় কত?", "opts": ["৫০ লক্ষ", "এক কোটি", "দুই কোটি", "তিন কোটি"], "ans": 1, "exp": "বর্তমানে বাংলাদেশে প্রবীণদের সংখ্যা প্রায় এক কোটি।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "প্রবীণ হিতৈষী সংঘ ও জরাবিজ্ঞান প্রতিষ্ঠান ঢাকার কোথায় অবস্থিত?", "opts": ["মতিঝিল", "উত্তরা", "শেরেবাংলা নগর", "ধানমন্ডি"], "ans": 2, "exp": "প্রবীণ হিতৈষী সংঘ ও জরাবিজ্ঞান প্রতিষ্ঠান ঢাকার শেরেবাংলা নগরে অবস্থিত।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "কোন প্রতিষ্ঠান প্রবীণদের বিনা সুদে ঋণ প্রদান করে থাকে?", "opts": ["রোটারি ক্লাব", "বাংলাদেশ অবসরপ্রাপ্ত সরকারি কল্যাণ সমিতি", "ঝরাপাতা", "মা ও শিশু নিবাস"], "ans": 1, "exp": "বাংলাদেশ অবসরপ্রাপ্ত সরকারি কল্যাণ সমিতি প্রবীণদের স্বাস্থ্য, শিক্ষা অনুদানসহ বিনা সুদে ঋণ দেয়।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "চীনের স্থানীয় নাম কী?", "opts": ["নিপ্পন", "ঝুংগুয়া", "কোরিয়া", "মান্দারিন"], "ans": 1, "exp": "চীনের রাষ্ট্রীয় নাম গণপ্রজাতন্ত্রী চীন, আর স্থানীয় নাম ঝুংগুয়া।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "আয়তনের দিক থেকে চীন বিশ্বের কততম বৃহত্তম দেশ?", "opts": ["প্রথম", "দ্বিতীয়", "তৃতীয়", "চতুর্থ"], "ans": 2, "exp": "আয়তনের দিক থেকে চীন বিশ্বের তৃতীয় বৃহত্তম দেশ (প্রায় ৯৫ লক্ষ ৯৮ হাজার ৮৯ বর্গ কি.মি.)।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "চীনের সংখ্যাগরিষ্ঠ মানুষের ভাষা কী?", "opts": ["হান", "মান্দারিন", "তিব্বতি", "ক্যান্টনিজ"], "ans": 1, "exp": "চীনের জনসমষ্টির শতকরা ৯৫ ভাগ মান্দারিন (চীনা) ভাষায় কথা বলে।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "চীনের বৃহত্তম দুটি নদী কোনটি?", "opts": ["গঙ্গা ও যমুনা", "হোয়াংহো ও ইয়াংসি", "মেকং ও সালউইন", "সিন্ধু ও ব্রহ্মপুত্র"], "ans": 1, "exp": "হোয়াংহো ও ইয়াংসি চীনের বৃহত্তম নদী।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "প্রশাসনিক দিক থেকে চীনকে কয়টি প্রদেশ ও কয়টি স্বায়ত্তশাসিত অঞ্চলে ভাগ করা হয়েছে?", "opts": ["২০টি প্রদেশ ও ৩টি অঞ্চল", "২২টি প্রদেশ ও ৫টি স্বায়ত্তশাসিত অঞ্চল", "১৩টি প্রদেশ ও ৩টি অঞ্চল", "২৫টি প্রদেশ ও ২টি অঞ্চল"], "ans": 1, "exp": "চীনকে ২২টি প্রদেশ এবং ৫টি স্বায়ত্তশাসিত অঞ্চলে ভাগ করা হয়েছে।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "বিশ্বের সর্বোচ্চ শৃঙ্গ মাউন্ট এভারেস্ট কোন দুটি দেশের সীমান্তে অবস্থিত?", "opts": ["ভারত ও চীন", "নেপাল ও চীন", "ভুটান ও ভারত", "রাশিয়া ও চীন"], "ans": 1, "exp": "বিশ্বের সর্বোচ্চ শৃঙ্গ মাউন্ট এভারেস্ট নেপাল ও চীনের সীমান্ত বরাবর অবস্থিত।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "জাতিসংঘ কত সালের কত তারিখে প্রতিষ্ঠা লাভ করে?", "opts": ["১৯৪৫ সালের ২৪ অক্টোবর", "১৯৪৮ সালের ১০ ডিসেম্বর", "১৯২০ সালের ১০ জানুয়ারি", "১৯৭৪ সালের ১৭ সেপ্টেম্বর"], "ans": 0, "exp": "১৯৪৫ সালের ২৪শে অক্টোবর তারিখে জাতিসংঘ প্রতিষ্ঠা লাভ করে।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}, {"q": "কোন দুই নেতার উদ্যোগে জাতিসংঘ প্রতিষ্ঠার প্রচেষ্টা শুরু হয়?", "opts": ["উইনস্টন চার্চিল ও রুজভেল্ট", "লিঙ্কন ও চার্চিল", "নেপোলিয়ন ও রুজভেল্ট", "ট্রিগভেলি ও গুতেরেস"], "ans": 0, "exp": "ব্রিটিশ প্রধানমন্ত্রী উইনস্টন চার্চিল এবং যুক্তরাষ্ট্রের প্রেসিডেন্ট রুজভেল্টের উদ্যোগে জাতিসংঘ প্রতিষ্ঠিত হয়।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}, {"q": "শুরুতে জাতিসংঘের সদস্য সংখ্যা কত ছিল?", "opts": ["৪৫টি", "৫১টি", "১৯৩টি", "৭৪টি"], "ans": 1, "exp": "শুরুতে জাতিসংঘের সদস্য সংখ্যা ছিল ৫১ এবং বর্তমানে এর সদস্য সংখ্যা ১৯৩।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}, {"q": "বাংলাদেশ কত সালে জাতিসংঘের সদস্যপদ লাভ করে?", "opts": ["১৯৭১ সালে", "১৯৭২ সালে", "১৯৭৪ সালে", "১৯৮৮ সালে"], "ans": 2, "exp": "বাংলাদেশ ১৯৭৪ সালে জাতিসংঘের সদস্যপদ লাভ করে।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}, {"q": "জাতিসংঘের সদর দপ্তর কোথায় অবস্থিত?", "opts": ["লন্ডন", "জেনেভা", "নিউইয়র্ক", "প্যারিস"], "ans": 2, "exp": "জাতিসংঘের সদর দপ্তর যুক্তরাষ্ট্রের নিউইয়র্ক শহরে অবস্থিত।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}, {"q": "জাতিসংঘ মোট কয়টি সংস্থা বা শাখা নিয়ে গঠিত?", "opts": ["৪টি", "৫টি", "৬টি", "৭টি"], "ans": 2, "exp": "জাতিসংঘ মোট ছয়টি সংস্থা বা শাখা নিয়ে গঠিত।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}]}, {"id": "mcq_mt_3", "title": "MCQ মডেল টেস্ট ৩", "subtitle": "৫টি অধ্যায় থেকে বাছাইকৃত ৩০টি বহুনির্বাচনি প্রশ্ন", "questions": [{"q": "কোন শিল্পের প্রসার বাংলাদেশে বিশেষ করে নারীদের জন্য বিশাল কর্মসংস্থানের সুযোগ করেছে?", "opts": ["পাট শিল্প", "তৈরি পোশাক শিল্প", "চিনি শিল্প", "সার শিল্প"], "ans": 1, "exp": "সাম্প্রতিককালে তৈরি পোশাক শিল্পের প্রসার লক্ষ লক্ষ নারীর কর্মসংস্থানের সুযোগ করে দিয়েছে।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "বিদেশি বিনিয়োগকারীদের আকৃষ্ট করতে সরকার দেশে কী প্রতিষ্ঠা করেছে?", "opts": ["EPZ", "WTO", "SAFTA", "BSEC"], "ans": 0, "exp": "বিদেশি বিনিয়োগকারীদের আকৃষ্ট করতে সরকার দেশে কয়েকটি রপ্তানি প্রক্রিয়াকরণ অঞ্চল (EPZ) প্রতিষ্ঠা করেছে।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "WTO-এর পূর্ণরূপ কী?", "opts": ["World Transport Organisation", "World Trade Organisation", "World Tax Office", "Western Trade Organisation"], "ans": 1, "exp": "WTO-এর পূর্ণরূপ হলো World Trade Organisation (বিশ্ব বাণিজ্য সংস্থা)।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "SAFTA-এর পূর্ণরূপ কী?", "opts": ["South Asian Free Trade Area", "South Asian Food Trade Act", "South African Free Trade Area", "Southern Asia Finance Trade"], "ans": 0, "exp": "SAFTA হলো South Asian Free Trade Area (দক্ষিণ এশীয় মুক্ত বাণিজ্য এলাকা)।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "কোন ধরনের দেশকে উন্নত দেশ ধরা হয়?", "opts": ["যাদের রপ্তানির চেয়ে আমদানি বেশি", "যাদের আমদানির চেয়ে রপ্তানি বেশি", "যারা শুধু কৃষি কাজ করে", "যারা কোনো বাণিজ্য করে না"], "ans": 1, "exp": "যে দেশের আমদানির চেয়ে রপ্তানির পরিমাণ বেশি তাকে উন্নত দেশ ধরা হয়।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "শিল্পখাতে বিদেশি বিনিয়োগ উৎসাহিত করতে সরকার কোন সেবা চালু করেছে?", "opts": ["ওয়ান স্টপ সার্ভিস", "টোল ফ্রি সার্ভিস", "হোম ডেলিভারি", "অনলাইন ব্যাংকিং"], "ans": 0, "exp": "বন্দর সুবিধা, বিদ্যুৎ-গ্যাস উন্নতির পাশাপাশি সরকার ওয়ান স্টপ সার্ভিস চালু করেছে।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "যৌতুক আদান-প্রদানে সহায়তাকারীর শাস্তি কেমন হয়?", "opts": ["কোনো শাস্তি নেই", "অর্ধেক শাস্তি", "একই শাস্তি", "শুধু সতর্কতা"], "ans": 2, "exp": "যৌতুক আদান-প্রদানে সহায়তাকারীও মূল অপরাধীর মতো একই শাস্তি পাবে।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "সামাজিক আন্দোলন কী?", "opts": ["রাজনৈতিক মিছিল", "সংগঠিত সামাজিক প্রতিরোধ", "সরকারি আইন", "অর্থনৈতিক জরিপ"], "ans": 1, "exp": "সামাজিক আন্দোলন হচ্ছে সংগঠিত সামাজিক প্রতিরোধ।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "কীভাবে কন্যাসন্তানকে যৌতুকের অভিশাপ থেকে মুক্ত রাখা সম্ভব?", "opts": ["অল্প বয়সে বিয়ে দিয়ে", "উচ্চতর শিক্ষায় আত্মনির্ভরশীল করে", "বেশি টাকা জমিয়ে", "ঘরে আটকে রেখে"], "ans": 1, "exp": "উচ্চতর শিক্ষা গ্রহণে উদ্বুদ্ধ করে আত্মনির্ভরশীল করলে যৌতুকের অভিশাপ তাদের স্পর্শ করতে পারবে না।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "যৌতুক প্রতিরোধ করার জন্য প্রথমেই কাকে সচেতন করতে হবে?", "opts": ["পুলিশকে", "পরিবারকে", "বিদেশিদের", "আদালতকে"], "ans": 1, "exp": "যৌতুক প্রতিরোধ করার জন্য প্রথমেই সচেতন করতে হবে পরিবারকে।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "সমাজে যৌতুক সমস্যার মূলে কোন কোন সামাজিক ব্যাধি জড়িত?", "opts": ["বাল্যবিবাহ ও বহুবিবাহ", "শিল্পায়ন", "নগরায়ণ", "খেলাধুলা"], "ans": 0, "exp": "সমাজে দারিদ্র্য, দুর্নীতি, অপরাধ প্রবণতা, বাল্যবিবাহ ও বহুবিবাহের মূলে রয়েছে যৌতুক সমস্যা।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "ধনী পিতামাতা কেন মেয়ের বিয়েতে বিপুল অঙ্কের যৌতুক দেন?", "opts": ["আইন মানতে", "মেয়ে স্বামীর ঘরে মাথা উঁচু করে থাকবে ভেবে", "দারিদ্র্যের কারণে", "সরকারের নির্দেশে"], "ans": 1, "exp": "ধনী পিতামাতার ধারণা যৌতুকের কারণে তাদের কন্যা স্বামীর ঘরে মাথা উঁচু করে থাকবে।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "বয়স্ক ভাতা পেতে হলে মহিলাদের সর্বনিম্ন বয়স কত হতে হয়?", "opts": ["৫৯ বছর", "৬০ বছর", "৬২ বছর", "৬৫ বছর"], "ans": 2, "exp": "বয়স্ক ভাতার ক্ষেত্রে সর্বনিম্ন বয়স মহিলাদের ৬২ বছর এবং পুরুষদের ৬৫ বছর।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "বয়স্ক ভাতা পেতে হলে পুরুষদের সর্বনিম্ন বয়স কত?", "opts": ["৫৯ বছর", "৬২ বছর", "৬৫ বছর", "৬৭ বছর"], "ans": 2, "exp": "বয়স্ক ভাতার ক্ষেত্রে পুরুষদের সর্বনিম্ন বয়স ৬৫ বছর।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "পাঠ্যবই অনুযায়ী বয়স্ক ভাতা প্রতি মাসে কত টাকা হারে প্রদান করা হয়?", "opts": ["৫০০ টাকা", "৬৫০ টাকা", "১০০০ টাকা", "১২০০ টাকা"], "ans": 1, "exp": "দেশের সকল ইউনিয়নের ওয়ার্ডের অসহায় বয়োজ্যেষ্ঠদের প্রতি মাসে ৬৫০ টাকা হারে বয়স্ক ভাতা দেওয়া হয়।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "কোন ভাতা প্রাপ্তির ক্ষেত্রে বয়সের কোনো বাধ্যবাধকতা নেই?", "opts": ["বয়স্ক ভাতা", "অবসর ভাতা", "বিধবা ও স্বামী নিগৃহীতা ভাতা", "মুক্তিযোদ্ধা ভাতা"], "ans": 2, "exp": "বিধবা ও স্বামী নিগৃহীতা মহিলাদের ভাতা প্রাপ্তির ক্ষেত্রে বয়সের কোনো বাধ্যবাধকতা নেই।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "কত সালে পিতা-মাতার ভরণ-পোষণ আইন প্রণয়ন করা হয়?", "opts": ["২০১০ সালে", "২০১৩ সালে", "২০১৫ সালে", "২০১৭ সালে"], "ans": 1, "exp": "প্রবীণদের অধিকার নিশ্চিত করতে সরকার পিতা-মাতার ভরণ-পোষণ আইন, ২০১৩ প্রণয়ন করেছে।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "পিতা-মাতার ভরণ-পোষণ আইনে পিতার অবর্তমানে কাকে ভরণ-পোষণের বাধ্যবাধকতা আছে?", "opts": ["চাচা-চাচী", "মামা-মামী", "দাদা-দাদী", "প্রতিবেশী"], "ans": 2, "exp": "আইনে পিতার অবর্তমানে দাদা-দাদীকে এবং মাতার অবর্তমানে নানা-নানীকে ভরণ-পোষণের বাধ্যবাধকতা রয়েছে।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "জাপানের স্থানীয় নাম কী?", "opts": ["ঝুংগুয়া", "নিহন বা নিপ্পন", "সিন্টো", "টোকিও"], "ans": 1, "exp": "জাপানের রাষ্ট্রীয় নাম কিংডম অব জাপান ও স্থানীয় নাম নিহন বা নিপ্পন।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "কোন দেশকে 'সূর্যোদয়ের দেশ' বলা হয়?", "opts": ["চীন", "দক্ষিণ কোরিয়া", "জাপান", "মালয়েশিয়া"], "ans": 2, "exp": "এশিয়া মহাদেশের একেবারে পূর্ব প্রান্তে অবস্থিত বলে জাপানকে 'সূর্যোদয়ের দেশ' বলা হয়।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "জাপান ছোটো-বড়ো প্রায় কতটি দ্বীপ নিয়ে গঠিত?", "opts": ["দুই হাজার", "তিন হাজার", "চার হাজার", "পাঁচ হাজার"], "ans": 2, "exp": "জাপান ছোটো-বড়ো প্রায় চার হাজার দ্বীপ নিয়ে গঠিত।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "জাপানিদের জাতিগত ধর্মের নাম কী?", "opts": ["বৌদ্ধ", "সিন্টো", "কনফুসিয়াস", "তাও"], "ans": 1, "exp": "জাপানিদের জাতিগত ধর্মের নাম সিন্টো।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "জাপানের শিক্ষার হার কত শতাংশ?", "opts": ["৯৫%", "৯৭%", "৯৯%", "১০০%"], "ans": 3, "exp": "জাপানের শিক্ষার হার একশত ভাগ (১০০%) এবং ৬-১৫ বছর বয়স পর্যন্ত শিক্ষা বাধ্যতামূলক।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "নিচের কোনটি জাপানের প্রধান চারটি দ্বীপের একটি নয়?", "opts": ["হোক্কাইডো", "হনসু", "শিকোকু", "কুচিং"], "ans": 3, "exp": "জাপানের প্রধান চারটি দ্বীপ হলো হোক্কাইডো, হনসু, শিকোকু ও কিউশু; কুচিং মালয়েশিয়ার শহর।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "জাতিসংঘের প্রথম মহাসচিব কে ছিলেন?", "opts": ["অ্যান্টনিও গুতেরেস", "ট্রিগভেলি", "বান কি মুন", "কফি আনান"], "ans": 1, "exp": "নরওয়ের অধিবাসী ট্রিগভেলি ছিলেন জাতিসংঘের প্রথম মহাসচিব।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}, {"q": "জাতিসংঘের বর্তমান মহাসচিব অ্যান্টনিও গুতেরেস কোন দেশের নাগরিক?", "opts": ["নরওয়ে", "পর্তুগাল", "স্পেন", "ফ্রান্স"], "ans": 1, "exp": "বর্তমান (জানুয়ারি ২০১৭ হতে) মহাসচিব অ্যান্টনিও গুতেরেস পর্তুগালের নাগরিক।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}, {"q": "নিরাপত্তা পরিষদের স্থায়ী সদস্য রাষ্ট্র কয়টি?", "opts": ["৩টি", "৫টি", "৭টি", "১০টি"], "ans": 1, "exp": "নিরাপত্তা পরিষদের স্থায়ী সদস্য ৫টি: যুক্তরাষ্ট্র, যুক্তরাজ্য, রাশিয়া, ফ্রান্স ও গণচীন।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}, {"q": "বাংলাদেশ কতবার নিরাপত্তা পরিষদের অস্থায়ী সদস্য হিসেবে দায়িত্ব পালন করেছে?", "opts": ["একবার", "দুইবার", "তিনবার", "চারবার"], "ans": 1, "exp": "বাংলাদেশ দুইবার নিরাপত্তা পরিষদের অস্থায়ী সদস্যের দায়িত্ব পালন করেছে।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}, {"q": "কত সালে বঙ্গোপসাগরের সমুদ্রসীমা মামলায় আন্তর্জাতিক আদালতে বাংলাদেশ নিজের পক্ষে রায় পায়?", "opts": ["২০১০ সালে", "২০১২ সালে", "২০১৪ সালে", "২০১৬ সালে"], "ans": 1, "exp": "২০১২ সালে বঙ্গোপসাগরের সমুদ্রসীমা আন্তর্জাতিক আদালতে বাংলাদেশ নিজের পক্ষে রায় পায়।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}, {"q": "জাতিসংঘের দাপ্তরিক ভাষা কয়টি?", "opts": ["৪টি", "৫টি", "৬টি", "৭টি"], "ans": 2, "exp": "জাতিসংঘের দাপ্তরিক ভাষা ছয়টি: আরবি, চাইনিজ, ইংরেজি, ফরাসি, রাশিয়ান ও স্প্যানিশ।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}]}], "ganmulokModelTests": [{"id": "gan_mt_1", "title": "জ্ঞানমূলক মডেল টেস্ট ১", "subtitle": "৫টি অধ্যায় থেকে বাছাইকৃত ২০টি জ্ঞানমূলক প্রশ্ন (Active Recall)", "questions": [{"q": "অর্থনৈতিক কার্যক্রম কাকে বলে?", "a": "অর্থনৈতিক মূল্য রয়েছে এমন যেকোনো কাজ, সেবা বা বিনিময়কে অর্থনৈতিক কার্যক্রম বলা হয়।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "অনানুষ্ঠানিক অর্থনৈতিক কার্যক্রম কাকে বলে?", "a": "যেসব কাজের জন্য পূর্ব মজুরি নির্ধারিত নয়, করের আওতায় আনা কঠিন এবং সরকার কর্তৃক নিয়ন্ত্রিত নয়, তাকে অনানুষ্ঠানিক অর্থনৈতিক কার্যক্রম বলে।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "অর্থনীতির প্রথাগত খাত বলতে কী বোঝায়?", "a": "অতীতকাল থেকে চলে আসছে বলে অনানুষ্ঠানিক অর্থনৈতিক কার্যক্রমকে অর্থনীতির প্রথাগত খাত বলা হয়।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "শহরের ভাসমান বা অস্থায়ী মানুষ কারা?", "a": "শহরের যেসব বিত্তহীন মানুষের নিজস্ব বা স্থায়ী বাসাবাড়ি নেই এবং বস্তি, ফুটপাত, পার্ক বা রেলস্টেশনে বাস করে, তারাই ভাসমান বা অস্থায়ী মানুষ।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "যৌতুক কাকে বলে?", "a": "বিয়ের সময় বর বা কনে বিপরীত পক্ষের কাছ থেকে যে অর্থ বা সম্পত্তি দাবি করে ও গ্রহণ করে তাকেই যৌতুক বলে।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "প্রাচীন কোন দেশে যৌতুক গ্রহণকে সামাজিক মর্যাদা হিসেবে দেখা হতো?", "a": "প্রাচীন এথেন্সে (এবং প্রাচীন চীনেও কনে স্বামীর ঘরে যৌতুক নিয়ে যেত)।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "বাংলাদেশে যৌতুক প্রথার প্রধান কারণ কী?", "a": "বাংলাদেশে যৌতুক প্রথার প্রধান কারণ হচ্ছে দারিদ্র্য।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "যৌতুকের দুটি সামাজিক কুফল লেখো।", "a": "বিবাহিত নারীর ওপর নির্যাতন-সহিংসতা এবং বিবাহবিচ্ছেদ বা প্রাণহানির মতো ঘটনা ঘটে।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "অধিকার কাকে বলে?", "a": "অধিকার হলো সমাজ ও রাষ্ট্র কর্তৃক স্বীকৃত কতগুলো সুযোগ-সুবিধা, যা ভোগের মাধ্যমে নাগরিকের ব্যক্তিত্বের বিকাশ ঘটে।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "জাতিসংঘ কত সালের কত তারিখে মানবাধিকারের সার্বজনীন ঘোষণাপত্র প্রকাশ করে?", "a": "১৯৪৮ সালের ১০ই ডিসেম্বর।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "আমাদের দেশে কাদেরকে প্রবীণ বলে গণ্য করা হয়?", "a": "সাধারণত ষাটোর্ধ্ব (৬০ বছর বা তদূর্ধ্ব) বয়সের মানুষকে প্রবীণ বলে গণ্য করা হয়।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "বাংলাদেশে সরকারি চাকরি, বিশ্ববিদ্যালয়ের শিক্ষক ও বিচারপতিদের অবসরের বয়স কত?", "a": "সরকারি চাকরিতে ৫৯ বছর, বিশ্ববিদ্যালয়ের শিক্ষকদের ৬৫ বছর এবং বিচারপতিদের ৬৭ বছর।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "ভারতের রাজধানী ও আয়তন কত?", "a": "রাজধানী নয়াদিল্লি এবং আয়তন ৩২ লক্ষ ৮৭ হাজার ২৪০ বর্গ কিলোমিটার।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "ভারত কত সালের কত তারিখে স্বাধীনতা লাভ করে?", "a": "১৯৪৭ সালের ১৫ই আগস্ট।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "ভারতের দুটি প্রাচীন ঐতিহাসিক নিদর্শনের নাম লেখো।", "a": "আগ্রার তাজমহল এবং দিল্লির কুতুব মিনার (এছাড়া অজন্তা পর্বতগুহা ও লালকেল্লা)।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "ভারতের প্রায় কত শতাংশ লোক গ্রামে ও শহরে বাস করে?", "a": "প্রায় ৭০ ভাগ লোক গ্রামে এবং ৩০ ভাগ লোক শহরে বাস করে।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "সহস্রাব্দ উন্নয়ন লক্ষ্যমাত্রা (MDG) ও টেকসই উন্নয়ন লক্ষ্যমাত্রা (SDG)-এর সময়কাল কী?", "a": "সহস্রাব্দ উন্নয়ন লক্ষ্যমাত্রা ২০১৫ সালে মেয়াদ উত্তীর্ণ হয় এবং ২০১৬ সাল থেকে টেকসই উন্নয়ন লক্ষ্যমাত্রার যাত্রা শুরু হয়।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}, {"q": "প্রথম ও দ্বিতীয় বিশ্বযুদ্ধ কত সালে শুরু হয়েছিল?", "a": "প্রথম বিশ্বযুদ্ধ ১৯১৪ সালে এবং দ্বিতীয় বিশ্বযুদ্ধ ১৯৩৯ সালে শুরু হয়।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}, {"q": "সম্মিলিত জাতিপুঞ্জ বা লীগ অব নেশনস কত সালে গঠিত হয়?", "a": "প্রথম বিশ্বযুদ্ধের পর বিশ্বশান্তি প্রতিষ্ঠার জন্য ১৯২০ সালে গঠিত হয়েছিল।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}, {"q": "জাতিসংঘ কবে এবং কাদের উদ্যোগে প্রতিষ্ঠিত হয়?", "a": "ব্রিটিশ প্রধানমন্ত্রী উইনস্টন চার্চিল ও যুক্তরাষ্ট্রের প্রেসিডেন্ট রুজভেল্টের উদ্যোগে ১৯৪৫ সালের ২৪শে অক্টোবর জাতিসংঘ প্রতিষ্ঠিত হয়।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}]}, {"id": "gan_mt_2", "title": "জ্ঞানমূলক মডেল টেস্ট ২", "subtitle": "৫টি অধ্যায় থেকে বাছাইকৃত ২০টি জ্ঞানমূলক প্রশ্ন (Active Recall)", "questions": [{"q": "আদমজি জুট মিলস কোথায় অবস্থিত ছিল?", "a": "পাকিস্তান আমলে পূর্ববাংলার নারায়ণগঞ্জে পৃথিবীর সর্ববৃহৎ পাটকল আদমজি জুট মিলস প্রতিষ্ঠিত হয়েছিল।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "বৃহৎ শিল্প কাকে বলে?", "a": "শিল্পনীতি ২০১৬ অনুযায়ী যেসব প্রতিষ্ঠানে জমি ও ভবন ব্যতীত স্থায়ী সম্পদের মূল্য ৫০ কোটি টাকার অধিক কিংবা ৩০০ জনের অধিক শ্রমিক কাজ করে, তাকে বৃহৎ শিল্প বলে।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "মাঝারি শিল্পে শ্রমিক সংখ্যা কত?", "a": "মাঝারি শিল্পে ১২১ থেকে ৩০০ জন শ্রমিক নিয়োজিত থাকে (স্থায়ী সম্পদ ১৫ থেকে ৫০ কোটি টাকা)।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "ক্ষুদ্র শিল্পের দুটি উদাহরণ দাও।", "a": "চাল কল, ছোটো ছোটো জুতা বা প্লাস্টিক কারখানা এবং খাদ্য প্রক্রিয়াজাত শিল্প ক্ষুদ্র শিল্পের উদাহরণ।", "source": "অধ্যায় ৪: বাংলাদেশের অর্থনীতি"}, {"q": "বাংলাদেশে কত সালে যৌতুক নিরোধ আইন প্রণয়ন করা হয়?", "a": "১৯৮০ সালে বাংলাদেশে যৌতুক নিরোধ আইন প্রণয়ন করা হয়।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "১৯৮০ সালের যৌতুক নিরোধ আইনে শাস্তির বিধান কী ছিল?", "a": "সর্বোচ্চ ১ বছরের কারাদণ্ড বা ৫ হাজার টাকা অর্থদণ্ড অথবা উভয় দণ্ড।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "১৯৮৬ সালের সংশোধিত যৌতুক নিরোধ আইনে কী শাস্তির বিধান রাখা হয়েছে?", "a": "যৌতুক প্রদান বা গ্রহণ করলে অপরাধী সর্বনিম্ন ১ বছর এবং সর্বোচ্চ ৫ বছরের কারাদণ্ডে দণ্ডিত হবে।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "১৯৮৩ সালের নারী ও শিশু নির্যাতন দমন আইনে যৌতুকের কারণে মৃত্যু ঘটালে কী শাস্তি?", "a": "মৃত্যুদণ্ড বা যাবজ্জীবন কারাদণ্ড এবং অর্থদণ্ডের বিধান রাখা হয়েছে।", "source": "অধ্যায় ৮: বাংলাদেশের সামাজিক সমস্যা"}, {"q": "আন্তর্জাতিক প্রবীণ দিবস কবে পালিত হয়?", "a": "প্রতি বছরের ১ অক্টোবর।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "প্রবীণদের দুটি স্বাধীনতা সংশ্লিষ্ট অধিকার লেখো।", "a": "পর্যাপ্ত খাদ্য, পানীয়, আশ্রয়, বস্ত্র ও স্বাস্থ্যসেবা পাওয়ার অধিকার এবং আয়-উপার্জন করার অধিকার।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "প্রবীণদের পারিবারিক সমস্যার মূল কারণ কী?", "a": "শিল্পায়ন ও নগরায়ণের ফলে একান্নবর্তী পরিবার ভেঙে ছোটো পরিবারে পরিণত হওয়া।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "বাংলাদেশে প্রবীণদের সংখ্যা প্রায় কত?", "a": "প্রায় এক কোটি (যা বিশ্বের ৫০টিরও বেশি দেশের মোট জনসংখ্যার চেয়ে বেশি)।", "source": "অধ্যায় ৯: প্রবীণ ও নারীর অধিকার"}, {"q": "চীনের রাষ্ট্রীয় নাম ও স্থানীয় নাম কী?", "a": "রাষ্ট্রীয় নাম গণপ্রজাতন্ত্রী চীন এবং স্থানীয় নাম ঝুংগুয়া।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "আয়তনের দিক থেকে চীন বিশ্বে কততম এবং রাজধানী কী?", "a": "বিশ্বের তৃতীয় বৃহত্তম দেশ; রাজধানী বেইজিং।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "চীনের অধিকাংশ মানুষ কোন জাতিগোষ্ঠীর ও কোন ভাষায় কথা বলে?", "a": "৯৫ ভাগ হান চাইনিজ বংশোদ্ভূত এবং ৯৫ ভাগ মান্দারিন (চীনা) ভাষায় কথা বলে।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "চীনের দুটি বৃহত্তম নদীর নাম লেখো।", "a": "হোয়াংহো ও ইয়াংসি।", "source": "অধ্যায় ১০: এশিয়ার কয়েকটি দেশ"}, {"q": "জাতিসংঘের প্রধান ছয়টি শাখার নাম লেখো।", "a": "সাধারণ পরিষদ, সচিবালয়, অছি পরিষদ, আন্তর্জাতিক আদালত, অর্থনৈতিক ও সামাজিক পরিষদ এবং নিরাপত্তা পরিষদ।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}, {"q": "শুরুতে ও বর্তমানে জাতিসংঘের সদস্য সংখ্যা কত?", "a": "শুরুতে ৫১টি এবং বর্তমানে ১৯৩টি।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}, {"q": "জাতিসংঘের সদর দপ্তর কোথায় এবং বাংলাদেশ কত সালে সদস্যপদ লাভ করে?", "a": "সদর দপ্তর যুক্তরাষ্ট্রের নিউইয়র্ক শহরে; বাংলাদেশ ১৯৭৪ সালে সদস্যপদ লাভ করে।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}, {"q": "জাতিসংঘের প্রথম ও বর্তমান মহাসচিবের নাম কী?", "a": "প্রথম মহাসচিব নরওয়ের ট্রিগভেলি এবং বর্তমান মহাসচিব পর্তুগালের অ্যান্টনিও গুতেরেস।", "source": "অধ্যায় ১১: আন্তর্জাতিক সহযোগিতা"}]}]};
 
-    <main class="lesson-main" id="lesson-main"></main>
+    // Bangla digits helper
+    const BN_DIGITS = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+    function toBn(num) {
+      return String(num).replace(/[0-9]/g, d => BN_DIGITS[Number(d)]);
+    }
 
-    <nav class="lesson-nav" id="lesson-nav" aria-label="Lesson navigation">
-      <button type="button" class="btn btn-secondary" id="prev-topic-btn">&larr; Previous</button>
-      <button type="button" class="btn btn-primary" id="next-topic-btn">Next &rarr;</button>
-    </nav>
-  </div>
+    // Toast helper (replaces alert)
+    let toastTimer = null;
+    function showToast(msg) {
+      const el = document.getElementById('toastNotice');
+      if (!el) return;
+      el.textContent = msg;
+      el.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => el.classList.remove('show'), 3600);
+    }
 
-  <footer class="site-footer" style="margin-top: 28px;">
-    <div class="container">
-      <p>Class 7 Complete Learning Platform &bull; <a href="../../index.html" style="color:inherit;">Return to Homepage</a></p>
-    </div>
-  </footer>
+    // Shared Class7Audio-compatible Bangla TTS engine
+    window.Class7Audio = window.Class7Audio || (function () {
+      const supported = typeof window !== 'undefined' && 'speechSynthesis' in window;
+      let rate = 1.0;
+      let currentKey = null;
 
-  <script src="../../assets/js/subjects.js"></script>
-  <script src="./content.js"></script>
-  <script src="../../assets/js/audio.js"></script>
-  <script src="../../assets/js/subject.js"></script>
+      function getBanglaVoice() {
+        if (!supported) return null;
+        const voices = window.speechSynthesis.getVoices() || [];
+        return (
+          voices.find(v => v.lang && v.lang.toLowerCase() === 'bn-bd') ||
+          voices.find(v => v.lang && v.lang.toLowerCase().startsWith('bn')) ||
+          null
+        );
+      }
+
+      function stop(cb) {
+        if (supported) {
+          try { window.speechSynthesis.cancel(); } catch (e) {}
+        }
+        currentKey = null;
+        if (typeof cb === 'function') cb();
+      }
+
+      function speakText(text, key, callbacks = {}) {
+        if (!supported) {
+          if (callbacks.onNotice) callbacks.onNotice('আপনার ব্রাউজারে বাংলা অডিও সাপোর্ট নেই।');
+          return;
+        }
+        stop();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'bn-BD';
+        utter.rate = rate;
+        const bnVoice = getBanglaVoice();
+        if (bnVoice) {
+          utter.voice = bnVoice;
+        } else if (callbacks.onNotice) {
+          callbacks.onNotice('ডিভাইসে বাংলা ভয়েস প্যাক না থাকলে অডিও নাও শোনা যেতে পারে।');
+        }
+        currentKey = key;
+        utter.onstart = () => { if (callbacks.onStart) callbacks.onStart(); };
+        utter.onend = () => {
+          if (currentKey === key) currentKey = null;
+          if (callbacks.onEnd) callbacks.onEnd();
+        };
+        utter.onerror = () => {
+          if (currentKey === key) currentKey = null;
+          if (callbacks.onEnd) callbacks.onEnd();
+        };
+        try {
+          window.speechSynthesis.speak(utter);
+        } catch (e) {
+          currentKey = null;
+          if (callbacks.onEnd) callbacks.onEnd();
+        }
+      }
+
+      if (supported && window.speechSynthesis.onvoiceschanged !== undefined) {
+        window.speechSynthesis.onvoiceschanged = () => { getBanglaVoice(); };
+      }
+
+      return {
+        isSupported: supported,
+        setRate(r) { rate = r; },
+        getRate() { return rate; },
+        getCurrentKey() { return currentKey; },
+        speakText,
+        stop
+      };
+    })();
+
+    // Persistent State (wrapped in try/catch for Canvas safety)
+    const STORAGE_KEY = 'class7_bgs_gamified_v1';
+    function loadState() {
+      const def = {
+        points: 0,
+        correctCount: 0,
+        streak: 0,
+        mcqState: {},   // key -> { solved: bool, wrong: [idx], firstTry: bool }
+        ganState: {}    // key -> { revealed: bool, status: 'known'|'missed'|null }
+      };
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          return Object.assign(def, parsed);
+        }
+      } catch (e) {}
+      return def;
+    }
+
+    let appState = loadState();
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+      } catch (e) {}
+      updateHeaderStats();
+    }
+
+    function updateHeaderStats() {
+      const ptsText = toBn(appState.points);
+      document.getElementById('headerPoints').textContent = `⭐ ${ptsText} পয়েন্ট`;
+      document.getElementById('statPoints').textContent = ptsText;
+      document.getElementById('statCorrect').textContent = toBn(appState.correctCount);
+      document.getElementById('statStreak').textContent = toBn(appState.streak);
+    }
+
+    // Current Navigation View
+    let viewState = {
+      mode: 'home',       // 'home' | 'chapter' | 'mcq_mt' | 'gan_mt'
+      chapterId: null,
+      tab: 'summary',     // 'summary' | 'mcq' | 'gan'
+      mcqPart: 0,         // 0..4 (6 questions each)
+      ganPart: 0,         // 0..4 (4 questions each)
+      mtId: null,
+      speakingKey: null
+    };
+
+    function goHome() {
+      window.Class7Audio.stop();
+      viewState.speakingKey = null;
+      viewState.mode = 'home';
+      render();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function openChapter(chId) {
+      window.Class7Audio.stop();
+      viewState.speakingKey = null;
+      viewState.mode = 'chapter';
+      viewState.chapterId = chId;
+      viewState.tab = 'summary';
+      viewState.mcqPart = 0;
+      viewState.ganPart = 0;
+      render();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function openModelTest(mode, mtId) {
+      window.Class7Audio.stop();
+      viewState.speakingKey = null;
+      viewState.mode = mode;
+      viewState.mtId = mtId;
+      render();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function getChapterProgress(ch) {
+      let mcqDone = 0;
+      ch.mcqs.forEach((_, idx) => {
+        if (appState.mcqState[`${ch.id}_mcq_${idx}`]?.solved) mcqDone++;
+      });
+      let ganDone = 0;
+      ch.ganmulok.forEach((_, idx) => {
+        if (appState.ganState[`${ch.id}_gan_${idx}`]?.status === 'known') ganDone++;
+      });
+      return { mcqDone, ganDone };
+    }
+
+    // Render Home
+    function renderHome() {
+      document.getElementById('btnBackHome').classList.add('hidden');
+      document.getElementById('bannerSubtitle').textContent =
+        'অধ্যায়ভিত্তিক সারসংক্ষেপ, বাংলা অডিও, গেমিফাইড MCQ, জ্ঞানমূলক ও মডেল টেস্ট';
+
+      let html = `<h2 class="section-heading">📚 অধ্যায়সমূহ (${toBn(APP_DATA.chapters.length)}টি অধ্যায়)</h2>`;
+      html += `<div class="chapter-grid">`;
+      APP_DATA.chapters.forEach(ch => {
+        const prog = getChapterProgress(ch);
+        html += `
+          <button type="button" class="chapter-card" data-open-ch="${ch.id}">
+            <div class="chapter-card-top">
+              <div class="chapter-icon">${ch.icon}</div>
+              <div>
+                <div class="chapter-num">${ch.number}</div>
+                <div class="chapter-title">${ch.title}</div>
+              </div>
+            </div>
+            <div class="chapter-desc">${ch.desc}</div>
+            <div class="chapter-badges">
+              <span class="mini-badge">🔊 ${toBn(ch.summaries.length)}টি পাঠ</span>
+              <span class="mini-badge ${prog.mcqDone === 30 ? 'done' : ''}">📝 MCQ: ${toBn(prog.mcqDone)}/${toBn(ch.mcqs.length)}</span>
+              <span class="mini-badge ${prog.ganDone === 20 ? 'done' : ''}">💡 জ্ঞানমূলক: ${toBn(prog.ganDone)}/${toBn(ch.ganmulok.length)}</span>
+            </div>
+          </button>
+        `;
+      });
+      html += `</div>`;
+
+      html += `<h2 class="section-heading" style="margin-top:24px;">🏆 পূর্ণাঙ্গ মডেল টেস্ট (সব অধ্যায় মিলিয়ে)</h2>`;
+      html += `<div class="chapter-grid">`;
+
+      APP_DATA.mcqModelTests.forEach((mt, idx) => {
+        let solved = 0;
+        mt.questions.forEach((_, qIdx) => {
+          if (appState.mcqState[`${mt.id}_${qIdx}`]?.solved) solved++;
+        });
+        html += `
+          <button type="button" class="chapter-card mt-card" data-open-mcq-mt="${mt.id}">
+            <div class="chapter-card-top">
+              <div class="chapter-icon">📝</div>
+              <div>
+                <div class="chapter-num">বহুনির্বাচনি পরীক্ষা ${toBn(idx + 1)}</div>
+                <div class="chapter-title">${mt.title}</div>
+              </div>
+            </div>
+            <div class="chapter-desc">${mt.subtitle}</div>
+            <div class="chapter-badges">
+              <span class="mini-badge ${solved === mt.questions.length ? 'done' : ''}">সম্পন্ন: ${toBn(solved)}/${toBn(mt.questions.length)}</span>
+            </div>
+          </button>
+        `;
+      });
+
+      APP_DATA.ganmulokModelTests.forEach((mt, idx) => {
+        let known = 0;
+        mt.questions.forEach((_, qIdx) => {
+          if (appState.ganState[`${mt.id}_${qIdx}`]?.status === 'known') known++;
+        });
+        html += `
+          <button type="button" class="chapter-card mt-card gan" data-open-gan-mt="${mt.id}">
+            <div class="chapter-card-top">
+              <div class="chapter-icon">💡</div>
+              <div>
+                <div class="chapter-num">জ্ঞানমূলক পরীক্ষা ${toBn(idx + 1)}</div>
+                <div class="chapter-title">${mt.title}</div>
+              </div>
+            </div>
+            <div class="chapter-desc">${mt.subtitle}</div>
+            <div class="chapter-badges">
+              <span class="mini-badge ${known === mt.questions.length ? 'done' : ''}">আয়ত্ত: ${toBn(known)}/${toBn(mt.questions.length)}</span>
+            </div>
+          </button>
+        `;
+      });
+
+      html += `</div>`;
+      return html;
+    }
+
+    // Render Summary Tab
+    function renderSummaryTab(ch) {
+      const curRate = window.Class7Audio.getRate();
+      let html = `
+        <div class="audio-bar">
+          <span class="audio-bar-label">🔊 বাংলা অডিও গতি:</span>
+          <div class="speed-group">
+            ${[0.75, 1.0, 1.25].map(r => `
+              <button type="button" class="speed-btn ${curRate === r ? 'active' : ''}" data-rate="${r}">
+                ${r === 0.75 ? '০.৭৫x' : r === 1.0 ? '১.০x' : '১.২৫x'}
+              </button>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+      ch.summaries.forEach((sec, idx) => {
+        const key = `${ch.id}_sum_${idx}`;
+        const isSpeaking = viewState.speakingKey === key;
+        html += `
+          <div class="content-card summary-card ${isSpeaking ? 'is-speaking' : ''}">
+            <div class="summary-card-head">
+              <div class="summary-card-title">${sec.title}</div>
+              <button type="button" class="btn btn-sm ${isSpeaking ? 'btn-danger' : 'btn-primary'}" data-speak-sum="${idx}">
+                ${isSpeaking ? '⏹ থামুন' : '🔊 শুনুন'}
+              </button>
+            </div>
+            <ul class="points-list">
+              ${sec.points.map(p => `<li>${p}</li>`).join('')}
+            </ul>
+          </div>
+        `;
+      });
+
+      return html;
+    }
+
+    // Render MCQ List Helper (used by both Chapter 6-per-part and Model Test 30)
+    function renderMcqList(questions, keyPrefix, showSource = false) {
+      const letters = ['ক', 'খ', 'গ', 'ঘ'];
+      let html = '';
+      questions.forEach((item, idx) => {
+        const stateKey = `${keyPrefix}_${item._origIdx !== undefined ? item._origIdx : idx}`;
+        const st = appState.mcqState[stateKey] || { solved: false, wrong: [], firstTry: false };
+        html += `
+          <div class="mcq-item">
+            ${showSource && item.source ? `<span class="mcq-source-tag">${item.source}</span>` : ''}
+            <div class="mcq-q">${toBn(idx + 1)}. ${item.q}</div>
+            <div class="practice-options">
+              ${item.opts.map((opt, oIdx) => {
+                let cls = 'option-btn';
+                let disabled = '';
+                if (st.solved && oIdx === item.ans) cls += ' is-correct';
+                else if (st.wrong.includes(oIdx)) { cls += ' is-wrong'; disabled = 'disabled'; }
+                if (st.solved) disabled = 'disabled';
+                return `
+                  <button type="button" class="${cls}" ${disabled} data-mcq-key="${stateKey}" data-opt="${oIdx}" data-ans="${item.ans}">
+                    <span class="option-letter">${letters[oIdx]}.</span>
+                    <span>${opt}</span>
+                  </button>
+                `;
+              }).join('')}
+            </div>
+            ${st.solved ? `
+              <div class="practice-feedback ok">
+                ✅ <strong>সঠিক উত্তর!</strong> ${st.firstTry ? '(প্রথম চেষ্টায় +১০ পয়েন্ট)' : '(সমাধান সম্পন্ন)'}<br/>
+                ${item.exp}
+              </div>
+            ` : st.wrong.length > 0 ? `
+              <div class="practice-feedback err">
+                ❌ ভুল উত্তর (−২ পয়েন্ট)। আবার চেষ্টা করে সঠিক উত্তরটি খুঁজে বের করো!
+              </div>
+            ` : ''}
+          </div>
+        `;
+      });
+      return html;
+    }
+
+    // Render Chapter MCQ Tab (5 parts x 6 questions)
+    function renderChapterMcqTab(ch) {
+      const partIdx = viewState.mcqPart;
+      const start = partIdx * 6;
+      const partQuestions = ch.mcqs.slice(start, start + 6).map((q, i) => ({ ...q, _origIdx: start + i }));
+
+      let totalDone = 0;
+      ch.mcqs.forEach((_, i) => { if (appState.mcqState[`${ch.id}_mcq_${i}`]?.solved) totalDone++; });
+      const pct = Math.round((totalDone / ch.mcqs.length) * 100);
+
+      let html = `
+        <div class="content-card">
+          <div class="progress-wrap" style="margin-bottom:10px;">
+            <div class="progress-meta">
+              <span>অগ্রগতি: ${toBn(totalDone)}/${toBn(ch.mcqs.length)}টি সমাধান</span>
+              <span>${toBn(pct)}%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
+          </div>
+          <div class="part-pills">
+            ${[0, 1, 2, 3, 4].map(p => {
+              let pDone = 0;
+              for (let i = p * 6; i < p * 6 + 6; i++) {
+                if (appState.mcqState[`${ch.id}_mcq_${i}`]?.solved) pDone++;
+              }
+              return `
+                <button type="button" class="part-pill ${partIdx === p ? 'active' : ''} ${pDone === 6 ? 'completed' : ''}" data-mcq-part="${p}">
+                  পর্ব ${toBn(p + 1)} (${toBn(pDone)}/৬)
+                </button>
+              `;
+            }).join('')}
+          </div>
+          <div class="toolbar-row" style="margin-bottom:0;">
+            <span style="font-size:13px;color:var(--text-secondary);">প্রথম চেষ্টায় সঠিক: <strong>+১০</strong> | ভুল অনুমান: <strong>−২</strong></span>
+            <button type="button" class="btn btn-sm btn-secondary" data-reset-ch-mcq="${ch.id}">🔄 MCQ রিসেট</button>
+          </div>
+        </div>
+      `;
+
+      html += renderMcqList(partQuestions, `${ch.id}_mcq`, false);
+
+      html += `
+        <div class="toolbar-row" style="margin-top:8px;">
+          <button type="button" class="btn btn-secondary" ${partIdx === 0 ? 'disabled' : ''} data-mcq-part="${partIdx - 1}">&larr; আগের পর্ব</button>
+          <button type="button" class="btn btn-primary" ${partIdx === 4 ? 'disabled' : ''} data-mcq-part="${partIdx + 1}">পরবর্তী পর্ব &rarr;</button>
+        </div>
+      `;
+      return html;
+    }
+
+    // Render Ganmulok List Helper
+    function renderGanList(questions, keyPrefix, showSource = false) {
+      let html = '';
+      questions.forEach((item, idx) => {
+        const stateKey = `${keyPrefix}_${item._origIdx !== undefined ? item._origIdx : idx}`;
+        const st = appState.ganState[stateKey] || { revealed: false, status: null };
+        html += `
+          <div class="qa-item">
+            ${showSource && item.source ? `<span class="mcq-source-tag">${item.source}</span>` : ''}
+            <div class="qa-question">${toBn(idx + 1)}. ${item.q}</div>
+            <div class="qa-actions">
+              <button type="button" class="btn btn-sm ${st.revealed ? 'btn-secondary' : 'btn-primary'}" data-toggle-gan="${stateKey}">
+                ${st.revealed ? '🙈 উত্তর লুকাও' : '👁 উত্তর দেখো'}
+              </button>
+              ${st.status === 'known' ? `<span class="qa-status-badge known">✅ পেরেছি (+৫)</span>` : ''}
+              ${st.status === 'missed' ? `<span class="qa-status-badge missed">❌ আবার অনুশীলন করো</span>` : ''}
+            </div>
+            <div class="qa-answer ${st.revealed ? 'is-open' : ''}">
+              <strong>উত্তর:</strong> ${item.a}
+              ${!st.status ? `
+                <div class="qa-rate-row">
+                  <button type="button" class="btn btn-sm btn-success" data-rate-gan="${stateKey}" data-val="known">✅ মনে ছিল (+৫ পয়েন্ট)</button>
+                  <button type="button" class="btn btn-sm btn-danger" data-rate-gan="${stateKey}" data-val="missed">❌ ভুলে গেছি (−১ পয়েন্ট)</button>
+                </div>
+              ` : ''}
+            </div>
+          </div>
+        `;
+      });
+      return html;
+    }
+
+    // Render Chapter Ganmulok Tab (5 parts x 4 questions)
+    function renderChapterGanTab(ch) {
+      const partIdx = viewState.ganPart;
+      const start = partIdx * 4;
+      const partQuestions = ch.ganmulok.slice(start, start + 4).map((q, i) => ({ ...q, _origIdx: start + i }));
+
+      let knownCount = 0;
+      ch.ganmulok.forEach((_, i) => { if (appState.ganState[`${ch.id}_gan_${i}`]?.status === 'known') knownCount++; });
+      const pct = Math.round((knownCount / ch.ganmulok.length) * 100);
+
+      let html = `
+        <div class="content-card">
+          <div class="progress-wrap" style="margin-bottom:10px;">
+            <div class="progress-meta">
+              <span>আয়ত্ত হয়েছে: ${toBn(knownCount)}/${toBn(ch.ganmulok.length)}টি প্রশ্ন</span>
+              <span>${toBn(pct)}%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
+          </div>
+          <div class="part-pills">
+            ${[0, 1, 2, 3, 4].map(p => {
+              let pDone = 0;
+              for (let i = p * 4; i < p * 4 + 4; i++) {
+                if (appState.ganState[`${ch.id}_gan_${i}`]?.status === 'known') pDone++;
+              }
+              return `
+                <button type="button" class="part-pill ${partIdx === p ? 'active' : ''} ${pDone === 4 ? 'completed' : ''}" data-gan-part="${p}">
+                  পর্ব ${toBn(p + 1)} (${toBn(pDone)}/৪)
+                </button>
+              `;
+            }).join('')}
+          </div>
+          <div class="toolbar-row" style="margin-bottom:0;">
+            <span style="font-size:13px;color:var(--text-secondary);">Active Recall: উত্তর মনে করে যাচাই করো</span>
+            <button type="button" class="btn btn-sm btn-secondary" data-reset-ch-gan="${ch.id}">🔄 রিসেট</button>
+          </div>
+        </div>
+      `;
+
+      html += renderGanList(partQuestions, `${ch.id}_gan`, false);
+
+      html += `
+        <div class="toolbar-row" style="margin-top:8px;">
+          <button type="button" class="btn btn-secondary" ${partIdx === 0 ? 'disabled' : ''} data-gan-part="${partIdx - 1}">&larr; আগের পর্ব</button>
+          <button type="button" class="btn btn-primary" ${partIdx === 4 ? 'disabled' : ''} data-gan-part="${partIdx + 1}">পরবর্তী পর্ব &rarr;</button>
+        </div>
+      `;
+      return html;
+    }
+
+    // Render Chapter View
+    function renderChapter() {
+      const ch = APP_DATA.chapters.find(c => c.id === viewState.chapterId);
+      if (!ch) return renderHome();
+
+      document.getElementById('btnBackHome').classList.remove('hidden');
+      document.getElementById('bannerSubtitle').textContent = `${ch.number} — ${ch.title}`;
+
+      let html = `
+        <div class="content-card topic-header-card">
+          <h2>${ch.icon} ${ch.number}: ${ch.title}</h2>
+          <p class="topic-subtitle">${ch.desc}</p>
+        </div>
+
+        <div class="main-tabs">
+          <button type="button" class="tab-btn ${viewState.tab === 'summary' ? 'active' : ''}" data-tab="summary">📖 সারসংক্ষেপ</button>
+          <button type="button" class="tab-btn ${viewState.tab === 'mcq' ? 'active' : ''}" data-tab="mcq">📝 MCQ (${toBn(ch.mcqs.length)})</button>
+          <button type="button" class="tab-btn ${viewState.tab === 'gan' ? 'active' : ''}" data-tab="gan">💡 জ্ঞানমূলক (${toBn(ch.ganmulok.length)})</button>
+        </div>
+      `;
+
+      if (viewState.tab === 'summary') html += renderSummaryTab(ch);
+      else if (viewState.tab === 'mcq') html += renderChapterMcqTab(ch);
+      else html += renderChapterGanTab(ch);
+
+      return html;
+    }
+
+    // Render MCQ Model Test
+    function renderMcqModelTest() {
+      const mt = APP_DATA.mcqModelTests.find(m => m.id === viewState.mtId);
+      if (!mt) return renderHome();
+
+      document.getElementById('btnBackHome').classList.remove('hidden');
+      document.getElementById('bannerSubtitle').textContent = mt.title;
+
+      let solved = 0;
+      let firstTryCount = 0;
+      mt.questions.forEach((_, i) => {
+        const st = appState.mcqState[`${mt.id}_${i}`];
+        if (st?.solved) {
+          solved++;
+          if (st.firstTry) firstTryCount++;
+        }
+      });
+      const pct = Math.round((solved / mt.questions.length) * 100);
+
+      let html = `
+        <div class="content-card topic-header-card">
+          <h2>📝 ${mt.title}</h2>
+          <p class="topic-subtitle">${mt.subtitle}</p>
+        </div>
+        <div class="content-card">
+          <div class="progress-wrap" style="margin-bottom:10px;">
+            <div class="progress-meta">
+              <span>সম্পন্ন: ${toBn(solved)}/${toBn(mt.questions.length)} (প্রথম চেষ্টায় সঠিক: ${toBn(firstTryCount)})</span>
+              <span>${toBn(pct)}%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
+          </div>
+          <div class="toolbar-row" style="margin-bottom:0;">
+            <span style="font-size:13px;color:var(--text-secondary);">সঠিক: <strong>+১০</strong> | ভুল: <strong>−২</strong></span>
+            <button type="button" class="btn btn-sm btn-secondary" data-reset-mt-mcq="${mt.id}">🔄 মডেল টেস্ট রিসেট</button>
+          </div>
+        </div>
+      `;
+
+      html += renderMcqList(mt.questions, mt.id, true);
+      return html;
+    }
+
+    // Render Ganmulok Model Test
+    function renderGanModelTest() {
+      const mt = APP_DATA.ganmulokModelTests.find(m => m.id === viewState.mtId);
+      if (!mt) return renderHome();
+
+      document.getElementById('btnBackHome').classList.remove('hidden');
+      document.getElementById('bannerSubtitle').textContent = mt.title;
+
+      let known = 0;
+      mt.questions.forEach((_, i) => {
+        if (appState.ganState[`${mt.id}_${i}`]?.status === 'known') known++;
+      });
+      const pct = Math.round((known / mt.questions.length) * 100);
+
+      let html = `
+        <div class="content-card topic-header-card">
+          <h2>💡 ${mt.title}</h2>
+          <p class="topic-subtitle">${mt.subtitle}</p>
+        </div>
+        <div class="content-card">
+          <div class="progress-wrap" style="margin-bottom:10px;">
+            <div class="progress-meta">
+              <span>আয়ত্ত: ${toBn(known)}/${toBn(mt.questions.length)}টি প্রশ্ন</span>
+              <span>${toBn(pct)}%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
+          </div>
+          <div class="toolbar-row" style="margin-bottom:0;">
+            <span style="font-size:13px;color:var(--text-secondary);">Active Recall অনুশীলন</span>
+            <button type="button" class="btn btn-sm btn-secondary" data-reset-mt-gan="${mt.id}">🔄 রিসেট</button>
+          </div>
+        </div>
+      `;
+
+      html += renderGanList(mt.questions, mt.id, true);
+      return html;
+    }
+
+    // Master Render
+    function render() {
+      const main = document.getElementById('appMain');
+      if (viewState.mode === 'home') main.innerHTML = renderHome();
+      else if (viewState.mode === 'chapter') main.innerHTML = renderChapter();
+      else if (viewState.mode === 'mcq_mt') main.innerHTML = renderMcqModelTest();
+      else if (viewState.mode === 'gan_mt') main.innerHTML = renderGanModelTest();
+      updateHeaderStats();
+    }
+
+    // Event Delegation
+    document.getElementById('btnHomeBrand').addEventListener('click', goHome);
+    document.getElementById('btnBackHome').addEventListener('click', goHome);
+
+    document.getElementById('appMain').addEventListener('click', (e) => {
+      const target = e.target.closest('button');
+      if (!target) return;
+
+      if (target.dataset.openCh) {
+        openChapter(target.dataset.openCh);
+        return;
+      }
+      if (target.dataset.openMcqMt) {
+        openModelTest('mcq_mt', target.dataset.openMcqMt);
+        return;
+      }
+      if (target.dataset.openGanMt) {
+        openModelTest('gan_mt', target.dataset.openGanMt);
+        return;
+      }
+      if (target.dataset.tab) {
+        window.Class7Audio.stop();
+        viewState.speakingKey = null;
+        viewState.tab = target.dataset.tab;
+        render();
+        return;
+      }
+      if (target.dataset.rate) {
+        window.Class7Audio.setRate(parseFloat(target.dataset.rate));
+        render();
+        return;
+      }
+      if (target.dataset.speakSum !== undefined) {
+        const idx = Number(target.dataset.speakSum);
+        const ch = APP_DATA.chapters.find(c => c.id === viewState.chapterId);
+        if (!ch) return;
+        const key = `${ch.id}_sum_${idx}`;
+        if (viewState.speakingKey === key) {
+          window.Class7Audio.stop(() => {
+            viewState.speakingKey = null;
+            render();
+          });
+        } else {
+          const sec = ch.summaries[idx];
+          const textToRead = sec.title + '। ' + sec.points.join(' ');
+          viewState.speakingKey = key;
+          render();
+          window.Class7Audio.speakText(textToRead, key, {
+            onEnd: () => {
+              if (viewState.speakingKey === key) {
+                viewState.speakingKey = null;
+                render();
+              }
+            },
+            onNotice: (msg) => showToast(msg)
+          });
+        }
+        return;
+      }
+      if (target.dataset.mcqPart !== undefined) {
+        const p = Number(target.dataset.mcqPart);
+        if (p >= 0 && p <= 4) {
+          viewState.mcqPart = p;
+          render();
+          window.scrollTo({ top: 140, behavior: 'smooth' });
+        }
+        return;
+      }
+      if (target.dataset.ganPart !== undefined) {
+        const p = Number(target.dataset.ganPart);
+        if (p >= 0 && p <= 4) {
+          viewState.ganPart = p;
+          render();
+          window.scrollTo({ top: 140, behavior: 'smooth' });
+        }
+        return;
+      }
+      if (target.dataset.mcqKey) {
+        const key = target.dataset.mcqKey;
+        const opt = Number(target.dataset.opt);
+        const ans = Number(target.dataset.ans);
+        const st = appState.mcqState[key] || { solved: false, wrong: [], firstTry: false };
+        if (st.solved || st.wrong.includes(opt)) return;
+
+        if (opt === ans) {
+          st.solved = true;
+          if (st.wrong.length === 0) {
+            st.firstTry = true;
+            appState.points += 10;
+            appState.streak += 1;
+          } else {
+            st.firstTry = false;
+            appState.streak = 0;
+          }
+          appState.correctCount += 1;
+          appState.mcqState[key] = st;
+          saveState();
+          render();
+        } else {
+          st.wrong.push(opt);
+          appState.points = Math.max(0, appState.points - 2);
+          appState.streak = 0;
+          appState.mcqState[key] = st;
+          saveState();
+          render();
+        }
+        return;
+      }
+      if (target.dataset.resetChMcq) {
+        const chId = target.dataset.resetChMcq;
+        for (let i = 0; i < 30; i++) delete appState.mcqState[`${chId}_mcq_${i}`];
+        saveState();
+        showToast('এই অধ্যায়ের সব MCQ রিসেট করা হয়েছে!');
+        render();
+        return;
+      }
+      if (target.dataset.resetMtMcq) {
+        const mtId = target.dataset.resetMtMcq;
+        for (let i = 0; i < 30; i++) delete appState.mcqState[`${mtId}_${i}`];
+        saveState();
+        showToast('মডেল টেস্ট রিসেট করা হয়েছে!');
+        render();
+        return;
+      }
+      if (target.dataset.toggleGan) {
+        const key = target.dataset.toggleGan;
+        const st = appState.ganState[key] || { revealed: false, status: null };
+        st.revealed = !st.revealed;
+        appState.ganState[key] = st;
+        saveState();
+        render();
+        return;
+      }
+      if (target.dataset.rateGan) {
+        const key = target.dataset.rateGan;
+        const val = target.dataset.val;
+        const st = appState.ganState[key] || { revealed: true, status: null };
+        if (st.status) return;
+        st.status = val;
+        if (val === 'known') {
+          appState.points += 5;
+          appState.correctCount += 1;
+          appState.streak += 1;
+        } else {
+          appState.points = Math.max(0, appState.points - 1);
+          appState.streak = 0;
+        }
+        appState.ganState[key] = st;
+        saveState();
+        render();
+        return;
+      }
+      if (target.dataset.resetChGan) {
+        const chId = target.dataset.resetChGan;
+        for (let i = 0; i < 20; i++) delete appState.ganState[`${chId}_gan_${i}`];
+        saveState();
+        showToast('জ্ঞানমূলক প্রশ্নগুলো রিসেট করা হয়েছে!');
+        render();
+        return;
+      }
+      if (target.dataset.resetMtGan) {
+        const mtId = target.dataset.resetMtGan;
+        for (let i = 0; i < 20; i++) delete appState.ganState[`${mtId}_${i}`];
+        saveState();
+        showToast('জ্ঞানমূলক মডেল টেস্ট রিসেট করা হয়েছে!');
+        render();
+        return;
+      }
+    });
+
+    // Initial render
+    render();
+  </script>
 </body>
 </html>

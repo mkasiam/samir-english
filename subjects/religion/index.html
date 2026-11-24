@@ -1,93 +1,1213 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Class 7 Subject | Class 7 Learning</title>
+  <title>ইসলাম শিক্ষা — ৭ম শ্রেণি | Class 7 Learning</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/css/style.css" />
+  <style>
+    :root {
+      --subject-accent: #db2777;
+    }
+
+    /* Subject-scoped styles (.islam-*) so shared style.css rules are never overridden */
+    .islam-fallback-shell {
+      font-family: var(--font-bangla, "Noto Sans Bengali", system-ui, sans-serif);
+      background: var(--bg-page, #f4f7fb);
+      color: var(--text-primary, #1e293b);
+      min-height: 100vh;
+    }
+    .islam-container {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 16px 14px 48px;
+      box-sizing: border-box;
+    }
+    .islam-stats-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .islam-stat-card {
+      background: var(--bg-surface, #ffffff);
+      border: 1px solid var(--border-color, #e2e8f0);
+      border-radius: var(--radius-md, 16px);
+      padding: 12px 10px;
+      text-align: center;
+      box-shadow: var(--shadow-sm, 0 2px 8px rgba(15,23,42,0.05));
+    }
+    .islam-stat-val {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--subject-accent, #db2777);
+      line-height: 1.2;
+    }
+    .islam-stat-label {
+      font-size: 0.78rem;
+      color: var(--text-secondary, #475569);
+      margin-top: 3px;
+    }
+
+    .islam-section-heading {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary, #1e293b);
+      margin: 18px 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .islam-chapter-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    @media (min-width: 640px) {
+      .islam-chapter-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .islam-chapter-card {
+      background: var(--bg-surface, #ffffff);
+      border: 1px solid var(--border-color, #e2e8f0);
+      border-radius: var(--radius-md, 16px);
+      padding: 16px;
+      box-shadow: var(--shadow-sm, 0 2px 8px rgba(15,23,42,0.05));
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+    .islam-chapter-card:hover,
+    .islam-chapter-card:focus-visible {
+      transform: translateY(-2px);
+      border-color: var(--subject-accent, #db2777);
+      box-shadow: var(--shadow-md, 0 8px 24px rgba(15,23,42,0.08));
+      outline: none;
+    }
+    .islam-ch-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .islam-ch-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--subject-accent, #db2777);
+      background: #fdf2f8;
+      padding: 4px 10px;
+      border-radius: 9999px;
+    }
+    .islam-ch-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--text-primary, #1e293b);
+      margin: 0;
+    }
+    .islam-ch-sub {
+      font-size: 0.88rem;
+      color: var(--text-secondary, #475569);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .islam-ch-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .islam-mini-pill {
+      font-size: 0.76rem;
+      padding: 3px 9px;
+      border-radius: 9999px;
+      background: var(--bg-subtle, #eef3fa);
+      color: var(--text-secondary, #475569);
+      font-weight: 600;
+    }
+
+    /* Chapter Detail Toolbar */
+    .islam-topbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .islam-score-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fdf2f8;
+      border: 1px solid #fbcfe8;
+      color: #be185d;
+      padding: 7px 12px;
+      border-radius: 9999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    /* Main 3 Section Tabs */
+    .islam-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .islam-tab-btn {
+      min-height: 44px;
+      padding: 8px 6px;
+      border-radius: var(--radius-sm, 10px);
+      border: 1.5px solid var(--border-color, #e2e8f0);
+      background: var(--bg-surface, #ffffff);
+      color: var(--text-secondary, #475569);
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .islam-tab-btn.is-active {
+      background: var(--subject-accent, #db2777);
+      border-color: var(--subject-accent, #db2777);
+      color: #ffffff;
+    }
+
+    /* Sub-section Stage Pills (1-5) */
+    .islam-stage-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+      align-items: center;
+    }
+    .islam-stage-pill {
+      min-height: 38px;
+      padding: 6px 12px;
+      border-radius: 9999px;
+      border: 1.5px solid var(--border-color, #e2e8f0);
+      background: var(--bg-surface, #ffffff);
+      color: var(--text-secondary, #475569);
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .islam-stage-pill.is-active {
+      background: #fdf2f8;
+      border-color: var(--subject-accent, #db2777);
+      color: #be185d;
+    }
+    .islam-stage-pill.is-done {
+      background: var(--success-light, #ecfdf5);
+      border-color: var(--success, #10b981);
+      color: #065f46;
+    }
+
+    /* Audio Controls */
+    .islam-audio-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: var(--bg-surface, #ffffff);
+      border: 1px solid var(--border-color, #e2e8f0);
+      border-radius: var(--radius-md, 16px);
+      padding: 12px 14px;
+      margin-bottom: 14px;
+    }
+    .islam-speed-group {
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .islam-speed-btn {
+      padding: 5px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color, #e2e8f0);
+      background: var(--bg-subtle, #eef3fa);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--text-primary, #1e293b);
+    }
+    .islam-speed-btn.is-active {
+      background: var(--subject-accent, #db2777);
+      color: #ffffff;
+      border-color: var(--subject-accent, #db2777);
+    }
+
+    .islam-summary-card {
+      background: var(--bg-surface, #ffffff);
+      border: 1px solid var(--border-color, #e2e8f0);
+      border-left: 4px solid var(--subject-accent, #db2777);
+      border-radius: var(--radius-md, 16px);
+      padding: 16px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-sm, 0 2px 8px rgba(15,23,42,0.05));
+    }
+    .islam-summary-card.is-speaking {
+      background: #fdf2f8;
+      border-color: var(--subject-accent, #db2777);
+    }
+    .islam-summary-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .islam-summary-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--text-primary, #1e293b);
+      margin: 0;
+    }
+    .islam-points-list {
+      margin: 0;
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text-primary, #1e293b);
+    }
+
+    /* MCQ Cards */
+    .islam-q-card {
+      background: var(--bg-surface, #ffffff);
+      border: 1px solid var(--border-color, #e2e8f0);
+      border-radius: var(--radius-md, 16px);
+      padding: 16px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-sm, 0 2px 8px rgba(15,23,42,0.05));
+    }
+    .islam-q-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 0.82rem;
+      color: var(--text-muted, #64748b);
+      font-weight: 700;
+    }
+    .islam-q-text {
+      font-size: 0.98rem;
+      font-weight: 700;
+      line-height: 1.6;
+      color: var(--text-primary, #1e293b);
+      margin: 0 0 12px;
+    }
+    .islam-opts-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .islam-opt-btn {
+      min-height: 44px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm, 10px);
+      border: 1.5px solid var(--border-color, #e2e8f0);
+      background: var(--bg-subtle, #eef3fa);
+      color: var(--text-primary, #1e293b);
+      font-family: inherit;
+      font-size: 0.93rem;
+      line-height: 1.5;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .islam-opt-btn:hover:not(:disabled) {
+      border-color: var(--subject-accent, #db2777);
+      background: #fdf2f8;
+    }
+    .islam-opt-btn.is-correct {
+      background: var(--success-light, #ecfdf5);
+      border-color: var(--success, #10b981);
+      color: #065f46;
+      font-weight: 700;
+    }
+    .islam-opt-btn.is-wrong {
+      background: var(--danger-light, #fef2f2);
+      border-color: var(--danger, #ef4444);
+      color: #991b1b;
+    }
+    .islam-feedback {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+    .islam-feedback.ok {
+      background: var(--success-light, #ecfdf5);
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+    .islam-feedback.err {
+      background: var(--danger-light, #fef2f2);
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    /* Gyanmulok Active Recall */
+    .islam-recall-box {
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      font-size: 0.94rem;
+      line-height: 1.65;
+      color: var(--text-primary, #1e293b);
+    }
+    .islam-recall-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .islam-notice {
+      background: var(--warning-light, #fffbeb);
+      border: 1px solid #fde68a;
+      color: #92400e;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-size: 0.86rem;
+      margin-bottom: 12px;
+    }
+
+    .islam-action-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .islam-btn {
+      min-height: 42px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+    .islam-btn-primary {
+      background: var(--subject-accent, #db2777);
+      color: #ffffff;
+    }
+    .islam-btn-secondary {
+      background: var(--bg-surface, #ffffff);
+      border-color: var(--border-color, #e2e8f0);
+      color: var(--text-primary, #1e293b);
+    }
+    .islam-btn-danger {
+      background: var(--danger-light, #fef2f2);
+      border-color: #fecaca;
+      color: #b91c1c;
+    }
+    .islam-btn-success {
+      background: var(--success-light, #ecfdf5);
+      border-color: #a7f3d0;
+      color: #065f46;
+    }
+
+    /* Fallback header/banner styling if style.css isn't loaded in standalone preview */
+    .islam-banner-fallback {
+      background: linear-gradient(135deg, #db2777, #9d174d);
+      color: #ffffff;
+      padding: 20px 14px;
+    }
+    .islam-header-fallback {
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 10px 14px;
+    }
+  </style>
 </head>
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="../../index.html" class="brand">
+<body class="islam-fallback-shell">
+
+  <header class="site-header islam-header-fallback">
+    <div class="container header-inner" style="display:flex;align-items:center;justify-content:space-between;max-width:960px;margin:0 auto;">
+      <a href="../../index.html" class="brand" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:inherit;font-weight:800;">
         <span class="brand-badge" aria-hidden="true">🎓</span>
         <span>Class 7 Learning</span>
       </a>
       <div class="header-actions">
-        <a href="../../index.html" class="nav-pill">&larr; All Subjects</a>
+        <a href="../../index.html" class="nav-pill" style="text-decoration:none;font-size:0.86rem;font-weight:700;color:#db2777;">&larr; All Subjects</a>
       </div>
     </div>
   </header>
 
-  <section class="subject-banner" id="subject-banner">
-    <div class="container subject-banner-inner">
-      <div class="subject-title-row">
-        <div class="subject-title-icon" id="subject-icon" aria-hidden="true">📖</div>
+  <section class="subject-banner islam-banner-fallback">
+    <div class="container subject-banner-inner" style="max-width:960px;margin:0 auto;">
+      <div class="subject-title-row" style="display:flex;align-items:center;gap:12px;">
+        <div class="subject-title-icon" aria-hidden="true" style="font-size:2rem;">🕌</div>
         <div>
-          <h1 id="subject-title">Loading Subject...</h1>
-          <p id="subject-subtitle">Class 7 Interactive Learning Module</p>
+          <h1 style="margin:0;font-size:1.4rem;">ইসলাম শিক্ষা (৭ম শ্রেণি)</h1>
+          <p style="margin:4px 0 0;font-size:0.9rem;opacity:0.92;">অধ্যায়ভিত্তিক সামারি ও বাংলা অডিও, গেমিফাইড এমসিকিউ, জ্ঞানমূলক ও মডেল টেস্ট</p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="container">
-    <div class="progress-wrap" id="progress-wrap">
-      <div class="progress-meta">
-        <span id="progress-text">Lesson 1 of 1</span>
-        <span id="progress-percent">0%</span>
-      </div>
-      <div class="progress-track">
-        <div class="progress-fill" id="progress-fill"></div>
-      </div>
-    </div>
+  <main class="islam-container" id="appRoot">
+    <!-- Rendered dynamically by JS -->
+  </main>
 
-    <div class="selector-panel" id="selector-panel">
-      <div class="control-group">
-        <label for="chapter-select" class="control-label">Chapter</label>
-        <select id="chapter-select" class="select-input"></select>
-      </div>
-      <div class="control-group">
-        <label for="topic-select" class="control-label">Topic</label>
-        <select id="topic-select" class="select-input"></select>
-      </div>
-    </div>
-
-    <div class="learning-toolbar" id="learning-toolbar">
-      <button type="button" class="btn btn-secondary btn-sm" id="toggle-bn-btn">👁️ Hide Bangla</button>
-      <button type="button" class="btn btn-primary btn-sm" id="play-lesson-btn">▶️ Play Full Lesson</button>
-      <button type="button" class="btn btn-danger btn-sm" id="stop-audio-btn">⏹️ Stop</button>
-      <div class="speed-control">
-        <label for="speed-select">Speed</label>
-        <select id="speed-select" class="speed-select" aria-label="Speech speed">
-          <option value="0.75">0.75x</option>
-          <option value="1" selected>1x</option>
-          <option value="1.25">1.25x</option>
-        </select>
-      </div>
-      <div class="audio-notice" id="audio-notice" role="status" aria-live="polite"></div>
-    </div>
-
-    <main class="lesson-main" id="lesson-main"></main>
-
-    <nav class="lesson-nav" id="lesson-nav" aria-label="Lesson navigation">
-      <button type="button" class="btn btn-secondary" id="prev-topic-btn">&larr; Previous</button>
-      <button type="button" class="btn btn-primary" id="next-topic-btn">Next &rarr;</button>
-    </nav>
-  </div>
-
-  <footer class="site-footer" style="margin-top: 28px;">
-    <div class="container">
-      <p>Class 7 Complete Learning Platform &bull; <a href="../../index.html" style="color:inherit;">Return to Homepage</a></p>
-    </div>
-  </footer>
-
-  <script src="../../assets/js/subjects.js"></script>
-  <script src="./content.js"></script>
   <script src="../../assets/js/audio.js"></script>
-  <script src="../../assets/js/subject.js"></script>
+  <script>
+    // Graceful fallback if audio.js is not present in standalone preview
+    if (!window.Class7Audio) {
+      window.Class7Audio = (function () {
+        let rate = 1;
+        let playing = false;
+        const supported = typeof window !== "undefined" && "speechSynthesis" in window;
+        function pickBanglaVoice() {
+          if (!supported) return null;
+          const voices = window.speechSynthesis.getVoices() || [];
+          return voices.find(v => (v.lang || "").toLowerCase().startsWith("bn")) || null;
+        }
+        return {
+          isSupported: supported,
+          hasBanglaVoice: function () { return !!pickBanglaVoice(); },
+          isPlaying: function () { return playing; },
+          setRate: function (r) { rate = Math.min(2, Math.max(0.5, Number(r) || 1)); },
+          stop: function (cb) {
+            if (supported) window.speechSynthesis.cancel();
+            playing = false;
+            if (typeof cb === "function") cb();
+          },
+          speakText: function (text, lang, callbacks) {
+            const cbs = callbacks || {};
+            if (!supported) {
+              if (cbs.onNotice) cbs.onNotice("আপনার ব্রাউজারে অডিও প্লেব্যাক সমর্থিত নয়।");
+              return;
+            }
+            window.speechSynthesis.cancel();
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = lang === "bn" ? "bn-BD" : "en-US";
+            u.rate = rate;
+            const bnVoice = pickBanglaVoice();
+            if (lang === "bn" && bnVoice) {
+              u.voice = bnVoice;
+            } else if (lang === "bn" && !bnVoice && cbs.onNotice) {
+              cbs.onNotice("ডিভাইসে বাংলা ভয়েস না থাকলে বাংলা অডিও পরিষ্কার নাও শোনা যেতে পারে।");
+            }
+            u.onstart = function () { playing = true; if (cbs.onStart) cbs.onStart(); };
+            u.onend = function () { playing = false; if (cbs.onEnd) cbs.onEnd(); };
+            u.onerror = function () { playing = false; if (cbs.onEnd) cbs.onEnd(); };
+            window.speechSynthesis.speak(u);
+          }
+        };
+      })();
+    }
+
+    const ISLAM_DATA = {"chapters": [{"id": "ch1", "number": "অধ্যায় ১", "title": "আকাইদ", "subtitle": "আল্লাহর গুণাবলি, রিসালাত, ওহি ও আখিরাত (সিরাত ও মিযান)", "icon": "🕋", "summarySections": [{"id": "ch1-s1", "title": "১. ধৈর্যধারণ ও আল্লাহর গুণবাচক নাম", "points": ["মানুষ অবাধ্য হলে বা ইবাদত ছেড়ে দিলেও আল্লাহ তায়ালা তাৎক্ষণিকভাবে শাস্তি দেন না, বরং ধৈর্যধারণ করেন এবং তাওবার সুযোগ দেন।", "মানুষ পাপ করে আবার তাওবা করলে আল্লাহ ক্ষমা করে দেন। তিনি ধৈর্যশীল ব্যক্তিকে ভালোবাসেন এবং সর্বদা ধৈর্যশীলদের সাথে থাকেন।", "সূরা আল-বাকারার ১৫৩ নং আয়াতে আল্লাহ বলেন, 'নিশ্চয়ই আল্লাহ ধৈর্যশীলদের সাথে আছেন' এবং ১৫৫ নং আয়াতে ধৈর্যশীলদের সুসংবাদ দিতে বলেছেন।", "আল্লাহর গুণের অনুশীলন হিসেবে আমাদের অধীনস্থদের ক্ষমা করতে হবে এবং বিপদে-আপদে নিরাশ না হয়ে ধৈর্যধারণ করতে হবে।"]}, {"id": "ch1-s2", "title": "২. রিসালাত ও নবি-রাসুলগণের পরিচয়", "points": ["রিসালাত শব্দের অর্থ বার্তা, সংবাদবহন, চিঠি বা খবর পৌঁছানো। ইসলামি পরিভাষায় আল্লাহ তায়ালার বাণী ও পরিচয় মানুষের নিকট পৌঁছানোর দায়িত্বকে রিসালাত বলে।", "মানুষ বুদ্ধি-বিবেক দিয়ে স্রষ্টার অস্তিত্ব বুঝলেও তাঁর গুণাবলি ও ক্ষমতা নিজে থেকে জানতে পারে না; তাই আল্লাহ মানুষের মধ্য থেকে পথপ্রদর্শক বা নবি-রাসুল নিয়োগ করেছেন।", "সূরা আন-নাহলের ৩৬ নং আয়াত অনুযায়ী মহান আল্লাহ সকল জাতির মধ্যেই রাসুল পাঠিয়েছেন। নবি-রাসুলগণ ছিলেন নিষ্পাপ এবং পৃথিবীর সকল মানুষের মধ্যে শ্রেষ্ঠ।", "রিসালাতে বিশ্বাস করা ইমানের অপরিহার্য অংশ ও ফরজ; নবি-রাসুলদের অস্বীকার করলে ইমানের সকল বিষয়ই অস্বীকার করা হয়। সূরা আল-বাকারার ২৮৫ নং আয়াত অনুযায়ী আমরা কোনো রাসুলের মধ্যে তারতম্য করি না।"]}, {"id": "ch1-s3", "title": "৩. ওহি: অর্থ, প্রকারভেদ ও গুরুত্ব", "points": ["ওহি আরবি শব্দ, যার অর্থ ইশারা, ইঙ্গিত বা গোপন কথা। ইসলামি পরিভাষায় মহান আল্লাহর পক্ষ থেকে নবি-রাসুলগণের নিকট প্রেরিত সংবাদ বা বাণীকে ওহি বলে।", "ওহি অবতরণের দুটি প্রসিদ্ধ পদ্ধতি: (ক) ফেরেশতার মাধ্যমে—যেমন প্রধান ওহিবাহক ফেরেশতা হযরত জিবরাইল (আ.)-এর মাধ্যমে, (খ) সরাসরি কথা বলার মাধ্যমে—যেমন তুর পাহাড়ে হযরত মুসা (আ.)-এর সাথে এবং মিরাজের রজনীতে মহানবি (স.)-এর সাথে।", "ওহি প্রধানত দুই প্রকার: (১) ওহি মাতলু—যে ওহি সালাতে তিলাওয়াত করা হয় (যেমন আল-কুরআন), এবং (২) ওহি গায়র মাতলু—যে ওহি সালাতে তিলাওয়াত করা হয় না (যেমন হাদিস শরিফ)।", "সূরা আন-নাজমের ৩–৪ নং আয়াতে বলা হয়েছে, মহানবি (স.) মনগড়া কিছু বলেন না, বরং তা তাঁর প্রতি প্রত্যাদেশকৃত ওহি। ওহি সকল জ্ঞান-বিজ্ঞানের মূল উৎস ও অকাট্য সত্য।"]}, {"id": "ch1-s4", "title": "৪. আখিরাত, সিরাত ও মিযান", "points": ["আখিরাত অর্থ পরকাল বা দুনিয়ার জীবনের পরের চিরস্থায়ী জীবন, যার শুরু আছে কিন্তু শেষ নেই। সূরা আল-মুমিনের ৩৯ নং আয়াতে আখিরাতকে 'চিরস্থায়ী আবাস' বলা হয়েছে। দুনিয়া হলো আমল করার স্থান এবং আখিরাত হলো ফলভোগের স্থান।", "সিরাত শব্দের অর্থ পথ, রাস্তা বা পুল। ইসলামি পরিভাষায় জাহান্নামের ওপর স্থাপিত একটি পুলকে সিরাত বলে, যা পার হয়ে জান্নাতিগণ জান্নাতে প্রবেশ করবেন। সূরা মারইয়ামের ৭১ নং আয়াত অনুযায়ী প্রত্যেক মানুষকেই তা অতিক্রম করতে হবে।", "জান্নাতিগণের মধ্যে সর্বপ্রথম হযরত মুহাম্মদ (স.) সিরাত অতিক্রম করবেন। অপরদিকে জাহান্নামিদের জন্য সিরাত হবে চুলের চেয়েও সূক্ষ্ম, তরবারি অপেক্ষা ধারালো এবং ঘুটঘুটে অন্ধকার।", "মিযান অর্থ দাঁড়িপাল্লা বা পরিমাপ করার যন্ত্র। কিয়ামতের দিন যে যন্ত্রের দ্বারা মানুষের পাপ-পুণ্য ওজন করা হবে, তাকে মিযান বলে (সূরা আল-আম্বিয়া, আয়াত ৪৭)। যার নেকির পাল্লা ভারী হবে সে সফলকাম ও জান্নাতি হবে (সূরা আল-মুমিনূন, ১০২–১০৩)।"]}, {"id": "ch1-s5", "title": "৫. মিযানের পাল্লা ভারী করার বিশেষ আমল", "points": ["সহিহ মুসলিমের হাদিস অনুযায়ী 'আল-হামদুলিল্লাহ' বলা মিযানের নেকির পাল্লা পূর্ণ করে দেয়।", "মহানবি (স.) বলেছেন, দুটি বাক্য দয়াময় আল্লাহর নিকট প্রিয়, উচ্চারণে সহজ এবং মিযানের পাল্লায় ভারী—তা হলো: 'সুবহানাল্লাহি ওয়া বিহামদিহি, সুবহানাল্লাহিল আযিম'।"]}], "mcqs": [{"q": "আল্লাহ তায়ালা অবাধ্য বান্দাদের তাৎক্ষণিকভাবে শাস্তি না দিয়ে কী করেন?", "opts": ["ধৈর্যধারণ করেন ও সুযোগ দেন", "আলো বন্ধ করে দেন", "পানি বন্ধ করে দেন", "সকল নিয়ামত কেড়ে নেন"], "ans": 0, "exp": "আল্লাহ তায়ালা অবাধ্যতার জন্য তাৎক্ষণিকভাবে শাস্তি দেন না, বরং ধৈর্যধারণ করে তাওবার সুযোগ দেন।"}, {"q": "'নিশ্চয়ই আল্লাহ ধৈর্যশীলদের সাথে আছেন'—এটি কোন সূরার আয়াত?", "opts": ["সূরা আন-নাহল", "সূরা আল-বাকারা", "সূরা মারইয়াম", "সূরা আল-মুমিন"], "ans": 1, "exp": "সূরা আল-বাকারার ১৫৩ নং আয়াতে এ বাণী রয়েছে।"}, {"q": "সূরা আল-বাকারার কত নম্বর আয়াতে ধৈর্যশীলগণকে সুসংবাদ দিতে বলা হয়েছে?", "opts": ["১৫৩ নং", "১৫৫ নং", "১৮৩ নং", "২৮৫ নং"], "ans": 1, "exp": "সূরা আল-বাকারার ১৫৫ নং আয়াতে বলা হয়েছে: 'তুমি সুসংবাদ দাও ধৈর্যশীলগণকে।'"}, {"q": "বান্দা পাপ করার পর তাওবা করে ফিরে আসলে আল্লাহ কী করেন?", "opts": ["ক্ষমা করে দেন", "তাড়িয়ে দেন", "উপেক্ষা করেন", "শাস্তি নির্ধারণ করেন"], "ans": 0, "exp": "বান্দা তাওবা করে ফিরে আসলে আল্লাহ ক্ষমা করে দেন।"}, {"q": "আল্লাহ তায়ালার ধৈর্যগুণের অনুশীলন হিসেবে আমাদের কী করা উচিত?", "opts": ["অধীনস্থদের ক্ষমা করা", "বিপদে নিরাশ হওয়া", "প্রতিশোধ নেওয়া", "রাগ প্রকাশ করা"], "ans": 0, "exp": "আমরা অধীনস্থদের ক্ষমা করব এবং বিপদে-আপদে নিরাশ না হয়ে ধৈর্যধারণ করব।"}, {"q": "আল্লাহ তায়ালা ধৈর্যশীলদের পুরস্কার হিসেবে কী দান করবেন?", "opts": ["ধন-সম্পদ", "জান্নাত", "ক্ষমতা", "দীর্ঘায়ু"], "ans": 1, "exp": "ধৈর্যশীলদেরকে আল্লাহ জান্নাত দান করবেন।"}, {"q": "'রিসালাত' শব্দের অর্থ কী?", "opts": ["পথ ও পুল", "বার্তা বা সংবাদবহন", "দাঁড়িপাল্লা", "গোপন কথা"], "ans": 1, "exp": "রিসালাত অর্থ বার্তা, সংবাদবহন, চিঠি, খবর পৌঁছানো ইত্যাদি।"}, {"q": "ইসলামি পরিভাষায় আল্লাহ তায়ালার বাণী ও পরিচয় মানুষের নিকট পৌঁছানোর দায়িত্বকে কী বলে?", "opts": ["তাওহিদ", "রিসালাত", "ওহি", "আখিরাত"], "ans": 1, "exp": "আল্লাহর বাণী ও পরিচয় মানুষের কাছে পৌঁছানোর দায়িত্বকে রিসালাত বলে।"}, {"q": "নবি-রাসুলগণ কেমন ছিলেন?", "opts": ["নিষ্পাপ ও মানুষের মধ্যে শ্রেষ্ঠ", "সাধারণ মানুষের মতো পাপী", "ফেরেশতা জাতি", "শুধু আরবদের জন্য প্রেরিত"], "ans": 0, "exp": "নবি-রাসুলগণ আল্লাহর মনোনীত বান্দা, নিষ্পাপ এবং পৃথিবীর সকল মানুষের মধ্যে শ্রেষ্ঠ।"}, {"q": "'এবং নিশ্চয়ই আমি প্রত্যেক জাতির মধ্যেই রাসুল পাঠিয়েছি'—এটি কোন সূরার আয়াত?", "opts": ["সূরা আল-বাকারা", "সূরা আন-নাহল", "সূরা আন-নাজম", "সূরা আল-আম্বিয়া"], "ans": 1, "exp": "এটি সূরা আন-নাহলের ৩৬ নং আয়াত।"}, {"q": "নবি-রাসুলগণের প্রতি বিশ্বাস করা কী?", "opts": ["নফল", "সুন্নত", "ফরজ", "মুস্তাহাব"], "ans": 2, "exp": "নবি-রাসুলগণের প্রতি বিশ্বাস করা ফরজ; তাদের অবিশ্বাস করলে ইমানদার হওয়া যায় না।"}, {"q": "কোন আয়াতে বলা হয়েছে 'আমরা তাঁর রাসুলগণের মধ্যে কোনো তারতম্য করি না'?", "opts": ["সূরা আল-বাকারার ২৮৫ নং", "সূরা আল-বাকারার ৪ নং", "সূরা আন-নাহলের ৩৬ নং", "সূরা মারইয়ামের ৭১ নং"], "ans": 0, "exp": "সূরা আল-বাকারার ২৮৫ নং আয়াতে এই বাণী উল্লেখ আছে।"}, {"q": "'ওহি' কোন ভাষার শব্দ?", "opts": ["ফারসি", "উর্দু", "আরবি", "তুর্কি"], "ans": 2, "exp": "ওহি আরবি শব্দ, যার অর্থ ইশারা, ইঙ্গিত, গোপন কথা ইত্যাদি।"}, {"q": "প্রধান ওহিবাহক ফেরেশতা কে?", "opts": ["হযরত মিকাইল (আ.)", "হযরত ইসরাফিল (আ.)", "হযরত জিবরাইল (আ.)", "হযরত আজরাইল (আ.)"], "ans": 2, "exp": "হযরত জিবরাইল (আ.) হলেন প্রধান ওহিবাহক ফেরেশতা।"}, {"q": "কোন পাহাড়ে আল্লাহ তায়ালা হযরত মুসা (আ.)-এর সাথে সরাসরি কথা বলেছেন?", "opts": ["সাফা পাহাড়", "তুর পাহাড়", "হেরা পাহাড়", "উহুদ পাহাড়"], "ans": 1, "exp": "আল্লাহ তায়ালা হযরত মুসা (আ.)-এর সাথে তুর পাহাড়ে সরাসরি কথা বলেছেন।"}, {"q": "মহানবি (স.) কখন আল্লাহ তায়ালার সাথে সরাসরি কথা বলেছিলেন?", "opts": ["বদরের যুদ্ধে", "মিরাজের রজনীতে", "হিজরতের রাতে", "হুদায়বিয়ার দিনে"], "ans": 1, "exp": "আমাদের প্রিয় নবি (স.) মিরাজের রজনীতে আল্লাহ তায়ালার সাথে সরাসরি কথা বলেছেন।"}, {"q": "যে ওহি সালাতে তিলাওয়াত করা হয় তাকে কী বলে?", "opts": ["ওহি গায়র মাতলু", "ওহি মাতলু", "ওহি খফি", "ইলহাম"], "ans": 1, "exp": "যে ওহি তিলাওয়াত করা হয় (যেমন কুরআন মাজিদ) তাকে ওহি মাতলু বলে।"}, {"q": "নিচের কোনটি ওহি গায়র মাতলুর উদাহরণ?", "opts": ["আল-কুরআন", "তাওরাত", "হাদিস শরিফ", "জাবুর"], "ans": 2, "exp": "হাদিস শরিফ সালাতে তিলাওয়াত করা হয় না বলে একে ওহি গায়র মাতলু বলে।"}, {"q": "'আর তিনি মনগড়া কোনো কিছু বলেন না। বরং এটা তো ওহি, যা তাঁর প্রতি প্রত্যাদেশ হয়'—কোন সূরার আয়াত?", "opts": ["সূরা আন-নাজম (৩-৪)", "সূরা আল-বাকারা (১৫৩)", "সূরা আল-মুমিন (৩৯)", "সূরা আল-মুমিনূন (১০২)"], "ans": 0, "exp": "এটি সূরা আন-নাজমের ৩–৪ নং আয়াত।"}, {"q": "সকল জ্ঞান-বিজ্ঞানের মূল উৎস কী?", "opts": ["যুক্তিবিদ্যা", "ওহি", "ইতিহাস", "দর্শন"], "ans": 1, "exp": "ওহি সকল জ্ঞান-বিজ্ঞানের মূল উৎস এবং এতে কোনো ভুল-ভ্রান্তি বা সন্দেহ নেই।"}, {"q": "'আখিরাত' শব্দের অর্থ কী?", "opts": ["ইহকাল", "পরকাল", "মধ্যবর্তী জীবন", "পৃথিবী"], "ans": 1, "exp": "আখিরাত অর্থ পরকাল বা দুনিয়ার জীবনের পরের চিরস্থায়ী জীবন।"}, {"q": "সূরা আল-মুমিনের ৩৯ নং আয়াতে আখিরাতকে কী বলা হয়েছে?", "opts": ["অস্থায়ী উপভোগের বস্তু", "চিরস্থায়ী আবাস", "আমলের ক্ষেত্র", "পরীক্ষার হল"], "ans": 1, "exp": "সূরা আল-মুমিনের ৩৯ নং আয়াতে বলা হয়েছে: 'নিঃসন্দেহে আখিরাতই হলো চিরস্থায়ী আবাস।'"}, {"q": "'দুনিয়া হলো আমল করার স্থান এবং আখিরাত হলো...'", "opts": ["বিশ্রামের স্থান", "ফলভোগের স্থান", "পুনরায় আমলের স্থান", "ভ্রমণের স্থান"], "ans": 1, "exp": "দুনিয়া হলো আমল করার স্থান এবং আখিরাত হলো ফলভোগের স্থান।"}, {"q": "সূরা আল-বাকারার ৪ নং আয়াতে মুত্তাকিগণের কোন গুণের কথা বলা হয়েছে?", "opts": ["তাঁরা আখিরাতের ওপর দৃঢ় বিশ্বাস স্থাপন করে", "তাঁরা ধন-সম্পদ জমা করে", "তাঁরা শুধু রাতে ইবাদত করে", "তাঁরা ব্যবসা করে"], "ans": 0, "exp": "সূরা আল-বাকারার ৪ নং আয়াতে বলা হয়েছে: 'আর তারা (মুত্তাকিগণ) আখিরাতের ওপর দৃঢ় বিশ্বাস স্থাপন করে।'"}, {"q": "ইসলামি পরিভাষায় জাহান্নামের ওপর স্থাপিত পুলকে কী বলে?", "opts": ["মিযান", "সিরাত", "হাশর", "বারযাখ"], "ans": 1, "exp": "জাহান্নামের ওপর স্থাপিত যে পুল পার হয়ে জান্নাতিগণ জান্নাতে প্রবেশ করবেন, তাকে সিরাত বলে।"}, {"q": "জান্নাতিগণের মধ্যে সর্বপ্রথম কে সিরাত অতিক্রম করবেন?", "opts": ["হযরত ইবরাহিম (আ.)", "হযরত মুসা (আ.)", "হযরত মুহাম্মদ (স.)", "হযরত আবু বকর (রা.)"], "ans": 2, "exp": "জান্নাতিগণের মধ্যে সর্বপ্রথম হযরত মুহাম্মদ (স.) সিরাত অতিক্রম করে জান্নাতে প্রবেশ করবেন।"}, {"q": "জাহান্নামিদের জন্য সিরাত কেমন হবে?", "opts": ["বিশাল ময়দানের মতো", "চুলের চেয়েও সূক্ষ্ম ও তরবারি অপেক্ষা ধারালো", "আলোকিত ও প্রশস্ত", "সহজ ও মসৃণ"], "ans": 1, "exp": "জাহান্নামিদের জন্য সিরাত হবে চুলের চেয়েও সূক্ষ্ম, তরবারি অপেক্ষা ধারালো ও ঘুটঘুটে অন্ধকার।"}, {"q": "ইসলামি পরিভাষায় কিয়ামতের দিন পাপ-পুণ্য ওজন করার যন্ত্রকে কী বলে?", "opts": ["সিরাত", "মিযান", "তাকদির", "ওহি"], "ans": 1, "exp": "কিয়ামতের দিন পাপ-পুণ্য ওজন করার পরিমাপক যন্ত্রকে মিযান বলে।"}, {"q": "মিযানের নেকির পাল্লা পূর্ণ করে দেয় নিচের কোন বাক্যটি?", "opts": ["আল-হামদুলিল্লাহ", "বিসমিল্লাহ", "ইন্নালিল্লাহ", "মাশাআল্লাহ"], "ans": 0, "exp": "সহিহ মুসলিমের হাদিস অনুযায়ী 'আল-হামদুলিল্লাহ' বলা মিযানের নেকির পাল্লা পূর্ণ করে দেয়।"}, {"q": "কুরআনের কোন সূরায় বলা হয়েছে 'আমি কিয়ামতের দিন ন্যায়বিচারের মানদণ্ড স্থাপন করব'?", "opts": ["সূরা আল-আম্বিয়া (৪৭)", "সূরা আল-মুমিনূন (১০২)", "সূরা মারইয়াম (৭১)", "সূরা আল-বাকারা (২৮৫)"], "ans": 0, "exp": "সূরা আল-আম্বিয়ার ৪৭ নং আয়াতে আল্লাহ ন্যায়বিচারের মানদণ্ড (মিযান) স্থাপনের কথা বলেছেন।"}], "gyanmulok": [{"q": "মানুষ অবাধ্য হলে আল্লাহ তায়ালা কী করেন?", "a": "তাৎক্ষণিকভাবে শাস্তি না দিয়ে ধৈর্যধারণ করেন এবং তাওবা করে ফিরে আসার সুযোগ দেন।"}, {"q": "আল্লাহ তায়ালা কাদের ভালোবাসেন এবং কাদের সাথে থাকেন?", "a": "আল্লাহ তায়ালা ধৈর্যশীল ব্যক্তিকে ভালোবাসেন এবং সর্বদা ধৈর্যশীলদের সাথে থাকেন (সূরা আল-বাকারা, ১৫৩)।"}, {"q": "রিসালাত শব্দের আভিধানিক অর্থ কী?", "a": "বার্তা, সংবাদবহন, চিঠি, খবর পৌঁছানো ইত্যাদি।"}, {"q": "ইসলামি পরিভাষায় রিসালাত কাকে বলে?", "a": "আল্লাহ তায়ালার বাণী ও পরিচয় মানুষের নিকট পৌঁছানোর দায়িত্বকে রিসালাত বলে।"}, {"q": "রিসালাতের দায়িত্ব যাঁরা পালন করেন, তাঁরা কারা?", "a": "নবি কিংবা রাসুলগণ।"}, {"q": "নবি-রাসুলগণকে অবিশ্বাস করলে কী হয়?", "a": "নবি-রাসুলগণকে অবিশ্বাস করলে ইমানের সকল বিষয়ই অস্বীকার করা হয় এবং ইমানদার হওয়া যায় না।"}, {"q": "ওহি শব্দের অর্থ কী?", "a": "ইশারা, ইঙ্গিত, গোপন কথা ইত্যাদি।"}, {"q": "ইসলামি পরিভাষায় ওহি কাকে বলে?", "a": "মহান আল্লাহর পক্ষ থেকে নবি-রাসুলগণের নিকট প্রেরিত সংবাদ বা বাণীকে ওহি বলে।"}, {"q": "ওহি অবতরণের প্রসিদ্ধ দুটি পদ্ধতি কী কী?", "a": "১. ফেরেশতার মাধ্যমে (যেমন হযরত জিবরাইল আ.) এবং ২. সরাসরি কথা বলার মাধ্যমে।"}, {"q": "প্রধান ওহিবাহক ফেরেশতার নাম কী?", "a": "হযরত জিবরাইল (আ.)।"}, {"q": "ওহি মাতলু কাকে বলে? উদাহরণ দাও।", "a": "যে ওহি সালাতে তিলাওয়াত করা হয়, তাকে ওহি মাতলু বলে। যেমন: আল-কুরআন।"}, {"q": "ওহি গায়র মাতলু কাকে বলে? উদাহরণ দাও।", "a": "যে ওহি সালাতে তিলাওয়াত করা হয় না, তাকে ওহি গায়র মাতলু বলে। যেমন: হাদিস শরিফ।"}, {"q": "আখিরাত অর্থ কী?", "a": "পরকাল বা দুনিয়ার জীবনের পরের চিরস্থায়ী জীবন।"}, {"q": "দুনিয়া ও আখিরাতের মধ্যে মূল পার্থক্য কী?", "a": "দুনিয়া হলো অস্থায়ী ও আমল করার স্থান, আর আখিরাত হলো চিরস্থায়ী ও ফলভোগের স্থান।"}, {"q": "সিরাত শব্দের অর্থ কী ও ইসলামি পরিভাষায় তা কী?", "a": "সিরাত অর্থ পথ, রাস্তা বা পুল। ইসলামি পরিভাষায় জাহান্নামের ওপর স্থাপিত একটি পুল, যা পার হয়ে জান্নাতিগণ জান্নাতে প্রবেশ করবেন।"}, {"q": "সর্বপ্রথম কে সিরাত অতিক্রম করবেন?", "a": "আমাদের প্রিয় নবি হযরত মুহাম্মদ (স.)।"}, {"q": "জাহান্নামিদের জন্য সিরাত দেখতে কেমন হবে?", "a": "চুলের চাইতেও সূক্ষ্ম, তরবারি অপেক্ষা ধারালো এবং ঘুটঘুটে অন্ধকার।"}, {"q": "মিযান অর্থ কী এবং ইসলামি পরিভাষায় মিযান কাকে বলে?", "a": "মিযান অর্থ দাঁড়িপাল্লা বা মানদণ্ড। কিয়ামতের দিন যে পরিমাপক যন্ত্রের দ্বারা মানুষের পাপ-পুণ্য ওজন করা হবে, তাকে মিযান বলে।"}, {"q": "মিযানের কোন পাল্লা ভারী হলে মানুষ জান্নাতি হবে?", "a": "পুণ্যের (নেকির) পাল্লা ভারী হলে মানুষ সফলকাম ও জান্নাতি হবে।"}, {"q": "দয়াময় আল্লাহর নিকট প্রিয় ও মিযানের পাল্লায় ভারী দুটি বাক্য কী?", "a": "সুবহানাল্লাহি ওয়া বিহামদিহি, সুবহানাল্লাহিল আযিম।"}]}, {"id": "ch2", "number": "অধ্যায় ২", "title": "ইবাদত", "subtitle": "তাহাজ্জুদ, ইশরাক, আওয়াবিন, সাওম, সাহারি-ইফতার, কাযা-কাফফারা, ইতিকাফ ও সাদাকাতুল ফিতর", "icon": "🌙", "summarySections": [{"id": "ch2-s1", "title": "১. নফল ও সুন্নত সালাত: তাহাজ্জুদ, ইশরাক ও আওয়াবিন", "points": ["তাহাজ্জুদ: রাতের শেষাংশে আদায় করা উত্তম, পড়া সুন্নত। দুই রাকআত করে সুন্নত নিয়মে পড়তে হয়; এরপর দরুদ ও বিতর আদায় উত্তম। মহানবি (স.) বলেন, 'ফরজ সালাতের পর সবচেয়ে উৎকৃষ্ট হলো তাহাজ্জুদের সালাত।' (মুসলিম)।", "ইশরাক: সুন্নতে যায়িদা বা নফল। ফজরের পর বসে কুরআন তিলাওয়াত ও তাসবিহ পাঠ করে সূর্য সম্পূর্ণ উঠে গেলে ২ রাকআত করে ৪, ৬ বা ৮ রাকআত পর্যন্ত পড়া যায়। হাদিসে একে 'যুহার সালাত' বলা হয়েছে।", "সালাতুল আওয়াবিন: এটিও সুন্নতে যায়িদা। মাগরিবের ফরজ ও দুই রাকআত সুন্নতের পর থেকে এশার ওয়াক্ত হওয়ার পূর্ব পর্যন্ত পড়া যায়।", "সালাতের নৈতিক ও সামাজিক শিক্ষা: সূরা আল-আনকাবুতের ৪৫ নং আয়াত অনুযায়ী সালাত অশ্লীল ও খারাপ কাজ থেকে বিরত রাখে। জামাআতে সালাত আদায়ে ধনী-গরিব ভেদাভেদ দূর হয়, জাতীয় ঐক্য ও ভ্রাতৃত্ববোধ গড়ে ওঠে।"]}, {"id": "ch2-s2", "title": "২. সাওম: ধারণা, ফজিলত ও প্রকারভেদ", "points": ["সাওম আরবি শব্দ, অর্থ বিরত থাকা। সুবহে সাদিক থেকে সূর্যাস্ত পর্যন্ত নিয়তের সাথে পানাহার ও ইন্দ্রিয় তৃপ্তি থেকে বিরত থাকাকে সাওম বা রোযা বলে। রমযানের রোযা ফরজ (সূরা আল-বাকারা, ১৮৩); অস্বীকারকারী কাফির।", "হাদিসে সাওমকে 'ঢালস্বরূপ' (বুখারি) বলা হয়েছে। হাদিসে কুদসিতে আল্লাহ বলেন, 'সাওম কেবল আমারই জন্য, আমি নিজেই এর প্রতিদান দিব।' জান্নাতে রোযাদারদের জন্য 'রাইয়ান' নামক বিশেষ দরজা রয়েছে।", "ফজিলতের দিক থেকে রমযান তিন ভাগে বিভক্ত: প্রথম অংশ রহমতের, দ্বিতীয় অংশ মাগফিরাতের এবং শেষ অংশ জাহান্নাম থেকে মুক্তির।", "সাওম ৬ প্রকার: (১) ফরজ (রমযানের রোযা), (২) ওয়াজিব (মানতের রোযা), (৩) সুন্নত (আশুরা ও আরাফার দিনের রোযা), (৪) মুস্তাহাব (চন্দ্র মাসের ১৩-১৫ তারিখ, সোম ও বৃহস্পতি, শাওয়ালের ৬ রোযা), (৫) নফল এবং (৬) মাকরুহ (তাহ্রিমি: দুই ঈদ ও জিলহজের ১১-১৩ তারিখ হারাম; তানযিহি: শুধু ১০ মুহাররম বা শুধু শনিবারে রোযা রাখা)।"]}, {"id": "ch2-s3", "title": "৩. সাহারি, ইফতার, সাওম ভঙ্গ ও মাকরুহের কারণ", "points": ["সাহারি: সুবহে সাদিকের পূর্বে খাওয়া সুন্নত ও বরকতের কাজ (বুখারি)। ইফতার: সূর্যাস্তের পর হালাল বস্তু পানাহারের মাধ্যমে রোযা ভঙ্গ করা সুন্নত; এতে আবু দাউদ ও তিরমিযির বর্ণিত দোয়া ও অন্যকে ইফতার করানোর বিশাল সাওয়াব রয়েছে।", "সাওম ভঙ্গের কারণ (যেগুলোতে একটির বদলে একটি কাযা ফরজ): ভুলবশত খাওয়ার পর রোযা ভেঙে গেছে ভেবে ইচ্ছাকৃত খেলে, কুলির সময় অনিচ্ছায় পানি পেটে গেলে, জোর করে পানাহার করালে, রাত ভেবে সুবহে সাদিকের পর সাহারি বা সূর্যাস্তের আগে ইফতার করলে, ইচ্ছাকৃত মুখভর্তি বমি করলে, প্রস্রাব-পায়খানার রাস্তায় ওষুধ গ্রহণ করলে।", "সাওম মাকরুহ হওয়ার কারণ: গিবত করলে, মিথ্যা বা অশ্লীল আচরণ ও গালমন্দ করলে, কুলির সময় গড়গড়া করলে, যথাসময়ে ইফতার না করলে, গরমরোধে গায়ে ঠান্ডা কাপড় জড়ালে বা বারবার কুলি করলে।"]}, {"id": "ch2-s4", "title": "৪. কাযা, কাফফারা, ইতিকাফ ও সাদাকাতুল ফিতর", "points": ["কাযা: অনিচ্ছায় রোযা ভেঙে গেলে বা অসুস্থতা/সফরের ওযরে না রাখলে একটির বদলে একটি রাখা। কাফফারা: ইচ্ছাকৃতভাবে বা বিনা কারণে রোযা ভেঙে ফেললে কাযা ও কাফফারা উভয়ই ফরজ—(১) একাধারে বিরতিহীন ২ মাস সাওম পালন, অথবা (২) ৬০ জন মিসকিনকে দুই বেলা খাওয়ানো, অথবা (৩) একজন দাস মুক্ত করা।", "ইতিকাফ: সাংসারিক কাজকর্ম ও পরিবার থেকে আলাদা হয়ে মসজিদে ইবাদতের নিয়তে অবস্থান করা। রমযানের শেষ দশ দিনে ইতিকাফ সুন্নতে মুয়াক্কাদা কিফায়া; সর্বনিম্ন সময় একদিন একরাত। এতে শেষ দশকের বিজোড় রাতে (২১, ২৩, ২৫, ২৭, ২৯) লাইলাতুল কদর পাওয়ার সৌভাগ্য হয়।", "সাদাকাতুল ফিতর: ঈদের সালাতের উদ্দেশ্যে রওনা হওয়ার পূর্বে নিসাব পরিমাণ (সাড়ে ৭ ভরি স্বর্ণ বা সাড়ে ৫২ ভরি রৌপ্য বা সমপরিমাণ অর্থ) সম্পদের মালিক স্বাধীন মুসলিমের ওপর ওয়াজিব। পরিমাণ: মাথাপিছু নিসফু সা (প্রায় পৌনে দুই কেজি গম বা যব বা তার মূল্য)।"]}, {"id": "ch2-s5", "title": "৫. সাওমের নৈতিক শিক্ষা", "points": ["১. সংযম: জৈবিক ও পাশবিক প্রবৃত্তি নিয়ন্ত্রণ করে নির্দিষ্ট সময়ে বৈধ পানাহার থেকে বিরত থাকার মাধ্যমে বছরব্যাপী সংযমী হওয়ার প্রশিক্ষণ দেয়।", "২. সহমর্মিতা: ধনী-গরিব সকলে ক্ষুধা ও পিপাসার কষ্ট অনুভব করে অসহায়-ক্ষুধার্তদের প্রতি দয়াশীল ও দানশীল হয়।", "৩. সহিষ্ণুতা বা ধৈর্য: দিনের বেলায় সামর্থ্য থাকা সত্ত্বেও পানাহার ও অন্যায় থেকে বিরত থাকার মাধ্যমে ধৈর্যের অনুপম দৃষ্টান্ত স্থাপিত হয়।"]}], "mcqs": [{"q": "'ফরজ সালাতের পর সবচেয়ে উৎকৃষ্ট হলো তাহাজ্জুদের সালাত'—হাদিসটি কোন গ্রন্থের?", "opts": ["বুখারি", "মুসলিম", "তিরমিযি", "আবু দাউদ"], "ans": 1, "exp": "এ হাদিসটি সহিহ মুসলিমে বর্ণিত হয়েছে।"}, {"q": "তাহাজ্জুদের সালাত কখন আদায় করা উত্তম?", "opts": ["সন্ধ্যায়", "রাতের প্রথম অংশে", "রাতের শেষাংশে", "সূর্যোদয়ের পর"], "ans": 2, "exp": "রাতের শেষাংশে তাহাজ্জুদের সালাত আদায় করা উত্তম এবং এ সালাত পড়া সুন্নত।"}, {"q": "হাদিসে ইশরাকের সালাতকে কী বলে উল্লেখ করা হয়েছে?", "opts": ["বিতর সালাত", "যুহার সালাত", "আওয়া্বিন সালাত", "তাহাজ্জুদ"], "ans": 1, "exp": "ইশরাকের সালাতকে হাদিসে যুহার সালাত বলে উল্লেখ করা হয়েছে।"}, {"q": "সালাতুল আওয়াবিন কখন আদায় করা হয়?", "opts": ["ফজরের পর", "যোহরের পর", "মাগরিবের পর থেকে এশার পূর্ব পর্যন্ত", "মধ্যরাতে"], "ans": 2, "exp": "মাগরিবের ফরজ ও দুই রাকআত সুন্নতের পর থেকে এশার ওয়াক্ত হওয়ার পূর্ব পর্যন্ত আওয়াবিন পড়া হয়।"}, {"q": "'নিশ্চয়ই সালাত মানুষকে অশ্লীল ও খারাপ কাজ থেকে বিরত রাখে'—কোন সূরার আয়াত?", "opts": ["সূরা আল-আনকাবুত (৪৫)", "সূরা আল-বাকারা (১৮৩)", "সূরা আস-সাজদাহ (১৬)", "সূরা আল-মাউন (৪)"], "ans": 0, "exp": "এটি সূরা আল-আনকাবুতের ৪৫ নং আয়াত।"}, {"q": "ইমামের পেছনে জামাআতে সালাত আদায়ের অর্থ কী?", "opts": ["ব্যক্তিগত ইবাদত", "নেতার অনুসরণ ও সামাজিক ঐক্য", "দ্রুত নামাজ শেষ করা", "নিয়মের শিথিলতা"], "ans": 1, "exp": "ইমামের পেছনে সালাত আদায়ের অর্থ নেতার অনুসরণ; এতে ধনী-গরিব ভেদাভেদ থাকে না ও জাতীয় ঐক্য ঘটে।"}, {"q": "'সাওম' শব্দের অর্থ কী?", "opts": ["ত্যাগ করা", "বিরত থাকা", "প্রার্থনা করা", "অবস্থান করা"], "ans": 1, "exp": "সাওম আরবি শব্দ, এর অর্থ বিরত থাকা।"}, {"q": "কোন আয়াতে বলা হয়েছে 'তোমাদের ওপর সিয়াম ফরজ করা হলো... যেন তোমরা তাকওয়া অর্জন করতে পার'?", "opts": ["সূরা আল-বাকারা (১৮৩)", "সূরা আল-বাকারা (১৮৫)", "সূরা আন-নাহল (৩৬)", "সূরা আল-কদর (১)"], "ans": 0, "exp": "সূরা আল-বাকারার ১৮৩ নং আয়াতে সিয়াম ফরজ করার কথা বলা হয়েছে।"}, {"q": "জান্নাতে রোযাদারদের প্রবেশের জন্য নির্ধারিত বিশেষ দরজার নাম কী?", "opts": ["বাবুস সালাম", "রাইয়ান", "জান্নাতুল ফিরদাউস", "সিদরাতুল মুনতাহা"], "ans": 1, "exp": "জান্নাতের 'রাইয়ান' নামক দরজা দিয়ে কিয়ামতের দিন শুধু সিয়াম পালনকারীরাই প্রবেশ করবে।"}, {"q": "হাদিসে কুদসি অনুযায়ী সাওমের প্রতিদান কে দেবেন?", "opts": ["ফেরেশতাগণ", "স্বয়ং আল্লাহ তায়ালা", "নবি-রাসুলগণ", "মানুষ নিজে"], "ans": 1, "exp": "হাদিসে কুদসিতে আল্লাহ বলেন: 'সাওম কেবল আমারই জন্য। আমি নিজেই এর প্রতিদান দিব।'"}, {"q": "ফজিলতের দিক থেকে রমযান মাসের দ্বিতীয় অংশ কিসের?", "opts": ["রহমতের", "মাগফিরাতের", "জাহান্নাম হতে মুক্তির", "সবরের"], "ans": 1, "exp": "প্রথম অংশ রহমতের, দ্বিতীয় অংশ মাগফিরাতের এবং শেষ অংশ জাহান্নাম থেকে মুক্তির।"}, {"q": "সাওম কত প্রকার?", "opts": ["৪ প্রকার", "৫ প্রকার", "৬ প্রকার", "৭ প্রকার"], "ans": 2, "exp": "রোযা ৬ প্রকার: ফরজ, ওয়াজিব, সুন্নত, মুস্তাহাব, নফল ও মাকরুহ।"}, {"q": "আশুরা ও আরাফার দিনের রোযা কোন প্রকারের অন্তর্ভুক্ত?", "opts": ["ফরজ", "ওয়াজিব", "সুন্নত", "মুস্তাহাব"], "ans": 2, "exp": "আশুরা ও আরাফার দিনে রোযা পালন করা সুন্নত রোযা।"}, {"q": "চন্দ্র মাসের ১৩, ১৪ ও ১৫ তারিখ এবং শাওয়াল মাসের ৬টি রোযা রাখা কী?", "opts": ["ফরজ", "ওয়াজিব", "সুন্নত", "মুস্তাহাব"], "ans": 3, "exp": "চন্দ্র মাসের ১৩-১৫ তারিখ, সোম-বৃহস্পতি ও শাওয়ালের ৬ রোযা মুস্তাহাব।"}, {"q": "নিচের কোন দিনে রোযা রাখা মাকরুহ তাহ্রিমি (কার্যত হারাম)?", "opts": ["শুক্রবার", "দুই ঈদের দিন ও জিলহজের ১১-১৩ তারিখ", "আরাফার দিন", "সোমবার"], "ans": 1, "exp": "দুই ঈদের দিনে ও জিলহজ মাসের ১১, ১২, ১৩ তারিখে রোযা পালন করা হারাম (মাকরুহ তাহ্রিমি)।"}, {"q": "শুধু ১০ মুহাররম বা শুধু শনিবারে রোযা রাখা কী ধরনের মাকরুহ?", "opts": ["মাকরুহ তাহ্রিমি", "মাকরুহ তানযিহি", "ফরজ", "ওয়াজিব"], "ans": 1, "exp": "এটি মাকরুহ তানযিহি, কারণ এতে ইয়াহুদিদের সাথে সাদৃশ্য হয়ে যায়।"}, {"q": "সাহারি খাওয়া কী ও কোন সময়ে খেতে হয়?", "opts": ["ফরজ, মধ্যরাতে", "সুন্নত, সুবহে সাদিকের পূর্বে", "ওয়াজিব, সূর্যোদয়ের পর", "নফল, ফজরের পর"], "ans": 1, "exp": "সুবহে সাদিকের পূর্বে সাহারি খাওয়া সুন্নত ও বরকতের কাজ।"}, {"q": "দাঁত হতে ছোলা পরিমাণ কোনো জিনিস বের করে খেলে রোযার কী হবে?", "opts": ["মাকরুহ হবে", "ভঙ্গ হবে ও কাযা করতে হবে", "কোনো ক্ষতি হবে না", "কাফফারা ফরজ হবে"], "ans": 1, "exp": "দাঁত হতে ছোলা পরিমাণ কোনো জিনিস বের করে খেলে সাওম নষ্ট হয় ও পরে কাযা করতে হয়।"}, {"q": "নিচের কোন কারণে সাওম মাকরুহ হয়?", "opts": ["অনিচ্ছায় পানি পেটে গেলে", "অন্যের গিবত বা মিথ্যা কথা বললে", "ভুলবশত খেলে", "রোগের কারণে রোযা না রাখলে"], "ans": 1, "exp": "গিবত করা, মিথ্যা বলা, গালমন্দ করা, গড়গড়া করে কুলি করা ইত্যাদিতে সাওম মাকরুহ হয়।"}, {"q": "বিনা কারণে ইচ্ছাকৃতভাবে রোযা ভেঙে ফেললে কী ফরজ হয়?", "opts": ["শুধু কাযা", "শুধু কাফফারা", "কাযা ও কাফফারা উভয়ই", "শুধু তাওবা"], "ans": 2, "exp": "ইচ্ছাকৃতভাবে সাওম রেখে বিনা কারণে ভেঙে ফেললে কাযা এবং কাফফারা উভয়ই ফরজ হয়।"}, {"q": "কাফফারা আদায়ে একাধারে কত মাস বিরতিহীনভাবে রোযা রাখতে হয়?", "opts": ["১ মাস", "২ মাস", "৩ মাস", "৬ মাস"], "ans": 1, "exp": "একাধারে দুই মাস বিরতিহীনভাবে সাওম পালন করতে হয়; মাঝে বাদ পড়লে পুনরায় শুরু করতে হবে।"}, {"q": "কাফফারার রোযা পালনে অক্ষম হলে কতজন মিসকিনকে দুই বেলা খাওয়াতে হয়?", "opts": ["৩০ জন", "৪০ জন", "৬০ জন", "১০০ জন"], "ans": 2, "exp": "অক্ষম হলে ৬০ জন মিসকিনকে পরিতৃপ্তির সাথে দুই বেলা খাওয়াতে হয়।"}, {"q": "'ইতিকাফ' শব্দের অর্থ কী?", "opts": ["বিরত থাকা", "অবস্থান করা বা আটকে থাকা", "দান করা", "ত্যাগ করা"], "ans": 1, "exp": "ইতিকাফ আরবি শব্দ, এর অর্থ অবস্থান করা, আটকে থাকা।"}, {"q": "রমযানের শেষ দশ দিনে ইতিকাফ করা কী?", "opts": ["ফরজে আইন", "সুন্নতে মুয়াক্কাদা কিফায়া", "ওয়াজিব", "নফল"], "ans": 1, "exp": "রমযানের শেষ দশ দিনে ইতিকাফ করা সুন্নতে মুয়াক্কাদা কিফায়া; এলাকাবাসীর একজন আদায় করলেই আদায় হয়।"}, {"q": "ইতিকাফের সর্বনিম্ন সময় কতটুকু?", "opts": ["১ ঘণ্টা", "একদিন একরাত", "৩ দিন", "১০ দিন"], "ans": 1, "exp": "ইতিকাফের সর্বনিম্ন সময় একদিন একরাত।"}, {"q": "রমযানের কোন রাতগুলোতে লাইলাতুল কদর খুঁজতে নির্দেশ দেওয়া হয়েছে?", "opts": ["প্রথম দশ দিনের বিজোড় রাতে", "শেষ দশ দিনের বিজোড় রাতে (২১,২৩,২৫,২৭,২৯)", "শুধু ২৭ রমযান", "মধ্য দশকের রাতে"], "ans": 1, "exp": "রমযানের শেষ দশ দিনের বিজোড় রাতে (২১, ২৩, ২৫, ২৭ ও ২৯) লাইলাতুল কদর খুঁজতে বলা হয়েছে।"}, {"q": "নিসাব পরিমাণ সম্পদের মালিকের ওপর সাদাকাতুল ফিতর আদায় করা কী?", "opts": ["ফরজ", "ওয়াজিব", "সুন্নত", "নফল"], "ans": 1, "exp": "নিসাব পরিমাণ সম্পদের মালিক প্রত্যেক স্বাধীন মুসলিম নর-নারীর ওপর সাদাকাতুল ফিতর ওয়াজিব।"}, {"q": "সাদাকাতুল ফিতরের নিসাব পরিমাণ কত?", "opts": ["সাড়ে ৫ ভরি স্বর্ণ", "সাড়ে ৭ ভরি স্বর্ণ বা সাড়ে ৫২ ভরি রৌপ্য", "১০ ভরি স্বর্ণ", "১০০ ভরি রৌপ্য"], "ans": 1, "exp": "মৌলিক প্রয়োজনের অতিরিক্ত সাড়ে ৭ ভরি স্বর্ণ বা সাড়ে ৫২ ভরি রৌপ্য বা সমপরিমাণ অর্থ হলো নিসাব।"}, {"q": "মাথাপিছু সাদাকাতুল ফিতরের পরিমাণ কত?", "opts": ["১ কেজি গম", "নিসফু সা বা প্রায় পৌনে দুই কেজি গম বা যব", "৫ কেজি চাল", "আধা কেজি খেজুর"], "ans": 1, "exp": "মাথাপিছু নিসফু সা অর্থাৎ প্রায় পৌনে দুই কেজি গম বা যব বা তার মূল্য আদায় করতে হবে।"}, {"q": "সাদাকাতুল ফিতর আদায় করার উত্তম সময় কোনটি?", "opts": ["রমযানের প্রথম দিনে", "ঈদের সালাতের উদ্দেশ্যে ঈদের মাঠে রওনা হওয়ার পূর্বে", "ঈদের সালাতের পর", "শাওয়াল মাসের শেষে"], "ans": 1, "exp": "ঈদের সালাতের উদ্দেশ্যে ঈদের মাঠে রওনা হওয়ার পূর্বে সাদাকাতুল ফিতর আদায় করা উত্তম।"}], "gyanmulok": [{"q": "ইশরাকের সালাত কত রাকআত পর্যন্ত পড়া যায় এবং কখন পড়তে হয়?", "a": "দুই রাকআত করে ৪, ৬, ৮ রাকআত পর্যন্ত পড়া যায়। ফজরের পর সূর্য সম্পূর্ণরূপে উঠে গেলে আদায় করতে হয়।"}, {"q": "সালাতুল আওয়াবিন কখন আদায় করা হয়?", "a": "মাগরিবের ফরজ ও দুই রাকআত সুন্নতের পর থেকে এশার ওয়াক্ত হওয়ার পূর্ব পর্যন্ত।"}, {"q": "তাহাজ্জুদ সালাত সম্পর্কে মহানবি (স.) কী বলেছেন?", "a": "ফরজ সালাতের পর সবচেয়ে উৎকৃষ্ট হলো তাহাজ্জুদের সালাত (মুসলিম)।"}, {"q": "সালাতের নৈতিক ও সামাজিক শিক্ষা কী?", "a": "নৈতিক শিক্ষা: সালাত মানুষকে অশ্লীল ও খারাপ কাজ থেকে বিরত রাখে। সামাজিক শিক্ষা: ধনী-গরিব ভেদাভেদ দূর করে ও জাতীয় ঐক্য ও ভ্রাতৃত্ববোধ গড়ে তোলে।"}, {"q": "শরীয়তের পরিভাষায় সাওম বা রোযা কাকে বলে?", "a": "সুবহে সাদিক থেকে সূর্যাস্ত পর্যন্ত নিয়তের সাথে পানাহার ও ইন্দ্রিয় তৃপ্তি থেকে বিরত থাকাকে সাওম বা রোযা বলে।"}, {"q": "রমযান মাসের ফজিলতের তিনটি অংশ কী কী?", "a": "প্রথম অংশ রহমতের, দ্বিতীয় অংশ মাগফিরাতের এবং শেষ অংশ জাহান্নাম হতে মুক্তি পাওয়ার।"}, {"q": "ওয়াজিব রোযা কাকে বলে?", "a": "কোনো কারণে রোযা পালনের মানত করলে তা পালন করা ওয়াজিব।"}, {"q": "সাহারি ও ইফতার বলতে কী বোঝায়?", "a": "রমযানে রোযার উদ্দেশ্যে সুবহে সাদিকের পূর্বে খাওয়াকে সাহারি এবং সূর্যাস্তের পর হালাল বস্তু পানাহারে রোযা ভঙ্গ করাকে ইফতার বলে।"}, {"q": "সাওম ভঙ্গের তিনটি প্রধান কারণ লেখো।", "a": "১. ইচ্ছাকৃতভাবে মুখভর্তি বমি করলে, ২. কুলির সময় অনিচ্ছায় পানি পেটে গেলে, ৩. ভুলবশত খেয়ে রোযা ভেঙে গেছে মনে করে ইচ্ছাকৃত পানাহার করলে।"}, {"q": "সাওম মাকরুহ হওয়ার তিনটি কারণ লেখো।", "a": "১. অন্যের গিবত করলে, ২. মিথ্যা ও গালমন্দ করলে, ৩. কুলি করার সময় গড়গড়া করলে।"}, {"q": "কাযা সাওম কাকে বলে?", "a": "অনিচ্ছায় সাওম ভেঙে গেলে বা ওযরের কারণে পালন করা না হলে একটির পরিবর্তে একটি সাওম রাখাকে কাযা সাওম বলে।"}, {"q": "সাওমের কাফফারা আদায়ের তিনটি উপায় কী কী?", "a": "১. একাধারে বিরতিহীন দুই মাস সাওম পালন, ২. অক্ষম হলে ৬০ জন মিসকিনকে দুই বেলা খাওয়ানো, অথবা ৩. একজন দাস মুক্ত করা।"}, {"q": "ইতিকাফ কাকে বলে?", "a": "সাংসারিক কাজকর্ম ও পরিবার থেকে আলাদা হয়ে মসজিদে ইবাদতের নিয়তে অবস্থান করাকে ইতিকাফ বলে।"}, {"q": "মহানবি (স.) প্রতি রমযানে কখন ইতিকাফ করতেন?", "a": "প্রতি রমযানের শেষ দশ দিন ইতিকাফ করতেন।"}, {"q": "সাদাকাতুল ফিতর কাকে বলে?", "a": "ঈদুল ফিতরের দিন ঈদের সালাতের পূর্বে সাওমের ত্রুটি-বিচ্যুতি সংশোধন ও গরিব-দুঃখীদের সহযোগিতায় যে নির্দিষ্ট পরিমাণ অর্থ-সম্পদ দান করা হয়, তাকে সাদাকাতুল ফিতর বলে।"}, {"q": "নিসাব বলতে কী বোঝায়?", "a": "মৌলিক প্রয়োজনের অতিরিক্ত সাড়ে সাত ভরি স্বর্ণ বা সাড়ে বায়ান্ন ভরি রৌপ্য বা সমপরিমাণ অর্থ থাকাকে নিসাব বলে।"}, {"q": "সাদাকাতুল ফিতর মাথাপিছু কতটুকু আদায় করতে হয়?", "a": "মাথাপিছু নিসফু সা অর্থাৎ প্রায় পৌনে দুই কেজি গম বা যব বা তার মূল্য।"}, {"q": "শিশু ও পরাধীন ব্যক্তির সাদাকাতুল ফিতর কে আদায় করবে?", "a": "তাদের অভিভাবক আদায় করবে।"}, {"q": "সাওমের প্রধান তিনটি নৈতিক শিক্ষা কী কী?", "a": "১. সংযম, ২. সহমর্মিতা এবং ৩. সহিষ্ণুতা বা ধৈর্য।"}, {"q": "রোযাদারকে ইফতার করালে কী সাওয়াব পাওয়া যায়?", "a": "সে রোযাদারের সমান সাওয়াব পাবে, অথচ রোযাদারের সাওয়াবে বিন্দুমাত্র ঘাটতি হবে না (তিরমিযি)।"}]}, {"id": "ch3", "number": "অধ্যায় ৩", "title": "কুরআন ও হাদিস শিক্ষা", "subtitle": "সূরা আল-কারিআহ, আত-তাকাসুর, আল-লাহাব, আল-ইখলাস, মুনাজাত ও নৈতিক হাদিস", "icon": "📖", "summarySections": [{"id": "ch3-s1", "title": "১. সূরা আল-কারিআহ ও সূরা আত-তাকাসুর", "points": ["সূরা আল-কারিআহ: পবিত্র কুরআনের ১০১তম সূরা, আয়াত সংখ্যা ১১টি। কারিআহ অর্থ সজোরে আঘাতকারী (মহাপ্রলয় বা কিয়ামত)। কিয়ামতে মানুষ বিক্ষিপ্ত পতঙ্গের মতো এবং পর্বতসমূহ ধুনিত রঙিন পশমের মতো হবে।", "হাশরে যার পাল্লা ভারী হবে সে সন্তোষজনক জীবন (জান্নাত) লাভ করবে; যার পাল্লা হালকা হবে তার স্থান হবে 'হাবিয়া' (অতি উত্তপ্ত আগুনবিশিষ্ট জাহান্নাম)।", "সূরা আত-তাকাসুর: পবিত্র কুরআনের ১০২তম সূরা, মক্কায় অবতীর্ণ, আয়াত সংখ্যা ৮টি। কুরাইশের বনু আবদি মানাফ, বনু কুসাই ও বনু সাহম গোত্রের জনসংখ্যা ও কবর গণনার অহংকারের পরিপ্রেক্ষিতে নাজিল হয়।", "মোজহারির বর্ণনায় প্রতিদিন এ সূরা একবার পাঠ এক হাজার আয়াত তিলাওয়াতের সমান। এতে ধন-সম্পদের মোহ ত্যাগ করে আখিরাতকে প্রাধান্য দেওয়ার শিক্ষা রয়েছে (৮ম আয়াতে নিয়ামত সম্পর্কে জিজ্ঞাসার কথা বলা হয়েছে)।"]}, {"id": "ch3-s2", "title": "২. সূরা আল-লাহাব ও সূরা আল-ইখলাস", "points": ["সূরা আল-লাহাব: পবিত্র কুরআনের ১১১তম সূরা, মক্কায় অবতীর্ণ, আয়াত সংখ্যা ৫টি। সাফা পর্বতে রাসুল (স.)-এর দাওয়াতে তাঁর চাচা আবু লাহাব বিরুদ্ধাচরণ ও পাথর মারতে উদ্যত হলে এ সূরা নাজিল হয়।", "এতে আবু লাহাব ও তার স্ত্রী (যে চলার পথে কাঁটা বিছাত ও গলায় পাকানো রশি নিয়ে লেলিহান আগুনে প্রবেশ করবে)-এর শোচনীয় পরিণতি বর্ণিত হয়েছে।", "সূরা আল-ইখলাস: পবিত্র কুরআনের ১১২তম সূরা, মক্কায় অবতীর্ণ, আয়াত সংখ্যা ৪টি। হাদিস অনুযায়ী এ সূরা কুরআনের এক-তৃতীয়াংশের সমান (বুখারি ও মুসলিম)।", "মুশরিকদের প্রশ্নের জবাবে এটি নাজিল হয়। এ সূরা তাওহিদ বা একত্ববাদের সুপ্রসিদ্ধ দলিল—আল্লাহ এক ও অদ্বিতীয়, অমুখাপেক্ষী (আস-সামাদ), তিনি কাউকে জন্ম দেননি, তাঁকেও জন্ম দেওয়া হয়নি এবং তাঁর সমতুল্য কেউ নেই।"]}, {"id": "ch3-s3", "title": "৩. কুরআনের তিনটি মুনাজাতমূলক আয়াত", "points": ["আয়াত ১ (সূরা আল-আরাফ, ২৩): 'রাব্বানা যালামনা আনফুসানা...' — হযরত আদম (আ.) ও হযরত হাওয়া (আ.) ভুল বুঝতে পেরে আল্লাহর শেখানো এ মুনাজাতে ক্ষমা প্রার্থনা করেছিলেন।", "আয়াত ২ (সূরা আল-কাহফ, ১০): 'রাব্বানা আতিনা মিল্লাদুনকা রাহমাতান...' — অত্যাচারী বাদশাহ দাকইয়ানুসের অত্যাচার থেকে বাঁচতে গুহায় আশ্রয় নেওয়া আসহাবে কাহফের যুবকগণ এ দোয়া করেছিলেন।", "আয়াত ৩ (সূরা আল-মুমতাহিনা, ৪): 'রাব্বানা আলাইকা তাওয়াক্কালনা...' — কাফিরদের অত্যাচার থেকে বাঁচতে হযরত ইবরাহিম (আ.) এ মুনাজাত করেছিলেন।"]}, {"id": "ch3-s4", "title": "৪. হাদিসের গুরুত্ব ও সিহাহ সিত্তাহ", "points": ["হাদিস অর্থ কথা বা বাণী; ইসলামি পরিভাষায় মহানবি (স.)-এর বাণী, কর্ম ও মৌনসম্মতিকে হাদিস বলে। এটি ইসলামি জীবনব্যবস্থার দ্বিতীয় উৎস ও আল-কুরআনের ব্যাখ্যাস্বরূপ।", "সিহাহ শব্দের অর্থ শুদ্ধ/সঠিক এবং সিত্তাহ অর্থ ছয়। বিশুদ্ধ ছয়টি হাদিস গ্রন্থকে একত্রে সিহাহ সিত্তাহ বলে।", "সিহাহ সিত্তাহের ৬টি গ্রন্থ ও সংকলক: (১) সহিহ বুখারি—ইমাম বুখারি (র.), ৬ লক্ষ হাদিস থেকে সংকলিত; (২) সহিহ মুসলিম—ইমাম মুসলিম (র.), ৩ লক্ষ হাদিস থেকে সংকলিত; (৩) জামি তিরমিযি—ইমাম তিরমিযি (র.); (৪) সুনানু আবু দাউদ—ইমাম আবু দাউদ (র.), ৫ লক্ষ হাদিস থেকে সংকলিত; (৫) সুনানু নাসায়ি—ইমাম নাসায়ি (র.); (৬) সুনানু ইবনু মাজাহ—ইবনু মাজাহ (র.)।"]}, {"id": "ch3-s5", "title": "৫. মুনাজাত ও নৈতিক গুণাবলি বিষয়ক হাদিস", "points": ["মুনাজাত হাদিস ১ (মুসলিম ও তিরমিযি): হিদায়াত, তাকওয়া, পবিত্রতা ও অভাব-অনটন থেকে মুক্তি কামনা। হাদিস ২ (মুসলিম): ক্ষমা, দয়া, সরল পথ, সুস্থতা ও রিজিক প্রার্থনা। হাদিস ৩ (তিরমিযি): 'হে অন্তরসমূহের পরিবর্তনকারী! আমার অন্তরকে তোমার দীনের ওপর দৃঢ় রাখ।' ", "নৈতিক হাদিস ১ (বুখারি ও মুসলিম): 'যে মানুষের প্রতি দয়া প্রদর্শন করে না, আল্লাহ তায়ালাও তার প্রতি দয়া করেন না।' জাতি-ধর্ম নির্বিশেষে সকলকে ভালোবাসতে হবে।", "নৈতিক হাদিস ২ (বুখারি ও মুসলিম): 'আত্মীয়তার সম্পর্ক ছিন্নকারী জান্নাতে প্রবেশ করবে না।' অমুসলিম আত্মীয়ের সাথেও সুসম্পর্ক বজায় রাখতে হবে।", "নৈতিক হাদিস ৩ (আবু দাউদ): কোনো যিম্মির (অমুসলিম নাগরিক) প্রতি যুলুম করলে বা অধিকার কম দিলে কিয়ামতের দিন মহানবি (স.) সেই যিম্মির পক্ষ অবলম্বন করবেন।"]}], "mcqs": [{"q": "সূরা আল-কারিআহর আয়াত সংখ্যা কয়টি?", "opts": ["৮টি", "৫টি", "১১টি", "৪টি"], "ans": 2, "exp": "সূরা আল-কারিআহ পবিত্র কুরআনের ১০১তম সূরা এবং এর আয়াত সংখ্যা ১১টি।"}, {"q": "'কারিআহ' শব্দের অর্থ কী?", "opts": ["প্রাচুর্যের প্রতিযোগিতা", "সজোরে আঘাতকারী", "একনিষ্ঠতা", "লেলিহান আগুন"], "ans": 1, "exp": "কারিআহ অর্থ সজোরে আঘাতকারী (মহাপ্রলয় বা কিয়ামত)।"}, {"q": "সূরা আল-কারিআহ অনুযায়ী কিয়ামতের দিন পর্বতসমূহ কিসের মতো হবে?", "opts": ["বিক্ষিপ্ত পতঙ্গের মতো", "ধুনিত রঙিন পশমের মতো", "সাগরের ঢেউয়ের মতো", "কালো মেঘের মতো"], "ans": 1, "exp": "৫ম আয়াতে বলা হয়েছে: 'আর পর্বতসমূহ ধুনিত রঙিন পশমের মতো হবে।'"}, {"q": "সূরা আল-কারিআহ অনুযায়ী যার পাল্লা হালকা হবে তার স্থান কোথায় হবে?", "opts": ["সাকার", "হাবিয়া", "জাহিম", "হুতামা"], "ans": 1, "exp": "৮–৯ নং আয়াতে বলা হয়েছে, যার পাল্লা হালকা হবে তার স্থান হবে 'হাবিয়া' (অতি উত্তপ্ত আগুন)।"}, {"q": "সূরা আত-তাকাসুর পবিত্র কুরআনের কততম সূরা ও এর আয়াত কয়টি?", "opts": ["১০১তম, ১১টি", "১০২তম, ৮টি", "১১১তম, ৫টি", "১১২তম, ৪টি"], "ans": 1, "exp": "সূরা আত-তাকাসুর ১০২তম সূরা, মক্কায় অবতীর্ণ এবং এর আয়াত সংখ্যা ৮টি।"}, {"q": "প্রতিদিন সূরা আত-তাকাসুর একবার পাঠ করা কত আয়াত তিলাওয়াতের সমান?", "opts": ["একশত আয়াত", "পাঁচশত আয়াত", "এক হাজার আয়াত", "এক তৃতীয়াংশ কুরআন"], "ans": 2, "exp": "মোজহারির বর্ণনায় প্রতিদিন এ সূরা একবার পাঠ এক হাজার আয়াত তিলাওয়াতের সমান।"}, {"q": "কুরাইশের কোন গোত্রগুলো কবর গণনা করে জনসংখ্যার অহংকার করেছিল?", "opts": ["বনু হাশিম ও বনু উমাইয়া", "বনু আবদি মানাফ, বনু কুসাই ও বনু সাহম", "বনু নাদির ও বনু কুরাইজা", "আউস ও খাযরাজ"], "ans": 1, "exp": "বনু আবদি মানাফ, বনু কুসাই ও বনু সাহম গোত্রের অহংকারের পরিপ্রেক্ষিতে সূরা আত-তাকাসুর নাজিল হয়।"}, {"q": "সূরা আল-লাহাব কুরআনের কততম সূরা ও আয়াত কয়টি?", "opts": ["১০২তম, ৮টি", "১১১তম, ৫টি", "১১২তম, ৪টি", "১১০তম, ৩টি"], "ans": 1, "exp": "সূরা আল-লাহাব ১১১তম সূরা এবং এর আয়াত সংখ্যা ৫টি।"}, {"q": "কোন পর্বতে রাসুল (স.)-এর দাওয়াত শুনে আবু লাহাব বিরুদ্ধাচরণ করেছিল?", "opts": ["তুর পর্বত", "সাফা পর্বত", "মারওয়া পর্বত", "হেরা পর্বত"], "ans": 1, "exp": "রাসুল (স.) সাফা পর্বতে আরোহণ করে কুরাইশদের ডাক দিলে আবু লাহাব বিরুদ্ধাচরণ করে।"}, {"q": "আবু লাহাবের স্ত্রীকে সূরা লাহাবে কী বহনকারিণী বলা হয়েছে?", "opts": ["পাথর", "ইন্ধন বা কাঠ", "স্বর্ণ", "পানি"], "ans": 1, "exp": "আবু লাহাবের স্ত্রী ইন্ধন বহন করে এবং তার গলায় পাকানো রশি থাকবে।"}, {"q": "মহানবি (স.) কোন সূরাকে কুরআনের এক-তৃতীয়াংশের সমান বলেছেন?", "opts": ["সূরা আল-ফাতিহা", "সূরা আল-ইখলাস", "সূরা আত-তাকাসুর", "সূরা আল-লাহাব"], "ans": 1, "exp": "সহিহ বুখারি ও মুসলিম অনুযায়ী সূরা আল-ইখলাস কুরআনের এক-তৃতীয়াংশের সমান।"}, {"q": "সূরা আল-ইখলাসের আয়াত সংখ্যা কয়টি?", "opts": ["৩টি", "৪টি", "৫টি", "৮টি"], "ans": 1, "exp": "সূরা আল-ইখলাসের আয়াত সংখ্যা ৪টি।"}, {"q": "'আস-সামাদ' শব্দের অর্থ কী?", "opts": ["সজোরে আঘাতকারী", "অমুখাপেক্ষী", "ধ্বংস হোক", "সমকক্ষ"], "ans": 1, "exp": "আস-সামাদ অর্থ অমুখাপেক্ষী বা বে-নিয়ায, যিনি কারো মুখাপেক্ষী নন।"}, {"q": "তাওহিদ বা একত্ববাদের সুপ্রসিদ্ধ দলিল কোন সূরা?", "opts": ["সূরা আল-লাহাব", "সূরা আল-ইখলাস", "সূরা আল-কারিআহ", "সূরা আত-তাকাসুর"], "ans": 1, "exp": "সূরা আল-ইখলাস তাওহিদ বা একত্ববাদের সুপ্রসিদ্ধ দলিল।"}, {"q": "'হে আমাদের প্রতিপালক! আমরা নিজেদের প্রতি অন্যায় করেছি...'—এই মুনাজাত সর্বপ্রথম কারা করেছিলেন?", "opts": ["আসহাবে কাহফ", "হযরত আদম (আ.) ও হযরত হাওয়া (আ.)", "হযরত ইবরাহিম (আ.)", "হযরত মুসা (আ.)"], "ans": 1, "exp": "সর্বপ্রথম এ মুনাজাত হযরত আদম (আ.) ও হযরত হাওয়া (আ.) করেছিলেন (সূরা আল-আরাফ, ২৩)।"}, {"q": "আসহাবে কাহফের যুবকগণ কোন অত্যাচারী বাদশাহর হাত থেকে বাঁচতে গুহায় আশ্রয় নেন?", "opts": ["ফিরাউন", "নমরুদ", "দাকইয়ানুস", "আবরাহা"], "ans": 2, "exp": "দাকইয়ানুস নামক অত্যাচারী বাদশাহর অত্যাচার থেকে বাঁচতে আসহাবে কাহফ গুহায় আশ্রয় নিয়ে সূরা কাহফের ১০ নং আয়াতের দোয়া করেন।"}, {"q": "সূরা আল-মুমতাহিনার ৪ নং আয়াতের মুনাজাতটি কে করেছিলেন?", "opts": ["হযরত আদম (আ.)", "হযরত ইবরাহিম (আ.)", "হযরত ইউসুফ (আ.)", "হযরত ইসমাইল (আ.)"], "ans": 1, "exp": "কাফিরদের অত্যাচার থেকে বাঁচার জন্য হযরত ইবরাহিম (আ.) এ মুনাজাত করেছিলেন।"}, {"q": "ইসলামি জীবনব্যবস্থার দ্বিতীয় উৎস ও আল-কুরআনের ব্যাখ্যাস্বরূপ কী?", "opts": ["ইজমা", "কিয়াস", "হাদিস", "তাফসির"], "ans": 2, "exp": "আল-কুরআনের পরই হাদিসের স্থান; হাদিস ইসলামি জীবনব্যবস্থার দ্বিতীয় উৎস।"}, {"q": "'সিহাহ সিত্তাহ' শব্দের অর্থ কী?", "opts": ["ছয়টি বিশুদ্ধ হাদিস গ্রন্থ", "ছয়জন সাহাবি", "ছয়টি সূরা", "ছয়টি মুনাজাত"], "ans": 0, "exp": "সিহাহ অর্থ শুদ্ধ/সঠিক এবং সিত্তাহ অর্থ ছয়; বিশুদ্ধ ছয়টি হাদিস গ্রন্থকে একত্রে সিহাহ সিত্তাহ বলে।"}, {"q": "ইমাম বুখারি (র.) কত লক্ষ হাদিস যাচাই-বাছাই করে সহিহ বুখারি সংকলন করেন?", "opts": ["৩ লক্ষ", "৪ লক্ষ", "৫ লক্ষ", "৬ লক্ষ"], "ans": 3, "exp": "ইমাম বুখারি (র.) সর্বমোট ছয় লক্ষ হাদিস থেকে যাচাই-বাছাই করে সহিহ বুখারি সংকলন করেন।"}, {"q": "ইমাম মুসলিম (র.) কত লক্ষ হাদিস থেকে বাছাই করে সহিহ মুসলিম সংকলন করেন?", "opts": ["২ লক্ষ", "৩ লক্ষ", "৫ লক্ষ", "৬ লক্ষ"], "ans": 1, "exp": "আবুল হুসাইন মুসলিম ইবনু হাজ্জাজ (র.) তিন লক্ষ হাদিস থেকে বাছাই করে সহিহ মুসলিম সংকলন করেন।"}, {"q": "কোন কিতাব সম্পর্কে বলা হয়—'যার ঘরে এ কিতাব থাকবে, মনে করা যাবে তার ঘরে নবি (স.) আছেন'?", "opts": ["সহিহ বুখারি", "সহিহ মুসলিম", "জামি তিরমিযি", "সুনানু আবু দাউদ"], "ans": 2, "exp": "জামি তিরমিযি কিতাব সম্পর্কে এ উক্তিটি প্রসিদ্ধ।"}, {"q": "ইমাম আবু দাউদ (র.) কত লক্ষ হাদিস যাচাই-বাছাই করে সুনানু আবু দাউদ সংকলন করেন?", "opts": ["৩ লক্ষ", "৪ লক্ষ", "৫ লক্ষ", "৬ লক্ষ"], "ans": 2, "exp": "আবু দাউদ সুলায়মান ইবনু আশআছ (র.) পাঁচ লক্ষ হাদিস যাচাই-বাছাই করে এ কিতাব সংকলন করেন।"}, {"q": "সিহাহ সিত্তাহের সর্বশেষ কিতাব কোনটি?", "opts": ["সুনানু নাসায়ি", "সুনানু ইবনু মাজাহ", "জামি তিরমিযি", "মুয়াত্তা মালিক"], "ans": 1, "exp": "সুনানু ইবনু মাজাহ সিহাহ সিত্তাহের সর্বশেষ (৬ষ্ঠ) কিতাব।"}, {"q": "দীনের ওপর অন্তরকে দৃঢ় রাখার মুনাজাত বিষয়ক হাদিসটি কোন গ্রন্থে রয়েছে?", "opts": ["সহিহ বুখারি", "জামি তিরমিযি", "সুনানু নাসায়ি", "ইবনু মাজাহ"], "ans": 1, "exp": "'হে অন্তরসমূহের পরিবর্তনকারী! তুমি আমার অন্তরকে তোমার দীনের ওপর দৃঢ় রাখ'—এটি জামি তিরমিযির হাদিস।"}, {"q": "'যে মানুষের প্রতি দয়া প্রদর্শন করে না, আল্লাহ তায়ালাও তার প্রতি দয়া করেন না'—কোন গ্রন্থের হাদিস?", "opts": ["সহিহ বুখারি ও মুসলিম", "সুনানু আবু দাউদ", "সুনানু ইবনু মাজাহ", "মুসনাদে আহমাদ"], "ans": 0, "exp": "এটি সহিহ বুখারি ও সহিহ মুসলিমের হাদিস।"}, {"q": "হাদিস অনুযায়ী কে জান্নাতে প্রবেশ করবে না?", "opts": ["গরিব ব্যক্তি", "আত্মীয়তার সম্পর্ক ছিন্নকারী", "অল্প আয়ের মানুষ", "ভ্রমণকারী"], "ans": 1, "exp": "সহিহ বুখারি ও মুসলিমের হাদিস: 'আত্মীয়তার সম্পর্ক ছিন্নকারী জান্নাতে প্রবেশ করবে না।'"}, {"q": "অমুসলিম আত্মীয়-স্বজনের সাথে আমাদের আচরণ কেমন হওয়া উচিত?", "opts": ["সম্পর্ক ছিন্ন করা", "সুসম্পর্ক বজায় রাখা ও সদাচার করা", "কথা না বলা", "এড়িয়ে চলা"], "ans": 1, "exp": "আত্মীয় অমুসলিম হলেও সম্পর্ক ত্যাগ করা যাবে না; সুসম্পর্ক বজায় রাখতে ও সাহায্য করতে হবে।"}, {"q": "কোনো যিম্মির (অমুসলিম নাগরিক) প্রতি যুলুম করলে কিয়ামতের দিন মহানবি (স.) কী করবেন?", "opts": ["তাকে উপেক্ষা করবেন", "যিম্মির পক্ষ অবলম্বন করবেন", "নীরব থাকবেন", "যালিমের পক্ষে সুপারিশ করবেন"], "ans": 1, "exp": "আবু দাউদের হাদিসে মহানবি (স.) বলেছেন: 'কিয়ামতের দিন আমি তার (যিম্মির) পক্ষ অবলম্বন করব।'"}, {"q": "ইমাম বুখারি (র.)-এর পূর্ণ নাম কী?", "opts": ["আবু আব্দুল্লাহ মুহাম্মদ ইবনু ইসমাইল বুখারি (র.)", "আবুল হুসাইন মুসলিম", "আবু ঈসা মুহাম্মদ", "আহমদ ইবনু শুআইব"], "ans": 0, "exp": "ইমাম বুখারি (র.)-এর পূর্ণ নাম আবু আব্দুল্লাহ মুহাম্মদ ইবনু ইসমাইল বুখারি (র.)।"}], "gyanmulok": [{"q": "সূরা আল-কারিআহ কুরআনের কততম সূরা এবং এর আয়াত সংখ্যা কত?", "a": "এটি ১০১তম সূরা এবং এর আয়াত সংখ্যা ১১টি।"}, {"q": "'হাবিয়া' কী?", "a": "হাবিয়া অর্থ গভীর গর্ত; এটি একটি উত্তপ্ত আগুনবিশিষ্ট জাহান্নামের নাম।"}, {"q": "সূরা আত-তাকাসুর কোন ঘটনা বা শানে নুযুলের পরিপ্রেক্ষিতে নাজিল হয়?", "a": "কুরাইশের তিনটি শাখাগোত্র (বনু আবদি মানাফ, বনু কুসাই ও বনু সাহম) নিজেদের জনসংখ্যা ও কবর গণনা করে অহংকার করায় এ সূরা নাজিল হয়।"}, {"q": "সূরা আত-তাকাসুর পাঠের ফজিলত কী?", "a": "প্রতিদিন এই সূরা একবার পাঠ করা এক হাজার আয়াত তিলাওয়াত করার সমান (মোজহারি)।"}, {"q": "সূরা আল-লাহাবের শানে নুযুল সংক্ষেপে লেখো।", "a": "সাফা পর্বতে রাসুল (স.) কুরাইশদের ইসলামের দাওয়াত দিলে তাঁর চাচা আবু লাহাব 'তোমার ধ্বংস হোক' বলে এবং পাথর মারতে উদ্যত হয়; এর পরিপ্রেক্ষিতে সূরা আল-লাহাব নাজিল হয়।"}, {"q": "সূরা আল-ইখলাস পাঠের ফজিলত কী?", "a": "মহানবি (স.) বলেছেন, এই সূরাটি কুরআনের এক-তৃতীয়াংশের সমান (বুখারি ও মুসলিম)।"}, {"q": "'কুফুওয়ান' ও 'আস-সামাদ' শব্দের অর্থ কী?", "a": "কুফুওয়ান অর্থ তুল্য, সমান বা সমকক্ষ; আস-সামাদ অর্থ অমুখাপেক্ষী বা যিনি কারো মুখাপেক্ষী নন।"}, {"q": "সূরা আল-আরাফের ২৩ নং আয়াতে বর্ণিত মুনাজাতটি কারা করেছিলেন?", "a": "হযরত আদম (আ.) ও হযরত হাওয়া (আ.)।"}, {"q": "আসহাবে কাহফ কারা ছিলেন?", "a": "দাকইয়ানুস নামক অত্যাচারী বাদশাহর অত্যাচার থেকে বাঁচতে পাহাড়ের গুহায় আশ্রয় নেওয়া ইমানদার যুবকগণ, যাঁদের সাথে একটি কুকুরও ছিল।"}, {"q": "সূরা আল-মুমতাহিনার ৪ নং আয়াতের মুনাজাতটি কে করেছিলেন?", "a": "হযরত ইবরাহিম (আ.)।"}, {"q": "ইসলামি পরিভাষায় হাদিস কাকে বলে?", "a": "মহানবি হযরত মুহাম্মদ (স.)-এর বাণী, কর্ম ও মৌনসম্মতিকে হাদিস বলা হয়।"}, {"q": "সিহাহ সিত্তাহ কাকে বলে?", "a": "বিশুদ্ধ ছয়টি হাদিস গ্রন্থকে একত্রে সিহাহ সিত্তাহ বলা হয়।"}, {"q": "সিহাহ সিত্তাহের ছয়টি গ্রন্থের নাম লেখো।", "a": "১. সহিহ বুখারি, ২. সহিহ মুসলিম, ৩. জামি তিরমিযি, ৪. সুনানু আবু দাউদ, ৫. সুনানু নাসায়ি এবং ৬. সুনানু ইবনু মাজাহ।"}, {"q": "সহিহ বুখারি ও সহিহ মুসলিমের সংকলক কারা?", "a": "সহিহ বুখারির সংকলক ইমাম বুখারি (আবু আব্দুল্লাহ মুহাম্মদ ইবনু ইসমাইল) এবং সহিহ মুসলিমের সংকলক আবুল হুসাইন মুসলিম ইবনু হাজ্জাজ আল কুশাইরি (র.)।"}, {"q": "হাদিসের ভাষায় 'মুনাজাত' কেন একপ্রকার ইবাদত?", "a": "মুনাজাতের মাধ্যমে বান্দা নিজের দুর্বলতা ও আল্লাহর অমুখাপেক্ষিতা এবং ক্ষমতার স্বীকৃতি দেয় বলে এটি ইবাদত।"}, {"q": "দয়াময় আল্লাহর নিকট দয়া পাওয়ার শর্ত কী (হাদিস ১ অনুযায়ী)?", "a": "মানুষের প্রতি দয়া প্রদর্শন করা; যে মানুষের প্রতি দয়া করে না, আল্লাহও তার প্রতি দয়া করেন না।"}, {"q": "আত্মীয়তার সম্পর্ক ছিন্নকারীর পরিণতি কী?", "a": "আত্মীয়তার সম্পর্ক ছিন্নকারী জান্নাতে প্রবেশ করবে না (সহিহ বুখারি ও মুসলিম)।"}, {"q": "যিম্মি কাদের বলা হয় এবং তাদের প্রতি আচরণ কেমন হওয়া উচিত?", "a": "ইসলামি রাষ্ট্রে বসবাসকারী অমুসলিম নাগরিকদের যিম্মি বলে; তাদের ধর্ম, জীবন, সম্পদ ও সম্মানের নিরাপত্তা দেওয়া এবং উত্তম আচরণ করা কর্তব্য।"}, {"q": "কেউ কোনো যিম্মির প্রতি যুলুম করলে মহানবি (স.) কী করবেন?", "a": "কিয়ামতের দিন মহানবি (স.) সেই যিম্মির পক্ষ অবলম্বন করবেন (আবু দাউদ)।"}, {"q": "সুনানু নাসায়ি ও সুনানু ইবনু মাজাহ-এর সংকলক কারা?", "a": "সুনানু নাসায়ির সংকলক আহমদ ইবনু শুআইব আন-নাসায়ি (র.) এবং সুনানু ইবনু মাজাহ-এর সংকলক আবু আব্দুল্লাহ মুহাম্মদ ইবনু ইয়াযিদ ইবনে মাজাহ (র.)।"}]}, {"id": "ch4", "number": "অধ্যায় ৪", "title": "আখলাক", "subtitle": "আখলাকে যামিমাহ, হিংসা, ক্রোধ, লোভ, প্রতারণা, পিতামাতার অবাধ্যতা, ইভটিজিং ও ছিনতাই", "icon": "⚖️", "summarySections": [{"id": "ch4-s1", "title": "১. আখলাকে যামিমাহর কুফল ও হিংসা", "points": ["আখলাকে যামিমাহ (মন্দ চরিত্র): মন্দ চরিত্রের লোক সমাজ, পরিবার ও পরকালে ঘৃণিত ও অভিশপ্ত হয়। আবু দাউদের হাদিসে মহানবি (স.) বলেন, 'অসদাচরণকারী ও রূঢ় স্বভাবের মানুষ জান্নাতে প্রবেশ করতে পারবে না।'", "হিংসা (আরবি 'হাসাদুন'): অন্যের সুখ-সম্পদ, মানসম্মান নষ্ট হওয়ার কামনা এবং নিজে এর মালিক হওয়ার বাসনাকে হিংসা বলে।", "হিংসার কারণেই ইবলিস অভিশপ্ত হয় এবং আদম (আ.)-এর পুত্র কাবিল আপন ভাই হাবিলকে হত্যা করে।", "ইবনু মাজাহর হাদিস: 'আগুন যেমন শুকনা কাঠকে জ্বালিয়ে ছাই করে দেয়, হিংসা তেমনই পুণ্যকে ধ্বংস করে দেয়।' সূরা আল-ফালাকের ৫ নং আয়াতে হিংসুকের অনিষ্ট থেকে আশ্রয় চাওয়ার শিক্ষা রয়েছে।"]}, {"id": "ch4-s2", "title": "২. ক্রোধ ও লোভ: অপকারিতা ও প্রতিকার", "points": ["ক্রোধ (আরবি 'গাদাব'): স্বার্থ নষ্ট হওয়া বা তিরস্কৃত হওয়ার কারণে প্রতিশোধ গ্রহণের ইচ্ছায় মনের ক্ষোভকে ক্রোধ বলে। হাদিসে প্রকৃত শক্তিশালী বলা হয়েছে সেই ব্যক্তিকে, যে ক্রোধের সময় নিজেকে সংযত রাখতে পারে (বুখারি ও মুসলিম)।", "বায়হাকির হাদিস: 'সিরকা মধুকে যেভাবে বিনাশ করে, ক্রোধ ইমানকে সেভাবে নষ্ট করে।' ক্রোধ শয়তানের (আগুনের তৈরি) পক্ষ থেকে আসে, তাই রাগ হলে ওযু করে নিতে বলা হয়েছে।", "লোভ (আরবি 'হিরছুন'): অধিক পাওয়ার ইচ্ছা বা আকাঙ্ক্ষাকে লোভ বলে। লোভ চুরি, ডাকাতি, ভেজাল ও ঘুষের মতো অপরাধ ঘটায় এবং মনের শান্তি নষ্ট করে।", "নাসায়ি ও তিরমিযির হাদিস অনুযায়ী ইমান ও লোভ এক অন্তরে একত্রিত হতে পারে না। ধৈর্য, অল্পে তুষ্টি ও তকদিরে বিশ্বাসের মাধ্যমে লোভ বর্জন করা যায়।"]}, {"id": "ch4-s3", "title": "৩. প্রতারণা ও পিতামাতার অবাধ্য হওয়া", "points": ["প্রতারণা (আরবি 'আল-গাস্শু'): ঠকানো, ফাঁকি দেওয়া বা ধোঁকা দেওয়া। পণ্যের দোষ গোপন রেখে বিক্রি করা বা অঙ্গীকার ভঙ্গ করা প্রতারণা। সূরা আল-বাকারার ৪২ নং আয়াতে সত্যের সাথে মিথ্যার মিশ্রণ করতে নিষেধ করা হয়েছে।", "বাজারে ভেজা খাদ্য নিচে রেখে শুকনা খাদ্য ওপরে রাখার ঘটনায় মহানবি (স.) বলেন, 'যে ব্যক্তি আমাদের ধোঁকা দেয় সে আমাদের দলভুক্ত নয়।' (মুসলিম)।", "পিতামাতার অবাধ্যতা: শির্কের পর সবচেয়ে বড় গুনাহ হলো পিতামাতার অবাধ্য হওয়া। বায়হাকির হাদিস অনুযায়ী আল্লাহ পিতামাতার অবাধ্যতার পাপ ক্ষমা করেন না।", "ইবনু মাজাহর হাদিস: 'তাঁরাই (পিতামাতা) তোমার বেহেশত ও দোযখ।' তিরমিযির হাদিস: 'পিতার সন্তুষ্টিতে আল্লাহর সন্তুষ্টি এবং পিতার অসন্তুষ্টিতে আল্লাহর অসন্তুষ্টি।' মায়েদের অবাধ্যতাকে আল্লাহ হারাম করেছেন।"]}, {"id": "ch4-s4", "title": "৪. ইভটিজিং (যৌন হয়রানি) ও ছিনতাই", "points": ["ইভটিজিং: কথা, কাজ, অশালীন উক্তি বা অশ্লীল অঙ্গভঙ্গির মাধ্যমে নারীদের উত্ত্যক্ত করা। ১৯৭৬ সালের ঢাকা মেট্রোপলিটন পুলিশ অর্ডিন্যান্স ও বাংলাদেশ আইনে এটি শাস্তিযোগ্য অপরাধ (সর্বোচ্চ ১ বছর কারাদণ্ড বা ২,০০০ টাকা জরিমানা বা উভয় দণ্ড)।", "সূরা আল-হুজুরাতের ১১ নং আয়াতে একে অন্যের প্রতি দোষারোপ ও মন্দনামে ডাকতে নিষেধ করা হয়েছে। পারিবারিক অনুশাসন, ধর্মীয় শৃঙ্খলা, সামাজিক সচেতনতা ও আইনের প্রয়োগে এটি প্রতিরোধ করা যায়।", "ছিনতাই: জোরপূর্বক বা বল প্রয়োগ করে অন্যের সম্পদ ছিনিয়ে নেওয়া। বুখারি ও মুসলিমের হাদিসে সামান্য জমি ছিনতাইকারীর গলায় কিয়ামতের দিন সাতগুণ জমি বেড়িরূপে ঝুলিয়ে দেওয়ার কথা বলা হয়েছে।", "মহানবি (স.) বলেছেন, প্রকাশ্যে ছিনতাই ও লুটতরাজ করলে সে মুমিন থাকে না। ইসলামি বিধানে নিজে ক্ষতিগ্রস্ত হওয়া বা অন্যকে ক্ষতিগ্রস্ত করার কোনো নিয়ম নেই।"]}], "mcqs": [{"q": "কোন ধরনের মানুষ জান্নাতে প্রবেশ করতে পারবে না বলে আবু দাউদের হাদিসে এসেছে?", "opts": ["অসদাচরণকারী ও রূঢ় স্বভাবের মানুষ", "দরিদ্র মানুষ", "দুর্বল মানুষ", "কম কথা বলা মানুষ"], "ans": 0, "exp": "মহানবি (স.) বলেন: 'অসদাচরণকারী ও রূঢ় স্বভাবের মানুষ জান্নাতে প্রবেশ করতে পারবে না।' (আবু দাউদ)।"}, {"q": "হিংসা শব্দের আরবি প্রতিশব্দ কী?", "opts": ["গাদাব", "হাসাদুন", "হিরছুন", "আল-গাস্শু"], "ans": 1, "exp": "হিংসার আরবি প্রতিশব্দ 'হাসাদুন', যার অর্থ হিংসা, ঈর্ষা বা পরশ্রীকাতরতা।"}, {"q": "মানব সৃষ্টির পর সর্বপ্রথম পাপ সংঘটিত হয়েছিল কিসের কারণে?", "opts": ["লোভের কারণে", "হিংসার কারণে", "প্রতারণার কারণে", "ভয়ের কারণে"], "ans": 1, "exp": "হিংসার কারণেই আদম (আ.)-এর পুত্র কাবিল আপন ভাই হাবিলকে হত্যা করে সর্বপ্রথম পাপ সংঘটিত করে।"}, {"q": "'আগুন যেমন শুকনা কাঠকে জ্বালিয়ে ছাই করে দেয়, হিংসা তেমনই পুণ্যকে ধ্বংস করে দেয়'—হাদিসটি কার?", "opts": ["ইবনু মাজাহ", "তিরমিযি", "নাসায়ি", "বায়হাকি"], "ans": 0, "exp": "এ হাদিসটি সুনানু ইবনু মাজাহ গ্রন্থে বর্ণিত হয়েছে।"}, {"q": "কুরআনের কোন সূরায় হিংসুকের অনিষ্ট থেকে আশ্রয় চাওয়ার কথা বলা হয়েছে?", "opts": ["সূরা আল-ইখলাস", "সূরা আল-ফালাক (৫)", "সূরা আন-নাস", "সূরা আল-হুজুরাত"], "ans": 1, "exp": "সূরা আল-ফালাকের ৫ নং আয়াতে বলা হয়েছে: 'আর হিংসুকের অনিষ্ট থেকে আশ্রয় চাই যখন সে হিংসা করে।'"}, {"q": "কোন সাহাবিকে মহানবি (স.) হিংসা বর্জনের কারণে জান্নাতি ঘোষণা দিয়েছিলেন?", "opts": ["যে ব্যক্তি কারো প্রতি হিংসা পোষণ করেন না", "যে ব্যক্তি বেশি যুদ্ধ করে", "যে ব্যক্তি বেশি সম্পদশালী", "যে ব্যক্তি বেশি ভ্রমণ করে"], "ans": 0, "exp": "সাহাবি বলেছিলেন: 'আল্লাহ যাকে কোনো উত্তম বস্তু দান করেছেন আমি তার প্রতি কখনোই হিংসা পোষণ করি না।'"}, {"q": "'ক্রোধ'-এর আরবি প্রতিশব্দ কী?", "opts": ["হাসাদুন", "গাদাব", "হিরছুন", "গাস্শু"], "ans": 1, "exp": "ক্রোধ-এর আরবি প্রতিশব্দ 'গাদাব', যার অর্থ রাগ।"}, {"q": "হাদিস অনুযায়ী প্রকৃত শক্তিশালী ব্যক্তি কে?", "opts": ["যে খুব কুস্তি লড়তে পারে", "যে ক্রোধের সময় নিজেকে সংযত রাখতে পারে", "যার অর্থ-সম্পদ বেশি", "যে দ্রুত দৌড়াতে পারে"], "ans": 1, "exp": "বুখারি ও মুসলিম অনুযায়ী প্রকৃত শক্তিশালী হলো সেই ব্যক্তি, যে ক্রোধের সময় নিজেকে সংযত রাখতে পারে।"}, {"q": "'সিরকা মধুকে যেভাবে বিনাশ করে, ক্রোধ ইমানকে সেভাবে নষ্ট করে'—হাদিসটি কোন গ্রন্থের?", "opts": ["বুখারি", "বায়হাকি", "আবু দাউদ", "ইবনু মাজাহ"], "ans": 1, "exp": "এটি বায়হাকির বর্ণিত হাদিস।"}, {"q": "কারো রাগ হলে মহানবি (স.) কী করার পরামর্শ দিয়েছেন?", "opts": ["দৌড়াতে", "ওযু করে নিতে", "কথা বলতে", "খাবার খেতে"], "ans": 1, "exp": "ক্রোধ শয়তানের (আগুনের) পক্ষ থেকে আসে, আর আগুনকে পানি ঠান্ডা করে—তাই রাগ হলে ওযু করা উচিত।"}, {"q": "লোভ-এর আরবি প্রতিশব্দ কী?", "opts": ["গাদাব", "হাসাদুন", "হিরছুন", "গাস্শু"], "ans": 2, "exp": "লোভের আরবি প্রতিশব্দ 'হিরছুন', অর্থ লালসা, লিপ্সা বা মোহ।"}, {"q": "লোভ থেকে বাঁচার প্রধান উপায় কী?", "opts": ["বেশি আয় করা", "ধৈর্য, অল্পে তুষ্টি ও তকদিরে বিশ্বাস রাখা", "কৃপণতা করা", "ভ্রমণ করা"], "ans": 1, "exp": "ধৈর্য, অল্পে তুষ্ট থাকা এবং তকদিরের ওপর বিশ্বাস রাখাই লোভ দমনের প্রধান উপায়।"}, {"q": "'ইমান এবং লোভ এক অন্তরে একত্রিত হতে পারে না'—হাদিসটি কোন গ্রন্থদ্বয়ের?", "opts": ["নাসায়ি ও তিরমিযি", "বুখারি ও মুসলিম", "আবু দাউদ ও ইবনু মাজাহ", "বায়হাকি ও তাবারানি"], "ans": 0, "exp": "এটি নাসায়ি ও তিরমিযির হাদিস।"}, {"q": "'প্রতারণা'-এর আরবি প্রতিশব্দ কী?", "opts": ["আল-গাস্শু", "হাসাদুন", "গাদাব", "হিরছুন"], "ans": 0, "exp": "প্রতারণার আরবি প্রতিশব্দ 'আল-গাস্শু', যার অর্থ ঠকানো, ফাঁকি দেওয়া, ধোঁকা।"}, {"q": "কোন সূরায় বলা হয়েছে 'তোমরা সত্যের সাথে মিথ্যার মিশ্রণ করো না এবং সত্যকে গোপন করো না'?", "opts": ["সূরা আল-বাকারা (৪২)", "সূরা আল-হুজুরাত (১১)", "সূরা আল-ফালাক (৫)", "সূরা আল-লাহাব (৩)"], "ans": 0, "exp": "এটি সূরা আল-বাকারার ৪২ নং আয়াত।"}, {"q": "'যে ব্যক্তি আমাদের ধোঁকা দেয় সে আমাদের দলভুক্ত নয়'—হাদিসটি কোন গ্রন্থের?", "opts": ["মুসলিম", "তিরমিযি", "নাসায়ি", "আবু দাউদ"], "ans": 0, "exp": "বাজারে ভেজা খাদ্যের ঘটনার পরিপ্রেক্ষিতে মহানবি (স.) এ কথা বলেন (মুসলিম)।"}, {"q": "শির্কের পর সবচেয়ে বড় গুনাহ কোনটি?", "opts": ["লোভ করা", "পিতামাতার অবাধ্য হওয়া", "রাগ করা", "কৃপণতা"], "ans": 1, "exp": "শির্কের পর সবচেয়ে বড় গুনাহ পিতামাতার অবাধ্য হওয়া।"}, {"q": "কোন পাপ আল্লাহ তায়ালা ক্ষমা করেন না বলে বায়হাকির হাদিসে এসেছে?", "opts": ["ছোট গুনাহ", "পিতামাতার অবাধ্যতার পাপ", "অনিচ্ছাকৃত ভুল", "আত্মীয়তার ভুল"], "ans": 1, "exp": "বায়হাকির হাদিস অনুযায়ী মহান আল্লাহ পিতামাতার অবাধ্যতার পাপ ক্ষমা করেন না।"}, {"q": "'তাঁরাই (পিতামাতা) তোমার বেহেশত ও দোযখ'—এটি কোন গ্রন্থের হাদিস?", "opts": ["ইবনু মাজাহ", "বুখারি", "মুসলিম", "নাসায়ি"], "ans": 0, "exp": "এটি ইবনু মাজাহ গ্রন্থের হাদিস।"}, {"q": "পিতার সন্তুষ্টিতে কার সন্তুষ্টি রয়েছে?", "opts": ["সমাজের সন্তুষ্টি", "আল্লাহর সন্তুষ্টি", "শিক্ষকের সন্তুষ্টি", "বন্ধুদের সন্তুষ্টি"], "ans": 1, "exp": "তিরমিযির হাদিস: 'পিতার সন্তুষ্টিতে আল্লাহর সন্তুষ্টি। আর পিতার অসন্তুষ্টিতে আল্লাহর অসন্তুষ্টি।'"}, {"q": "আল্লাহ কাদের অবাধ্য হওয়াকে হারাম করে দিয়েছেন?", "opts": ["বন্ধুদের", "মায়েদের", "প্রতিবেশীদের", "ধনীদের"], "ans": 1, "exp": "সহিহ বুখারির হাদিস: 'আল্লাহ তোমাদের জন্য মায়েদের অবাধ্য হওয়াকে হারাম করে দিয়েছেন।'"}, {"q": "বাংলাদেশে কত সালের ঢাকা মেট্রোপলিটন পুলিশ অর্ডিন্যান্সে ইভটিজিংকে সংজ্ঞায়িত করা হয়?", "opts": ["১৯৭১ সালে", "১৯৭৬ সালে", "১৯৮২ সালে", "১৯৯০ সালে"], "ans": 1, "exp": "১৯৭৬ সালে প্রণীত ঢাকা মেট্রোপলিটন পুলিশ অর্ডিন্যান্সে ইভটিজিংকে সংজ্ঞায়িত করা হয়।"}, {"q": "১৯৭৬ সালের বাংলাদেশ আইনে ইভটিজিংয়ের সর্বোচ্চ শাস্তি কী?", "opts": ["৬ মাস কারাদণ্ড", "সর্বোচ্চ ১ বছর কারাদণ্ড অথবা ২ হাজার টাকা জরিমানা অথবা উভয় দণ্ড", "৫ বছর কারাদণ্ড", "শুধু সতর্কীকরণ"], "ans": 1, "exp": "সর্বোচ্চ এক বছর কারাদণ্ড অথবা দুই হাজার টাকা জরিমানা অথবা উভয় দণ্ড।"}, {"q": "'তোমরা একে অন্যের প্রতি দোষারোপ করবে না এবং একে অপরকে মন্দনামে ডাকবে না'—কোন সূরার আয়াত?", "opts": ["সূরা আল-বাকারা (৪২)", "সূরা আল-হুজুরাত (১১)", "সূরা আল-ফালাক (৫)", "সূরা আন-নাহল (৩৬)"], "ans": 1, "exp": "এটি সূরা আল-হুজুরাতের ১১ নং আয়াত।"}, {"q": "জোরপূর্বক বা বল প্রয়োগ করে অন্যের সম্পদ ছিনিয়ে নেওয়াকে কী বলে?", "opts": ["প্রতারণা", "ছিনতাই", "লোভ", "হিংসা"], "ans": 1, "exp": "জোরপূর্বক বা বল প্রয়োগ করে অন্যের সম্পদ ছিনিয়ে নেওয়াকে ছিনতাই বলে।"}, {"q": "সামান্য পরিমাণ জমি ছিনতাই করলে কিয়ামতের দিন কী শাস্তি হবে?", "opts": ["সাতগুণ জমি গলায় বেড়িরূপে ঝুলিয়ে দেওয়া হবে", "দ্বিগুণ জমি ফেরত দিতে হবে", "জরিমানা করা হবে", "ক্ষমা করা হবে"], "ans": 0, "exp": "বুখারি ও মুসলিম অনুযায়ী কিয়ামতের দিন সাতগুণ জমি তার গলায় বেড়িরূপে ঝুলিয়ে দেওয়া হবে।"}, {"q": "কোন কাজ করলে ব্যক্তির পূর্ণ ইমান থাকে না (মুমিন থাকে না)?", "opts": ["প্রকাশ্যে ছিনতাই ও লুটতরাজ করলে", "রাগ হলে ওযু করলে", "ভুলবশত কথা বললে", "অল্পে তুষ্ট থাকলে"], "ans": 0, "exp": "মহানবি (স.) বলেন: 'কোনো ব্যক্তি প্রকাশ্যে ছিনতাই ও লুটতরাজ করলে সে মুমিন থাকে না।'"}, {"q": "'ইসলামি বিধানে না নিজে ক্ষতিগ্রস্ত হওয়ার নিয়ম আছে, না অন্যকে ক্ষতিগ্রস্ত করার নিয়ম আছে'—এটি কী?", "opts": ["ইসলামের মূলনীতি/ঘোষণা", "রাষ্ট্রীয় আইন", "সামাজিক প্রথা", "ব্যাবসায়িক চুক্তি"], "ans": 0, "exp": "ছিনতাইয়ের বর্বরতা উৎপাটনে ইসলামের ঘোষণা: 'লা দারারা ওয়া লা দিরারা'।"}, {"q": "প্রতারণাকারীকে ইসলামে কার সাথে তুলনা করা হয়েছে?", "opts": ["মুনাফিকের কাজের সাথে", "মুত্তাকির কাজের সাথে", "মুসাফিরের সাথে", "দানশীলের সাথে"], "ans": 0, "exp": "প্রতারণা মুনাফিকের কাজ এবং সত্যিকার ইমানদার কখনো প্রতারণার আশ্রয় নেয় না।"}, {"q": "ইভটিজিং প্রতিরোধের কার্যকর উপায় কোনটি?", "opts": ["পারিবারিক অনুশাসন, ধর্মীয় শৃঙ্খলা, সামাজিক সচেতনতা ও আইনের যথাযথ প্রয়োগ", "শুধু স্কুল বন্ধ রাখা", "নীরব থাকা", "মেয়েদের বাইরে না যাওয়া"], "ans": 0, "exp": "পারিবারিক অনুশাসন, ধর্মীয় শৃঙ্খলা, সামাজিক সচেতনতা ও আইনের প্রয়োগের মাধ্যমে ইভটিজিং নিয়ন্ত্রণ সম্ভব।"}], "gyanmulok": [{"q": "আখলাকে যামিমাহ্র দুটি প্রধান কুফল কী?", "a": "১. সমাজ, পরিবার ও পরকালে ঘৃণার পাত্র হওয়া এবং ২. জান্নাত থেকে বঞ্চিত হওয়া।"}, {"q": "হিংসা কাকে বলে?", "a": "অন্যের সুখ-সম্পদ ও মানসম্মান নষ্ট হওয়ার কামনা এবং নিজে এর মালিক হওয়ার বাসনাকে হিংসা বলে।"}, {"q": "হিংসা মানুষের পুণ্যকে কীভাবে ধ্বংস করে?", "a": "আগুন যেমন শুকনা কাঠকে জ্বালিয়ে ছাই করে দেয়, হিংসা তেমনই পুণ্যকে ধ্বংস করে দেয় (ইবনু মাজাহ)।"}, {"q": "ক্রোধ কাকে বলে?", "a": "স্বীয় স্বার্থ নষ্ট হওয়া বা কারো দ্বারা তিরস্কৃত হওয়ার কারণে প্রতিশোধ গ্রহণের ইচ্ছায় মনের মধ্যে যে ক্ষোভের সৃষ্টি হয়, তাকে ক্রোধ বলে।"}, {"q": "ইসলামের দৃষ্টিতে প্রকৃত শক্তিশালী ব্যক্তি কে?", "a": "প্রকৃত শক্তিশালী হচ্ছে সেই ব্যক্তি, যে ক্রোধের সময় নিজেকে সংযত রাখতে পারে (বুখারি ও মুসলিম)।"}, {"q": "রাগ হলে মহানবি (স.) কী করতে বলেছেন?", "a": "ওযু করে নিতে বলেছেন; কারণ ক্রোধ শয়তানের (আগুনের) পক্ষ থেকে আসে, আর আগুনকে পানি ঠান্ডা করে।"}, {"q": "লোভ কাকে বলে এবং এর আরবি প্রতিশব্দ কী?", "a": "অধিক পাওয়ার ইচ্ছা বা আকাঙ্ক্ষাকে লোভ বলে। এর আরবি প্রতিশব্দ 'হিরছুন'।"}, {"q": "লোভ থেকে বাঁচার দুটি উপায় লেখো।", "a": "১. ধৈর্য ও অল্পে তুষ্ট থাকার গুণ অর্জন করা এবং ২. তকদিরের ওপর বিশ্বাস রাখা।"}, {"q": "প্রতারণা কাকে বলে?", "a": "কথাবার্তা, আচার-আচরণ, লেনদেন, ব্যবসা-বাণিজ্য প্রভৃতি ক্ষেত্রে ধোঁকা দেওয়াকে প্রতারণা বলে।"}, {"q": "ভেজা খাদ্যের ঘটনায় মহানবি (স.) কী বলেছিলেন?", "a": "'যে ব্যক্তি আমাদের ধোঁকা দেয় সে আমাদের দলভুক্ত নয়' (মুসলিম)।"}, {"q": "পিতামাতার অবাধ্য হওয়া বলতে কী বোঝায়?", "a": "পিতামাতাকে শ্রদ্ধা ও সম্মান না করা এবং তাঁদের কথামতো না চলাকে বোঝায়।"}, {"q": "পিতামাতা সন্তানের জন্য কী (ইবনু মাজাহ্র হাদিস অনুযায়ী)?", "a": "'তাঁরাই (পিতামাতা) তোমার বেহেশত ও দোযখ।'"}, {"q": "হযরত মুহাম্মদ (স.) বৃদ্ধ পিতামাতাকে পেয়েও জান্নাতে যেতে না পারা ব্যক্তির ব্যাপারে কী বলেছেন?", "a": "তিনবার বলেছেন, 'তার নাক ধূলিমলিন হোক' (অর্থাৎ সে ধ্বংস হোক)।"}, {"q": "ইভটিজিং (যৌন হয়রানি) কাকে বলে?", "a": "কথা, কাজ, অশালীন উক্তি বা অশ্লীল অঙ্গভঙ্গির মাধ্যমে নারীদের উত্ত্যক্ত করাকে ইভটিজিং বলে।"}, {"q": "বাংলাদেশ আইনে ইভটিজিংয়ের শাস্তি কী?", "a": "১৯৭৬ সালের আইনে সর্বোচ্চ এক বছর কারাদণ্ড অথবা দুই হাজার টাকা জরিমানা অথবা উভয় দণ্ড।"}, {"q": "ইভটিজিং প্রতিরোধের দুটি উপায় লেখো।", "a": "১. পারিবারিক অনুশাসন ও ধর্মীয় শৃঙ্খলা বজায় রাখা এবং ২. সামাজিক সচেতনতা ও আইনের যথাযথ প্রয়োগ।"}, {"q": "ছিনতাই কাকে বলে?", "a": "জোরপূর্বক বা বল প্রয়োগ করে অন্যের সম্পদ ছিনিয়ে নেওয়াকে ছিনতাই বলে।"}, {"q": "সামান্য জমি ছিনতাইকারীর পরকালীন শাস্তি কী?", "a": "কিয়ামতের দিন সাতগুণ জমি তার গলায় বেড়িরূপে ঝুলিয়ে দেওয়া হবে (বুখারি ও মুসলিম)।"}, {"q": "ছিনতাই ও লুটতরাজকারীর ইমানের অবস্থা কী হয়?", "a": "কোনো ব্যক্তি প্রকাশ্যে ছিনতাই ও লুটতরাজ করলে সে মুমিন থাকে না।"}, {"q": "ক্ষতি করা সম্পর্কে ইসলামি বিধানের মূল ঘোষণা কী?", "a": "ইসলামি বিধানে না নিজে ক্ষতিগ্রস্ত হওয়ার নিয়ম আছে, না অন্যকে ক্ষতিগ্রস্ত করার নিয়ম আছে।"}]}, {"id": "ch5", "number": "অধ্যায় ৫", "title": "আদর্শ জীবনচরিত", "subtitle": "হযরত উসমান (রা.), হযরত আলি (রা.) ও হযরত ফাতিমা (রা.)-এর জীবনাদর্শ", "icon": "🌟", "summarySections": [{"id": "ch5-s1", "title": "১. হযরত উসমান (রা.)-এর খিলাফত ও সংস্কার", "points": ["হযরত উসমান (রা.) ৬৪৪ খ্রিষ্টাব্দ থেকে ৬৫৬ খ্রিষ্টাব্দ পর্যন্ত ইসলামের তৃতীয় খলিফা ছিলেন। তাঁর আমলে পশ্চিমে মরক্কো, পূর্বে পাকিস্তানের দক্ষিণ-পূর্ব এবং উত্তরে আর্মেনিয়া ও আজারবাইজান পর্যন্ত খিলাফত বিস্তৃত হয়।", "তাঁর সময়ে সর্বপ্রথম মুসলিম নৌবাহিনী প্রতিষ্ঠিত হয়। তিনি হযরত ওমর (রা.) প্রবর্তিত ভাতা প্রায় ২৫ ভাগ বৃদ্ধি করেন, রাষ্ট্রীয় কোষাগার থেকে ঋণদানের ব্যবস্থা করেন, বাজার পরিদর্শক ও কৃষি উন্নয়নে প্রশাসক নিয়োগ করেন।", "খলিফা হিসেবে তিনি নিজের জন্য কোনো বেতন-ভাতা গ্রহণ করতেন না। তাঁর প্রথম ৬ বছরের শাসনামল শান্তিপূর্ণ ছিল এবং খুলাফায়ে রাশেদিনের মধ্যে তিনি সর্বাধিক জনপ্রিয় ছিলেন।"]}, {"id": "ch5-s2", "title": "২. হযরত আলি (রা.): পরিচয়, বীরত্ব ও জ্ঞানসাধনা", "points": ["হযরত আলি (রা.) ছিলেন রাসুল (স.)-এর চাচাতো ভাই এবং ইসলামের চতুর্থ খলিফা। তিনি ৬০০ খ্রিষ্টাব্দে মক্কায় জন্মগ্রহণ করেন; পিতা আবু তালিব ও মাতা ফাতিমা বিনতে আসাদ। ছোটদের মধ্যে তিনিই প্রথম ১০ বছর বয়সে ইসলাম গ্রহণ করেন এবং আশারা-ই-মুবাশশারার একজন।", "বদরের যুদ্ধে বীরত্বের জন্য 'জুলফিকার' তরবারি এবং খায়বার যুদ্ধে 'কামুস' দুর্গ বিজয়ের পর 'আসাদুল্লাহ' (আল্লাহর সিংহ) উপাধি পান। তিনি হুদায়বিয়ার সন্ধির লেখক ও মক্কা বিজয়ে পতাকা বহনকারী ছিলেন।", "আরবি ব্যাকরণ রচনায় তাঁর প্রধান ভূমিকা ছিল এবং 'দেওয়ানে আলি' (কাব্য সংকলন) তাঁর অমূল্য সম্পদ। রাসুল (স.) বলেন: 'হযরত মুহাম্মদ (স.) জ্ঞানের শহর, আর আলি (রা.) তার দরজা।'"]}, {"id": "ch5-s3", "title": "৩. হযরত আলি (রা.)-এর রাষ্ট্র পরিচালনা ও শাহাদত", "points": ["৬৫৬ খ্রিষ্টাব্দে খলিফা নির্বাচিত হয়ে তিনি উপদলীয় কোন্দল দমন ও স্বজনপ্রীতি (Nepotism) সম্পূর্ণ পরিহার করেন। মিসরের গভর্নর মালিক আল-আশতারের কাছে প্রেরিত তাঁর চিঠিকে 'ইসলামি শাসনের আদর্শ সংবিধান' (Ideal Constitution of Islamic Governance) বলা হয়।", "তিনি অত্যন্ত সাদাসিধে জীবনযাপন করতেন। প্রায় ৬ বছর খিলাফতের দায়িত্ব পালনের পর ৬৬১ খ্রিষ্টাব্দে নামাযরত অবস্থায় ইবনে মুলজাম নামক খারেজির হাতে শাহাদতবরণ করেন।"]}, {"id": "ch5-s4", "title": "৪. হযরত ফাতিমা (রা.)-এর মহীয়সী জীবন", "points": ["হযরত ফাতিমা (রা.) ছিলেন রাসুল (স.) ও হযরত খাদিজাতুল কুবরা (রা.)-এর কনিষ্ঠ কন্যা। নবুয়তের ৫ বছর আগে ৬০৫ খ্রিষ্টাব্দে মক্কায় জন্মগ্রহণ করেন। তাঁর উপাধি 'যাহরা' (অনিন্দ্য সুন্দরী) ও 'বাতুল' (পবিত্র ও সংসারে অনাসক্ত)।", "হিজরি ২য় সনে বদরের যুদ্ধের পর ৪৮০–৫০০ দিরহাম দেনমোহরে হযরত আলি (রা.)-এর সাথে তাঁর বিয়ে হয়। তাঁদের ৫ সন্তান: হাসান, হোসাইন, মুহসিন (বাল্যকালে ইন্তেকাল), উম্মে কুলসুম ও জয়নাব (রা.)।", "তিনি নিজ হাতে জাঁতা পেষা ও পানি ওঠানোর কাজ করতেন (হাতে ফোস্কা পড়ে যেত), খাবার অভাবী ভিক্ষুককে দান করতেন এবং পিতার ইন্তেকালের ৬ মাস পর ১১ হিজরির ৩য় রমযান মঙ্গলবার ২৯ বছর বয়সে ইন্তেকাল করেন। জান্নাতুল বাকিতে তাঁকে দাফন করা হয়।"]}], "mcqs": [{"q": "হযরত উসমান (রা.) কত খ্রিষ্টাব্দ থেকে কত খ্রিষ্টাব্দ পর্যন্ত খিলাফতে অধিষ্ঠিত ছিলেন?", "opts": ["৬৩২–৬৩৪ খ্রি.", "৬৩৪–৬৪৪ খ্রি.", "৬৪৪–৬৫৬ খ্রি.", "৬৫৬–৬৬১ খ্রি."], "ans": 2, "exp": "হযরত উসমান (রা.) ৬৪৪ খ্রিষ্টাব্দ থেকে ৬৫৬ খ্রিষ্টাব্দ পর্যন্ত খিলাফতে অধিষ্ঠিত ছিলেন।"}, {"q": "কার শাসনামলে সর্বপ্রথম মুসলিম নৌবাহিনী প্রতিষ্ঠিত হয়?", "opts": ["হযরত আবু বকর (রা.)", "হযরত ওমর (রা.)", "হযরত উসমান (রা.)", "হযরত আলি (রা.)"], "ans": 2, "exp": "হযরত উসমান (রা.)-এর সময়ে সর্বপ্রথম মুসলিম নৌবাহিনী প্রতিষ্ঠিত হয়।"}, {"q": "হযরত উসমান (রা.) হযরত ওমর (রা.) কর্তৃক প্রবর্তিত ভাতা প্রায় কত ভাগ বৃদ্ধি করেন?", "opts": ["১০ ভাগ", "১৫ ভাগ", "২৫ ভাগ", "৫০ ভাগ"], "ans": 2, "exp": "তিনি হযরত ওমর (রা.) কর্তৃক প্রবর্তিত ভাতা প্রায় ২৫ ভাগ পর্যন্ত বৃদ্ধি করেন।"}, {"q": "হযরত উসমান (রা.)-এর খিলাফতের প্রথম কত বছর শান্তিপূর্ণ ছিল?", "opts": ["২ বছর", "৪ বছর", "৬ বছর", "১০ বছর"], "ans": 2, "exp": "তাঁর প্রথম ৬ বছরের শাসনামল শান্তিপূর্ণ ছিল এবং তিনি খুলাফায়ে রাশেদিনের মধ্যে সর্বাধিক জনপ্রিয় ছিলেন।"}, {"q": "হযরত উসমান (রা.)-এর সময়ে ইসলামি খিলাফত পশ্চিমে কোন দেশ পর্যন্ত বিস্তৃত হয়?", "opts": ["মিসর", "মরক্কো", "ইরান", "সিরিয়া"], "ans": 1, "exp": "পশ্চিমে মরক্কো, পূর্বে পাকিস্তানের দক্ষিণ-পূর্ব এবং উত্তরে আর্মেনিয়া ও আজারবাইজান পর্যন্ত বিস্তৃত হয়।"}, {"q": "রাষ্ট্রীয় কোষাগার থেকে হযরত উসমান (রা.) নিজের জন্য কী পরিমাণ বেতন গ্রহণ করতেন?", "opts": ["মাসিক ১০০ দিরহাম", "কোনো বেতন-ভাতা গ্রহণ করতেন না", "সবার সমান ভাতা", "অর্ধেক ভাতা"], "ans": 1, "exp": "খলিফা হিসেবে রাষ্ট্রীয় কোষাগার থেকে তিনি নিজের জন্য কোনো বেতন-ভাতা গ্রহণ করতেন না।"}, {"q": "হযরত আলি (রা.) কত খ্রিষ্টাব্দে ও কোথায় জন্মগ্রহণ করেন?", "opts": ["৬০০ খ্রিষ্টাব্দে মক্কায়", "৬০৫ খ্রিষ্টাব্দে মক্কায়", "৬১০ খ্রিষ্টাব্দে মদিনায়", "৫৭০ খ্রিষ্টাব্দে মক্কায়"], "ans": 0, "exp": "হযরত আলি (রা.) ৬০০ খ্রিষ্টাব্দে মক্কায় জন্মগ্রহণ করেন।"}, {"q": "হযরত আলি (রা.) কত বছর বয়সে ইসলাম গ্রহণ করেন?", "opts": ["৮ বছর", "১০ বছর", "১২ বছর", "১৫ বছর"], "ans": 1, "exp": "ছোটদের মধ্যে তিনিই প্রথম ১০ বছর বয়সে মক্কায় ইসলাম গ্রহণ করেন।"}, {"q": "হিজরতের সময় রাসুল (স.) আমানত ফেরত দেওয়ার দায়িত্ব দিয়ে কাকে নিজের বিছানায় রেখে যান?", "opts": ["হযরত আবু বকর (রা.)", "হযরত আলি (রা.)", "হযরত উসমান (রা.)", "হযরত জায়েদ (রা.)"], "ans": 1, "exp": "হিজরতের সময় রাসুল (স.) হযরত আলি (রা.)-কে তাঁর বিছানায় রেখে যান এবং আমানত ফেরতের দায়িত্ব দেন।"}, {"q": "বদরের যুদ্ধে বীরত্বের কারণে হযরত আলি (রা.) কোন তরবারি উপহার পান?", "opts": ["যুলফিকার", "কামুস", "সাইফুল্লাহ", "আসাদুল্লাহ"], "ans": 0, "exp": "বদরের যুদ্ধে বীরত্বের কারণে তিনি 'জুলফিকার' নামক তরবারি উপহার পান।"}, {"q": "খায়বার যুদ্ধে 'কামুস' দুর্গ বিজয়ের পর রাসুল (স.) হযরত আলি (রা.)-কে কী উপাধি দেন?", "opts": ["সিদ্দিক", "আসাদুল্লাহ (আল্লাহর সিংহ)", "ফারুক", "যুন-নুরাইন"], "ans": 1, "exp": "খায়বার যুদ্ধে 'কামুস' দুর্গ বিজয়ের পর রাসুল (স.) তাঁকে 'আসাদুল্লাহ' (আল্লাহর সিংহ) উপাধি দেন।"}, {"q": "হুদায়বিয়ার সন্ধির লেখক ও মক্কা বিজয়ে মুসলিম বাহিনীর পতাকা বহনকারী কে ছিলেন?", "opts": ["হযরত উসমান (রা.)", "হযরত আলি (রা.)", "হযরত ওমর (রা.)", "হযরত খালিদ (রা.)"], "ans": 1, "exp": "হযরত আলি (রা.) হুদায়বিয়ার সন্ধির লেখক ও মক্কা বিজয়ের সময় পতাকা বহনকারী ছিলেন।"}, {"q": "'দেওয়ানে আলি' কী?", "opts": ["একটি যুদ্ধ", "হযরত আলি (রা.)-এর কাব্য সংকলন", "একটি দুর্গ", "একটি প্রশাসনিক দপ্তর"], "ans": 1, "exp": "হযরত আলি (রা.)-এর রচিত 'দেওয়ানে আলি' (আলির কাব্য সংকলন) আরবি সাহিত্যের অমূল্য সম্পদ।"}, {"q": "হযরত আলি (রা.) কত খ্রিষ্টাব্দে মুসলিম জাহানের চতুর্থ খলিফা নির্বাচিত হন?", "opts": ["৬৪৪ খ্রিষ্টাব্দে", "৬৫৬ খ্রিষ্টাব্দে", "৬৬১ খ্রিষ্টাব্দে", "৬৩৪ খ্রিষ্টাব্দে"], "ans": 1, "exp": "৬৫৬ খ্রিষ্টাব্দে হযরত উসমান (রা.)-এর শাহাদতের পর হযরত আলি (রা.) চতুর্থ খলিফা নির্বাচিত হন।"}, {"q": "মিসরের কোন গভর্নরের কাছে প্রেরিত হযরত আলি (রা.)-এর চিঠিকে 'ইসলামি শাসনের আদর্শ সংবিধান' বলা হয়?", "opts": ["আমর ইবনুল আস", "মালিক আল-আশতার", "সা'দ ইবনু আবি ওয়াক্কাস", "ইবনে মুলজাম"], "ans": 1, "exp": "মিসরের গভর্নর মালিক আল-আশতারের কাছে প্রেরিত নির্দেশনামূলক চিঠিকে আদর্শ সংবিধান হিসেবে আখ্যায়িত করা হয়েছে।"}, {"q": "হযরত আলি (রা.) কত বছর খিলাফতের দায়িত্ব পালন করেন ও কীভাবে শাহাদতবরণ করেন?", "opts": ["প্রায় ৬ বছর; ৬৬১ খ্রি. ইবনে মুলজামের হাতে", "১০ বছর; ৬৬৫ খ্রি.", "১২ বছর; ৬৬৮ খ্রি.", "৪ বছর; ৬৬০ খ্রি."], "ans": 0, "exp": "প্রায় ৬ বছর দায়িত্ব পালনের পর ৬৬১ খ্রিষ্টাব্দে নামাযরত অবস্থায় ইবনে মুলজাম নামক খারেজির হাতে শাহাদতবরণ করেন।"}, {"q": "হযরত আলি (রা.)-এর মাতার নাম কী?", "opts": ["হালিমা সাদিয়া", "ফাতিমা বিনতে আসাদ", "আমিনা", "আসমা"], "ans": 1, "exp": "তাঁর পিতার নাম আবু তালিব এবং মাতার নাম ফাতিমা বিনতে আসাদ।"}, {"q": "হযরত ফাতিমা (রা.) কত খ্রিষ্টাব্দে জন্মগ্রহণ করেন?", "opts": ["৬০০ খ্রিষ্টাব্দে", "৬০৫ খ্রিষ্টাব্দে (নবুয়তের ৫ বছর আগে)", "৬১০ খ্রিষ্টাব্দে", "৬১৫ খ্রিষ্টাব্দে"], "ans": 1, "exp": "তিনি নবুয়তের ৫ বছর আগে ৬০৫ খ্রিষ্টাব্দে মক্কা নগরীতে জন্মগ্রহণ করেন।"}, {"q": "হযরত ফাতিমা (রা.)-এর মাতা কে ছিলেন?", "opts": ["হযরত আয়েশা (রা.)", "হযরত খাদিজাতুল কুবরা (রা.)", "হযরত হাফসা (রা.)", "হযরত উম্মে সালামা (রা.)"], "ans": 1, "exp": "তাঁর মাতা ছিলেন হযরত খাদিজাতুল কুবরা (রা.)।"}, {"q": "হযরত ফাতিমা (রা.)-এর 'বাতুল' উপাধির অর্থ কী?", "opts": ["অনিন্দ্য সুন্দরী", "পবিত্র ও সংসারে অনাসক্ত", "দানশীল", "সত্যবাদী"], "ans": 1, "exp": "যাহরা অর্থ অনিন্দ্য সুন্দরী ও পরমা লাবণ্যময়ী; বাতুল অর্থ পবিত্র ও সংসারে অনাসক্ত।"}, {"q": "হযরত ফাতিমা (রা.) ও হযরত আলি (রা.)-এর বিয়ের দেনমোহর কত ছিল?", "opts": ["২০০–২৫০ দিরহাম", "৪৮০–৫০০ দিরহাম", "১০০০ দিরহাম", "১০০ দিনার"], "ans": 1, "exp": "বদরের যুদ্ধের পর হিজরি দ্বিতীয় সনে ৪৮০–৫০০ দিরহাম দেনমোহরে তাঁদের বিয়ে হয়।"}, {"q": "একদিন অভুক্ত থাকা সত্ত্বেও হযরত ফাতিমা (রা.) তিন দিন অনাহারে থাকা ভিক্ষুককে কী দিয়েছিলেন?", "opts": ["নিজের খাবারটুকু", "স্বর্ণমুদ্রা", "নতুন পোশাক", "পানি"], "ans": 0, "exp": "পুত্র হাসানকে তিনি নিজের খাবারটুকু ভিক্ষুককে দিয়ে দিতে নির্দেশ দেন।"}, {"q": "মহানবি (স.) কাকে বলেছেন: 'ফাতিমা আমার দেহের এক অংশ, যে তাকে নারাজ করবে, সে আমাকে নারাজ করবে'?", "opts": ["হযরত ফাতিমা (রা.)-কে", "হযরত জয়নাব (রা.)-কে", "হযরত আয়েশা (রা.)-কে", "হযরত উম্মে কুলসুম (রা.)-কে"], "ans": 0, "exp": "সহিহ বুখারির হাদিস অনুযায়ী মহানবি (স.) হযরত ফাতিমা (রা.) সম্পর্কে এ কথা বলেছেন।"}, {"q": "হযরত আয়েশা (রা.) কার সম্পর্কে বলেছেন—'তাঁর তুলনায় স্পষ্টভাষী ও সত্যবাদী কাউকে দেখিনি'?", "opts": ["হযরত খাদিজা (রা.)", "হযরত ফাতিমা (রা.)", "হযরত আসমা (রা.)", "হযরত সুমাইয়া (রা.)"], "ans": 1, "exp": "হযরত আয়েশা (রা.) হযরত ফাতিমা (রা.) সম্পর্কে আল-ইস্তিয়াব গ্রন্থে এ মন্তব্য করেছেন।"}, {"q": "হযরত ফাতিমা (রা.)-এর গর্ভে কতজন সন্তান জন্মগ্রহণ করেন?", "opts": ["৩ জন", "৪ জন", "৫ জন", "৬ জন"], "ans": 2, "exp": "৫ জন সন্তান: হযরত হাসান, হোসাইন, মুহসিন, উম্মে কুলসুম ও জয়নাব (রা.)।"}, {"q": "হযরত ফাতিমা (রা.)-এর কোন সন্তান বাল্যকালে মৃত্যুবরণ করেন?", "opts": ["হযরত হাসান (রা.)", "হযরত হোসাইন (রা.)", "হযরত মুহসিন (রা.)", "হযরত জয়নাব (রা.)"], "ans": 2, "exp": "হযরত মুহসিন (রা.) বাল্যকালে মৃত্যুবরণ করেন।"}, {"q": "মহানবি (স.)-এর ইন্তেকালের পর হযরত ফাতিমা (রা.) কতদিন জীবিত ছিলেন?", "opts": ["৩ মাস", "৬ মাস", "১ বছর", "২ বছর"], "ans": 1, "exp": "হযরত মুহাম্মদ (স.)-এর ইন্তেকালের পর হযরত ফাতিমা (রা.) ছয় মাস জীবিত ছিলেন।"}, {"q": "হযরত ফাতিমা (রা.) কখন এবং কত বছর বয়সে ইন্তেকাল করেন?", "opts": ["১১ হিজরির ৩য় রমযান মঙ্গলবার, ২৯ বছর বয়সে", "১০ হিজরি, ২৫ বছর বয়সে", "১২ হিজরি, ৩০ বছর বয়সে", "১৫ হিজরি, ৩৫ বছর বয়সে"], "ans": 0, "exp": "১১ হিজরির তৃতীয় রমযান মঙ্গলবার ২৯ বছর বয়সে তিনি ইন্তেকাল করেন।"}, {"q": "হযরত ফাতিমা (রা.)-কে কোথায় দাফন করা হয়?", "opts": ["মক্কায়", "জান্নাতুল বাকিতে", "মসজিদে নববিতে", "কুফায়"], "ans": 1, "exp": "হযরত ফাতিমা (রা.)-কে মদিনার জান্নাতুল বাকিতে দাফন করা হয়।"}, {"q": "হযরত ফাতিমা (রা.)-কে জান্নাতের কী হিসেবে আখ্যায়িত করা হয়েছে?", "opts": ["জান্নাতবাসী মহিলাদের নেত্রী", "মক্কার নেত্রী", "শিক্ষিকা", "সংকলক"], "ans": 0, "exp": "মহানবি (স.) বলেছেন: 'ফাতিমা হলেন জান্নাতবাসী মহিলাদের নেত্রী।' (সহিহ বুখারি)।"}], "gyanmulok": [{"q": "হযরত উসমান (রা.)-এর শাসনামল কত খ্রিষ্টাব্দ পর্যন্ত ছিল?", "a": "৬৪৪ খ্রিষ্টাব্দ থেকে ৬৫৬ খ্রিষ্টাব্দ পর্যন্ত।"}, {"q": "হযরত উসমান (রা.)-এর সময়ের দুটি উল্লেখযোগ্য অর্থনৈতিক ও প্রশাসনিক সংস্কার লেখো।", "a": "১. সর্বপ্রথম মুসলিম নৌবাহিনী প্রতিষ্ঠা ও হযরত ওমর (রা.) প্রবর্তিত ভাতা প্রায় ২৫% বৃদ্ধি এবং ২. রাষ্ট্রীয় কোষাগার থেকে ঋণদান ও বাজার পরিদর্শক নিয়োগ।"}, {"q": "হযরত আলি (রা.) কত খ্রিষ্টাব্দে ও কত বছর বয়সে ইসলাম গ্রহণ করেন?", "a": "৬০০ খ্রিষ্টাব্দে জন্মগ্রহণ করে ১০ বছর বয়সে মক্কায় ইসলাম গ্রহণ করেন।"}, {"q": "হযরত আলি (রা.) কোন যুদ্ধে 'জুলফিকার' তরবারি ও কোন যুদ্ধে 'আসাদুল্লাহ' উপাধি লাভ করেন?", "a": "বদরের যুদ্ধে 'জুলফিকার' তরবারি এবং খায়বার যুদ্ধে 'কামুস' দুর্গ বিজয়ের পর 'আসাদুল্লাহ' উপাধি পান।"}, {"q": "হযরত আলি (রা.)-এর জ্ঞানসাধনা সম্পর্কে রাসুল (স.) কী বলেছেন?", "a": "'হযরত মুহাম্মদ (স.) জ্ঞানের শহর, আর আলি (রা.) তার দরজা।'"}, {"q": "হযরত আলি (রা.) রচিত কাব্য সংকলনের নাম কী?", "a": "দেওয়ানে আলি (আলির কাব্য সংকলন)।"}, {"q": "হযরত আলি (রা.) কত খ্রিষ্টাব্দে খলিফা নির্বাচিত হন এবং প্রশাসনে কী পরিহার করেন?", "a": "৬৫৬ খ্রিষ্টাব্দে খলিফা নির্বাচিত হন এবং প্রশাসনে নিয়োগের ক্ষেত্রে স্বজনপ্রীতি (Nepotism) সম্পূর্ণভাবে পরিহার করেন।"}, {"q": "'ইসলামি শাসনের আদর্শ সংবিধান' কাকে বলা হয়?", "a": "হযরত আলি (রা.) কর্তৃক মিসরের গভর্নর মালিক আল-আশতারের কাছে প্রেরিত নির্দেশনামূলক চিঠিকে।"}, {"q": "হযরত আলি (রা.) কখন ও কার হাতে শাহাদতবরণ করেন?", "a": "৬৬১ খ্রিষ্টাব্দে নামাযরত অবস্থায় ইবনে মুলজাম নামক এক পথভ্রষ্ট খারেজির হাতে।"}, {"q": "হযরত ফাতিমা (রা.) কখন ও কোথায় জন্মগ্রহণ করেন?", "a": "নবুয়তের ৫ বছর আগে ৬০৫ খ্রিষ্টাব্দে মক্কা নগরীতে।"}, {"q": "হযরত ফাতিমা (রা.)-এর দুটি উপাধি ও তাদের অর্থ লেখো।", "a": "১. যাহরা (অনিন্দ্য সুন্দরী/পরমা লাবণ্যময়ী) এবং ২. বাতুল (পবিত্র/সংসারে অনাসক্ত)।"}, {"q": "হযরত ফাতিমা (রা.)-এর বিয়ে কখন ও কত দেনমোহরে সম্পন্ন হয়?", "a": "বদরের যুদ্ধের পর হিজরি দ্বিতীয় সনে ৪৮০–৫০০ দিরহাম দেনমোহরে হযরত আলি (রা.)-এর সাথে।"}, {"q": "হযরত ফাতিমা (রা.)-এর হাতে ফোস্কা পড়ে যেত কেন?", "a": "সংসারের সব কাজ নিজ হাতে করা এবং জাঁতা পেষা ও বালতি দিয়ে পানি ওঠানোর ফলে।"}, {"q": "পিতার ইন্তেকালের পূর্বে কান্না ও পরে হাসির কারণ হিসেবে হযরত ফাতিমা (রা.) কী বলেছিলেন?", "a": "প্রথমে নবিজির ইন্তেকালের খবর শুনে কেঁদেছিলেন এবং দ্বিতীয়বার পরিবারের মধ্যে তিনিই সবার আগে নবিজির সাথে মিলিত হবেন শুনে হেসেছিলেন।"}, {"q": "হযরত ফাতিমা (রা.) সম্পর্কে মহানবি (স.)-এর দুটি উক্তি লেখো।", "a": "১. 'ফাতিমা আমার দেহের এক অংশ' এবং ২. 'ফাতিমা হলেন জান্নাতবাসী মহিলাদের নেত্রী' (বুখারি)।"}, {"q": "হযরত ফাতিমা (রা.)-এর পাঁচজন সন্তানের নাম লেখো।", "a": "হযরত হাসান (রা.), হযরত হোসাইন (রা.), হযরত মুহসিন (রা.), হযরত উম্মে কুলসুম (রা.) ও হযরত জয়নাব (রা.)।"}, {"q": "হযরত ফাতিমা (রা.) কখন, কত বছর বয়সে ইন্তেকাল করেন এবং কোথায় দাফন করা হয়?", "a": "১১ হিজরির ৩য় রমযান মঙ্গলবার ২৯ বছর বয়সে ইন্তেকাল করেন এবং জান্নাতুল বাকিতে দাফন করা হয়।"}, {"q": "হযরত ফাতিমা (রা.)-এর দানশীলতার একটি উদাহরণ দাও।", "a": "একদিন নিজে অভুক্ত থাকা সত্ত্বেও তিন দিন ধরে অনাহারে থাকা এক ভিক্ষুককে নিজের খাবারটুকু দান করে দিয়েছিলেন।"}, {"q": "হযরত আলি (রা.) সম্পর্কে তিরমিযির হাদিসে রাসুল (স.) কী বলেছেন?", "a": "'সে [আলি (রা.)] প্রত্যেক মুমিনের বন্ধু।'"}, {"q": "আরবি ভাষার ব্যাকরণ রচনায় কার প্রধান ভূমিকা ছিল?", "a": "হযরত আলি (রা.)-এর।"}]}], "mcqModelTests": [{"id": "mt-mcq-1", "title": "মডেল টেস্ট ১ (এমসিকিউ)", "subtitle": "সকল অধ্যায় থেকে বাছাইকৃত ৩০টি পূর্ণাঙ্গ প্রশ্ন", "questions": [{"q": "আল্লাহ তায়ালা অবাধ্য বান্দাদের তাৎক্ষণিকভাবে শাস্তি না দিয়ে কী করেন?", "opts": ["ধৈর্যধারণ করেন ও সুযোগ দেন", "আলো বন্ধ করে দেন", "পানি বন্ধ করে দেন", "সকল নিয়ামত কেড়ে নেন"], "ans": 0, "exp": "আল্লাহ তায়ালা অবাধ্যতার জন্য তাৎক্ষণিকভাবে শাস্তি দেন না, বরং ধৈর্যধারণ করে তাওবার সুযোগ দেন।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "আল্লাহ তায়ালা ধৈর্যশীলদের পুরস্কার হিসেবে কী দান করবেন?", "opts": ["ধন-সম্পদ", "জান্নাত", "ক্ষমতা", "দীর্ঘায়ু"], "ans": 1, "exp": "ধৈর্যশীলদেরকে আল্লাহ জান্নাত দান করবেন।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "নবি-রাসুলগণের প্রতি বিশ্বাস করা কী?", "opts": ["নফল", "সুন্নত", "ফরজ", "মুস্তাহাব"], "ans": 2, "exp": "নবি-রাসুলগণের প্রতি বিশ্বাস করা ফরজ; তাদের অবিশ্বাস করলে ইমানদার হওয়া যায় না।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "মহানবি (স.) কখন আল্লাহ তায়ালার সাথে সরাসরি কথা বলেছিলেন?", "opts": ["বদরের যুদ্ধে", "মিরাজের রজনীতে", "হিজরতের রাতে", "হুদায়বিয়ার দিনে"], "ans": 1, "exp": "আমাদের প্রিয় নবি (স.) মিরাজের রজনীতে আল্লাহ তায়ালার সাথে সরাসরি কথা বলেছেন।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "'আখিরাত' শব্দের অর্থ কী?", "opts": ["ইহকাল", "পরকাল", "মধ্যবর্তী জীবন", "পৃথিবী"], "ans": 1, "exp": "আখিরাত অর্থ পরকাল বা দুনিয়ার জীবনের পরের চিরস্থায়ী জীবন।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "জান্নাতিগণের মধ্যে সর্বপ্রথম কে সিরাত অতিক্রম করবেন?", "opts": ["হযরত ইবরাহিম (আ.)", "হযরত মুসা (আ.)", "হযরত মুহাম্মদ (স.)", "হযরত আবু বকর (রা.)"], "ans": 2, "exp": "জান্নাতিগণের মধ্যে সর্বপ্রথম হযরত মুহাম্মদ (স.) সিরাত অতিক্রম করে জান্নাতে প্রবেশ করবেন।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "'ফরজ সালাতের পর সবচেয়ে উৎকৃষ্ট হলো তাহাজ্জুদের সালাত'—হাদিসটি কোন গ্রন্থের?", "opts": ["বুখারি", "মুসলিম", "তিরমিযি", "আবু দাউদ"], "ans": 1, "exp": "এ হাদিসটি সহিহ মুসলিমে বর্ণিত হয়েছে।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "ইমামের পেছনে জামাআতে সালাত আদায়ের অর্থ কী?", "opts": ["ব্যক্তিগত ইবাদত", "নেতার অনুসরণ ও সামাজিক ঐক্য", "দ্রুত নামাজ শেষ করা", "নিয়মের শিথিলতা"], "ans": 1, "exp": "ইমামের পেছনে সালাত আদায়ের অর্থ নেতার অনুসরণ; এতে ধনী-গরিব ভেদাভেদ থাকে না ও জাতীয় ঐক্য ঘটে।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "ফজিলতের দিক থেকে রমযান মাসের দ্বিতীয় অংশ কিসের?", "opts": ["রহমতের", "মাগফিরাতের", "জাহান্নাম হতে মুক্তির", "সবরের"], "ans": 1, "exp": "প্রথম অংশ রহমতের, দ্বিতীয় অংশ মাগফিরাতের এবং শেষ অংশ জাহান্নাম থেকে মুক্তির।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "শুধু ১০ মুহাররম বা শুধু শনিবারে রোযা রাখা কী ধরনের মাকরুহ?", "opts": ["মাকরুহ তাহ্রিমি", "মাকরুহ তানযিহি", "ফরজ", "ওয়াজিব"], "ans": 1, "exp": "এটি মাকরুহ তানযিহি, কারণ এতে ইয়াহুদিদের সাথে সাদৃশ্য হয়ে যায়।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "কাফফারা আদায়ে একাধারে কত মাস বিরতিহীনভাবে রোযা রাখতে হয়?", "opts": ["১ মাস", "২ মাস", "৩ মাস", "৬ মাস"], "ans": 1, "exp": "একাধারে দুই মাস বিরতিহীনভাবে সাওম পালন করতে হয়; মাঝে বাদ পড়লে পুনরায় শুরু করতে হবে।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "রমযানের কোন রাতগুলোতে লাইলাতুল কদর খুঁজতে নির্দেশ দেওয়া হয়েছে?", "opts": ["প্রথম দশ দিনের বিজোড় রাতে", "শেষ দশ দিনের বিজোড় রাতে (২১,২৩,২৫,২৭,২৯)", "শুধু ২৭ রমযান", "মধ্য দশকের রাতে"], "ans": 1, "exp": "রমযানের শেষ দশ দিনের বিজোড় রাতে (২১, ২৩, ২৫, ২৭ ও ২৯) লাইলাতুল কদর খুঁজতে বলা হয়েছে।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "সূরা আল-কারিআহর আয়াত সংখ্যা কয়টি?", "opts": ["৮টি", "৫টি", "১১টি", "৪টি"], "ans": 2, "exp": "সূরা আল-কারিআহ পবিত্র কুরআনের ১০১তম সূরা এবং এর আয়াত সংখ্যা ১১টি।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "প্রতিদিন সূরা আত-তাকাসুর একবার পাঠ করা কত আয়াত তিলাওয়াতের সমান?", "opts": ["একশত আয়াত", "পাঁচশত আয়াত", "এক হাজার আয়াত", "এক তৃতীয়াংশ কুরআন"], "ans": 2, "exp": "মোজহারির বর্ণনায় প্রতিদিন এ সূরা একবার পাঠ এক হাজার আয়াত তিলাওয়াতের সমান।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "মহানবি (স.) কোন সূরাকে কুরআনের এক-তৃতীয়াংশের সমান বলেছেন?", "opts": ["সূরা আল-ফাতিহা", "সূরা আল-ইখলাস", "সূরা আত-তাকাসুর", "সূরা আল-লাহাব"], "ans": 1, "exp": "সহিহ বুখারি ও মুসলিম অনুযায়ী সূরা আল-ইখলাস কুরআনের এক-তৃতীয়াংশের সমান।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "আসহাবে কাহফের যুবকগণ কোন অত্যাচারী বাদশাহর হাত থেকে বাঁচতে গুহায় আশ্রয় নেন?", "opts": ["ফিরাউন", "নমরুদ", "দাকইয়ানুস", "আবরাহা"], "ans": 2, "exp": "দাকইয়ানুস নামক অত্যাচারী বাদশাহর অত্যাচার থেকে বাঁচতে আসহাবে কাহফ গুহায় আশ্রয় নিয়ে সূরা কাহফের ১০ নং আয়াতের দোয়া করেন।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "ইমাম মুসলিম (র.) কত লক্ষ হাদিস থেকে বাছাই করে সহিহ মুসলিম সংকলন করেন?", "opts": ["২ লক্ষ", "৩ লক্ষ", "৫ লক্ষ", "৬ লক্ষ"], "ans": 1, "exp": "আবুল হুসাইন মুসলিম ইবনু হাজ্জাজ (র.) তিন লক্ষ হাদিস থেকে বাছাই করে সহিহ মুসলিম সংকলন করেন।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "'যে মানুষের প্রতি দয়া প্রদর্শন করে না, আল্লাহ তায়ালাও তার প্রতি দয়া করেন না'—কোন গ্রন্থের হাদিস?", "opts": ["সহিহ বুখারি ও মুসলিম", "সুনানু আবু দাউদ", "সুনানু ইবনু মাজাহ", "মুসনাদে আহমাদ"], "ans": 0, "exp": "এটি সহিহ বুখারি ও সহিহ মুসলিমের হাদিস।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "কোন ধরনের মানুষ জান্নাতে প্রবেশ করতে পারবে না বলে আবু দাউদের হাদিসে এসেছে?", "opts": ["অসদাচরণকারী ও রূঢ় স্বভাবের মানুষ", "দরিদ্র মানুষ", "দুর্বল মানুষ", "কম কথা বলা মানুষ"], "ans": 0, "exp": "মহানবি (স.) বলেন: 'অসদাচরণকারী ও রূঢ় স্বভাবের মানুষ জান্নাতে প্রবেশ করতে পারবে না।' (আবু দাউদ)।", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "কোন সাহাবিকে মহানবি (স.) হিংসা বর্জনের কারণে জান্নাতি ঘোষণা দিয়েছিলেন?", "opts": ["যে ব্যক্তি কারো প্রতি হিংসা পোষণ করেন না", "যে ব্যক্তি বেশি যুদ্ধ করে", "যে ব্যক্তি বেশি সম্পদশালী", "যে ব্যক্তি বেশি ভ্রমণ করে"], "ans": 0, "exp": "সাহাবি বলেছিলেন: 'আল্লাহ যাকে কোনো উত্তম বস্তু দান করেছেন আমি তার প্রতি কখনোই হিংসা পোষণ করি না।'", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "লোভ-এর আরবি প্রতিশব্দ কী?", "opts": ["গাদাব", "হাসাদুন", "হিরছুন", "গাস্শু"], "ans": 2, "exp": "লোভের আরবি প্রতিশব্দ 'হিরছুন', অর্থ লালসা, লিপ্সা বা মোহ।", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "'যে ব্যক্তি আমাদের ধোঁকা দেয় সে আমাদের দলভুক্ত নয়'—হাদিসটি কোন গ্রন্থের?", "opts": ["মুসলিম", "তিরমিযি", "নাসায়ি", "আবু দাউদ"], "ans": 0, "exp": "বাজারে ভেজা খাদ্যের ঘটনার পরিপ্রেক্ষিতে মহানবি (স.) এ কথা বলেন (মুসলিম)।", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "আল্লাহ কাদের অবাধ্য হওয়াকে হারাম করে দিয়েছেন?", "opts": ["বন্ধুদের", "মায়েদের", "প্রতিবেশীদের", "ধনীদের"], "ans": 1, "exp": "সহিহ বুখারির হাদিস: 'আল্লাহ তোমাদের জন্য মায়েদের অবাধ্য হওয়াকে হারাম করে দিয়েছেন।'", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "সামান্য পরিমাণ জমি ছিনতাই করলে কিয়ামতের দিন কী শাস্তি হবে?", "opts": ["সাতগুণ জমি গলায় বেড়িরূপে ঝুলিয়ে দেওয়া হবে", "দ্বিগুণ জমি ফেরত দিতে হবে", "জরিমানা করা হবে", "ক্ষমা করা হবে"], "ans": 0, "exp": "বুখারি ও মুসলিম অনুযায়ী কিয়ামতের দিন সাতগুণ জমি তার গলায় বেড়িরূপে ঝুলিয়ে দেওয়া হবে।", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "হযরত উসমান (রা.) কত খ্রিষ্টাব্দ থেকে কত খ্রিষ্টাব্দ পর্যন্ত খিলাফতে অধিষ্ঠিত ছিলেন?", "opts": ["৬৩২–৬৩৪ খ্রি.", "৬৩৪–৬৪৪ খ্রি.", "৬৪৪–৬৫৬ খ্রি.", "৬৫৬–৬৬১ খ্রি."], "ans": 2, "exp": "হযরত উসমান (রা.) ৬৪৪ খ্রিষ্টাব্দ থেকে ৬৫৬ খ্রিষ্টাব্দ পর্যন্ত খিলাফতে অধিষ্ঠিত ছিলেন।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}, {"q": "রাষ্ট্রীয় কোষাগার থেকে হযরত উসমান (রা.) নিজের জন্য কী পরিমাণ বেতন গ্রহণ করতেন?", "opts": ["মাসিক ১০০ দিরহাম", "কোনো বেতন-ভাতা গ্রহণ করতেন না", "সবার সমান ভাতা", "অর্ধেক ভাতা"], "ans": 1, "exp": "খলিফা হিসেবে রাষ্ট্রীয় কোষাগার থেকে তিনি নিজের জন্য কোনো বেতন-ভাতা গ্রহণ করতেন না।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}, {"q": "খায়বার যুদ্ধে 'কামুস' দুর্গ বিজয়ের পর রাসুল (স.) হযরত আলি (রা.)-কে কী উপাধি দেন?", "opts": ["সিদ্দিক", "আসাদুল্লাহ (আল্লাহর সিংহ)", "ফারুক", "যুন-নুরাইন"], "ans": 1, "exp": "খায়বার যুদ্ধে 'কামুস' দুর্গ বিজয়ের পর রাসুল (স.) তাঁকে 'আসাদুল্লাহ' (আল্লাহর সিংহ) উপাধি দেন।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}, {"q": "হযরত আলি (রা.) কত বছর খিলাফতের দায়িত্ব পালন করেন ও কীভাবে শাহাদতবরণ করেন?", "opts": ["প্রায় ৬ বছর; ৬৬১ খ্রি. ইবনে মুলজামের হাতে", "১০ বছর; ৬৬৫ খ্রি.", "১২ বছর; ৬৬৮ খ্রি.", "৪ বছর; ৬৬০ খ্রি."], "ans": 0, "exp": "প্রায় ৬ বছর দায়িত্ব পালনের পর ৬৬১ খ্রিষ্টাব্দে নামাযরত অবস্থায় ইবনে মুলজাম নামক খারেজির হাতে শাহাদতবরণ করেন।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}, {"q": "হযরত ফাতিমা (রা.) ও হযরত আলি (রা.)-এর বিয়ের দেনমোহর কত ছিল?", "opts": ["২০০–২৫০ দিরহাম", "৪৮০–৫০০ দিরহাম", "১০০০ দিরহাম", "১০০ দিনার"], "ans": 1, "exp": "বদরের যুদ্ধের পর হিজরি দ্বিতীয় সনে ৪৮০–৫০০ দিরহাম দেনমোহরে তাঁদের বিয়ে হয়।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}, {"q": "হযরত ফাতিমা (রা.)-এর কোন সন্তান বাল্যকালে মৃত্যুবরণ করেন?", "opts": ["হযরত হাসান (রা.)", "হযরত হোসাইন (রা.)", "হযরত মুহসিন (রা.)", "হযরত জয়নাব (রা.)"], "ans": 2, "exp": "হযরত মুহসিন (রা.) বাল্যকালে মৃত্যুবরণ করেন।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}]}, {"id": "mt-mcq-2", "title": "মডেল টেস্ট ২ (এমসিকিউ)", "subtitle": "আকাইদ, ইবাদত, কুরআন-হাদিস, আখলাক ও জীবনচরিত (৩০টি প্রশ্ন)", "questions": [{"q": "'নিশ্চয়ই আল্লাহ ধৈর্যশীলদের সাথে আছেন'—এটি কোন সূরার আয়াত?", "opts": ["সূরা আন-নাহল", "সূরা আল-বাকারা", "সূরা মারইয়াম", "সূরা আল-মুমিন"], "ans": 1, "exp": "সূরা আল-বাকারার ১৫৩ নং আয়াতে এ বাণী রয়েছে।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "'রিসালাত' শব্দের অর্থ কী?", "opts": ["পথ ও পুল", "বার্তা বা সংবাদবহন", "দাঁড়িপাল্লা", "গোপন কথা"], "ans": 1, "exp": "রিসালাত অর্থ বার্তা, সংবাদবহন, চিঠি, খবর পৌঁছানো ইত্যাদি।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "কোন আয়াতে বলা হয়েছে 'আমরা তাঁর রাসুলগণের মধ্যে কোনো তারতম্য করি না'?", "opts": ["সূরা আল-বাকারার ২৮৫ নং", "সূরা আল-বাকারার ৪ নং", "সূরা আন-নাহলের ৩৬ নং", "সূরা মারইয়ামের ৭১ নং"], "ans": 0, "exp": "সূরা আল-বাকারার ২৮৫ নং আয়াতে এই বাণী উল্লেখ আছে।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "যে ওহি সালাতে তিলাওয়াত করা হয় তাকে কী বলে?", "opts": ["ওহি গায়র মাতলু", "ওহি মাতলু", "ওহি খফি", "ইলহাম"], "ans": 1, "exp": "যে ওহি তিলাওয়াত করা হয় (যেমন কুরআন মাজিদ) তাকে ওহি মাতলু বলে।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "সূরা আল-মুমিনের ৩৯ নং আয়াতে আখিরাতকে কী বলা হয়েছে?", "opts": ["অস্থায়ী উপভোগের বস্তু", "চিরস্থায়ী আবাস", "আমলের ক্ষেত্র", "পরীক্ষার হল"], "ans": 1, "exp": "সূরা আল-মুমিনের ৩৯ নং আয়াতে বলা হয়েছে: 'নিঃসন্দেহে আখিরাতই হলো চিরস্থায়ী আবাস।'", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "জাহান্নামিদের জন্য সিরাত কেমন হবে?", "opts": ["বিশাল ময়দানের মতো", "চুলের চেয়েও সূক্ষ্ম ও তরবারি অপেক্ষা ধারালো", "আলোকিত ও প্রশস্ত", "সহজ ও মসৃণ"], "ans": 1, "exp": "জাহান্নামিদের জন্য সিরাত হবে চুলের চেয়েও সূক্ষ্ম, তরবারি অপেক্ষা ধারালো ও ঘুটঘুটে অন্ধকার।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "তাহাজ্জুদের সালাত কখন আদায় করা উত্তম?", "opts": ["সন্ধ্যায়", "রাতের প্রথম অংশে", "রাতের শেষাংশে", "সূর্যোদয়ের পর"], "ans": 2, "exp": "রাতের শেষাংশে তাহাজ্জুদের সালাত আদায় করা উত্তম এবং এ সালাত পড়া সুন্নত।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "'সাওম' শব্দের অর্থ কী?", "opts": ["ত্যাগ করা", "বিরত থাকা", "প্রার্থনা করা", "অবস্থান করা"], "ans": 1, "exp": "সাওম আরবি শব্দ, এর অর্থ বিরত থাকা।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "সাওম কত প্রকার?", "opts": ["৪ প্রকার", "৫ প্রকার", "৬ প্রকার", "৭ প্রকার"], "ans": 2, "exp": "রোযা ৬ প্রকার: ফরজ, ওয়াজিব, সুন্নত, মুস্তাহাব, নফল ও মাকরুহ।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "সাহারি খাওয়া কী ও কোন সময়ে খেতে হয়?", "opts": ["ফরজ, মধ্যরাতে", "সুন্নত, সুবহে সাদিকের পূর্বে", "ওয়াজিব, সূর্যোদয়ের পর", "নফল, ফজরের পর"], "ans": 1, "exp": "সুবহে সাদিকের পূর্বে সাহারি খাওয়া সুন্নত ও বরকতের কাজ।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "কাফফারার রোযা পালনে অক্ষম হলে কতজন মিসকিনকে দুই বেলা খাওয়াতে হয়?", "opts": ["৩০ জন", "৪০ জন", "৬০ জন", "১০০ জন"], "ans": 2, "exp": "অক্ষম হলে ৬০ জন মিসকিনকে পরিতৃপ্তির সাথে দুই বেলা খাওয়াতে হয়।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "নিসাব পরিমাণ সম্পদের মালিকের ওপর সাদাকাতুল ফিতর আদায় করা কী?", "opts": ["ফরজ", "ওয়াজিব", "সুন্নত", "নফল"], "ans": 1, "exp": "নিসাব পরিমাণ সম্পদের মালিক প্রত্যেক স্বাধীন মুসলিম নর-নারীর ওপর সাদাকাতুল ফিতর ওয়াজিব।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "'কারিআহ' শব্দের অর্থ কী?", "opts": ["প্রাচুর্যের প্রতিযোগিতা", "সজোরে আঘাতকারী", "একনিষ্ঠতা", "লেলিহান আগুন"], "ans": 1, "exp": "কারিআহ অর্থ সজোরে আঘাতকারী (মহাপ্রলয় বা কিয়ামত)।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "কুরাইশের কোন গোত্রগুলো কবর গণনা করে জনসংখ্যার অহংকার করেছিল?", "opts": ["বনু হাশিম ও বনু উমাইয়া", "বনু আবদি মানাফ, বনু কুসাই ও বনু সাহম", "বনু নাদির ও বনু কুরাইজা", "আউস ও খাযরাজ"], "ans": 1, "exp": "বনু আবদি মানাফ, বনু কুসাই ও বনু সাহম গোত্রের অহংকারের পরিপ্রেক্ষিতে সূরা আত-তাকাসুর নাজিল হয়।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "সূরা আল-ইখলাসের আয়াত সংখ্যা কয়টি?", "opts": ["৩টি", "৪টি", "৫টি", "৮টি"], "ans": 1, "exp": "সূরা আল-ইখলাসের আয়াত সংখ্যা ৪টি।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "সূরা আল-মুমতাহিনার ৪ নং আয়াতের মুনাজাতটি কে করেছিলেন?", "opts": ["হযরত আদম (আ.)", "হযরত ইবরাহিম (আ.)", "হযরত ইউসুফ (আ.)", "হযরত ইসমাইল (আ.)"], "ans": 1, "exp": "কাফিরদের অত্যাচার থেকে বাঁচার জন্য হযরত ইবরাহিম (আ.) এ মুনাজাত করেছিলেন।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "কোন কিতাব সম্পর্কে বলা হয়—'যার ঘরে এ কিতাব থাকবে, মনে করা যাবে তার ঘরে নবি (স.) আছেন'?", "opts": ["সহিহ বুখারি", "সহিহ মুসলিম", "জামি তিরমিযি", "সুনানু আবু দাউদ"], "ans": 2, "exp": "জামি তিরমিযি কিতাব সম্পর্কে এ উক্তিটি প্রসিদ্ধ।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "হাদিস অনুযায়ী কে জান্নাতে প্রবেশ করবে না?", "opts": ["গরিব ব্যক্তি", "আত্মীয়তার সম্পর্ক ছিন্নকারী", "অল্প আয়ের মানুষ", "ভ্রমণকারী"], "ans": 1, "exp": "সহিহ বুখারি ও মুসলিমের হাদিস: 'আত্মীয়তার সম্পর্ক ছিন্নকারী জান্নাতে প্রবেশ করবে না।'", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "হিংসা শব্দের আরবি প্রতিশব্দ কী?", "opts": ["গাদাব", "হাসাদুন", "হিরছুন", "আল-গাস্শু"], "ans": 1, "exp": "হিংসার আরবি প্রতিশব্দ 'হাসাদুন', যার অর্থ হিংসা, ঈর্ষা বা পরশ্রীকাতরতা।", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "'ক্রোধ'-এর আরবি প্রতিশব্দ কী?", "opts": ["হাসাদুন", "গাদাব", "হিরছুন", "গাস্শু"], "ans": 1, "exp": "ক্রোধ-এর আরবি প্রতিশব্দ 'গাদাব', যার অর্থ রাগ।", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "লোভ থেকে বাঁচার প্রধান উপায় কী?", "opts": ["বেশি আয় করা", "ধৈর্য, অল্পে তুষ্টি ও তকদিরে বিশ্বাস রাখা", "কৃপণতা করা", "ভ্রমণ করা"], "ans": 1, "exp": "ধৈর্য, অল্পে তুষ্ট থাকা এবং তকদিরের ওপর বিশ্বাস রাখাই লোভ দমনের প্রধান উপায়।", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "শির্কের পর সবচেয়ে বড় গুনাহ কোনটি?", "opts": ["লোভ করা", "পিতামাতার অবাধ্য হওয়া", "রাগ করা", "কৃপণতা"], "ans": 1, "exp": "শির্কের পর সবচেয়ে বড় গুনাহ পিতামাতার অবাধ্য হওয়া।", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "বাংলাদেশে কত সালের ঢাকা মেট্রোপলিটন পুলিশ অর্ডিন্যান্সে ইভটিজিংকে সংজ্ঞায়িত করা হয়?", "opts": ["১৯৭১ সালে", "১৯৭৬ সালে", "১৯৮২ সালে", "১৯৯০ সালে"], "ans": 1, "exp": "১৯৭৬ সালে প্রণীত ঢাকা মেট্রোপলিটন পুলিশ অর্ডিন্যান্সে ইভটিজিংকে সংজ্ঞায়িত করা হয়।", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "কোন কাজ করলে ব্যক্তির পূর্ণ ইমান থাকে না (মুমিন থাকে না)?", "opts": ["প্রকাশ্যে ছিনতাই ও লুটতরাজ করলে", "রাগ হলে ওযু করলে", "ভুলবশত কথা বললে", "অল্পে তুষ্ট থাকলে"], "ans": 0, "exp": "মহানবি (স.) বলেন: 'কোনো ব্যক্তি প্রকাশ্যে ছিনতাই ও লুটতরাজ করলে সে মুমিন থাকে না।'", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "কার শাসনামলে সর্বপ্রথম মুসলিম নৌবাহিনী প্রতিষ্ঠিত হয়?", "opts": ["হযরত আবু বকর (রা.)", "হযরত ওমর (রা.)", "হযরত উসমান (রা.)", "হযরত আলি (রা.)"], "ans": 2, "exp": "হযরত উসমান (রা.)-এর সময়ে সর্বপ্রথম মুসলিম নৌবাহিনী প্রতিষ্ঠিত হয়।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}, {"q": "হযরত আলি (রা.) কত খ্রিষ্টাব্দে ও কোথায় জন্মগ্রহণ করেন?", "opts": ["৬০০ খ্রিষ্টাব্দে মক্কায়", "৬০৫ খ্রিষ্টাব্দে মক্কায়", "৬১০ খ্রিষ্টাব্দে মদিনায়", "৫৭০ খ্রিষ্টাব্দে মক্কায়"], "ans": 0, "exp": "হযরত আলি (রা.) ৬০০ খ্রিষ্টাব্দে মক্কায় জন্মগ্রহণ করেন।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}, {"q": "হুদায়বিয়ার সন্ধির লেখক ও মক্কা বিজয়ে মুসলিম বাহিনীর পতাকা বহনকারী কে ছিলেন?", "opts": ["হযরত উসমান (রা.)", "হযরত আলি (রা.)", "হযরত ওমর (রা.)", "হযরত খালিদ (রা.)"], "ans": 1, "exp": "হযরত আলি (রা.) হুদায়বিয়ার সন্ধির লেখক ও মক্কা বিজয়ের সময় পতাকা বহনকারী ছিলেন।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}, {"q": "হযরত আলি (রা.)-এর মাতার নাম কী?", "opts": ["হালিমা সাদিয়া", "ফাতিমা বিনতে আসাদ", "আমিনা", "আসমা"], "ans": 1, "exp": "তাঁর পিতার নাম আবু তালিব এবং মাতার নাম ফাতিমা বিনতে আসাদ।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}, {"q": "একদিন অভুক্ত থাকা সত্ত্বেও হযরত ফাতিমা (রা.) তিন দিন অনাহারে থাকা ভিক্ষুককে কী দিয়েছিলেন?", "opts": ["নিজের খাবারটুকু", "স্বর্ণমুদ্রা", "নতুন পোশাক", "পানি"], "ans": 0, "exp": "পুত্র হাসানকে তিনি নিজের খাবারটুকু ভিক্ষুককে দিয়ে দিতে নির্দেশ দেন।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}, {"q": "মহানবি (স.)-এর ইন্তেকালের পর হযরত ফাতিমা (রা.) কতদিন জীবিত ছিলেন?", "opts": ["৩ মাস", "৬ মাস", "১ বছর", "২ বছর"], "ans": 1, "exp": "হযরত মুহাম্মদ (স.)-এর ইন্তেকালের পর হযরত ফাতিমা (রা.) ছয় মাস জীবিত ছিলেন।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}]}, {"id": "mt-mcq-3", "title": "মডেল টেস্ট ৩ (এমসিকিউ)", "subtitle": "চূড়ান্ত প্রস্তুতি মূল্যায়ন পরীক্ষা (৩০টি প্রশ্ন)", "questions": [{"q": "সূরা আল-বাকারার কত নম্বর আয়াতে ধৈর্যশীলগণকে সুসংবাদ দিতে বলা হয়েছে?", "opts": ["১৫৩ নং", "১৫৫ নং", "১৮৩ নং", "২৮৫ নং"], "ans": 1, "exp": "সূরা আল-বাকারার ১৫৫ নং আয়াতে বলা হয়েছে: 'তুমি সুসংবাদ দাও ধৈর্যশীলগণকে।'", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "ইসলামি পরিভাষায় আল্লাহ তায়ালার বাণী ও পরিচয় মানুষের নিকট পৌঁছানোর দায়িত্বকে কী বলে?", "opts": ["তাওহিদ", "রিসালাত", "ওহি", "আখিরাত"], "ans": 1, "exp": "আল্লাহর বাণী ও পরিচয় মানুষের কাছে পৌঁছানোর দায়িত্বকে রিসালাত বলে।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "'ওহি' কোন ভাষার শব্দ?", "opts": ["ফারসি", "উর্দু", "আরবি", "তুর্কি"], "ans": 2, "exp": "ওহি আরবি শব্দ, যার অর্থ ইশারা, ইঙ্গিত, গোপন কথা ইত্যাদি।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "নিচের কোনটি ওহি গায়র মাতলুর উদাহরণ?", "opts": ["আল-কুরআন", "তাওরাত", "হাদিস শরিফ", "জাবুর"], "ans": 2, "exp": "হাদিস শরিফ সালাতে তিলাওয়াত করা হয় না বলে একে ওহি গায়র মাতলু বলে।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "'দুনিয়া হলো আমল করার স্থান এবং আখিরাত হলো...'", "opts": ["বিশ্রামের স্থান", "ফলভোগের স্থান", "পুনরায় আমলের স্থান", "ভ্রমণের স্থান"], "ans": 1, "exp": "দুনিয়া হলো আমল করার স্থান এবং আখিরাত হলো ফলভোগের স্থান।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "ইসলামি পরিভাষায় কিয়ামতের দিন পাপ-পুণ্য ওজন করার যন্ত্রকে কী বলে?", "opts": ["সিরাত", "মিযান", "তাকদির", "ওহি"], "ans": 1, "exp": "কিয়ামতের দিন পাপ-পুণ্য ওজন করার পরিমাপক যন্ত্রকে মিযান বলে।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "হাদিসে ইশরাকের সালাতকে কী বলে উল্লেখ করা হয়েছে?", "opts": ["বিতর সালাত", "যুহার সালাত", "আওয়া্বিন সালাত", "তাহাজ্জুদ"], "ans": 1, "exp": "ইশরাকের সালাতকে হাদিসে যুহার সালাত বলে উল্লেখ করা হয়েছে।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "কোন আয়াতে বলা হয়েছে 'তোমাদের ওপর সিয়াম ফরজ করা হলো... যেন তোমরা তাকওয়া অর্জন করতে পার'?", "opts": ["সূরা আল-বাকারা (১৮৩)", "সূরা আল-বাকারা (১৮৫)", "সূরা আন-নাহল (৩৬)", "সূরা আল-কদর (১)"], "ans": 0, "exp": "সূরা আল-বাকারার ১৮৩ নং আয়াতে সিয়াম ফরজ করার কথা বলা হয়েছে।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "আশুরা ও আরাফার দিনের রোযা কোন প্রকারের অন্তর্ভুক্ত?", "opts": ["ফরজ", "ওয়াজিব", "সুন্নত", "মুস্তাহাব"], "ans": 2, "exp": "আশুরা ও আরাফার দিনে রোযা পালন করা সুন্নত রোযা।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "দাঁত হতে ছোলা পরিমাণ কোনো জিনিস বের করে খেলে রোযার কী হবে?", "opts": ["মাকরুহ হবে", "ভঙ্গ হবে ও কাযা করতে হবে", "কোনো ক্ষতি হবে না", "কাফফারা ফরজ হবে"], "ans": 1, "exp": "দাঁত হতে ছোলা পরিমাণ কোনো জিনিস বের করে খেলে সাওম নষ্ট হয় ও পরে কাযা করতে হয়।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "'ইতিকাফ' শব্দের অর্থ কী?", "opts": ["বিরত থাকা", "অবস্থান করা বা আটকে থাকা", "দান করা", "ত্যাগ করা"], "ans": 1, "exp": "ইতিকাফ আরবি শব্দ, এর অর্থ অবস্থান করা, আটকে থাকা।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "সাদাকাতুল ফিতরের নিসাব পরিমাণ কত?", "opts": ["সাড়ে ৫ ভরি স্বর্ণ", "সাড়ে ৭ ভরি স্বর্ণ বা সাড়ে ৫২ ভরি রৌপ্য", "১০ ভরি স্বর্ণ", "১০০ ভরি রৌপ্য"], "ans": 1, "exp": "মৌলিক প্রয়োজনের অতিরিক্ত সাড়ে ৭ ভরি স্বর্ণ বা সাড়ে ৫২ ভরি রৌপ্য বা সমপরিমাণ অর্থ হলো নিসাব।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "সূরা আল-কারিআহ অনুযায়ী কিয়ামতের দিন পর্বতসমূহ কিসের মতো হবে?", "opts": ["বিক্ষিপ্ত পতঙ্গের মতো", "ধুনিত রঙিন পশমের মতো", "সাগরের ঢেউয়ের মতো", "কালো মেঘের মতো"], "ans": 1, "exp": "৫ম আয়াতে বলা হয়েছে: 'আর পর্বতসমূহ ধুনিত রঙিন পশমের মতো হবে।'", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "সূরা আল-লাহাব কুরআনের কততম সূরা ও আয়াত কয়টি?", "opts": ["১০২তম, ৮টি", "১১১তম, ৫টি", "১১২তম, ৪টি", "১১০তম, ৩টি"], "ans": 1, "exp": "সূরা আল-লাহাব ১১১তম সূরা এবং এর আয়াত সংখ্যা ৫টি।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "'আস-সামাদ' শব্দের অর্থ কী?", "opts": ["সজোরে আঘাতকারী", "অমুখাপেক্ষী", "ধ্বংস হোক", "সমকক্ষ"], "ans": 1, "exp": "আস-সামাদ অর্থ অমুখাপেক্ষী বা বে-নিয়ায, যিনি কারো মুখাপেক্ষী নন।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "ইসলামি জীবনব্যবস্থার দ্বিতীয় উৎস ও আল-কুরআনের ব্যাখ্যাস্বরূপ কী?", "opts": ["ইজমা", "কিয়াস", "হাদিস", "তাফসির"], "ans": 2, "exp": "আল-কুরআনের পরই হাদিসের স্থান; হাদিস ইসলামি জীবনব্যবস্থার দ্বিতীয় উৎস।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "ইমাম আবু দাউদ (র.) কত লক্ষ হাদিস যাচাই-বাছাই করে সুনানু আবু দাউদ সংকলন করেন?", "opts": ["৩ লক্ষ", "৪ লক্ষ", "৫ লক্ষ", "৬ লক্ষ"], "ans": 2, "exp": "আবু দাউদ সুলায়মান ইবনু আশআছ (র.) পাঁচ লক্ষ হাদিস যাচাই-বাছাই করে এ কিতাব সংকলন করেন।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "অমুসলিম আত্মীয়-স্বজনের সাথে আমাদের আচরণ কেমন হওয়া উচিত?", "opts": ["সম্পর্ক ছিন্ন করা", "সুসম্পর্ক বজায় রাখা ও সদাচার করা", "কথা না বলা", "এড়িয়ে চলা"], "ans": 1, "exp": "আত্মীয় অমুসলিম হলেও সম্পর্ক ত্যাগ করা যাবে না; সুসম্পর্ক বজায় রাখতে ও সাহায্য করতে হবে।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "মানব সৃষ্টির পর সর্বপ্রথম পাপ সংঘটিত হয়েছিল কিসের কারণে?", "opts": ["লোভের কারণে", "হিংসার কারণে", "প্রতারণার কারণে", "ভয়ের কারণে"], "ans": 1, "exp": "হিংসার কারণেই আদম (আ.)-এর পুত্র কাবিল আপন ভাই হাবিলকে হত্যা করে সর্বপ্রথম পাপ সংঘটিত করে।", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "হাদিস অনুযায়ী প্রকৃত শক্তিশালী ব্যক্তি কে?", "opts": ["যে খুব কুস্তি লড়তে পারে", "যে ক্রোধের সময় নিজেকে সংযত রাখতে পারে", "যার অর্থ-সম্পদ বেশি", "যে দ্রুত দৌড়াতে পারে"], "ans": 1, "exp": "বুখারি ও মুসলিম অনুযায়ী প্রকৃত শক্তিশালী হলো সেই ব্যক্তি, যে ক্রোধের সময় নিজেকে সংযত রাখতে পারে।", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "'ইমান এবং লোভ এক অন্তরে একত্রিত হতে পারে না'—হাদিসটি কোন গ্রন্থদ্বয়ের?", "opts": ["নাসায়ি ও তিরমিযি", "বুখারি ও মুসলিম", "আবু দাউদ ও ইবনু মাজাহ", "বায়হাকি ও তাবারানি"], "ans": 0, "exp": "এটি নাসায়ি ও তিরমিযির হাদিস।", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "কোন পাপ আল্লাহ তায়ালা ক্ষমা করেন না বলে বায়হাকির হাদিসে এসেছে?", "opts": ["ছোট গুনাহ", "পিতামাতার অবাধ্যতার পাপ", "অনিচ্ছাকৃত ভুল", "আত্মীয়তার ভুল"], "ans": 1, "exp": "বায়হাকির হাদিস অনুযায়ী মহান আল্লাহ পিতামাতার অবাধ্যতার পাপ ক্ষমা করেন না।", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "১৯৭৬ সালের বাংলাদেশ আইনে ইভটিজিংয়ের সর্বোচ্চ শাস্তি কী?", "opts": ["৬ মাস কারাদণ্ড", "সর্বোচ্চ ১ বছর কারাদণ্ড অথবা ২ হাজার টাকা জরিমানা অথবা উভয় দণ্ড", "৫ বছর কারাদণ্ড", "শুধু সতর্কীকরণ"], "ans": 1, "exp": "সর্বোচ্চ এক বছর কারাদণ্ড অথবা দুই হাজার টাকা জরিমানা অথবা উভয় দণ্ড।", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "'ইসলামি বিধানে না নিজে ক্ষতিগ্রস্ত হওয়ার নিয়ম আছে, না অন্যকে ক্ষতিগ্রস্ত করার নিয়ম আছে'—এটি কী?", "opts": ["ইসলামের মূলনীতি/ঘোষণা", "রাষ্ট্রীয় আইন", "সামাজিক প্রথা", "ব্যাবসায়িক চুক্তি"], "ans": 0, "exp": "ছিনতাইয়ের বর্বরতা উৎপাটনে ইসলামের ঘোষণা: 'লা দারারা ওয়া লা দিরারা'।", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "হযরত উসমান (রা.) হযরত ওমর (রা.) কর্তৃক প্রবর্তিত ভাতা প্রায় কত ভাগ বৃদ্ধি করেন?", "opts": ["১০ ভাগ", "১৫ ভাগ", "২৫ ভাগ", "৫০ ভাগ"], "ans": 2, "exp": "তিনি হযরত ওমর (রা.) কর্তৃক প্রবর্তিত ভাতা প্রায় ২৫ ভাগ পর্যন্ত বৃদ্ধি করেন।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}, {"q": "হযরত আলি (রা.) কত বছর বয়সে ইসলাম গ্রহণ করেন?", "opts": ["৮ বছর", "১০ বছর", "১২ বছর", "১৫ বছর"], "ans": 1, "exp": "ছোটদের মধ্যে তিনিই প্রথম ১০ বছর বয়সে মক্কায় ইসলাম গ্রহণ করেন।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}, {"q": "'দেওয়ানে আলি' কী?", "opts": ["একটি যুদ্ধ", "হযরত আলি (রা.)-এর কাব্য সংকলন", "একটি দুর্গ", "একটি প্রশাসনিক দপ্তর"], "ans": 1, "exp": "হযরত আলি (রা.)-এর রচিত 'দেওয়ানে আলি' (আলির কাব্য সংকলন) আরবি সাহিত্যের অমূল্য সম্পদ।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}, {"q": "হযরত ফাতিমা (রা.) কত খ্রিষ্টাব্দে জন্মগ্রহণ করেন?", "opts": ["৬০০ খ্রিষ্টাব্দে", "৬০৫ খ্রিষ্টাব্দে (নবুয়তের ৫ বছর আগে)", "৬১০ খ্রিষ্টাব্দে", "৬১৫ খ্রিষ্টাব্দে"], "ans": 1, "exp": "তিনি নবুয়তের ৫ বছর আগে ৬০৫ খ্রিষ্টাব্দে মক্কা নগরীতে জন্মগ্রহণ করেন।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}, {"q": "মহানবি (স.) কাকে বলেছেন: 'ফাতিমা আমার দেহের এক অংশ, যে তাকে নারাজ করবে, সে আমাকে নারাজ করবে'?", "opts": ["হযরত ফাতিমা (রা.)-কে", "হযরত জয়নাব (রা.)-কে", "হযরত আয়েশা (রা.)-কে", "হযরত উম্মে কুলসুম (রা.)-কে"], "ans": 0, "exp": "সহিহ বুখারির হাদিস অনুযায়ী মহানবি (স.) হযরত ফাতিমা (রা.) সম্পর্কে এ কথা বলেছেন।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}, {"q": "হযরত ফাতিমা (রা.) কখন এবং কত বছর বয়সে ইন্তেকাল করেন?", "opts": ["১১ হিজরির ৩য় রমযান মঙ্গলবার, ২৯ বছর বয়সে", "১০ হিজরি, ২৫ বছর বয়সে", "১২ হিজরি, ৩০ বছর বয়সে", "১৫ হিজরি, ৩৫ বছর বয়সে"], "ans": 0, "exp": "১১ হিজরির তৃতীয় রমযান মঙ্গলবার ২৯ বছর বয়সে তিনি ইন্তেকাল করেন।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}]}], "gyanModelTests": [{"id": "mt-gyan-1", "title": "জ্ঞানমূলক মডেল টেস্ট ১", "subtitle": "৫টি অধ্যায় থেকে বাছাইকৃত ২০টি জ্ঞানমূলক প্রশ্ন", "questions": [{"q": "মানুষ অবাধ্য হলে আল্লাহ তায়ালা কী করেন?", "a": "তাৎক্ষণিকভাবে শাস্তি না দিয়ে ধৈর্যধারণ করেন এবং তাওবা করে ফিরে আসার সুযোগ দেন।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "নবি-রাসুলগণকে অবিশ্বাস করলে কী হয়?", "a": "নবি-রাসুলগণকে অবিশ্বাস করলে ইমানের সকল বিষয়ই অস্বীকার করা হয় এবং ইমানদার হওয়া যায় না।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "ওহি মাতলু কাকে বলে? উদাহরণ দাও।", "a": "যে ওহি সালাতে তিলাওয়াত করা হয়, তাকে ওহি মাতলু বলে। যেমন: আল-কুরআন।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "সর্বপ্রথম কে সিরাত অতিক্রম করবেন?", "a": "আমাদের প্রিয় নবি হযরত মুহাম্মদ (স.)।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "ইশরাকের সালাত কত রাকআত পর্যন্ত পড়া যায় এবং কখন পড়তে হয়?", "a": "দুই রাকআত করে ৪, ৬, ৮ রাকআত পর্যন্ত পড়া যায়। ফজরের পর সূর্য সম্পূর্ণরূপে উঠে গেলে আদায় করতে হয়।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "রমযান মাসের ফজিলতের তিনটি অংশ কী কী?", "a": "প্রথম অংশ রহমতের, দ্বিতীয় অংশ মাগফিরাতের এবং শেষ অংশ জাহান্নাম হতে মুক্তি পাওয়ার।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "কাযা সাওম কাকে বলে?", "a": "অনিচ্ছায় সাওম ভেঙে গেলে বা ওযরের কারণে পালন করা না হলে একটির পরিবর্তে একটি সাওম রাখাকে কাযা সাওম বলে।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "নিসাব বলতে কী বোঝায়?", "a": "মৌলিক প্রয়োজনের অতিরিক্ত সাড়ে সাত ভরি স্বর্ণ বা সাড়ে বায়ান্ন ভরি রৌপ্য বা সমপরিমাণ অর্থ থাকাকে নিসাব বলে।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "সূরা আল-কারিআহ কুরআনের কততম সূরা এবং এর আয়াত সংখ্যা কত?", "a": "এটি ১০১তম সূরা এবং এর আয়াত সংখ্যা ১১টি।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "সূরা আল-ইখলাস পাঠের ফজিলত কী?", "a": "মহানবি (স.) বলেছেন, এই সূরাটি কুরআনের এক-তৃতীয়াংশের সমান (বুখারি ও মুসলিম)।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "ইসলামি পরিভাষায় হাদিস কাকে বলে?", "a": "মহানবি হযরত মুহাম্মদ (স.)-এর বাণী, কর্ম ও মৌনসম্মতিকে হাদিস বলা হয়।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "দয়াময় আল্লাহর নিকট দয়া পাওয়ার শর্ত কী (হাদিস ১ অনুযায়ী)?", "a": "মানুষের প্রতি দয়া প্রদর্শন করা; যে মানুষের প্রতি দয়া করে না, আল্লাহও তার প্রতি দয়া করেন না।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "আখলাকে যামিমাহ্র দুটি প্রধান কুফল কী?", "a": "১. সমাজ, পরিবার ও পরকালে ঘৃণার পাত্র হওয়া এবং ২. জান্নাত থেকে বঞ্চিত হওয়া।", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "রাগ হলে মহানবি (স.) কী করতে বলেছেন?", "a": "ওযু করে নিতে বলেছেন; কারণ ক্রোধ শয়তানের (আগুনের) পক্ষ থেকে আসে, আর আগুনকে পানি ঠান্ডা করে।", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "পিতামাতার অবাধ্য হওয়া বলতে কী বোঝায়?", "a": "পিতামাতাকে শ্রদ্ধা ও সম্মান না করা এবং তাঁদের কথামতো না চলাকে বোঝায়।", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "ইভটিজিং প্রতিরোধের দুটি উপায় লেখো।", "a": "১. পারিবারিক অনুশাসন ও ধর্মীয় শৃঙ্খলা বজায় রাখা এবং ২. সামাজিক সচেতনতা ও আইনের যথাযথ প্রয়োগ।", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "হযরত উসমান (রা.)-এর শাসনামল কত খ্রিষ্টাব্দ পর্যন্ত ছিল?", "a": "৬৪৪ খ্রিষ্টাব্দ থেকে ৬৫৬ খ্রিষ্টাব্দ পর্যন্ত।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}, {"q": "হযরত আলি (রা.) রচিত কাব্য সংকলনের নাম কী?", "a": "দেওয়ানে আলি (আলির কাব্য সংকলন)।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}, {"q": "হযরত ফাতিমা (রা.)-এর দুটি উপাধি ও তাদের অর্থ লেখো।", "a": "১. যাহরা (অনিন্দ্য সুন্দরী/পরমা লাবণ্যময়ী) এবং ২. বাতুল (পবিত্র/সংসারে অনাসক্ত)।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}, {"q": "হযরত ফাতিমা (রা.)-এর পাঁচজন সন্তানের নাম লেখো।", "a": "হযরত হাসান (রা.), হযরত হোসাইন (রা.), হযরত মুহসিন (রা.), হযরত উম্মে কুলসুম (রা.) ও হযরত জয়নাব (রা.)।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}]}, {"id": "mt-gyan-2", "title": "জ্ঞানমূলক মডেল টেস্ট ২", "subtitle": "গুরুত্বপূর্ণ সংজ্ঞা, আয়াত ও হাদিসভিত্তিক ২০টি প্রশ্ন", "questions": [{"q": "রিসালাত শব্দের আভিধানিক অর্থ কী?", "a": "বার্তা, সংবাদবহন, চিঠি, খবর পৌঁছানো ইত্যাদি।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "ইসলামি পরিভাষায় ওহি কাকে বলে?", "a": "মহান আল্লাহর পক্ষ থেকে নবি-রাসুলগণের নিকট প্রেরিত সংবাদ বা বাণীকে ওহি বলে।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "আখিরাত অর্থ কী?", "a": "পরকাল বা দুনিয়ার জীবনের পরের চিরস্থায়ী জীবন।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "মিযান অর্থ কী এবং ইসলামি পরিভাষায় মিযান কাকে বলে?", "a": "মিযান অর্থ দাঁড়িপাল্লা বা মানদণ্ড। কিয়ামতের দিন যে পরিমাপক যন্ত্রের দ্বারা মানুষের পাপ-পুণ্য ওজন করা হবে, তাকে মিযান বলে।", "chapter": "অধ্যায় ১: আকাইদ"}, {"q": "তাহাজ্জুদ সালাত সম্পর্কে মহানবি (স.) কী বলেছেন?", "a": "ফরজ সালাতের পর সবচেয়ে উৎকৃষ্ট হলো তাহাজ্জুদের সালাত (মুসলিম)।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "সাহারি ও ইফতার বলতে কী বোঝায়?", "a": "রমযানে রোযার উদ্দেশ্যে সুবহে সাদিকের পূর্বে খাওয়াকে সাহারি এবং সূর্যাস্তের পর হালাল বস্তু পানাহারে রোযা ভঙ্গ করাকে ইফতার বলে।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "ইতিকাফ কাকে বলে?", "a": "সাংসারিক কাজকর্ম ও পরিবার থেকে আলাদা হয়ে মসজিদে ইবাদতের নিয়তে অবস্থান করাকে ইতিকাফ বলে।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "শিশু ও পরাধীন ব্যক্তির সাদাকাতুল ফিতর কে আদায় করবে?", "a": "তাদের অভিভাবক আদায় করবে।", "chapter": "অধ্যায় ২: ইবাদত"}, {"q": "সূরা আত-তাকাসুর কোন ঘটনা বা শানে নুযুলের পরিপ্রেক্ষিতে নাজিল হয়?", "a": "কুরাইশের তিনটি শাখাগোত্র (বনু আবদি মানাফ, বনু কুসাই ও বনু সাহম) নিজেদের জনসংখ্যা ও কবর গণনা করে অহংকার করায় এ সূরা নাজিল হয়।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "সূরা আল-আরাফের ২৩ নং আয়াতে বর্ণিত মুনাজাতটি কারা করেছিলেন?", "a": "হযরত আদম (আ.) ও হযরত হাওয়া (আ.)।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "সিহাহ সিত্তাহের ছয়টি গ্রন্থের নাম লেখো।", "a": "১. সহিহ বুখারি, ২. সহিহ মুসলিম, ৩. জামি তিরমিযি, ৪. সুনানু আবু দাউদ, ৫. সুনানু নাসায়ি এবং ৬. সুনানু ইবনু মাজাহ।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "যিম্মি কাদের বলা হয় এবং তাদের প্রতি আচরণ কেমন হওয়া উচিত?", "a": "ইসলামি রাষ্ট্রে বসবাসকারী অমুসলিম নাগরিকদের যিম্মি বলে; তাদের ধর্ম, জীবন, সম্পদ ও সম্মানের নিরাপত্তা দেওয়া এবং উত্তম আচরণ করা কর্তব্য।", "chapter": "অধ্যায় ৩: কুরআন ও হাদিস শিক্ষা"}, {"q": "হিংসা মানুষের পুণ্যকে কীভাবে ধ্বংস করে?", "a": "আগুন যেমন শুকনা কাঠকে জ্বালিয়ে ছাই করে দেয়, হিংসা তেমনই পুণ্যকে ধ্বংস করে দেয় (ইবনু মাজাহ)।", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "লোভ থেকে বাঁচার দুটি উপায় লেখো।", "a": "১. ধৈর্য ও অল্পে তুষ্ট থাকার গুণ অর্জন করা এবং ২. তকদিরের ওপর বিশ্বাস রাখা।", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "হযরত মুহাম্মদ (স.) বৃদ্ধ পিতামাতাকে পেয়েও জান্নাতে যেতে না পারা ব্যক্তির ব্যাপারে কী বলেছেন?", "a": "তিনবার বলেছেন, 'তার নাক ধূলিমলিন হোক' (অর্থাৎ সে ধ্বংস হোক)।", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "সামান্য জমি ছিনতাইকারীর পরকালীন শাস্তি কী?", "a": "কিয়ামতের দিন সাতগুণ জমি তার গলায় বেড়িরূপে ঝুলিয়ে দেওয়া হবে (বুখারি ও মুসলিম)।", "chapter": "অধ্যায় ৪: আখলাক"}, {"q": "হযরত আলি (রা.) কত খ্রিষ্টাব্দে ও কত বছর বয়সে ইসলাম গ্রহণ করেন?", "a": "৬০০ খ্রিষ্টাব্দে জন্মগ্রহণ করে ১০ বছর বয়সে মক্কায় ইসলাম গ্রহণ করেন।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}, {"q": "'ইসলামি শাসনের আদর্শ সংবিধান' কাকে বলা হয়?", "a": "হযরত আলি (রা.) কর্তৃক মিসরের গভর্নর মালিক আল-আশতারের কাছে প্রেরিত নির্দেশনামূলক চিঠিকে।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}, {"q": "হযরত ফাতিমা (রা.)-এর হাতে ফোস্কা পড়ে যেত কেন?", "a": "সংসারের সব কাজ নিজ হাতে করা এবং জাঁতা পেষা ও বালতি দিয়ে পানি ওঠানোর ফলে।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}, {"q": "হযরত ফাতিমা (রা.)-এর দানশীলতার একটি উদাহরণ দাও।", "a": "একদিন নিজে অভুক্ত থাকা সত্ত্বেও তিন দিন ধরে অনাহারে থাকা এক ভিক্ষুককে নিজের খাবারটুকু দান করে দিয়েছিলেন।", "chapter": "অধ্যায় ৫: আদর্শ জীবনচরিত"}]}]};
+
+    const STORAGE_KEY = "class7_islam_shikkha_v1";
+
+    const state = {
+      view: "home", // "home" | "chapter" | "mcq-mt" | "gyan-mt"
+      chapterId: null,
+      chapterTab: "summary", // "summary" | "mcq" | "gyanmulok"
+      mcqStage: 0, // 0..4 (6 questions each)
+      gyanStage: 0, // 0..4 (4 questions each)
+      mtId: null,
+      audioRate: 1,
+      speakingId: null,
+      audioNotice: "",
+      // Persistent gamified progress
+      score: 0,
+      streak: 0,
+      mcqProgress: {},   // key: `${chapterId}:${idx}` -> { solved: bool, wrongOpts: [], attempts: num, pointsEarned: num }
+      gyanProgress: {},  // key: `${chapterId}:${idx}` -> { revealed: bool, status: "known"|"review"|null }
+      mtMcqProgress: {}, // key: `${mtId}:${idx}` -> { solved: bool, wrongOpts: [], pointsEarned: num }
+      mtGyanProgress: {} // key: `${mtId}:${idx}` -> { revealed: bool, status: "known"|"review"|null }
+    };
+
+    function loadProgress() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const saved = JSON.parse(raw);
+        if (typeof saved.score === "number") state.score = saved.score;
+        if (typeof saved.streak === "number") state.streak = saved.streak;
+        if (saved.mcqProgress) state.mcqProgress = saved.mcqProgress;
+        if (saved.gyanProgress) state.gyanProgress = saved.gyanProgress;
+        if (saved.mtMcqProgress) state.mtMcqProgress = saved.mtMcqProgress;
+        if (saved.mtGyanProgress) state.mtGyanProgress = saved.mtGyanProgress;
+      } catch (e) {}
+    }
+
+    function saveProgress() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          score: state.score,
+          streak: state.streak,
+          mcqProgress: state.mcqProgress,
+          gyanProgress: state.gyanProgress,
+          mtMcqProgress: state.mtMcqProgress,
+          mtGyanProgress: state.mtGyanProgress
+        }));
+      } catch (e) {}
+    }
+
+    function toBnNum(n) {
+      const digits = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
+      return String(n).replace(/\d/g, d => digits[Number(d)]);
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function getChapter(id) {
+      return ISLAM_DATA.chapters.find(c => c.id === id);
+    }
+
+    function getChapterMcqStats(ch) {
+      let solved = 0;
+      ch.mcqs.forEach((_, i) => {
+        if (state.mcqProgress[ch.id + ":" + i]?.solved) solved++;
+      });
+      return { solved, total: ch.mcqs.length };
+    }
+
+    function getChapterGyanStats(ch) {
+      let done = 0;
+      ch.gyanmulok.forEach((_, i) => {
+        if (state.gyanProgress[ch.id + ":" + i]?.status) done++;
+      });
+      return { done, total: ch.gyanmulok.length };
+    }
+
+    function getTotalSolvedCount() {
+      let count = 0;
+      Object.values(state.mcqProgress).forEach(v => { if (v.solved) count++; });
+      Object.values(state.gyanProgress).forEach(v => { if (v.status) count++; });
+      Object.values(state.mtMcqProgress).forEach(v => { if (v.solved) count++; });
+      Object.values(state.mtGyanProgress).forEach(v => { if (v.status) count++; });
+      return count;
+    }
+
+    function stopAudio() {
+      window.Class7Audio.stop(function () {
+        state.speakingId = null;
+        render();
+      });
+    }
+
+    function speakSection(sectionId, text) {
+      if (state.speakingId === sectionId) {
+        stopAudio();
+        return;
+      }
+      state.audioNotice = "";
+      window.Class7Audio.setRate(state.audioRate);
+      window.Class7Audio.speakText(text, "bn", {
+        onStart: function () {
+          state.speakingId = sectionId;
+          render();
+        },
+        onEnd: function () {
+          state.speakingId = null;
+          render();
+        },
+        onNotice: function (msg) {
+          state.audioNotice = msg;
+          render();
+        }
+      });
+    }
+
+    function openChapter(id) {
+      stopAudio();
+      state.view = "chapter";
+      state.chapterId = id;
+      state.chapterTab = "summary";
+      state.mcqStage = 0;
+      state.gyanStage = 0;
+      render();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function openModelTest(type, id) {
+      stopAudio();
+      state.view = type;
+      state.mtId = id;
+      render();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function goHome() {
+      stopAudio();
+      state.view = "home";
+      render();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function handleMcqAnswer(scopeKey, qObj, optIndex, isModelTest) {
+      const store = isModelTest ? state.mtMcqProgress : state.mcqProgress;
+      const prev = store[scopeKey] || { solved: false, wrongOpts: [], attempts: 0, pointsEarned: 0 };
+      if (prev.solved) return;
+      if (prev.wrongOpts.includes(optIndex)) return;
+
+      prev.attempts += 1;
+      if (optIndex === qObj.ans) {
+        prev.solved = true;
+        const pts = prev.wrongOpts.length === 0 ? 10 : (prev.wrongOpts.length === 1 ? 4 : 2);
+        prev.pointsEarned += pts;
+        state.score += pts;
+        if (prev.wrongOpts.length === 0) {
+          state.streak += 1;
+        } else {
+          state.streak = 0;
+        }
+      } else {
+        prev.wrongOpts.push(optIndex);
+        prev.pointsEarned -= 2;
+        state.score = Math.max(0, state.score - 2);
+        state.streak = 0;
+      }
+      store[scopeKey] = prev;
+      saveProgress();
+      render();
+    }
+
+    function resetChapterMcq(chId) {
+      const ch = getChapter(chId);
+      ch.mcqs.forEach((_, i) => {
+        delete state.mcqProgress[chId + ":" + i];
+      });
+      state.mcqStage = 0;
+      saveProgress();
+      render();
+    }
+
+    function resetChapterGyan(chId) {
+      const ch = getChapter(chId);
+      ch.gyanmulok.forEach((_, i) => {
+        delete state.gyanProgress[chId + ":" + i];
+      });
+      state.gyanStage = 0;
+      saveProgress();
+      render();
+    }
+
+    function resetModelTestMcq(mtId) {
+      const mt = ISLAM_DATA.mcqModelTests.find(m => m.id === mtId);
+      mt.questions.forEach((_, i) => {
+        delete state.mtMcqProgress[mtId + ":" + i];
+      });
+      saveProgress();
+      render();
+    }
+
+    function resetModelTestGyan(mtId) {
+      const mt = ISLAM_DATA.gyanModelTests.find(m => m.id === mtId);
+      mt.questions.forEach((_, i) => {
+        delete state.mtGyanProgress[mtId + ":" + i];
+      });
+      saveProgress();
+      render();
+    }
+
+    function revealGyan(scopeKey, isModelTest) {
+      const store = isModelTest ? state.mtGyanProgress : state.gyanProgress;
+      const prev = store[scopeKey] || { revealed: false, status: null };
+      prev.revealed = true;
+      store[scopeKey] = prev;
+      saveProgress();
+      render();
+    }
+
+    function markGyan(scopeKey, status, isModelTest) {
+      const store = isModelTest ? state.mtGyanProgress : state.gyanProgress;
+      const prev = store[scopeKey] || { revealed: true, status: null };
+      if (!prev.status && status === "known") {
+        state.score += 5;
+        state.streak += 1;
+      } else if (status === "review") {
+        state.streak = 0;
+      }
+      prev.revealed = true;
+      prev.status = status;
+      store[scopeKey] = prev;
+      saveProgress();
+      render();
+    }
+
+    function renderHome() {
+      const totalSolved = getTotalSolvedCount();
+      let html = `
+        <div class="islam-stats-bar">
+          <div class="islam-stat-card">
+            <div class="islam-stat-val">${toBnNum(state.score)}</div>
+            <div class="islam-stat-label">🏆 মোট পয়েন্ট</div>
+          </div>
+          <div class="islam-stat-card">
+            <div class="islam-stat-val">${toBnNum(totalSolved)}</div>
+            <div class="islam-stat-label">✅ সমাধানকৃত</div>
+          </div>
+          <div class="islam-stat-card">
+            <div class="islam-stat-val">${toBnNum(state.streak)}🔥</div>
+            <div class="islam-stat-label">টানা সঠিক</div>
+          </div>
+        </div>
+
+        <h2 class="islam-section-heading">📚 পাঠ্যবইয়ের অধ্যায়সমূহ</h2>
+        <div class="islam-chapter-grid">
+      `;
+
+      ISLAM_DATA.chapters.forEach(ch => {
+        const mStats = getChapterMcqStats(ch);
+        const gStats = getChapterGyanStats(ch);
+        html += `
+          <button type="button" class="islam-chapter-card" data-open-chapter="${ch.id}">
+            <div class="islam-ch-top">
+              <span class="islam-ch-badge">${ch.icon} ${escapeHtml(ch.number)}</span>
+              <span class="islam-mini-pill">প্রবেশ করুন &rarr;</span>
+            </div>
+            <h3 class="islam-ch-title">${escapeHtml(ch.title)}</h3>
+            <p class="islam-ch-sub">${escapeHtml(ch.subtitle)}</p>
+            <div class="islam-ch-meta">
+              <span class="islam-mini-pill">📖 সামারি: ${toBnNum(ch.summarySections.length)}টি সেকশন</span>
+              <span class="islam-mini-pill">📝 MCQ: ${toBnNum(mStats.solved)}/${toBnNum(mStats.total)}</span>
+              <span class="islam-mini-pill">💡 জ্ঞানমূলক: ${toBnNum(gStats.done)}/${toBnNum(gStats.total)}</span>
+            </div>
+          </button>
+        `;
+      });
+
+      html += `</div>
+
+        <h2 class="islam-section-heading">🎯 এমসিকিউ মডেল টেস্ট (প্রতিটিতে ৩০টি প্রশ্ন)</h2>
+        <div class="islam-chapter-grid">
+      `;
+
+      ISLAM_DATA.mcqModelTests.forEach(mt => {
+        let solved = 0;
+        mt.questions.forEach((_, i) => { if (state.mtMcqProgress[mt.id + ":" + i]?.solved) solved++; });
+        html += `
+          <button type="button" class="islam-chapter-card" data-open-mt-mcq="${mt.id}">
+            <div class="islam-ch-top">
+              <span class="islam-ch-badge">📝 মডেল টেস্ট</span>
+              <span class="islam-mini-pill">${toBnNum(solved)}/${toBnNum(mt.questions.length)} সম্পন্ন</span>
+            </div>
+            <h3 class="islam-ch-title">${escapeHtml(mt.title)}</h3>
+            <p class="islam-ch-sub">${escapeHtml(mt.subtitle)}</p>
+          </button>
+        `;
+      });
+
+      html += `</div>
+
+        <h2 class="islam-section-heading">🧠 জ্ঞানমূলক মডেল টেস্ট (প্রতিটিতে ২০টি প্রশ্ন)</h2>
+        <div class="islam-chapter-grid">
+      `;
+
+      ISLAM_DATA.gyanModelTests.forEach(gt => {
+        let done = 0;
+        gt.questions.forEach((_, i) => { if (state.mtGyanProgress[gt.id + ":" + i]?.status) done++; });
+        html += `
+          <button type="button" class="islam-chapter-card" data-open-mt-gyan="${gt.id}">
+            <div class="islam-ch-top">
+              <span class="islam-ch-badge">💡 অ্যাক্টিভ রিকল</span>
+              <span class="islam-mini-pill">${toBnNum(done)}/${toBnNum(gt.questions.length)} সম্পন্ন</span>
+            </div>
+            <h3 class="islam-ch-title">${escapeHtml(gt.title)}</h3>
+            <p class="islam-ch-sub">${escapeHtml(gt.subtitle)}</p>
+          </button>
+        `;
+      });
+
+      html += `</div>`;
+      return html;
+    }
+
+    function renderChapterView() {
+      const ch = getChapter(state.chapterId);
+      if (!ch) return renderHome();
+
+      let html = `
+        <div class="islam-topbar">
+          <button type="button" class="islam-btn islam-btn-secondary" data-go-home="1">&larr; সকল অধ্যায়</button>
+          <div class="islam-score-badge">🏆 পয়েন্ট: ${toBnNum(state.score)} | 🔥 ${toBnNum(state.streak)}</div>
+        </div>
+
+        <div class="islam-summary-card" style="margin-bottom:16px;">
+          <div class="islam-ch-badge" style="margin-bottom:6px;">${ch.icon} ${escapeHtml(ch.number)}</div>
+          <h2 class="islam-ch-title" style="font-size:1.2rem;">${escapeHtml(ch.title)}</h2>
+          <p class="islam-ch-sub">${escapeHtml(ch.subtitle)}</p>
+        </div>
+
+        <div class="islam-tabs">
+          <button type="button" class="islam-tab-btn ${state.chapterTab === "summary" ? "is-active" : ""}" data-set-tab="summary">📖 সামারি</button>
+          <button type="button" class="islam-tab-btn ${state.chapterTab === "mcq" ? "is-active" : ""}" data-set-tab="mcq">📝 এমসিকিউ (৩০)</button>
+          <button type="button" class="islam-tab-btn ${state.chapterTab === "gyanmulok" ? "is-active" : ""}" data-set-tab="gyanmulok">💡 জ্ঞানমূলক (২০)</button>
+        </div>
+      `;
+
+      if (state.chapterTab === "summary") {
+        html += `
+          <div class="islam-audio-bar">
+            <div style="font-size:0.88rem;font-weight:700;">🔊 বাংলা অডিও গতি:</div>
+            <div class="islam-speed-group">
+              ${[0.75, 1, 1.25].map(r => `
+                <button type="button" class="islam-speed-btn ${state.audioRate === r ? "is-active" : ""}" data-set-rate="${r}">${r}x</button>
+              `).join("")}
+            </div>
+          </div>
+          ${state.audioNotice ? `<div class="islam-notice">${escapeHtml(state.audioNotice)}</div>` : ""}
+        `;
+
+        ch.summarySections.forEach(sec => {
+          const isSpeaking = state.speakingId === sec.id;
+          html += `
+            <div class="islam-summary-card ${isSpeaking ? "is-speaking" : ""}">
+              <div class="islam-summary-head">
+                <h3 class="islam-summary-title">${escapeHtml(sec.title)}</h3>
+                <button type="button" class="islam-btn ${isSpeaking ? "islam-btn-danger" : "islam-btn-primary"}" data-speak-sec="${sec.id}">
+                  ${isSpeaking ? "⏹ থামান" : "🔊 বাংলায় শুনুন"}
+                </button>
+              </div>
+              <ul class="islam-points-list">
+                ${sec.points.map(p => `<li>${escapeHtml(p)}</li>`).join("")}
+              </ul>
+            </div>
+          `;
+        });
+      } else if (state.chapterTab === "mcq") {
+        const stages = 5;
+        const perStage = 6;
+        const start = state.mcqStage * perStage;
+        const end = start + perStage;
+        const slice = ch.mcqs.slice(start, end);
+
+        html += `
+          <div class="islam-notice">
+            🎯 <strong>নিয়ম:</strong> প্রথম চেষ্টায় সঠিক উত্তরে <strong>+১০ পয়েন্ট</strong>। ভুল অনুমানে <strong>-২ পয়েন্ট</strong> কাটা যাবে; তবে সঠিক উত্তর না পাওয়া পর্যন্ত চেষ্টা চালিয়ে যেতে পারবে।
+          </div>
+          <div class="islam-stage-bar">
+            ${Array.from({ length: stages }, (_, sIdx) => {
+              const sStart = sIdx * perStage;
+              const sEnd = sStart + perStage;
+              let doneCount = 0;
+              for (let i = sStart; i < sEnd; i++) {
+                if (state.mcqProgress[ch.id + ":" + i]?.solved) doneCount++;
+              }
+              const isDone = doneCount === perStage;
+              return `<button type="button" class="islam-stage-pill ${state.mcqStage === sIdx ? "is-active" : (isDone ? "is-done" : "")}" data-mcq-stage="${sIdx}">সেকশন ${toBnNum(sIdx + 1)} (${toBnNum(doneCount)}/${toBnNum(perStage)})</button>`;
+            }).join("")}
+            <button type="button" class="islam-btn islam-btn-danger" style="margin-left:auto;min-height:36px;padding:6px 12px;" data-reset-ch-mcq="${ch.id}">🔄 রিসেট</button>
+          </div>
+        `;
+
+        html += renderMcqList(slice, start, ch.id, false);
+
+        html += `<div class="islam-action-row">`;
+        if (state.mcqStage > 0) {
+          html += `<button type="button" class="islam-btn islam-btn-secondary" data-mcq-stage="${state.mcqStage - 1}">&larr; আগের সেকশন</button>`;
+        } else {
+          html += `<span></span>`;
+        }
+        if (state.mcqStage < stages - 1) {
+          html += `<button type="button" class="islam-btn islam-btn-primary" data-mcq-stage="${state.mcqStage + 1}">পরবর্তী সেকশন (${toBnNum(state.mcqStage + 2)}) &rarr;</button>`;
+        } else {
+          html += `<button type="button" class="islam-btn islam-btn-success" data-set-tab="gyanmulok">💡 জ্ঞানমূলক শুরু করো &rarr;</button>`;
+        }
+        html += `</div>`;
+      } else if (state.chapterTab === "gyanmulok") {
+        const stages = 5;
+        const perStage = 4;
+        const start = state.gyanStage * perStage;
+        const end = start + perStage;
+        const slice = ch.gyanmulok.slice(start, end);
+
+        html += `
+          <div class="islam-notice">
+            🧠 <strong>অ্যাক্টিভ রিকল:</strong> প্রথমে উত্তরটি নিজে মনে করার চেষ্টা করো, তারপর <strong>উত্তর দেখুন</strong> বাটনে ক্লিক করে মিলিয়ে নাও (+৫ পয়েন্ট)।
+          </div>
+          <div class="islam-stage-bar">
+            ${Array.from({ length: stages }, (_, sIdx) => {
+              const sStart = sIdx * perStage;
+              const sEnd = sStart + perStage;
+              let doneCount = 0;
+              for (let i = sStart; i < sEnd; i++) {
+                if (state.gyanProgress[ch.id + ":" + i]?.status) doneCount++;
+              }
+              const isDone = doneCount === perStage;
+              return `<button type="button" class="islam-stage-pill ${state.gyanStage === sIdx ? "is-active" : (isDone ? "is-done" : "")}" data-gyan-stage="${sIdx}">সেকশন ${toBnNum(sIdx + 1)} (${toBnNum(doneCount)}/${toBnNum(perStage)})</button>`;
+            }).join("")}
+            <button type="button" class="islam-btn islam-btn-danger" style="margin-left:auto;min-height:36px;padding:6px 12px;" data-reset-ch-gyan="${ch.id}">🔄 রিসেট</button>
+          </div>
+        `;
+
+        html += renderGyanList(slice, start, ch.id, false);
+
+        html += `<div class="islam-action-row">`;
+        if (state.gyanStage > 0) {
+          html += `<button type="button" class="islam-btn islam-btn-secondary" data-gyan-stage="${state.gyanStage - 1}">&larr; আগের সেকশন</button>`;
+        } else {
+          html += `<span></span>`;
+        }
+        if (state.gyanStage < stages - 1) {
+          html += `<button type="button" class="islam-btn islam-btn-primary" data-gyan-stage="${state.gyanStage + 1}">পরবর্তী সেকশন (${toBnNum(state.gyanStage + 2)}) &rarr;</button>`;
+        } else {
+          html += `<button type="button" class="islam-btn islam-btn-success" data-go-home="1">🏠 সব অধ্যায় ও মডেল টেস্ট</button>`;
+        }
+        html += `</div>`;
+      }
+
+      return html;
+    }
+
+    function renderMcqList(questions, offset, scopeId, isModelTest) {
+      const store = isModelTest ? state.mtMcqProgress : state.mcqProgress;
+      const labels = ["ক", "খ", "গ", "ঘ"];
+      return questions.map((qObj, idx) => {
+        const realIdx = offset + idx;
+        const key = scopeId + ":" + realIdx;
+        const prog = store[key] || { solved: false, wrongOpts: [], pointsEarned: 0 };
+
+        return `
+          <div class="islam-q-card">
+            <div class="islam-q-header">
+              <span>প্রশ্ন ${toBnNum(realIdx + 1)}${qObj.chapter ? " • " + escapeHtml(qObj.chapter) : ""}</span>
+              <span>${prog.solved ? `✅ +${toBnNum(Math.max(0, prog.pointsEarned))} পয়েন্ট` : (prog.wrongOpts.length ? `⚠️ ভুল চেষ্টা: ${toBnNum(prog.wrongOpts.length)}` : "নতুন প্রশ্ন")}</span>
+            </div>
+            <p class="islam-q-text">${escapeHtml(qObj.q)}</p>
+            <div class="islam-opts-grid">
+              ${qObj.opts.map((opt, oIdx) => {
+                const isCorrectShown = prog.solved && oIdx === qObj.ans;
+                const isWrongShown = prog.wrongOpts.includes(oIdx);
+                const cls = isCorrectShown ? "is-correct" : (isWrongShown ? "is-wrong" : "");
+                const disabled = prog.solved || isWrongShown ? "disabled" : "";
+                return `
+                  <button type="button" class="islam-opt-btn ${cls}" ${disabled} data-mcq-ans="${key}|${oIdx}|${isModelTest ? 1 : 0}">
+                    <strong>${labels[oIdx]}.</strong>
+                    <span>${escapeHtml(opt)}</span>
+                  </button>
+                `;
+              }).join("")}
+            </div>
+            ${prog.solved ? `
+              <div class="islam-feedback ok">
+                <strong>সঠিক উত্তর!</strong> ${escapeHtml(qObj.exp || "")}
+              </div>
+            ` : (prog.wrongOpts.length > 0 ? `
+              <div class="islam-feedback err">
+                ভুল উত্তর (-২ পয়েন্ট)। আবার চেষ্টা করো!
+              </div>
+            ` : "")}
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderGyanList(questions, offset, scopeId, isModelTest) {
+      const store = isModelTest ? state.mtGyanProgress : state.gyanProgress;
+      return questions.map((qObj, idx) => {
+        const realIdx = offset + idx;
+        const key = scopeId + ":" + realIdx;
+        const prog = store[key] || { revealed: false, status: null };
+        return `
+          <div class="islam-q-card">
+            <div class="islam-q-header">
+              <span>জ্ঞানমূলক ${toBnNum(realIdx + 1)}${qObj.chapter ? " • " + escapeHtml(qObj.chapter) : ""}</span>
+              <span>${prog.status === "known" ? "✅ মনে ছিল (+৫)" : (prog.status === "review" ? "🔁 আবার পড়বে" : "🔒 উত্তর লুকানো")}</span>
+            </div>
+            <p class="islam-q-text">${escapeHtml(qObj.q)}</p>
+            ${!prog.revealed ? `
+              <button type="button" class="islam-btn islam-btn-primary" data-reveal-gyan="${key}|${isModelTest ? 1 : 0}">👁️ উত্তর দেখুন</button>
+            ` : `
+              <div class="islam-recall-box">
+                <strong>উত্তর:</strong> ${escapeHtml(qObj.a)}
+              </div>
+              <div class="islam-recall-actions">
+                <button type="button" class="islam-btn ${prog.status === "known" ? "islam-btn-success" : "islam-btn-secondary"}" data-mark-gyan="${key}|known|${isModelTest ? 1 : 0}">✅ মনে ছিল (+৫ পয়েন্ট)</button>
+                <button type="button" class="islam-btn ${prog.status === "review" ? "islam-btn-danger" : "islam-btn-secondary"}" data-mark-gyan="${key}|review|${isModelTest ? 1 : 0}">🔁 আবার দেখব</button>
+              </div>
+            `}
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderModelTestMcq() {
+      const mt = ISLAM_DATA.mcqModelTests.find(m => m.id === state.mtId);
+      if (!mt) return renderHome();
+      let solved = 0;
+      let firstTry = 0;
+      mt.questions.forEach((_, i) => {
+        const p = state.mtMcqProgress[mt.id + ":" + i];
+        if (p?.solved) {
+          solved++;
+          if (p.wrongOpts.length === 0) firstTry++;
+        }
+      });
+
+      return `
+        <div class="islam-topbar">
+          <button type="button" class="islam-btn islam-btn-secondary" data-go-home="1">&larr; ফিরে যাও</button>
+          <div class="islam-score-badge">🏆 পয়েন্ট: ${toBnNum(state.score)} | সম্পন্ন: ${toBnNum(solved)}/${toBnNum(mt.questions.length)}</div>
+        </div>
+        <div class="islam-summary-card">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;">
+            <div>
+              <h2 class="islam-ch-title">${escapeHtml(mt.title)}</h2>
+              <p class="islam-ch-sub">${escapeHtml(mt.subtitle)} (প্রথম চেষ্টায় সঠিক: ${toBnNum(firstTry)})</p>
+            </div>
+            <button type="button" class="islam-btn islam-btn-danger" data-reset-mt-mcq="${mt.id}">🔄 টেস্ট রিসেট করুন</button>
+          </div>
+        </div>
+        ${renderMcqList(mt.questions, 0, mt.id, true)}
+      `;
+    }
+
+    function renderModelTestGyan() {
+      const gt = ISLAM_DATA.gyanModelTests.find(g => g.id === state.mtId);
+      if (!gt) return renderHome();
+      let done = 0;
+      gt.questions.forEach((_, i) => {
+        if (state.mtGyanProgress[gt.id + ":" + i]?.status) done++;
+      });
+
+      return `
+        <div class="islam-topbar">
+          <button type="button" class="islam-btn islam-btn-secondary" data-go-home="1">&larr; ফিরে যাও</button>
+          <div class="islam-score-badge">🏆 পয়েন্ট: ${toBnNum(state.score)} | সম্পন্ন: ${toBnNum(done)}/${toBnNum(gt.questions.length)}</div>
+        </div>
+        <div class="islam-summary-card">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;">
+            <div>
+              <h2 class="islam-ch-title">${escapeHtml(gt.title)}</h2>
+              <p class="islam-ch-sub">${escapeHtml(gt.subtitle)}</p>
+            </div>
+            <button type="button" class="islam-btn islam-btn-danger" data-reset-mt-gyan="${gt.id}">🔄 রিসেট করুন</button>
+          </div>
+        </div>
+        ${renderGyanList(gt.questions, 0, gt.id, true)}
+      `;
+    }
+
+    function render() {
+      const root = document.getElementById("appRoot");
+      if (!root) return;
+      if (state.view === "chapter") {
+        root.innerHTML = renderChapterView();
+      } else if (state.view === "mcq-mt") {
+        root.innerHTML = renderModelTestMcq();
+      } else if (state.view === "gyan-mt") {
+        root.innerHTML = renderModelTestGyan();
+      } else {
+        root.innerHTML = renderHome();
+      }
+    }
+
+    document.addEventListener("click", function (e) {
+      const target = e.target.closest("button");
+      if (!target) return;
+
+      if (target.dataset.openChapter) {
+        openChapter(target.dataset.openChapter);
+      } else if (target.dataset.openMtMcq) {
+        openModelTest("mcq-mt", target.dataset.openMtMcq);
+      } else if (target.dataset.openMtGyan) {
+        openModelTest("gyan-mt", target.dataset.openMtGyan);
+      } else if (target.dataset.goHome) {
+        goHome();
+      } else if (target.dataset.setTab) {
+        stopAudio();
+        state.chapterTab = target.dataset.setTab;
+        render();
+      } else if (target.dataset.setRate) {
+        state.audioRate = Number(target.dataset.setRate);
+        window.Class7Audio.setRate(state.audioRate);
+        render();
+      } else if (target.dataset.speakSec) {
+        const ch = getChapter(state.chapterId);
+        const sec = ch.summarySections.find(s => s.id === target.dataset.speakSec);
+        if (sec) {
+          const text = sec.title + "। " + sec.points.join(" ");
+          speakSection(sec.id, text);
+        }
+      } else if (target.dataset.mcqStage !== undefined) {
+        state.mcqStage = Number(target.dataset.mcqStage);
+        render();
+        window.scrollTo({ top: 180, behavior: "smooth" });
+      } else if (target.dataset.gyanStage !== undefined) {
+        state.gyanStage = Number(target.dataset.gyanStage);
+        render();
+        window.scrollTo({ top: 180, behavior: "smooth" });
+      } else if (target.dataset.resetChMcq) {
+        resetChapterMcq(target.dataset.resetChMcq);
+      } else if (target.dataset.resetChGyan) {
+        resetChapterGyan(target.dataset.resetChGyan);
+      } else if (target.dataset.resetMtMcq) {
+        resetModelTestMcq(target.dataset.resetMtMcq);
+      } else if (target.dataset.resetMtGyan) {
+        resetModelTestGyan(target.dataset.resetMtGyan);
+      } else if (target.dataset.mcqAns) {
+        const [key, oIdxStr, isMtStr] = target.dataset.mcqAns.split("|");
+        const isMt = isMtStr === "1";
+        const [scopeId, qIdxStr] = key.split(":");
+        const qIdx = Number(qIdxStr);
+        let qObj = null;
+        if (isMt) {
+          const mt = ISLAM_DATA.mcqModelTests.find(m => m.id === scopeId);
+          qObj = mt?.questions[qIdx];
+        } else {
+          const ch = getChapter(scopeId);
+          qObj = ch?.mcqs[qIdx];
+        }
+        if (qObj) handleMcqAnswer(key, qObj, Number(oIdxStr), isMt);
+      } else if (target.dataset.revealGyan) {
+        const [key, isMtStr] = target.dataset.revealGyan.split("|");
+        revealGyan(key, isMtStr === "1");
+      } else if (target.dataset.markGyan) {
+        const [key, status, isMtStr] = target.dataset.markGyan.split("|");
+        markGyan(key, status, isMtStr === "1");
+      }
+    });
+
+    loadProgress();
+    render();
+  </script>
 </body>
 </html>

@@ -1,93 +1,1419 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Class 7 Subject | Class 7 Learning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>৭ম শ্রেণির বিজ্ঞান — ইন্টারঅ্যাক্টিভ লার্নিং ও মডেল টেস্ট</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --primary: #0d9488;
+      --primary-dark: #0f766e;
+      --primary-light: #ccfbf1;
+      --accent: #4f46e5;
+      --success: #16a34a;
+      --success-bg: #dcfce7;
+      --danger: #dc2626;
+      --danger-bg: #fee2e2;
+      --warn: #d97706;
+      --warn-bg: #fef3c7;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+      --font-bn: 'Noto Sans Bengali', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 15.5px; -webkit-tap-highlight-color: transparent; }
+    body {
+      font-family: var(--font-bn);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 14px;
+    }
+    .topbar-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+      text-align: left;
+      color: var(--text);
+    }
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #0d9488, #0284c7);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+    .brand-title { font-size: 1.02rem; font-weight: 700; line-height: 1.2; }
+    .brand-sub { font-size: 0.76rem; color: var(--text-muted); font-weight: 500; }
+
+    .hud {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .hud-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .hud-pill.xp { background: #ecfdf5; border-color: #a7f3d0; color: #065f46; }
+    .hud-pill.streak { background: #fff7ed; border-color: #fed7aa; color: #9a3412; }
+    .hud-pill.rank { background: #eef2ff; border-color: #c7d2fe; color: #3730a3; }
+    .icon-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 16px 14px 56px;
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(135deg, #0f766e 0%, #0284c7 100%);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 18px 16px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .hero h1 { font-size: 1.25rem; font-weight: 800; margin-bottom: 4px; }
+    .hero p { font-size: 0.9rem; opacity: 0.93; margin-bottom: 12px; }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .hero-stat {
+      background: rgba(255, 255, 255, 0.16);
+      border-radius: 10px;
+      padding: 8px 10px;
+      text-align: center;
+    }
+    .hero-stat strong { display: block; font-size: 1.05rem; font-weight: 800; }
+    .hero-stat span { font-size: 0.76rem; opacity: 0.9; }
+
+    /* Section Headings */
+    .sec-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 18px 0 10px;
+      gap: 8px;
+    }
+    .sec-head h2 { font-size: 1.08rem; font-weight: 800; color: var(--text); }
+    .sec-badge {
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+    }
+
+    /* Cards Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    @media (min-width: 640px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      box-shadow: var(--shadow);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card:active { transform: scale(0.99); }
+    .card:hover { border-color: #94a3b8; }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .ch-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      color: #fff;
+    }
+    .ch-num {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 2px;
+    }
+    .ch-title { font-size: 1.02rem; font-weight: 800; line-height: 1.3; }
+    .ch-sub { font-size: 0.84rem; color: var(--text-muted); line-height: 1.4; margin-top: 2px; }
+
+    .progress-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .progress-bar {
+      height: 7px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #0d9488, #0284c7);
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 42px;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-danger { background: var(--danger-bg); color: var(--danger); border-color: #fecaca; }
+    .btn-success { background: var(--success-bg); color: var(--success); border-color: #bbf7d0; }
+    .btn-sm { min-height: 36px; padding: 5px 11px; font-size: 0.82rem; }
+
+    /* Chapter Header & Tabs */
+    .back-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .chapter-banner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      background: #e2e8f0;
+      padding: 5px;
+      border-radius: 14px;
+      margin-bottom: 16px;
+    }
+    .tab-btn {
+      border: none;
+      background: transparent;
+      padding: 9px 6px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      min-height: 42px;
+      transition: all 0.15s ease;
+    }
+    .tab-btn.active {
+      background: var(--surface);
+      color: var(--primary-dark);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+    }
+
+    /* Audio Control Bar */
+    .audio-bar {
+      background: #f0fdfa;
+      border: 1px solid #99f6e4;
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .speed-group { display: flex; align-items: center; gap: 4px; }
+    .speed-pill {
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid #99f6e4;
+      background: #fff;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--primary-dark);
+    }
+    .speed-pill.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    /* Summary Cards */
+    .summary-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow);
+    }
+    .summary-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .summary-title { font-size: 1rem; font-weight: 800; color: var(--primary-dark); }
+    .audio-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #0d9488;
+      background: #f0fdfa;
+      color: #0f766e;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      flex-shrink: 0;
+      min-height: 36px;
+    }
+    .audio-btn.playing {
+      background: #dc2626;
+      border-color: #dc2626;
+      color: #fff;
+    }
+    .summary-list {
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      font-size: 0.94rem;
+      color: var(--text);
+    }
+
+    /* Stage Selector & Quiz Controls */
+    .stage-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .stage-pills {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .stage-pill {
+      min-height: 38px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+    .stage-pill.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    .stage-pill.done {
+      border-color: var(--success);
+      color: var(--success);
+      background: #f0fdf4;
+    }
+    .stage-pill.active.done {
+      background: var(--success);
+      color: #fff;
+    }
+
+    /* Question Cards */
+    .q-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow);
+    }
+    .q-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .q-delta {
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+    .q-delta.pos { background: var(--success-bg); color: var(--success); }
+    .q-delta.neg { background: var(--danger-bg); color: var(--danger); }
+
+    .q-text {
+      font-size: 0.98rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .opts {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .opt-btn {
+      width: 100%;
+      text-align: left;
+      padding: 10px 12px;
+      min-height: 44px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--surface-soft);
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.15s ease;
+    }
+    .opt-btn:hover:not(:disabled) { border-color: var(--primary); background: #f0fdfa; }
+    .opt-btn.correct {
+      background: var(--success-bg);
+      border-color: var(--success);
+      color: #14532d;
+    }
+    .opt-btn.wrong {
+      background: var(--danger-bg);
+      border-color: var(--danger);
+      color: #7f1d1d;
+    }
+    .opt-tag {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: #e2e8f0;
+      display: grid;
+      place-items: center;
+      font-size: 0.8rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .opt-btn.correct .opt-tag { background: var(--success); color: #fff; }
+    .opt-btn.wrong .opt-tag { background: var(--danger); color: #fff; }
+
+    .exp-box {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      font-size: 0.86rem;
+      color: #166534;
+    }
+
+    /* Gyanmulok Active Recall */
+    .recall-box {
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      margin-top: 8px;
+    }
+    .recall-ans {
+      font-size: 0.94rem;
+      color: #0f172a;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+    .recall-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    /* Score Summary Banner */
+    .score-banner {
+      background: linear-gradient(135deg, #eef2ff, #ecfeff);
+      border: 1px solid #c7d2fe;
+      border-radius: var(--radius);
+      padding: 14px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Toast & Modal */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #0f172a;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s ease;
+      z-index: 100;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.5);
+      display: none;
+      place-items: center;
+      padding: 16px;
+      z-index: 90;
+    }
+    .modal-backdrop.open { display: grid; }
+    .modal {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 18px;
+      max-width: 380px;
+      width: 100%;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    .modal h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 6px; }
+    .modal p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 14px; }
+    .modal-actions { display: flex; justify-content: flex-end; gap: 8px; }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="../../index.html" class="brand">
-        <span class="brand-badge" aria-hidden="true">🎓</span>
-        <span>Class 7 Learning</span>
-      </a>
-      <div class="header-actions">
-        <a href="../../index.html" class="nav-pill">&larr; All Subjects</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <button class="brand" id="homeBtn" type="button">
+        <div class="brand-icon">🔬</div>
+        <div>
+          <div class="brand-title">৭ম শ্রেণির বিজ্ঞান</div>
+          <div class="brand-sub">সামারি • MCQ • জ্ঞানমূলক • মডেল টেস্ট</div>
+        </div>
+      </button>
+      <div class="hud">
+        <span class="hud-pill xp" id="hudXp">⭐ ০ পয়েন্ট</span>
+        <span class="hud-pill streak" id="hudStreak">🔥 ০</span>
+        <span class="hud-pill rank" id="hudRank">নতুন শিক্ষার্থী</span>
+        <button class="icon-btn" id="soundToggleBtn" type="button" title="সাউন্ড চালু/বন্ধ">🔊</button>
       </div>
     </div>
   </header>
 
-  <section class="subject-banner" id="subject-banner">
-    <div class="container subject-banner-inner">
-      <div class="subject-title-row">
-        <div class="subject-title-icon" id="subject-icon" aria-hidden="true">📖</div>
-        <div>
-          <h1 id="subject-title">Loading Subject...</h1>
-          <p id="subject-subtitle">Class 7 Interactive Learning Module</p>
-        </div>
+  <main class="container" id="appRoot"></main>
+
+  <div class="toast" id="toastEl"></div>
+
+  <div class="modal-backdrop" id="confirmModal">
+    <div class="modal">
+      <h3 id="modalTitle">রিসেট করবেন?</h3>
+      <p id="modalDesc">এই অংশের উত্তর ও স্কোর মুছে আবার নতুন করে শুরু করা হবে।</p>
+      <div class="modal-actions">
+        <button class="btn btn-sm" id="modalCancel" type="button">বাতিল</button>
+        <button class="btn btn-sm btn-danger" id="modalConfirm" type="button">হ্যাঁ, রিসেট করুন</button>
       </div>
     </div>
-  </section>
-
-  <div class="container">
-    <div class="progress-wrap" id="progress-wrap">
-      <div class="progress-meta">
-        <span id="progress-text">Lesson 1 of 1</span>
-        <span id="progress-percent">0%</span>
-      </div>
-      <div class="progress-track">
-        <div class="progress-fill" id="progress-fill"></div>
-      </div>
-    </div>
-
-    <div class="selector-panel" id="selector-panel">
-      <div class="control-group">
-        <label for="chapter-select" class="control-label">Chapter</label>
-        <select id="chapter-select" class="select-input"></select>
-      </div>
-      <div class="control-group">
-        <label for="topic-select" class="control-label">Topic</label>
-        <select id="topic-select" class="select-input"></select>
-      </div>
-    </div>
-
-    <div class="learning-toolbar" id="learning-toolbar">
-      <button type="button" class="btn btn-secondary btn-sm" id="toggle-bn-btn">👁️ Hide Bangla</button>
-      <button type="button" class="btn btn-primary btn-sm" id="play-lesson-btn">▶️ Play Full Lesson</button>
-      <button type="button" class="btn btn-danger btn-sm" id="stop-audio-btn">⏹️ Stop</button>
-      <div class="speed-control">
-        <label for="speed-select">Speed</label>
-        <select id="speed-select" class="speed-select" aria-label="Speech speed">
-          <option value="0.75">0.75x</option>
-          <option value="1" selected>1x</option>
-          <option value="1.25">1.25x</option>
-        </select>
-      </div>
-      <div class="audio-notice" id="audio-notice" role="status" aria-live="polite"></div>
-    </div>
-
-    <main class="lesson-main" id="lesson-main"></main>
-
-    <nav class="lesson-nav" id="lesson-nav" aria-label="Lesson navigation">
-      <button type="button" class="btn btn-secondary" id="prev-topic-btn">&larr; Previous</button>
-      <button type="button" class="btn btn-primary" id="next-topic-btn">Next &rarr;</button>
-    </nav>
   </div>
 
-  <footer class="site-footer" style="margin-top: 28px;">
-    <div class="container">
-      <p>Class 7 Complete Learning Platform &bull; <a href="../../index.html" style="color:inherit;">Return to Homepage</a></p>
-    </div>
-  </footer>
+  <script>
+    const APP_DATA = {"chapters": [{"id": "ch4", "number": "অধ্যায় ৪", "title": "শ্বসন", "subtitle": "জীবের শক্তি উৎপাদন, মানব শ্বসনতন্ত্র ও শ্বসনতন্ত্রের রোগ", "icon": "🫁", "color": "#0d9488", "summaries": [{"title": "১. শ্বসন ও জীবজগতে শ্বসন প্রক্রিয়া", "points": ["যে জৈব রাসায়নিক প্রক্রিয়ায় জীবকোষস্থ সঞ্চিত খাদ্যবস্তু অক্সিজেনের উপস্থিতি বা অনুপস্থিতিতে জারিত হয়ে খাদ্যস্থ রাসায়নিক শক্তিকে গতিশক্তি ও তাপশক্তিতে রূপান্তরিত ও মুক্ত করে এবং কার্বন ডাইঅক্সাইড ও পানি উৎপন্ন হয়, তাকে শ্বসন বলে।", "শ্বসন এক প্রকার দহন ও অন্তঃকোষীয় বিপাকীয় প্রক্রিয়া। উদ্ভিদ ও প্রাণীর প্রতিটি সজীব কোষে দিন-রাত্রি সব সময় শ্বসন ঘটে।", "সবাত শ্বসন: অক্সিজেনের উপস্থিতিতে যে শ্বসন হয় (সকল উন্নত উদ্ভিদ ও প্রাণীতে ঘটে)। অবাত শ্বসন: অক্সিজেনের অনুপস্থিতিতে যে শ্বসন হয় (ব্যাকটেরিয়া জাতীয় আদিকোষী জীবে ঘটে)।", "উদ্ভিদের কোনো নির্দিষ্ট শ্বসন অঙ্গ নেই। পাতার পত্ররন্ধ্র (স্টোমাটা), কাণ্ডের লেন্টিসেল ও অন্তঃকোষীয় স্থানের মাধ্যমে বায়ু প্রবেশ করে। পানিতে নিমজ্জিত উদ্ভিদ সমগ্র দেহতলের সাহায্যে অক্সিজেন শোষণ করে।", "নিম্নশ্রেণির প্রাণীতে ত্বক ও ট্রাকিয়ার মাধ্যমে শ্বসন হয়। মাছ ও ব্যাঙাচি ফুলকার সাহায্যে এবং স্থলজ মেরুদণ্ডী প্রাণীরা ফুসফুসের সাহায্যে শ্বাসকার্য চালায়।", "অঙ্কুরিত ছোলা বীজ নিয়ে থার্মোফ্লাক্সের পরীক্ষায় প্রমাণিত হয় যে শ্বসনকালে তাপশক্তি উৎপন্ন হয় (সিদ্ধ বীজে তাপ বাড়ে না)।"]}, {"title": "২. মানব শ্বসনতন্ত্রের প্রধান অঙ্গসমূহ", "points": ["মানব শ্বসনতন্ত্র ৭টি প্রধান অংশ নিয়ে গঠিত: ১. নাসারন্ধ্র ও নাসাপথ, ২. নাসা গলবিল, ৩. স্বরযন্ত্র, ৪. শ্বাসনালি বা ট্রাকিয়া, ৫. ক্লোম শাখা বা ব্রঙ্কাস, ৬. ফুসফুস এবং ৭. মধ্যচ্ছদা।", "নাসাপথের সম্মুখভাগ লোম ও পশ্চাৎ দিক ঝিল্লি দ্বারা আবৃত থাকে, যা ধূলিকণা ও রোগজীবাণু আটকে দেয়।", "গলবিল ও শ্বাসনালির সংযোগস্থলে স্বরযন্ত্র অবস্থিত। এখানে স্বর সৃষ্টিকারী স্বররজ্জু বা ভোকাল কর্ড থাকে।", "শ্বাসনালি ফুসফুসের কাছে এসে ডান ও বাম দুটি ক্লোম শাখা বা ব্রঙ্কাসে বিভক্ত হয়। ফুসফুসের ভেতরে এগুলো অসংখ্য ব্রঙ্কিওলে বিভক্ত হয়ে বায়ুথলি বা অ্যালভিওলাসে প্রবেশ করে।", "ফুসফুস দুই ভাঁজবিশিষ্ট 'প্লুরা' নামক পর্দা দ্বারা আবৃত। ডান পাশের ফুসফুসটি বাম পাশের ফুসফুসের চেয়ে সামান্য বড়।", "মধ্যচ্ছদা (Diaphragm): যে মাংসপেশি বক্ষগহ্বর ও উদরগহ্বরকে পৃথক করে রাখে। এটি দেখতে প্রসারিত ছাতার মতো এবং প্রশ্বাস-নিঃশ্বাস নিয়ন্ত্রণ করে।"]}, {"title": "৩. শ্বসন পদ্ধতি: বহিঃশ্বসন ও অন্তঃশ্বসন", "points": ["শ্বসন প্রক্রিয়াকে দুই ভাগে ভাগ করা হয়: ১. বহিঃশ্বসন ও ২. অন্তঃশ্বসন।", "বহিঃশ্বসন: ফুসফুসের বায়ুথলি (অ্যালভিওলাস) ও রক্তের কৈশিকনালির মধ্যে অক্সিজেন ও কার্বন ডাইঅক্সাইডের বিনিময়কে বহিঃশ্বসন বলে। এর দুটি পর্যায়: প্রশ্বাস (শ্বাস গ্রহণ) ও নিঃশ্বাস (শ্বাস ত্যাগ)।", "প্রশ্বাসের সময় মধ্যচ্ছদা ও বক্ষপিঞ্জরাস্থির মাঝের পেশি সংকুচিত হয় এবং মধ্যচ্ছদা নিচের দিকে নামে; নিঃশ্বাসের সময় পেশিগুলো শিথিল ও প্রসারিত হয়।", "অন্তঃশ্বসন: কোষের মাইটোকন্ড্রিয়ার ভেতরে এনজাইমের নিয়ন্ত্রণে খাদ্যের সাথে অক্সিজেনের রাসায়নিক বিক্রিয়ায় গতিশক্তি, তাপশক্তি ও কার্বন ডাইঅক্সাইড উৎপন্ন হয়।", "বায়ু প্রবাহের সঠিক পথ: নাসারন্ধ্র → নাসাপথ → নাসা গলবিল → ট্রাকিয়া → ব্রঙ্কাস → ব্রঙ্কিওল → অ্যালভিওলি বা বায়ুথলি।", "পত্ররন্ধ্রের রক্ষীকোষে ক্লোরোফিল থাকায় দিনের বেলায় সালোকসংশ্লেষণ ঘটে এবং পত্ররন্ধ্র খুলে যায়।"]}, {"title": "৪. শ্বসনতন্ত্রের সাধারণ রোগ ও প্রতিকার", "points": ["যক্ষ্মা: ব্যাকটেরিয়ার আক্রমণে হয়। লক্ষণ: ওজন কমা, খুসখুসে কাশি ও কফের সাথে রক্ত, বিকালে অল্প জ্বর ও রাতে ঘাম। প্রতিরোধে শিশুকে জন্মের পর বি.সি.জি. (BCG) টিকা দিতে হয়।", "নিউমোনিয়া: ব্যাকটেরিয়ার আক্রমণে ফুসফুসে হয়। অত্যধিক ঠান্ডা লাগা, হাম বা ব্রংকাইটিসের পর হতে পারে। লক্ষণ: কাশি, শ্বাসকষ্ট, নাকের ছিদ্র বড় হওয়া, বেশি জ্বর ও বুকে ব্যথা।", "ব্রংকাইটিস: শ্বাসনালির সংক্রমণ, যা এক ধরনের ভাইরাস থেকে হয়। অস্বাস্থ্যকর পরিবেশ, ধুলাবালি, ঠান্ডা ও ধূমপান থেকে হয়। লক্ষণ: কাশি, কফ, শ্বাসকষ্ট ও জ্বর।", "হাঁপানি বা অ্যাজমা: এটি জীবাণুবাহিত বা সংক্রামক রোগ নয়। ধুলাবালি, ফুলের রেণু বা বিশেষ খাবারে অ্যালার্জি থেকে হতে পারে। জ্বর থাকে না, হঠাৎ শ্বাসকষ্ট বেড়ে যায়। শ্বাসকষ্ট লাঘবে ইনহেলার সাথে রাখা জরুরি।"]}], "mcqs": [{"q": "শ্বসনের মুখ্য উদ্দেশ্য কী?", "opts": ["খাদ্য তৈরি করা", "স্থৈতিক শক্তিকে গতি ও তাপশক্তিতে রূপান্তর", "রক্ত সঞ্চালন করা", "পানি শোষণ করা"], "ans": 1, "exp": "শ্বসনের মাধ্যমে খাদ্যস্থ রাসায়নিক/স্থৈতিক শক্তি গতিশক্তি ও তাপশক্তিতে রূপান্তরিত হয়।"}, {"q": "উদ্ভিদ ও প্রাণীর প্রতিটি সজীব কোষে শ্বসন ঘটে কখন?", "opts": ["শুধু দিনে", "শুধু রাতে", "দিন-রাত্রি সব সময়", "শুধু বর্ষাকালে"], "ans": 2, "exp": "শ্বসন প্রক্রিয়া দিন-রাত্রি ২৪ ঘণ্টাই চলতে থাকে।"}, {"q": "অক্সিজেনের অনুপস্থিতিতে যে শ্বসন হয় তাকে কী বলে?", "opts": ["সবাত শ্বসন", "অবাত শ্বসন", "বহিঃশ্বসন", "প্রশ্বাস"], "ans": 1, "exp": "অক্সিজেনের অনুপস্থিতিতে ব্যাকটেরিয়ার মতো আদিকোষী জীবে অবাত শ্বসন ঘটে।"}, {"q": "কোন জীবদেহে অবাত শ্বসন ঘটে?", "opts": ["আম গাছ", "মানুষ", "ব্যাকটেরিয়া", "মাছ"], "ans": 2, "exp": "ব্যাকটেরিয়া জাতীয় আদিকোষী জীবদেহে অবাত শ্বসন ঘটে।"}, {"q": "নিচের কোনটি উদ্ভিদের শ্বসন অঙ্গ নয়?", "opts": ["পত্ররন্ধ্র", "লেন্টিসেল", "ত্বক", "অন্তঃকোষীয় স্থান"], "ans": 2, "exp": "ত্বক নিম্নশ্রেণির প্রাণীর শ্বসন অঙ্গ; উদ্ভিদে পত্ররন্ধ্র ও লেন্টিসেল থাকে।"}, {"q": "পানিতে নিমজ্জিত উদ্ভিদ কিসের সাহায্যে অক্সিজেন শোষণ করে?", "opts": ["ফুলকা", "সমগ্র দেহতল", "ট্রাকিয়া", "ফুসফুস"], "ans": 1, "exp": "পানিতে নিমজ্জিত উদ্ভিদ সমগ্র দেহতলের সাহায্যে অক্সিজেন শোষণ করে।"}, {"q": "মাছ ও ব্যাঙাচি কিসের সাহায্যে শ্বাসকার্য চালায়?", "opts": ["ফুসফুস", "ফুলকা", "ত্বক", "পত্ররন্ধ্র"], "ans": 1, "exp": "মাছ ও ব্যাঙাচি ফুলকার সাহায্যে পানিতে দ্রবীভূত অক্সিজেন গ্রহণ করে।"}, {"q": "নিম্নশ্রেণির প্রাণীতে শ্বসন হয় প্রধানত কিসের মাধ্যমে?", "opts": ["ত্বক ও ট্রাকিয়া", "ফুসফুস ও ফুলকা", "লেন্টিসেল", "স্বরযন্ত্র"], "ans": 0, "exp": "নিম্নশ্রেণির প্রাণীতে প্রধানত ত্বক ও ট্রাকিয়ার মাধ্যমে শ্বসন হয়।"}, {"q": "থার্মোফ্লাক্সের পরীক্ষায় অঙ্কুরিত ছোলা বীজে কী প্রমাণিত হয়?", "opts": ["অক্সিজেন তৈরি হয়", "শ্বসনে তাপ উৎপন্ন হয়", "শর্করা তৈরি হয়", "পানি শোষিত হয়"], "ans": 1, "exp": "জীবন্ত অঙ্কুরিত বীজে শ্বসন চলায় তাপ উৎপন্ন হয়ে থার্মোমিটারের পারদ ওপরে ওঠে।"}, {"q": "নাসাপথের সম্মুখভাগে লোম ও পশ্চাৎ দিকে ঝিল্লি থাকার কাজ কী?", "opts": ["স্বর সৃষ্টি করা", "ধূলিকণা ও রোগজীবাণু আটকানো", "খাদ্য গলাধঃকরণ", "রক্ত পাম্প করা"], "ans": 1, "exp": "প্রশ্বাস বায়ুর ধূলিকণা ও জীবাণু নাকের লোম ও ঝিল্লিতে আটকে যায়।"}, {"q": "মানব শ্বসনতন্ত্রের কোথায় ভোকাল কর্ড বা স্বররজ্জু থাকে?", "opts": ["নাসা গলবিল", "স্বরযন্ত্র", "ব্রঙ্কাস", "মধ্যচ্ছদা"], "ans": 1, "exp": "গলবিল ও শ্বাসনালির সংযোগস্থলে অবস্থিত স্বরযন্ত্রে ভোকাল কর্ড থাকে।"}, {"q": "ফুসফুস কোন পর্দা দ্বারা আবৃত থাকে?", "opts": ["পেরিকার্ডিয়াম", "প্লুরা", "ভিলাই", "ঝিল্লি"], "ans": 1, "exp": "ফুসফুস দুই ভাঁজবিশিষ্ট 'প্লুরা' নামক পর্দা দ্বারা আবৃত থাকে।"}, {"q": "মানবদেহের কোন ফুসফুসটি সামান্য বড়?", "opts": ["বাম ফুসফুস", "ডান ফুসফুস", "উভয়ই সমান", "কোনোটিই নয়"], "ans": 1, "exp": "ডান পাশের ফুসফুসটি বাম পাশের ফুসফুসের চেয়ে সামান্য বড়।"}, {"q": "ক্লোম শাখা বা ব্রঙ্কাস ফুসফুসে প্রবেশ করে কিসে বিভক্ত হয়?", "opts": ["ট্রাকিয়া", "ব্রঙ্কিওল", "গলবিল", "নাসাপথ"], "ans": 1, "exp": "ব্রঙ্কাস ফুসফুসে প্রবেশ করে অসংখ্য সূক্ষ্ম ব্রঙ্কিওলে বিভক্ত হয়।"}, {"q": "সূক্ষ্ম ব্রঙ্কিওলগুলো কোথায় প্রবেশ করে?", "opts": ["স্বরযন্ত্রে", "বায়ুথলি বা অ্যালভিওলাসে", "হৃৎপিণ্ডে", "পাকস্থলিতে"], "ans": 1, "exp": "ব্রঙ্কিওলগুলো বায়ুথলি বা অ্যালভিওলাসে প্রবেশ করে যেখানে গ্যাসীয় বিনিময় হয়।"}, {"q": "বক্ষগহ্বর ও উদরগহ্বরকে পৃথক করে রাখে কোনটি?", "opts": ["প্লুরা", "মধ্যচ্ছদা", "ব্রঙ্কাস", "অন্ননালি"], "ans": 1, "exp": "মধ্যচ্ছদা বা ডায়াফ্রাম বক্ষগহ্বর ও উদরগহ্বরকে পৃথক রাখে।"}, {"q": "মধ্যচ্ছদা দেখতে কেমন?", "opts": ["থলির মতো", "প্রসারিত ছাতার মতো", "নলের মতো", "বৃত্তের মতো"], "ans": 1, "exp": "মধ্যচ্ছদা দেখতে অনেকটা প্রসারিত ছাতার মতো।"}, {"q": "ফুসফুস ও রক্তজালিকার মধ্যে গ্যাসীয় আদান-প্রদানকে কী বলে?", "opts": ["অন্তঃশ্বসন", "বহিঃশ্বসন", "সালোকসংশ্লেষণ", "পরিবহন"], "ans": 1, "exp": "ফুসফুসের বায়ুথলি ও কৈশিকনালির মধ্যে O2 ও CO2 বিনিময়কে বহিঃশ্বসন বলে।"}, {"q": "প্রশ্বাসের সময় মধ্যচ্ছদা কোন দিকে নামে?", "opts": ["উপরের দিকে ওঠে", "নিচের দিকে নামে", "স্থির থাকে", "বেঁকে যায়"], "ans": 1, "exp": "প্রশ্বাসের সময় মধ্যচ্ছদা সংকুচিত হয়ে নিচের দিকে নামে এবং বক্ষগহ্বরের আয়তন বাড়ে।"}, {"q": "কোষের কোন অঙ্গাণুতে অন্তঃশ্বসন ঘটে?", "opts": ["নিউক্লিয়াস", "মাইটোকন্ড্রিয়া", "প্লাস্টিড", "গলগি বডি"], "ans": 1, "exp": "কোষের মাইটোকন্ড্রিয়ার ভেতরে এনজাইমের নিয়ন্ত্রণে অন্তঃশ্বসন ঘটে।"}, {"q": "পত্ররন্ধ্রের রক্ষীকোষের কোন উপাদানের কারণে দিনে সালোকসংশ্লেষণ ঘটে?", "opts": ["হিমোগ্লোবিন", "ক্লোরোফিল", "আয়রণ", "লাইপেজ"], "ans": 1, "exp": "রক্ষীকোষে ক্লোরোফিল থাকায় দিনে সালোকসংশ্লেষণ ঘটে এবং পত্ররন্ধ্র খুলে যায়।"}, {"q": "লসিকা কী ধরনের পদার্থ?", "opts": ["অম্লীয়", "ঈষৎ মৃদু ক্ষারীয়", "নিরপেক্ষ", "কঠিন"], "ans": 1, "exp": "লসিকা হলো এক রকম স্বচ্ছ, ঈষৎ মৃদু ক্ষারীয় পদার্থ (রূপান্তরিত কলারস)।"}, {"q": "যক্ষ্মা রোগের কারণ কী?", "opts": ["ভাইরাস", "ব্যাকটেরিয়া", "ছত্রাক", "অ্যালার্জি"], "ans": 1, "exp": "এক ধরনের ব্যাকটেরিয়ার আক্রমণে যক্ষ্মা রোগ হয়।"}, {"q": "যক্ষ্মা রোগ প্রতিরোধের জন্য শিশুকে কোন টিকা দেওয়া হয়?", "opts": ["পোলিও", "বি.সি.জি. (BCG)", "ডিপিটি", "হেপাটাইটিস"], "ans": 1, "exp": "জন্মের পর এক বছরের মধ্যে শিশুকে বি.সি.জি. টিকা দিলে যক্ষ্মা প্রতিরোধ হয়।"}, {"q": "বিকালের দিকে অল্প জ্বর ও রাতে শরীরে ঘাম হওয়া কোন রোগের লক্ষণ?", "opts": ["নিউমোনিয়া", "যক্ষ্মা", "হাঁপানি", "ব্রংকাইটিস"], "ans": 1, "exp": "ওজন কমা, খুসখুসে কাশি, বিকালে অল্প জ্বর ও রাতে ঘাম যক্ষ্মার প্রধান লক্ষণ।"}, {"q": "নিউমোনিয়া শরীরের কোন অঙ্গের রোগ?", "opts": ["হৃৎপিণ্ড", "ফুসফুস", "পাকস্থলি", "যকৃৎ"], "ans": 1, "exp": "নিউমোনিয়া ফুসফুসের একটি মারাত্মক ব্যাকটেরিয়াজনিত রোগ।"}, {"q": "শ্বাস নেওয়ার সময় নাকের ছিদ্র বড় হয়ে যাওয়া কোন রোগের লক্ষণ?", "opts": ["যক্ষ্মা", "নিউমোনিয়া", "গ্যাস্ট্রিক", "আমাশয়"], "ans": 1, "exp": "শিশুদের নিউমোনিয়া হলে শ্বাসকষ্টের কারণে শ্বাস নেওয়ার সময় নাকের ছিদ্র বড় হয়।"}, {"q": "শ্বাসনালির সংক্রমণকে কী বলে?", "opts": ["নিউমোনিয়া", "ব্রংকাইটিস", "যক্ষ্মা", "অ্যাজমা"], "ans": 1, "exp": "ভাইরাসের কারণে শ্বাসনালির সংক্রমণকে ব্রংকাইটিস বলে।"}, {"q": "কোন রোগটি জীবাণুবাহিত বা সংক্রামক নয়?", "opts": ["যক্ষ্মা", "নিউমোনিয়া", "হাঁপানি বা অ্যাজমা", "ব্রংকাইটিস"], "ans": 2, "exp": "হাঁপানি বা অ্যাজমা ছোঁয়াচে বা জীবাণুবাহিত রোগ নয়।"}, {"q": "হাঁপানি রোগীর শ্বাসকষ্ট লাঘবে সাথে রাখা জরুরি কোনটি?", "opts": ["থার্মোমিটার", "ইনহেলার", "গ্লুকোজ", "প্যারাসিটামল"], "ans": 1, "exp": "শ্বাসকষ্ট কমাতে হাঁপানি রোগীর সাথে সবসময় ইনহেলার রাখা জরুরি।"}], "gyanmulok": [{"q": "শ্বসন কাকে বলে?", "a": "যে জৈব রাসায়নিক প্রক্রিয়ায় জীবকোষস্থ খাদ্য অক্সিজেনের উপস্থিতি বা অনুপস্থিতিতে জারিত হয়ে গতিশক্তি ও তাপশক্তিতে রূপান্তরিত হয় এবং CO2 ও পানি উৎপন্ন হয়, তাকে শ্বসন বলে।"}, {"q": "সবাত শ্বসন কী?", "a": "অক্সিজেনের উপস্থিতিতে যে শ্বসন সম্পন্ন হয়, তাকে সবাত শ্বসন বলে।"}, {"q": "অবাত শ্বসন কী?", "a": "অক্সিজেনের অনুপস্থিতিতে যে শ্বসন সম্পন্ন হয়, তাকে অবাত শ্বসন বলে (যেমন: ব্যাকটেরিয়ায়)।"}, {"q": "উদ্ভিদের কোন কোন অংশ দিয়ে শ্বসন বায়ু প্রবেশ করে?", "a": "পাতার পত্ররন্ধ্র (স্টোমাটা), কাণ্ডের লেন্টিসেল এবং অন্তঃকোষীয় স্থানের মাধ্যমে।"}, {"q": "মাছ ও ব্যাঙাচি কিসের সাহায্যে শ্বসন সম্পন্ন করে?", "a": "ফুলকার সাহায্যে।"}, {"q": "শ্বসনতন্ত্র কাকে বলে?", "a": "যে অঙ্গগুলো একত্রে প্রাণীর শ্বসনকার্য চালানোর কাজে অংশ নেয়, তাদের একত্রে শ্বসনতন্ত্র বলে।"}, {"q": "স্বরযন্ত্র কোথায় অবস্থিত?", "a": "গলবিল ও শ্বাসনালির সংযোগস্থলে স্বরযন্ত্র অবস্থিত।"}, {"q": "ক্লোম শাখা বা ব্রঙ্কাস কী?", "a": "শ্বাসনালি ফুসফুসের কাছে এসে ডান ও বাম দুটি শাখায় বিভক্ত হয়ে ফুসফুসে প্রবেশ করে, এদের ব্রঙ্কাস বলে।"}, {"q": "প্লুরা কী?", "a": "ফুসফুস যে দুই ভাঁজবিশিষ্ট পাতলা পর্দা দ্বারা আবৃত থাকে, তাকে প্লুরা বলে।"}, {"q": "অ্যালভিওলাস বা বায়ুথলি কী?", "a": "ফুসফুসের ভেতরে সূক্ষ্ম ব্রঙ্কিওলগুলো যে পাতলা কোষগঠিত বায়ুকোষে প্রবেশ করে, তাকে অ্যালভিওলাস বলে।"}, {"q": "মধ্যচ্ছদা কাকে বলে?", "a": "যে প্রসারিত ছাতার মতো মাংসপেশি বক্ষগহ্বর ও উদরগহ্বরকে পৃথক করে রাখে, তাকে মধ্যচ্ছদা বলে।"}, {"q": "বহিঃশ্বসন কাকে বলে?", "a": "যে প্রক্রিয়ায় ফুসফুসের বায়ুথলি ও কৈশিকনালির রক্তের মধ্যে অক্সিজেন ও কার্বন ডাইঅক্সাইডের আদান-প্রদান ঘটে, তাকে বহিঃশ্বসন বলে।"}, {"q": "প্রশ্বাস কী?", "a": "পরিবেশ থেকে আমরা যে অক্সিজেনযুক্ত বায়ু ফুসফুসে গ্রহণ করি, তাকে প্রশ্বাস বলে।"}, {"q": "অন্তঃশ্বসন কোথায় ঘটে?", "a": "দেহকোষের মাইটোকন্ড্রিয়ার ভেতরে অন্তঃশ্বসন ঘটে।"}, {"q": "লসিকা কী?", "a": "এক রকম স্বচ্ছ, ঈষৎ মৃদু ক্ষারীয় পদার্থ, যা রূপান্তরিত কলারস।"}, {"q": "যক্ষ্মা রোগের প্রতিষেধক টিকার নাম কী?", "a": "বি.সি.জি. (BCG) টিকা।"}, {"q": "নিউমোনিয়া রোগ কেন হয়?", "a": "এক ধরনের ব্যাকটেরিয়ার আক্রমণে (সাধারণত অত্যধিক ঠান্ডা লাগা, হাম বা ব্রংকাইটিসের পর) নিউমোনিয়া হয়।"}, {"q": "ব্রংকাইটিস কী?", "a": "ভাইরাসের সংক্রমণে শ্বাসনালিতে যে প্রদাহ বা রোগ হয়, তাকে ব্রংকাইটিস বলে।"}, {"q": "হাঁপানি কি ছোঁয়াচে রোগ?", "a": "না, হাঁপানি বা অ্যাজমা ছোঁয়াচে বা জীবাণুবাহিত রোগ নয়।"}, {"q": "হাঁপানি রোগের দুটি প্রধান কারণ লেখো।", "a": "বাতাসে উপস্থিত ধুলাবালি, ফুলের রেণু বা বিশেষ কোনো খাবারের সংস্পর্শে আসা।"}]}, {"id": "ch5", "number": "অধ্যায় ৫", "title": "পরিপাকতন্ত্র ও রক্ত সংবহনতন্ত্র", "subtitle": "খাদ্য পরিপাক, এনজাইম, রক্তের উপাদান, রক্তনালি ও হৃৎপিণ্ড", "icon": "🫀", "color": "#e11d48", "summaries": [{"title": "১. পরিপাক, লালা ও এনজাইমের ভূমিকা", "points": ["যে প্রক্রিয়ায় জটিল, অদ্রবণীয় খাদ্যবস্তু নির্দিষ্ট এনজাইমের সহায়তায় দেহের গ্রহণ উপযোগী সরল, দ্রবণীয় ও তরল খাদ্য উপাদানে পরিণত হয়, তাকে পরিপাক বলে।", "মুখগহ্বর থেকেই খাদ্যের পরিপাক শুরু হয়। মুখের পেছনে তিন জোড়া লালাগ্রন্থি থাকে। লালায় অবস্থিত এনজাইমের নাম 'টায়ালিন', যা শ্বেতসারকে ভেঙে শর্করায় (মলটোজ) পরিণত করে।", "এনজাইম হলো এমন জৈব অনুঘটক যা রাসায়নিক বিক্রিয়ায় সাহায্য করে কিন্তু বিক্রিয়া শেষে নিজে অপরিবর্তিত থাকে। যেমন: অ্যামাইলেজ শর্করা, ট্রিপসিন আমিষ এবং লাইপেজ স্নেহ জাতীয় খাদ্য হজম করে।", "অন্ননালির পেশির ক্রমসংকোচন ও প্রসারণকে 'পেরিস্টালসিস' বলে, যার মাধ্যমে খাদ্যবস্তু পাকস্থলিতে পৌঁছায়।"]}, {"title": "২. পৌষ্টিকনালি ও পরিপাকগ্রন্থি", "points": ["পৌষ্টিকনালি মুখছিদ্র থেকে মলদ্বার পর্যন্ত বিস্তৃত: মুখছিদ্র → মুখগহ্বর → গলবিল → অন্ননালি → পাকস্থলি → ক্ষুদ্রান্ত্র → বৃহদান্ত্র → মলদ্বার।", "মানুষের স্থায়ী দাঁত ৩২টি (প্রতি চোয়ালে ১৬টি) এবং ৪ প্রকার: কর্তন, ছেদন, অগ্রপেষণ ও পেষণ (আক্কেল দাঁত পেষণ দাঁতের অন্তর্ভুক্ত)।", "গলবিলে কোনো এনজাইম নিঃসৃত হয় না, তাই এখানে পরিপাক হয় না। পাকস্থলির প্রাচীরে গ্যাস্ট্রিক গ্রন্থি থাকে।", "ক্ষুদ্রান্ত্র পরিপাকনালির সবচেয়ে দীর্ঘ অংশ। এর ৩টি ভাগ: ডিওডেনাম (U-আকৃতির), জেজুনাম ও ইলিয়াম। ইলিয়ামের প্রাচীরে আঙুলের মতো 'ভিলাই' থাকে যা খাদ্যের সারাংশ শোষণ করে।", "যকৃৎ দেহের সবচেয়ে বড় গ্রন্থি; এখান থেকে পিত্তরস তৈরি হয়ে পিত্তথলিতে জমা থাকে এবং স্নেহ জাতীয় খাদ্য হজমে সাহায্য করে।", "বৃহদান্ত্রে কোনো এনজাইম তৈরি হয় না; এটি মূলত পানি শোষণ করে এবং E. coli ব্যাকটেরিয়া আঁশযুক্ত খাদ্যের গাজন ঘটায়।"]}, {"title": "৩. পরিপাকতন্ত্রের রোগ ও যত্ন", "points": ["গ্যাস্ট্রিক/অম্বল: বেশি তেল-মসলা বা অনিয়মিত খাওয়ায় পাকস্থলিতে বাড়তি এসিড তৈরি হয়। চিকিৎসা না হলে ক্ষত হয়ে গ্যাস্ট্রিক আলসার হয়।", "অ্যামিবিক আমাশয়: 'এন্টামিবা' নামক এককোষী প্রাণীর আক্রমণে হয় (মলের সাথে আম বা শ্লেষ্মা যায়)।", "ব্যাসিলারি আমাশয়: 'সিগেলা' নামক ব্যাকটেরিয়া দ্বারা হয়; মলের সাথে রক্তও যেতে পারে (রক্ত আমাশয়)।", "কোষ্ঠকাঠিন্য: কাঁচা ফলমূল, শাকসবজি ও আঁশযুক্ত খাবার কম খেলে ও খাদ্য চলন ধীর হলে হয়।"]}, {"title": "৪. রক্ত, রক্তকণিকা, রক্তনালি ও হৃৎপিণ্ড", "points": ["রক্ত এক ধরনের ক্ষারধর্মী তরল যোজক টিস্যু। রক্তের উপাদান দুটি: রক্তরস (৫৫%) ও রক্তকণিকা (৪৫%)। রক্তরসে ফাইব্রিনোজেন থাকে যা রক্ত জমাট বাঁধতে সাহায্য করে।", "তিন ধরনের রক্তকণিকা: ১. লোহিত রক্তকণিকা (হিমোগ্লোবিন থাকে, অক্সিজেন বহন করে, পরিণত অবস্থায় নিউক্লিয়াস নেই), ২. শ্বেত রক্তকণিকা (নিউক্লিয়াস আছে, জীবাণু ধ্বংস করে দেহের প্রহরীর মতো কাজ করে), ৩. অণুচক্রিকা বা প্লেটলেট (নিউক্লিয়াস নেই, রক্ত জমাট বাঁধায়)।", "রক্তনালি ৩ প্রকার: ধমনি (হৃৎপিণ্ড থেকে রক্ত নেয়, প্রাচীর পুরু, কপাটিকা নেই, O2-সমৃদ্ধ রক্ত বহন করে — ব্যতিক্রম ফুসফুসীয় ধমনি), শিরা (হৃৎপিণ্ডে রক্ত আনে, প্রাচীর পাতলা, কপাটিকা আছে, CO2-যুক্ত রক্ত বহন করে — ব্যতিক্রম ফুসফুসীয় শিরা) ও কৈশিকনালি।", "হৃৎপিণ্ড পেরিকার্ডিয়াম পর্দায় আবৃত, ৪ প্রকোষ্ঠবিশিষ্ট (ডান ও বাম অলিন্দ, ডান ও বাম নিলয়) এবং মিনিটে প্রায় ৭২ বার স্পন্দিত হয়। এর ৩টি স্তর: এপিকার্ডিয়াম, মায়োকার্ডিয়াম (সবচেয়ে পুরু) ও এন্ডোকার্ডিয়াম।"]}], "mcqs": [{"q": "জটিল খাদ্যবস্তুকে সরল ও শোষণ উপযোগী করার প্রক্রিয়াকে কী বলে?", "opts": ["শ্বসন", "পরিপাক", "সংবহন", "রেচন"], "ans": 1, "exp": "এনজাইমের সহায়তায় জটিল খাদ্যকে সরল ও তরল করার প্রক্রিয়াই পরিপাক।"}, {"q": "মানবদেহে খাদ্যের পরিপাক শুরু হয় কোথা থেকে?", "opts": ["পাকস্থলি", "মুখগহ্বর", "ক্ষুদ্রান্ত্র", "অন্ননালি"], "ans": 1, "exp": "মুখগহ্বরে দাঁত ও লালার টায়ালিনের মাধ্যমে পরিপাক শুরু হয়।"}, {"q": "মুখগহ্বরের দুই পাশে কয় জোড়া লালাগ্রন্থি থাকে?", "opts": ["১ জোড়া", "২ জোড়া", "৩ জোড়া", "৪ জোড়া"], "ans": 2, "exp": "মুখগহ্বরের দুই পাশে ৩ জোড়া লালাগ্রন্থি থাকে।"}, {"q": "লালার এনজাইম 'টায়ালিন' শ্বেতসারকে ভেঙে কিসে পরিণত করে?", "opts": ["আমিষ", "শর্করা (মলটোজ)", "স্নেহ", "লবণ"], "ans": 1, "exp": "টায়ালিন শ্বেতসারকে শর্করায় (মলটোজ) পরিণত করে, তাই ভাত বা রুটি চিবালে মিষ্টি লাগে।"}, {"q": "কোন এনজাইম শুধু আমিষ জাতীয় খাদ্যের উপর ক্রিয়া করে?", "opts": ["অ্যামাইলেজ", "ট্রিপসিন", "লাইপেজ", "টায়ালিন"], "ans": 1, "exp": "ট্রিপসিন ও কাইমোট্রিপসিন আমিষ জাতীয় খাদ্য পরিপাকে সাহায্য করে।"}, {"q": "অন্ননালির পেশির ক্রমসংকোচন ও প্রসারণকে কী বলে?", "opts": ["ব্যাপন", "পেরিস্টালসিস", "গাজন", "দহন"], "ans": 1, "exp": "পেরিস্টালসিস প্রক্রিয়ায় খাদ্য অন্ননালি দিয়ে পাকস্থলিতে পৌঁছায়।"}, {"q": "মানুষের স্থায়ী দাঁতের সংখ্যা মোট কয়টি?", "opts": ["২৮টি", "৩২টি", "৩০টি", "৩৬টি"], "ans": 1, "exp": "মানুষের প্রতি চোয়ালে ১৬টি করে মোট ৩২টি স্থায়ী দাঁত থাকে।"}, {"q": "পৌষ্টিকনালির কোন অংশে কোনো এনজাইম নিঃসৃত হয় না?", "opts": ["মুখগহ্বর", "গলবিল", "পাকস্থলি", "ক্ষুদ্রান্ত্র"], "ans": 1, "exp": "গলবিলে কোনো এনজাইম নিঃসৃত হয় না, তাই এখানে কোনো পরিপাক হয় না।"}, {"q": "পৌষ্টিকনালির সবচেয়ে দীর্ঘ অংশ কোনটি?", "opts": ["অন্ননালি", "ক্ষুদ্রান্ত্র", "বৃহদান্ত্র", "পাকস্থলি"], "ans": 1, "exp": "ক্ষুদ্রান্ত্র হলো পরিপাকনালির সবচেয়ে দীর্ঘ অংশ।"}, {"q": "ক্ষুদ্রান্ত্রের প্রথম অংশ ডিওডেনাম দেখতে কোন আকৃতির?", "opts": ["S আকৃতির", "U আকৃতির", "O আকৃতির", "L আকৃতির"], "ans": 1, "exp": "ডিওডেনাম দেখতে ইংরেজি U আকৃতির।"}, {"q": "খাদ্যের সারাংশ শোষণের জন্য ইলিয়ামের প্রাচীরে আঙুলের মতো কী থাকে?", "opts": ["প্লুরা", "ভিলাই", "কপাটিকা", "গ্রন্থি"], "ans": 1, "exp": "ইলিয়ামের প্রাচীরে ভিলাই (ভিলাস) থাকে যা ব্যাপন পদ্ধতিতে খাদ্য শোষণ করে।"}, {"q": "মানবদেহের সবচেয়ে বড় গ্রন্থি কোনটি?", "opts": ["অগ্ন্যাশয়", "যকৃৎ", "লালাগ্রন্থি", "গ্যাস্ট্রিক গ্রন্থি"], "ans": 1, "exp": "যকৃৎ (Liver) মানবদেহের সবচেয়ে বড় গ্রন্থি।"}, {"q": "পিত্তরস কোন জাতীয় খাদ্য হজমে সাহায্য করে?", "opts": ["শর্করা", "স্নেহ জাতীয় খাদ্য", "ভিটামিন", "খনিজ লবণ"], "ans": 1, "exp": "যকৃৎ থেকে উৎপন্ন পিত্তরস স্নেহ জাতীয় খাদ্য হজমে সাহায্য করে।"}, {"q": "অগ্ন্যাশয় থেকে নিঃসৃত লাইপেজ কোন খাদ্য হজম করে?", "opts": ["শর্করা", "আমিষ", "স্নেহ জাতীয় খাদ্য", "পানি"], "ans": 2, "exp": "লাইপেজ স্নেহ বা চর্বি জাতীয় খাদ্য হজম করে।"}, {"q": "বৃহদান্ত্রের প্রধান কাজ কী?", "opts": ["আমিষ হজম করা", "খাদ্যের জলীয় অংশ থেকে পানি শোষণ", "পিত্তরস তৈরি করা", "শ্বাস নেওয়া"], "ans": 1, "exp": "বৃহদান্ত্রে কোনো এনজাইম তৈরি হয় না; এটি মূলত পানি শোষণ করে।"}, {"q": "বৃহদান্ত্রে কোন ব্যাকটেরিয়া আঁশযুক্ত খাদ্যের গাজন ঘটায়?", "opts": ["সিগেলা", "E. coli", "এন্টামিবা", "ভিব্রিও"], "ans": 1, "exp": "বৃহদান্ত্রে E. coli নামক ব্যাকটেরিয়া আঁশ জাতীয় খাদ্যের গাজন ঘটায়।"}, {"q": "অ্যামিবিক আমাশয় হয় কিসের আক্রমণে?", "opts": ["সিগেলা ব্যাকটেরিয়া", "এন্টামিবা", "ভাইরাস", "ছত্রাক"], "ans": 1, "exp": "এন্টামিবা নামে এককোষী প্রাণীর আক্রমণে অ্যামিবিক আমাশয় হয়।"}, {"q": "ব্যাসিলারি আমাশয় হয় কোন ব্যাকটেরিয়ার আক্রমণে?", "opts": ["E. coli", "সিগেলা", "এন্টামিবা", "সালমোনেলা"], "ans": 1, "exp": "সিগেলা নামক ব্যাকটেরিয়া অন্ত্রকে আক্রমণ করলে ব্যাসিলারি (রক্ত) আমাশয় হয়।"}, {"q": "রক্ত কী ধরনের টিস্যু?", "opts": ["পেশি টিস্যু", "তরল যোজক টিস্যু", "আবরণী টিস্যু", "স্নায়ু টিস্যু"], "ans": 1, "exp": "রক্ত হলো এক ধরনের ক্ষারধর্মী তরল যোজক টিস্যু।"}, {"q": "সাধারণত রক্তের শতকরা কত ভাগ রক্তরস?", "opts": ["৪৫ ভাগ", "৫৫ ভাগ", "৬৫ ভাগ", "৭৫ ভাগ"], "ans": 1, "exp": "রক্তের প্রায় শতকরা ৫৫ ভাগ রক্তরস এবং ৪৫ ভাগ রক্তকণিকা।"}, {"q": "রক্তরসের কোন উপাদান রক্ত জমাট বাঁধতে সাহায্য করে?", "opts": ["হিমোগ্লোবিন", "ফাইব্রিনোজেন", "টায়ালিন", "ইউরিয়া"], "ans": 1, "exp": "রক্তরসে অবস্থিত ফাইব্রিনোজেন রক্ত জমাট বাঁধতে সাহায্য করে।"}, {"q": "কোন রক্তকণিকায় হিমোগ্লোবিন থাকে?", "opts": ["শ্বেত রক্তকণিকা", "লোহিত রক্তকণিকা", "অণুচক্রিকা", "লসিকা"], "ans": 1, "exp": "লোহিত রক্তকণিকায় হিমোগ্লোবিন নামক রঞ্জক পদার্থ থাকায় রক্ত লাল দেখায়।"}, {"q": "কোন রক্তকণিকা দেহের প্রহরীর মতো রোগ-জীবাণু ধ্বংস করে?", "opts": ["লোহিত রক্তকণিকা", "শ্বেত রক্তকণিকা", "অণুচক্রিকা", "প্লেটলেট"], "ans": 1, "exp": "শ্বেত রক্তকণিকা ফ্যাগোসাইটোসিস বা জীবাণু ভক্ষণ করে দেহকে রক্ষা করে।"}, {"q": "কোন রক্তকণিকাগুলোতে নিউক্লিয়াস থাকে না?", "opts": ["শুধু শ্বেত রক্তকণিকা", "পরিণত লোহিত কণিকা ও অণুচক্রিকা", "শ্বেত ও লোহিত কণিকা", "সব কণিকা"], "ans": 1, "exp": "পরিণত লোহিত রক্তকণিকা এবং অণুচক্রিকায় নিউক্লিয়াস থাকে না।"}, {"q": "দেহের কোনো অংশ কেটে গেলে রক্ত জমাট বাঁধতে সাহায্য করে কোনটি?", "opts": ["লোহিত কণিকা", "শ্বেত কণিকা", "অণুচক্রিকা (প্লেটলেট)", "হিমোগ্লোবিন"], "ans": 2, "exp": "অণুচক্রিকা বা প্লেটলেট রক্ত জমাট বাঁধিয়ে রক্তপাত বন্ধ করে।"}, {"q": "কোন রক্তনালির গহ্বরে কপাটিকা থাকে না এবং প্রাচীর পুরু?", "opts": ["শিরা", "ধমনি", "কৈশিকনালি", "লসিকানালি"], "ans": 1, "exp": "ধমনির প্রাচীর পুরু, গহ্বর ছোট এবং এতে কপাটিকা থাকে না।"}, {"q": "কোন ধমনি কার্বন ডাইঅক্সাইডযুক্ত রক্ত বহন করে?", "opts": ["মহাধমনি", "ফুসফুসীয় ধমনি", "করোনারি ধমনি", "কোনোটিই নয়"], "ans": 1, "exp": "সব ধমনি O2 সমৃদ্ধ রক্ত বহন করলেও ফুসফুসীয় ধমনি CO2-যুক্ত রক্ত ফুসফুসে নেয়।"}, {"q": "মানুষের হৃৎপিণ্ড প্রতি মিনিটে কমবেশি কতবার স্পন্দিত হয়?", "opts": ["৫০ বার", "৭২ বার", "৯০ বার", "১০০ বার"], "ans": 1, "exp": "সুস্থ মানুষের হৃৎপিণ্ড প্রতি মিনিটে প্রায় ৭২ বার সংকুচিত ও প্রসারিত হয়।"}, {"q": "হৃৎপিণ্ড কোন পর্দা দ্বারা আবৃত থাকে?", "opts": ["প্লুরা", "পেরিকার্ডিয়াম", "মায়োকার্ডিয়াম", "এপিকার্ডিয়াম"], "ans": 1, "exp": "হৃৎপিণ্ড পেরিকার্ডিয়াম নামে দুই স্তরবিশিষ্ট পাতলা পর্দা দ্বারা আবৃত।"}, {"q": "হৃৎপিণ্ডের কয়টি প্রকোষ্ঠ রয়েছে?", "opts": ["২টি", "৩টি", "৪টি", "৬টি"], "ans": 2, "exp": "হৃৎপিণ্ডে ৪টি প্রকোষ্ঠ: ডান ও বাম অলিন্দ এবং ডান ও বাম নিলয়।"}], "gyanmulok": [{"q": "পরিপাক কাকে বলে?", "a": "যে প্রক্রিয়ায় জটিল ও অদ্রবণীয় খাদ্যবস্তু এনজাইমের সহায়তায় সরল, দ্রবণীয় ও দেহের শোষণ উপযোগী উপাদানে পরিণত হয়, তাকে পরিপাক বলে।"}, {"q": "এনজাইম কী?", "a": "এনজাইম হলো এমন জৈব রাসায়নিক বস্তু বা অনুঘটক, যা খাদ্যবস্তুর সাথে মিশে রাসায়নিক বিক্রিয়ায় সাহায্য করে কিন্তু বিক্রিয়া শেষে নিজে অপরিবর্তিত থাকে।"}, {"q": "পেরিস্টালসিস বা ক্রমসংকোচন কী?", "a": "অন্ননালির পেশির পর্যায়ক্রমিক সংকোচন ও প্রসারণের মাধ্যমে খাদ্যবস্তু পাকস্থলিতে পৌঁছানোর প্রক্রিয়াকে পেরিস্টালসিস বলে।"}, {"q": "টায়ালিন কী এবং এর কাজ কী?", "a": "টায়ালিন হলো লালায় অবস্থিত এনজাইম, যা শ্বেতসার জাতীয় খাদ্যকে ভেঙে শর্করায় (মলটোজ) পরিণত করে।"}, {"q": "মানুষের স্থায়ী দাঁত কয় প্রকার ও কী কী?", "a": "৪ প্রকার: কর্তন, ছেদন, অগ্রপেষণ ও পেষণ দাঁত।"}, {"q": "ক্ষুদ্রান্ত্রের তিনটি অংশের নাম লেখো।", "a": "ডিওডেনাম, জেজুনাম ও ইলিয়াম।"}, {"q": "ভিলাই (ভিলাস) কী?", "a": "ক্ষুদ্রান্ত্রের ইলিয়ামের ভেতরের প্রাচীরে অবস্থিত আঙুলের মতো প্রক্ষেপিত অংশ, যা ব্যাপন পদ্ধতিতে খাদ্যের সারাংশ শোষণ করে।"}, {"q": "মানবদেহের সবচেয়ে বড় গ্রন্থির নাম কী এবং এটি কী তৈরি করে?", "a": "যকৃৎ; এটি পিত্তরস তৈরি করে।"}, {"q": "অগ্ন্যাশয় থেকে নিঃসৃত প্রধান তিনটি এনজাইমের নাম লেখো।", "a": "অ্যামাইলেজ, ট্রিপসিন (ও কাইমোট্রিপসিন) এবং লাইপেজ।"}, {"q": "বৃহদান্ত্রের প্রধান কাজ কী?", "a": "খাদ্যের জলীয় অংশ থেকে পানি শোষণ করা এবং মল জমা রাখা।"}, {"q": "দুই ধরনের আমাশয়ের নাম লেখো।", "a": "অ্যামিবিক আমাশয় (এন্টামিবা দ্বারা) এবং ব্যাসিলারি আমাশয় (সিগেলা ব্যাকটেরিয়া দ্বারা)।"}, {"q": "রক্ত সংবহনতন্ত্র কাকে বলে?", "a": "যে তন্ত্রের মাধ্যমে দেহে রক্ত সঞ্চালিত হয় (হৃৎপিণ্ড, রক্ত ও রক্তনালির সমন্বয়ে গঠিত), তাকে রক্ত সংবহনতন্ত্র বলে।"}, {"q": "রক্তের প্রধান দুটি উপাদান কী কী?", "a": "রক্তরস (৫৫%) ও রক্তকণিকা (৪৫%)।"}, {"q": "লোহিত রক্তকণিকার কাজ কী?", "a": "হিমোগ্লোবিনের সাহায্যে ফুসফুস থেকে অক্সিজেন গ্রহণ করে দেহের প্রতিটি কোষে পরিবহন করা।"}, {"q": "শ্বেত রক্তকণিকাকে দেহের প্রহরী বলা হয় কেন?", "a": "দেহে কোনো রোগজীবাণু প্রবেশ করলে শ্বেত রক্তকণিকা সেগুলোকে ধ্বংস করে দেহকে রক্ষা করে বলে।"}, {"q": "অণুচক্রিকার প্রধান কাজ কী?", "a": "দেহের কোনো অংশ কেটে গেলে রক্ত জমাট বাঁধতে সাহায্য করে রক্তপাত বন্ধ করা।"}, {"q": "ধমনি ও শিরার একটি মূল পার্থক্য লেখো।", "a": "ধমনি হৃৎপিণ্ড থেকে দেহের বিভিন্ন অঙ্গে রক্ত নিয়ে যায় (কপাটিকা নেই); শিরা দেহ থেকে হৃৎপিণ্ডে রক্ত ফিরিয়ে আনে (কপাটিকা আছে)।"}, {"q": "কৈশিকনালি কাকে বলে?", "a": "ধমনি ক্রমান্বয়ে শাখা-প্রশাখায় বিভক্ত হয়ে যে অতিসূক্ষ্ম নালি তৈরি করে এবং যেখান থেকে শিরার উৎপত্তি হয়, তাকে কৈশিকনালি বলে।"}, {"q": "পেরিকার্ডিয়াম কী?", "a": "হৃৎপিণ্ড যে দুই স্তরবিশিষ্ট পাতলা পর্দা দ্বারা আবৃত থাকে, তাকে পেরিকার্ডিয়াম বলে।"}, {"q": "নাড়ি স্পন্দন কী?", "a": "হৃৎপিণ্ডের সংকোচন ও প্রসারণের ফলে ধমনির মধ্যে যে স্পন্দন সৃষ্টি হয়, তাকে নাড়ি স্পন্দন বলে।"}]}, {"id": "ch7", "number": "অধ্যায় ৭", "title": "শক্তির ব্যবহার", "subtitle": "কাজ, ক্ষমতা, শক্তির রূপান্তর, সংরক্ষণশীলতা ও নবায়নযোগ্য শক্তি", "icon": "⚡", "color": "#d97706", "summaries": [{"title": "১. কাজ, ক্ষমতা ও শক্তি", "points": ["বিজ্ঞানের ভাষায় কাজ তখনই সম্পন্ন হয় যখন কোনো বস্তুর উপর বল প্রয়োগে বলের দিকে তার অবস্থানের পরিবর্তন (সরণ) হয়। কাজ = বল × বলের দিকে অতিক্রান্ত দূরত্ব।", "দেয়ালে ধাক্কা দেওয়া বা মাথায় বোঝা নিয়ে স্থির দাঁড়িয়ে থাকলে অবস্থানের পরিবর্তন না হওয়ায় বিজ্ঞানের ভাষায় কোনো কাজ হয় না।", "কোনো কাজ করার হারকে ক্ষমতা বলে। অর্থাৎ ক্ষমতা = মোট কাজ ÷ মোট সময়।", "কাজ করার সামর্থ্যই হলো শক্তি। কাজ ও শক্তির একক একই — জুল (Joule)। পৃথিবীতে সকল শক্তির মূল উৎস সূর্য।"]}, {"title": "২. শক্তির বিভিন্ন রূপ ও রূপান্তর", "points": ["যান্ত্রিক শক্তি = স্থিতিশক্তি + গতিশক্তি। গতির জন্য কাজ করার সামর্থ্য গতিশক্তি (চলন্ত গাড়ি) এবং অবস্থানের পরিবর্তনের জন্য সঞ্চিত শক্তি স্থিতিশক্তি (উপরে তোলা ইট, টেনে ধরা গুলতি)।", "অন্যান্য রূপ: রাসায়নিক শক্তি (খাদ্য, জ্বালানি, ব্যাটারি), তাপশক্তি, আলোকশক্তি, শব্দশক্তি (কম্পন থেকে উৎপন্ন), চুম্বক শক্তি, বিদ্যুৎশক্তি ও পারমাণবিক শক্তি।", "রূপান্তরের উদাহরণ: বাষ্পীয় ইঞ্জিন (তাপ → যান্ত্রিক), সোলার প্যানেল (আলোক → বিদ্যুৎ), বৈদ্যুতিক ইস্ত্রি (বিদ্যুৎ → তাপ), বৈদ্যুতিক পাখা (বিদ্যুৎ → যান্ত্রিক), কয়লা পোড়ানো (রাসায়নিক → তাপ ও আলোক), বিদ্যুৎকোষ (রাসায়নিক → বিদ্যুৎ), টেলিফোন প্রেরক যন্ত্র (শব্দ → বিদ্যুৎ)।"]}, {"title": "৩. শক্তির সংরক্ষণশীলতা (নিত্যতা সূত্র)", "points": ["শক্তির কোনো সৃষ্টি বা বিনাশ নেই; শক্তি কেবল এক রূপ থেকে অপর এক বা একাধিক রূপে পরিবর্তিত হয়। রূপান্তরের পূর্বে ও পরে মহাবিশ্বের মোট শক্তির পরিমাণ সর্বদা সমান থাকে। একে শক্তির সংরক্ষণশীলতা বা নিত্যতা বলে।", "একটি বল উপরের দিকে ছুড়লে গতিশক্তি কমে স্থিতিশক্তি বাড়ে; সর্বোচ্চ উচ্চতায় গতিশক্তি শূন্য ও স্থিতিশক্তি সর্বোচ্চ হয়। নিচে নামার সময় স্থিতিশক্তি গতিশক্তিতে রূপান্তরিত হয়।"]}, {"title": "৪. নবায়নযোগ্য ও অনবায়নযোগ্য শক্তি ও সাশ্রয়ী ব্যবহার", "points": ["নবায়নযোগ্য শক্তি: যে শক্তির উৎস বারবার ব্যবহার করা যায় ও শেষ হয় না। যেমন: সৌরশক্তি, বায়ুপ্রবাহ (উইন্ডমিল), বায়োগ্যাস (গোবর ও জৈব বর্জ্য), পানির স্রোত ও জোয়ার-ভাটা। সুবিধা: পরিবেশবান্ধব, CO2 বাড়ায় না, বায়োগ্যাস থেকে জৈব সার পাওয়া যায়। সীমাবদ্ধতা: মেঘলা দিনে সৌরশক্তি ব্যাহত হয়, বায়ুপ্রবাহ সব সময় থাকে না, প্রারম্ভিক খরচ বেশি।", "অনবায়নযোগ্য শক্তি: যা একবার ব্যবহার করলে পুনরায় উৎপাদন করা যায় না ও নিঃশেষ হয়ে যায়। যেমন: কয়লা, তেল, প্রাকৃতিক গ্যাস, ইউরেনিয়াম। এগুলো দহনে CO2 বেড়ে গ্লোবাল ওয়ার্মিং হয়।", "শক্তির অপচয় রোধে অপ্রয়োজনে বাতি/ফ্যান/যানবাহনের ইঞ্জিন বন্ধ রাখা এবং যন্ত্রপাতির সঠিক রক্ষণাবেক্ষণ জরুরি।"]}], "mcqs": [{"q": "বিজ্ঞানের ভাষায় কাজ কখন সম্পন্ন হয়?", "opts": ["শুধু বল প্রয়োগ করলে", "বল প্রয়োগে অবস্থানের পরিবর্তন হলে", "বস্তু স্থির থাকলে", "সময়ের পরিবর্তন হলে"], "ans": 1, "exp": "বল প্রয়োগের ফলে বস্তু বলের দিকে স্থান পরিবর্তন করলে তবেই কাজ হয়।"}, {"q": "একজন শিক্ষার্থী দেয়ালে ধাক্কা দিচ্ছে কিন্তু দেয়াল সরছে না; এক্ষেত্রে কাজের পরিমাণ কত?", "opts": ["সর্বোচ্চ", "শূন্য", "খুব বেশি", "ঋণাত্মক"], "ans": 1, "exp": "অবস্থানের পরিবর্তন না হওয়ায় বিজ্ঞানের ভাষায় কাজ শূন্য।"}, {"q": "কাজ করার হারকে কী বলে?", "opts": ["শক্তি", "বল", "ক্ষমতা", "ত্বরণ"], "ans": 2, "exp": "মোট কাজকে মোট সময় দিয়ে ভাগ করলে ক্ষমতা পাওয়া যায়; কাজ করার হারই ক্ষমতা।"}, {"q": "কাজ ও শক্তির আন্তর্জাতিক একক কী?", "opts": ["ওয়াট", "নিউটন", "জুল", "প্যাসকেল"], "ans": 2, "exp": "কাজ করার সামর্থ্যই শক্তি; উভয়ের একক জুল (Joule)।"}, {"q": "পৃথিবীতে সকল শক্তির মূল উৎস কী?", "opts": ["চাঁদ", "কয়লা", "সূর্য", "বায়ু"], "ans": 2, "exp": "সূর্য পৃথিবীর সকল শক্তির মূল উৎস।"}, {"q": "গুলতিকে পিছনে টেনে ধরলে এতে কোন শক্তি সঞ্চিত হয়?", "opts": ["গতিশক্তি", "স্থিতিশক্তি", "তাপশক্তি", "শব্দশক্তি"], "ans": 1, "exp": "অবস্থানের পরিবর্তনের কারণে সঞ্চিত শক্তি হলো স্থিতিশক্তি।"}, {"q": "দৌড়াতে থাকা মানুষের মধ্যে যান্ত্রিক শক্তির কোন রূপ থাকে?", "opts": ["স্থিতিশক্তি", "গতিশক্তি", "চুম্বক শক্তি", "পারমাণবিক শক্তি"], "ans": 1, "exp": "গতির কারণে কাজ করার সামর্থ্যই গতিশক্তি।"}, {"q": "খাদ্যে ও ব্যাটারিতে কোন ধরনের শক্তি জমা থাকে?", "opts": ["তাপশক্তি", "রাসায়নিক শক্তি", "আলোকশক্তি", "শব্দশক্তি"], "ans": 1, "exp": "খাদ্য, জ্বালানি ও ব্যাটারিতে রাসায়নিক শক্তি সঞ্চিত থাকে।"}, {"q": "পদার্থের কম্পন থেকে কোন শক্তির উৎপত্তি হয়?", "opts": ["আলোকশক্তি", "চুম্বক শক্তি", "শব্দশক্তি", "তাপশক্তি"], "ans": 2, "exp": "পদার্থের কম্পন থেকে শব্দশক্তির উৎপত্তি হয়।"}, {"q": "বাঁশি বাজালে যান্ত্রিক শক্তি কোন শক্তিতে রূপান্তরিত হয়?", "opts": ["তাপশক্তি", "শব্দশক্তি", "আলোকশক্তি", "বিদ্যুৎশক্তি"], "ans": 1, "exp": "বাঁশি বাজালে যান্ত্রিক শক্তি শব্দশক্তিতে রূপান্তরিত হয়।"}, {"q": "দুই হাত ঘষলে গরম লাগে—এখানে কোন শক্তির রূপান্তর ঘটে?", "opts": ["তাপ → যান্ত্রিক", "যান্ত্রিক → তাপ", "রাসায়নিক → তাপ", "বিদ্যুৎ → তাপ"], "ans": 1, "exp": "হাত ঘষার যান্ত্রিক শক্তি তাপশক্তিতে রূপান্তরিত হয়।"}, {"q": "বাষ্পীয় ইঞ্জিনে কোন শক্তি যান্ত্রিক শক্তিতে রূপান্তরিত হয়?", "opts": ["বিদ্যুৎশক্তি", "তাপশক্তি", "আলোকশক্তি", "শব্দশক্তি"], "ans": 1, "exp": "বাষ্পীয় ইঞ্জিনে তাপশক্তি যান্ত্রিক শক্তিতে রূপান্তরিত হয়ে রেলগাড়ি চালায়।"}, {"q": "সোলার প্যানেলের মাধ্যমে সূর্যের আলোকশক্তি কোন শক্তিতে রূপান্তরিত হয়?", "opts": ["চুম্বক শক্তি", "বৈদ্যুতিক শক্তি", "শব্দশক্তি", "পারমাণবিক শক্তি"], "ans": 1, "exp": "সোলার প্যানেল বা সৌরকোষ আলোকশক্তিকে সরাসরি বৈদ্যুতিক শক্তিতে রূপান্তর করে।"}, {"q": "টেলিফোনের প্রেরক যন্ত্রে শব্দশক্তি কোন শক্তিতে পরিণত হয়?", "opts": ["তাপশক্তি", "বিদ্যুৎশক্তি", "আলোকশক্তি", "রাসায়নিক শক্তি"], "ans": 1, "exp": "টেলিফোন ও রেডিওর প্রেরক যন্ত্র শব্দশক্তিকে বিদ্যুৎশক্তিতে পরিণত করে।"}, {"q": "বৈদ্যুতিক ইস্ত্রি ও হিটারে বিদ্যুৎশক্তি কোন শক্তিতে রূপান্তরিত হয়?", "opts": ["যান্ত্রিক শক্তি", "তাপশক্তি", "শব্দশক্তি", "চুম্বক শক্তি"], "ans": 1, "exp": "ইস্ত্রি ও হিটারে বিদ্যুৎশক্তি তাপশক্তিতে রূপান্তরিত হয়।"}, {"q": "বৈদ্যুতিক পাখা ঘোরার সময় কোন শক্তির রূপান্তর ঘটে?", "opts": ["বিদ্যুৎ → তাপ", "বিদ্যুৎ → যান্ত্রিক", "যান্ত্রিক → বিদ্যুৎ", "রাসায়নিক → যান্ত্রিক"], "ans": 1, "exp": "বৈদ্যুতিক পাখায় বিদ্যুৎশক্তি যান্ত্রিক শক্তিতে রূপান্তরিত হয়।"}, {"q": "বিদ্যুৎকোষে কোন শক্তি বিদ্যুৎশক্তিতে রূপান্তরিত হয়?", "opts": ["তাপশক্তি", "রাসায়নিক শক্তি", "আলোকশক্তি", "চুম্বক শক্তি"], "ans": 1, "exp": "বিদ্যুৎকোষে রাসায়নিক বিক্রিয়ার মাধ্যমে রাসায়নিক শক্তি বিদ্যুৎশক্তিতে রূপান্তরিত হয়।"}, {"q": "পারমাণবিক বিদ্যুৎকেন্দ্রে পারমাণবিক শক্তিকে প্রথমে কোন শক্তিতে রূপান্তর করা হয়?", "opts": ["শব্দশক্তি", "তাপশক্তি", "আলোকশক্তি", "চুম্বক শক্তি"], "ans": 1, "exp": "পারমাণবিক শক্তি প্রথমে তাপশক্তিতে, তারপর টারবাইনে যান্ত্রিক ও জেনারেটরে বিদ্যুৎশক্তিতে রূপান্তরিত হয়।"}, {"q": "একটি বলকে উপরের দিকে ছুড়ে মারলে সর্বোচ্চ উচ্চতায় এর কী হয়?", "opts": ["গতিশক্তি সর্বোচ্চ হয়", "স্থিতিশক্তি সর্বোচ্চ ও গতিশক্তি শূন্য হয়", "উভয়ই শূন্য হয়", "কোনো শক্তি থাকে না"], "ans": 1, "exp": "সর্বোচ্চ বিন্দুতে বল ক্ষণিকের জন্য থামে তাই গতিশক্তি শূন্য এবং স্থিতিশক্তি সর্বোচ্চ হয়।"}, {"q": "শক্তির সংরক্ষণশীলতা নীতি অনুযায়ী মহাবিশ্বের মোট শক্তির পরিমাণ কেমন থাকে?", "opts": ["ক্রমাগত কমে", "ক্রমাগত বাড়ে", "সর্বদা সমান থাকে", "শূন্য হয়ে যায়"], "ans": 2, "exp": "শক্তির সৃষ্টি বা বিনাশ নেই; মোট শক্তির পরিমাণ সর্বদা সমান থাকে।"}, {"q": "নিচের কোনটি নবায়নযোগ্য শক্তির উৎস?", "opts": ["কয়লা", "প্রাকৃতিক গ্যাস", "বায়োগ্যাস", "ইউরেনিয়াম"], "ans": 2, "exp": "বায়োগ্যাস, সৌরশক্তি, বায়ুপ্রবাহ ও পানির স্রোত নবায়নযোগ্য শক্তি।"}, {"q": "বায়োগ্যাস তৈরির জন্য কোন বর্জ্য ব্যবহৃত হয়?", "opts": ["প্লাস্টিক", "গোবর ও উদ্ভিজ্জ বর্জ্য", "কাচ", "লোহার গুঁড়া"], "ans": 1, "exp": "গরু, মুরগির বিষ্ঠা ও পরিত্যক্ত উদ্ভিদ পচিয়ে বায়োগ্যাস তৈরি করা হয়।"}, {"q": "বায়োগ্যাস উৎপাদনের আগে টাটকা গোবর অন্তত কত দিন বাইরে পচতে দিতে হয়?", "opts": ["২ দিন", "৫ দিন", "১০ দিন", "৩০ দিন"], "ans": 2, "exp": "পাঠ্যবই অনুযায়ী টাটকা গোবর অন্তত ১০ দিন বাইরে পচতে দিতে হয়।"}, {"q": "বায়ুপ্রবাহকে কাজে লাগিয়ে বিদ্যুৎ উৎপাদন করা হয় কিসের মাধ্যমে?", "opts": ["সৌরকোষ", "উইন্ডমিল বা বায়ুকল", "থার্মোমিটার", "জেনারেটর ছাড়া"], "ans": 1, "exp": "বায়ুকল বা উইন্ডমিল চালিয়ে বহু দেশে বিদ্যুৎ উৎপাদন করা হয়।"}, {"q": "কৃত্রিম উপগ্রহে তড়িৎশক্তি সরবরাহের জন্য কোনটি ব্যবহৃত হয়?", "opts": ["কয়লা", "সৌরকোষ", "বায়োগ্যাস", "ডিজেল"], "ans": 1, "exp": "কৃত্রিম উপগ্রহে সরাসরি তড়িৎ পেতে সৌরকোষ ব্যবহৃত হয়।"}, {"q": "বায়োগ্যাস প্ল্যান্ট থেকে জ্বালানির পাশাপাশি আর কী পাওয়া যায়?", "opts": ["লোহা", "উন্নতমানের জৈব সার", "পারদ", "ইউরেনিয়াম"], "ans": 1, "exp": "বায়োগ্যাস প্ল্যান্ট থেকে গ্যাসের পাশাপাশি জমির জন্য উন্নতমানের জৈব সার পাওয়া যায়।"}, {"q": "নিচের কোনটি অনবায়নযোগ্য শক্তির উৎস?", "opts": ["সৌরশক্তি", "জোয়ার-ভাটা", "কয়লা ও প্রাকৃতিক গ্যাস", "বায়ুপ্রবাহ"], "ans": 2, "exp": "কয়লা, তেল, প্রাকৃতিক গ্যাস ও ইউরেনিয়াম অনবায়নযোগ্য শক্তি।"}, {"q": "কোন জ্বালানি অল্প পরিমাণ ব্যবহার করে প্রচুর বিদ্যুৎশক্তি পাওয়া যায়?", "opts": ["কাঠ", "ইউরেনিয়াম", "গোবর", "খড়কুটো"], "ans": 1, "exp": "পারমাণবিক চুল্লিতে অল্প ইউরেনিয়াম থেকে অনেক বিদ্যুৎশক্তি পাওয়া যায়।"}, {"q": "অনবায়নযোগ্য জ্বালানি দহনে কোন গ্যাস বেড়ে গ্লোবাল ওয়ার্মিং তৈরি করে?", "opts": ["অক্সিজেন", "নাইট্রোজেন", "কার্বন ডাইঅক্সাইড", "হিলিয়াম"], "ans": 2, "exp": "জীবাশ্ম জ্বালানি পোড়ালে বাতাসে কার্বন ডাইঅক্সাইড বেড়ে বৈশ্বিক উষ্ণায়ন ঘটে।"}, {"q": "রান্নার কাজে প্রচুর কাঠ পোড়ানোর ফলে কী ক্ষতি হচ্ছে?", "opts": ["বনজ সম্পদ বাড়ছে", "বনজ সম্পদ ধ্বংস ও পরিবেশ বিপন্ন হচ্ছে", "মাটির উর্বরতা বাড়ছে", "জ্বালানি বাড়ছে"], "ans": 1, "exp": "কাঠ, খড়কুটো ও গোবর পোড়ানোর ফলে বনজ সম্পদ কমছে ও মাটি জৈব সার থেকে বঞ্চিত হচ্ছে।"}], "gyanmulok": [{"q": "বিজ্ঞানের ভাষায় কাজ কাকে বলে?", "a": "কোনো বস্তুর উপর বল প্রয়োগ করে বস্তুটিকে বলের দিকে এক স্থান থেকে অন্য স্থানে সরানো হলে তাকে কাজ বলে।"}, {"q": "ক্ষমতা কাকে বলে?", "a": "কোনো কাজ করার হারকে (মোট কাজকে মোট সময় দিয়ে ভাগ করে প্রাপ্ত মান) ক্ষমতা বলে।"}, {"q": "শক্তি কাকে বলে এবং এর একক কী?", "a": "কাজ করার সামর্থ্যকে শক্তি বলে। শক্তির একক হলো জুল (Joule)।"}, {"q": "পৃথিবীতে সকল শক্তির মূল উৎস কী?", "a": "সূর্য।"}, {"q": "গতিশক্তি কাকে বলে?", "a": "কোনো বস্তুর গতির জন্য কাজ করার যে সামর্থ্য অর্জিত হয়, তাকে গতিশক্তি বলে।"}, {"q": "স্থিতিশক্তি কাকে বলে?", "a": "কোনো বস্তুর অবস্থানের পরিবর্তনের জন্য এর মধ্যে যে শক্তি সঞ্চিত হয়, তাকে স্থিতিশক্তি বলে।"}, {"q": "রাসায়নিক শক্তির দুটি উৎসের নাম লেখো।", "a": "খাদ্য এবং কয়লা বা পেট্রোল/ব্যাটারি।"}, {"q": "শব্দশক্তি কীভাবে উৎপন্ন হয়?", "a": "পদার্থের কম্পন থেকে শব্দশক্তি উৎপন্ন হয়।"}, {"q": "শক্তির সংরক্ষণশীলতা বা নিত্যতা সূত্র কী?", "a": "শক্তির কোনো সৃষ্টি বা বিনাশ নেই; শক্তি কেবল এক রূপ থেকে অন্য রূপে পরিবর্তিত হতে পারে এবং মোট শক্তির পরিমাণ সর্বদা সমান থাকে।"}, {"q": "সোলার প্যানেলে কোন শক্তি কোন শক্তিতে রূপান্তরিত হয়?", "a": "আলোকশক্তি বৈদ্যুতিক শক্তিতে রূপান্তরিত হয়।"}, {"q": "বৈদ্যুতিক ইস্ত্রিতে শক্তির কী ধরনের রূপান্তর ঘটে?", "a": "বিদ্যুৎশক্তি তাপশক্তিতে রূপান্তরিত হয়।"}, {"q": "পারমাণবিক শক্তি কীভাবে পাওয়া যায়?", "a": "পরমাণুর কেন্দ্রে অবস্থিত কণিকাসমূহকে শক্তি প্রয়োগে বিচ্ছিন্ন করে পারমাণবিক শক্তি পাওয়া যায়।"}, {"q": "নবায়নযোগ্য শক্তি কাকে বলে?", "a": "যে শক্তির উৎস ব্যবহারের পর পুনরায় নবায়ন করে বারবার ব্যবহার করা যায়, তাকে নবায়নযোগ্য শক্তি বলে।"}, {"q": "নবায়নযোগ্য শক্তির চারটি উৎসের নাম লেখো।", "a": "সৌরশক্তি, বায়ুপ্রবাহ, বায়োগ্যাস এবং পানির স্রোত বা জোয়ার-ভাটা।"}, {"q": "বায়োগ্যাসের প্রধান উপাদান কী কী?", "a": "গরু, মুরগির বিষ্ঠা (গোবর) এবং পরিত্যক্ত উদ্ভিজ্জ বর্জ্য।"}, {"q": "সৌরকোষের প্রধান বৈশিষ্ট্য কী?", "a": "এর উপর সূর্যের আলো পড়লে তা থেকে সরাসরি তড়িৎ বা বিদ্যুৎ পাওয়া যায়।"}, {"q": "অনবায়নযোগ্য শক্তি কাকে বলে?", "a": "যে শক্তির উৎস একবার ব্যবহার করলে তা থেকে পুনরায় শক্তি উৎপন্ন করা যায় না এবং যা নিঃশেষ হয়ে যায়, তাকে অনবায়নযোগ্য শক্তি বলে।"}, {"q": "অনবায়নযোগ্য শক্তির তিনটি উদাহরণ দাও।", "a": "কয়লা, খনিজ তেল ও প্রাকৃতিক গ্যাস (অথবা ইউরেনিয়াম)।"}, {"q": "শক্তির সংকট সৃষ্টির একটি প্রধান কারণ লেখো।", "a": "ক্রমবর্ধমান জনসংখ্যার চাহিদা ও কলকারখানা-যানবাহনে অধিক শক্তির ব্যবহার।"}, {"q": "দৈনন্দিন জীবনে শক্তি সাশ্রয়ের একটি উপায় লেখো।", "a": "প্রয়োজনের অতিরিক্ত বাতি, ফ্যান বা যানবাহনের ইঞ্জিন বন্ধ রাখা।"}]}, {"id": "ch9", "number": "অধ্যায় ৯", "title": "তাপ ও তাপমাত্রা", "subtitle": "তাপ-তাপমাত্রার পার্থক্য, স্কেল রূপান্তর, প্রসারণ, বায়ুচাপ ও তাপ সঞ্চালন", "icon": "🌡️", "color": "#ea580c", "summaries": [{"title": "১. তাপ, তাপমাত্রা ও পারদ থার্মোমিটার", "points": ["তাপ হলো এক প্রকার শক্তি যার কারণে কোনো কিছুকে ঠান্ডা বা গরম লাগে। পঞ্চ ইন্দ্রিয়ের মধ্যে তাপকে কেবল ত্বক দ্বারা অনুভব করা যায়। বস্তু তাপ গ্রহণ করলে গরম ও বর্জন করলে ঠান্ডা হয়।", "তাপমাত্রা বা উষ্ণতা হলো কোনো বস্তু কতটুকু গরম বা ঠান্ডা তা প্রকাশ করার মাত্রা (তাপীয় অবস্থা)।", "তাপমাত্রা পরিমাপের যন্ত্রের নাম থার্মোমিটার। তরল পদার্থের (পারদ, অ্যালকোহল) আয়তন প্রসারণকে কাজে লাগিয়ে থার্মোমিটার তৈরি হয়।", "মানুষের শরীরের স্বাভাবিক তাপমাত্রা ৯৮.৪° ফারেনহাইট; এর বেশি হলে জ্বর ধরা হয়।"]}, {"title": "২. তাপমাত্রার স্কেল ও রূপান্তরের সূত্র", "points": ["থার্মোমিটারের দুটি স্থিরাঙ্ক: নিম্ন স্থিরাঙ্ক (হিমাঙ্ক — স্বাভাবিক চাপে যে তাপমাত্রায় বিশুদ্ধ বরফ গলে পানিতে পরিণত হয়) এবং ঊর্ধ্ব স্থিরাঙ্ক (স্ফুটনাঙ্ক — স্বাভাবিক চাপে যে তাপমাত্রায় বিশুদ্ধ পানি ফুটে বাষ্প হয়)।", "সেলসিয়াস (সেন্টিগ্রেড) স্কেল: নিম্ন স্থিরাঙ্ক ০°C, ঊর্ধ্ব স্থিরাঙ্ক ১০০°C; মধ্যবর্তী ব্যবধান ১০০ সমান ভাগ।", "ফারেনহাইট স্কেল: নিম্ন স্থিরাঙ্ক ৩২°F, ঊর্ধ্ব স্থিরাঙ্ক ২১২°F; মধ্যবর্তী ব্যবধান ১৮০ সমান ভাগ।", "রূপান্তরের সূত্র: C/5 = (F - 32)/9। যেমন: ৩৮°C = ১০০.৪°F।"]}, {"title": "৩. পদার্থের প্রসারণ ও বায়ুচাপ-আর্দ্রতা", "points": ["তাপ প্রয়োগে কঠিন পদার্থ খুব অল্প, তরল একটু বেশি এবং বায়বীয় পদার্থ সবচেয়ে বেশি প্রসারিত হয়। ধাতব পদার্থ তাপে বেশি প্রসারিত হয়।", "দৈনন্দিন প্রয়োগ: কাচের বোতলের আটকে থাকা ধাতব মুখ গরম করলে প্রসারিত হয়ে সহজে খোলে; রেললাইনের দুটি লোহার পাতের মাঝে ফাঁক রাখা হয় যাতে তাপে বেঁকে না যায়; রুটি সেঁকার সময় ভেতরের জলীয় বাষ্প প্রসারিত হয়ে রুটি ফোলে।", "একক ক্ষেত্রফলের উপর বায়ু যে বল প্রয়োগ করে তাই বায়ুচাপ। বদ্ধ পাত্রে তাপ বাড়লে চাপ বাড়ে; কিন্তু খোলা বায়ুমণ্ডলে তাপ বাড়লে বায়ু হালকা হয়ে উপরে উঠে যাওয়ায় বায়ুচাপ কমে যায় (নিম্নচাপ)।", "বায়ুতে জলীয় বাষ্প বেশি থাকলে আর্দ্রতা বেশি হয় (শ্রাবণ-ভাদ্রে ভ্যাপসা গরম)। জলীয় বাষ্প ঘনীভূত হয়ে মেঘ ও বৃষ্টি হয়।"]}, {"title": "৪. তাপ সঞ্চালন ও বিকিরক-শোষক", "points": ["বেশি তাপমাত্রার স্থান থেকে কম তাপমাত্রার স্থানে তাপ যাওয়ার প্রক্রিয়াকে তাপ সঞ্চালন বলে। এটি তিন ভাবে হয়: পরিবহন, পরিচলন ও বিকিরণ।", "পরিবহন: কঠিন পদার্থে ঘটে; কণাগুলো স্থান পরিবর্তন না করে কম্পনের মাধ্যমে তাপ সঞ্চালিত করে। ধাতু (লোহা, তামা, অ্যালুমিনিয়াম) সুপরিবাহী, অধাতু (কাঠ, কাপড়, মাটি) কুপরিবাহী।", "পরিচলন: তরল ও বায়বীয় পদার্থে কণাদের স্থান পরিবর্তনের মাধ্যমে ঘটে (চুলার হাঁড়ির পানি গরম হওয়া, আগুনের ঠিক উপরে বেশি তাপ অনুভূত হওয়া)।", "বিকিরণ: কোনো জড় মাধ্যম ছাড়াই তড়িৎচুম্বকীয় তরঙ্গাকারে তাপ সঞ্চালিত হয় (সূর্য থেকে পৃথিবীতে তাপ আসা)। যে পদার্থ ভালো তাপ বিকিরক, সেটি ভালো তাপ শোষকও হয়।", "বায়ুমণ্ডলের CO2, জলীয় বাষ্প ও মিথেন তাপ বিকিরণে বাধা দেওয়ায় পৃথিবী উত্তপ্ত হচ্ছে — একে বৈশ্বিক উষ্ণায়ন (গ্লোবাল ওয়ার্মিং) বলে।"]}], "mcqs": [{"q": "পঞ্চ ইন্দ্রিয়ের মধ্যে তাপকে কোন ইন্দ্রিয় দ্বারা অনুভব করা যায়?", "opts": ["চোখ", "কান", "ত্বক", "নাক"], "ans": 2, "exp": "পঞ্চ ইন্দ্রিয়ের মধ্যে তাপকে কেবল ত্বকের সাহায্যে অনুভব করা যায়।"}, {"q": "বস্তু তাপ বর্জন করলে কী হয়?", "opts": ["গরম হয়", "ঠান্ডা হয়", "প্রসারিত হয়", "বাষ্প হয়"], "ans": 1, "exp": "বস্তু তাপ গ্রহণ করলে গরম এবং বর্জন করলে ঠান্ডা হয়।"}, {"q": "কোনো বস্তুর তাপীয় অবস্থাকে কী দিয়ে প্রকাশ করা হয়?", "opts": ["ভর", "তাপমাত্রা", "ঘনত্ব", "আয়তন"], "ans": 1, "exp": "কোনো কিছু কতটুকু গরম বা ঠান্ডা তা তাপমাত্রা বা উষ্ণতা দিয়ে প্রকাশ করা হয়।"}, {"q": "থার্মোমিটারে তরলের কোন ধর্ম কাজে লাগানো হয়?", "opts": ["রং পরিবর্তন", "তাপে আয়তন প্রসারণ", "তাপে ওজন বৃদ্ধি", "বাষ্পীভবন"], "ans": 1, "exp": "তাপমাত্রা পরিবর্তনে তরল পদার্থের (পারদ/অ্যালকোহল) আয়তন বাড়ে বা কমে।"}, {"q": "মানুষের শরীরের স্বাভাবিক তাপমাত্রা ফারেনহাইট স্কেলে কত?", "opts": ["৯৬.৪°F", "৯৮.৪°F", "১০০.৪°F", "১০২°F"], "ans": 1, "exp": "মানুষের শরীরের স্বাভাবিক তাপমাত্রা ৯৮.৪ ডিগ্রি ফারেনহাইট।"}, {"q": "স্বাভাবিক চাপে যে তাপমাত্রায় বিশুদ্ধ বরফ গলে পানিতে পরিণত হয় তাকে কী বলে?", "opts": ["স্ফুটনাঙ্ক", "হিমাঙ্ক", "গলনাঙ্ক", "ঊর্ধ্ব স্থিরাঙ্ক"], "ans": 1, "exp": "যে তাপমাত্রায় বিশুদ্ধ বরফ গলে পানিতে পরিণত হয় তাকে হিমাঙ্ক (নিম্ন স্থিরাঙ্ক) বলে।"}, {"q": "সেলসিয়াস স্কেলে নিম্ন ও ঊর্ধ্ব স্থিরাঙ্কের মধ্যবর্তী ব্যবধানকে কয়টি সমান ভাগে ভাগ করা হয়?", "opts": ["৮০ ভাগ", "১০০ ভাগ", "১৮০ ভাগ", "২১২ ভাগ"], "ans": 1, "exp": "সেলসিয়াস স্কেলে ০° থেকে ১০০° পর্যন্ত ১০০ সমান ভাগে ভাগ করা হয় (সেন্টিগ্রেড)।"}, {"q": "ফারেনহাইট স্কেলে হিমাঙ্ক ও স্ফুটনাঙ্ক কত?", "opts": ["০° ও ১০০°", "৩২° ও ২১২°", "৩২° ও ১৮০°", "০° ও ২১২°"], "ans": 1, "exp": "ফারেনহাইট স্কেলে নিম্ন স্থিরাঙ্ক ৩২°F এবং ঊর্ধ্ব স্থিরাঙ্ক ২১২°F।"}, {"q": "ফারেনহাইট স্কেলে স্থিরাঙ্ক দুটির মধ্যবর্তী ব্যবধানকে কয় ভাগে ভাগ করা হয়?", "opts": ["১০০ ভাগ", "১৮০ ভাগ", "২১২ ভাগ", "৯০ ভাগ"], "ans": 1, "exp": "২১২ - ৩২ = ১৮০ সমান ভাগে ভাগ করা হয়।"}, {"q": "সেলসিয়াস (C) ও ফারেনহাইট (F) স্কেলের সঠিক সম্পর্ক কোনটি?", "opts": ["C/9 = (F-32)/5", "C/5 = (F-32)/9", "C/5 = (F+32)/9", "C/100 = F/180"], "ans": 1, "exp": "সেলসিয়াস ও ফারেনহাইট স্কেলের সম্পর্ক হলো C/5 = (F - 32)/9।"}, {"q": "একজন খেলোয়াড়ের শরীরের তাপমাত্রা ৩৮° সেলসিয়াস হলে ফারেনহাইট স্কেলে তা কত?", "opts": ["৯৮.৪°F", "১০০.৪°F", "১০১.২°F", "৯৯.৬°F"], "ans": 1, "exp": "C=38 হলে F = (38×9/5) + 32 = 68.4 + 32 = 100.4°F।"}, {"q": "তাপ প্রয়োগে কোন পদার্থের প্রসারণ সবচেয়ে বেশি হয়?", "opts": ["কঠিন", "তরল", "বায়বীয়", "ধাতব"], "ans": 2, "exp": "তাপ পেলে কঠিন ও তরলের তুলনায় বায়বীয় পদার্থ সবচেয়ে বেশি প্রসারিত হয়।"}, {"q": "রেললাইনের দুটি লোহার পাতের সংযোগস্থলে ফাঁক রাখা হয় কেন?", "opts": ["সৌন্দর্যের জন্য", "তাপে প্রসারিত হয়ে যেন বেঁকে না যায়", "খরচ কমানোর জন্য", "শব্দ করার জন্য"], "ans": 1, "exp": "চাকার ঘর্ষণে লোহার পাত গরম হয়ে প্রসারিত হলে ফাঁক না থাকলে তা বেঁকে দুর্ঘটনা ঘটত।"}, {"q": "বোতলের আটকে যাওয়া ধাতব মুখ সহজে খুলতে কী করা হয়?", "opts": ["ঠান্ডা পানিতে ডোবানো", "ধাতব মুখটি গরম করা", "জোরে আঘাত করা", "বালি দেওয়া"], "ans": 1, "exp": "গরম করলে ধাতব মুখটি প্রসারিত হয়ে বোতল থেকে আলগা হয়ে সহজে খুলে আসে।"}, {"q": "সমুদ্রপৃষ্ঠের উচ্চতা বেড়ে যাওয়ার অন্যতম কারণ কী?", "opts": ["তাপমাত্রা কমে যাওয়া", "তাপমাত্রা বেড়ে সমুদ্রের পানির আয়তন বৃদ্ধি", "বায়ুচাপ বৃদ্ধি", "রেললাইনের প্রসারণ"], "ans": 1, "exp": "পৃথিবীর তাপমাত্রা বেড়ে যাওয়ায় তরল সমুদ্রের পানির আয়তন বেড়ে উচ্চতা বাড়ছে।"}, {"q": "রুটি সেঁকার সময় ফুলে ওঠে কেন?", "opts": ["আটার প্রসারণে", "ভেতরের জলীয় বাষ্প তাপ পেয়ে প্রসারিত হওয়ায়", "চুলার বাতাসে", "লবণের কারণে"], "ans": 1, "exp": "রুটির ভেতরের পানি জলীয় বাষ্পে পরিণত হয়ে তাপ পেয়ে প্রসারিত হয়।"}, {"q": "খোলা বায়ুমণ্ডলে তাপমাত্রা বাড়লে বায়ুচাপের কী পরিবর্তন হয়?", "opts": ["বায়ুচাপ বাড়ে", "বায়ুচাপ কমে (নিম্নচাপ)", "অপরিবর্তিত থাকে", "শূন্য হয়"], "ans": 1, "exp": "তাপ পেলে বায়ুর ঘনত্ব কমে হালকা হয়ে উপরে উঠে যায়, ফলে বায়ুচাপ কমে যায়।"}, {"q": "যে স্থানে তাপমাত্রা কম সেখানে কিসের সৃষ্টি হয়?", "opts": ["নিম্নচাপ", "উচ্চচাপ", "ঘূর্ণিঝড়", "ভ্যাপসা গরম"], "ans": 1, "exp": "তাপমাত্রা কম হলে বায়ু ভারী থাকে এবং সেখানে উচ্চচাপের সৃষ্টি হয়।"}, {"q": "শ্রাবণ ও ভাদ্র মাসে ভ্যাপসা গরম পড়ার কারণ কী?", "opts": ["শীতল বায়ু", "মৌসুমী বায়ু প্রচুর জলীয় বাষ্প নিয়ে আসে", "তাপমাত্রা শূন্য থাকা", "মেঘ না থাকা"], "ans": 1, "exp": "জলীয় বাষ্প বা আর্দ্রতা বেশি থাকলে আমাদের গায়ে ঘাম হয় এবং ভ্যাপসা গরম লাগে।"}, {"q": "কঠিন পদার্থে কোন পদ্ধতিতে তাপ সঞ্চালিত হয়?", "opts": ["পরিচলন", "পরিবহন", "বিকিরণ", "বাষ্পীভবন"], "ans": 1, "exp": "কঠিন পদার্থে কণার স্থান পরিবর্তন ছাড়াই পরিবহন পদ্ধতিতে তাপ সঞ্চালিত হয়।"}, {"q": "রান্নার জন্য ধাতব হাড়ি এবং ধরার জন্য কাপড় বা কাঠের হাতল ব্যবহারের কারণ কী?", "opts": ["ধাতু সুপরিবাহী ও কাঠ-কাপড় কুপরিবাহী", "উভয়ই সুপরিবাহী", "কাঠ বেশি গরম হয়", "সৌন্দর্যের জন্য"], "ans": 0, "exp": "ধাতু দ্রুত তাপ পরিবহন করে আর কাঠ/সুতি কাপড় খুব কম তাপ পরিবহন করে।"}, {"q": "তরল ও বায়বীয় পদার্থে তাপ সঞ্চালনের পদ্ধতি কোনটি?", "opts": ["পরিবহন", "পরিচলন", "বিকিরণ", "ঘনীভবন"], "ans": 1, "exp": "কণাদের স্থান পরিবর্তনের মাধ্যমে তরল ও বায়বীয় পদার্থে পরিচলন পদ্ধতিতে তাপ সঞ্চালিত হয়।"}, {"q": "আগুনের পাশের চেয়ে আগুনের ঠিক উপরে বেশি গরম লাগে কেন?", "opts": ["পরিবহন পদ্ধতিতে", "পরিচলন পদ্ধতিতে উত্তপ্ত বায়ু উপরে ওঠে", "বিকিরণ পদ্ধতিতে", "তাপ নিচে নামে বলে"], "ans": 1, "exp": "পরিচলন পদ্ধতিতে বায়ুর কণা উত্তপ্ত হয়ে উপরের দিকে উঠে যায়, পাশে যায় না।"}, {"q": "সূর্য থেকে পৃথিবীতে তাপ আসে কোন পদ্ধতিতে?", "opts": ["পরিবহন", "পরিচলন", "বিকিরণ", "পরিবহন ও পরিচলন"], "ans": 2, "exp": "জড় মাধ্যম ছাড়াই তড়িৎচুম্বকীয় তরঙ্গাকারে বিকিরণ পদ্ধতিতে সূর্য থেকে তাপ আসে।"}, {"q": "কোনটি তাপ সঞ্চালনের জন্য মাধ্যমের প্রয়োজন হয় না?", "opts": ["পরিবহন", "পরিচলন", "বিকিরণ", "সবগুলো"], "ans": 2, "exp": "মাধ্যম থাকুক বা না থাকুক, বিকিরণ পদ্ধতিতে তাপ সঞ্চালিত হতে পারে।"}, {"q": "কোনো পদার্থ ভালো তাপ বিকিরক হলে সেটি কেমন শোষক হবে?", "opts": ["খারাপ শোষক", "ভালো তাপ শোষক", "অপরিবাহী", "শোষক নয়"], "ans": 1, "exp": "বিজ্ঞানীরা দেখেছেন যে, কোনো পদার্থ ভালো তাপ বিকিরক হলে সেটি ভালো তাপ শোষকও হয়।"}, {"q": "সূর্যের মধ্যে কোন গ্যাস কোন গ্যাসে পরিণত হয়ে তাপ ও আলো উৎপন্ন করে?", "opts": ["অক্সিজেন → নাইট্রোজেন", "হাইড্রোজেন → হিলিয়াম", "কার্বন → মিথেন", "হিলিয়াম → হাইড্রোজেন"], "ans": 1, "exp": "সূর্যে হাইড্রোজেন গ্যাস হিলিয়াম গ্যাসে পরিণত হয়ে প্রচুর তাপ ও আলো উৎপন্ন করে।"}, {"q": "কোনটি বায়ুমণ্ডলে ভালো তাপ শোষক হিসেবে কাজ করে (গ্লোবাল ওয়ার্মিং ঘটায়)?", "opts": ["নাইট্রোজেন", "জলীয় বাষ্প ও কার্বন ডাইঅক্সাইড", "অক্সিজেন", "আর্গন"], "ans": 1, "exp": "পাঠ্যবই অনুযায়ী জলীয় বাষ্প, কার্বন ডাইঅক্সাইড ও মিথেন তাপ বিকিরণে বাধা দেয় বা শোষণ করে।"}, {"q": "তাপ প্রয়োগে কাচের বোতলের মুখে লাগানো বেলুন ফুলে ওঠে কেন?", "opts": ["বোতল গলে যায়", "ভেতরের বায়ু তাপে প্রসারিত হয়ে বেলুনে ঢোকে", "পানি ঢুকে যায়", "বেলুন ঠান্ডা হয়"], "ans": 1, "exp": "বোতলের ভেতরের বায়ু তাপ পেয়ে প্রসারিত হয়ে বেলুনে প্রবেশ করে।"}, {"q": "ফারেনহাইট স্কেলে কোনো ব্যক্তির জ্বর ১০১° বলতে কী বোঝায়?", "opts": ["১০১° সেলসিয়াস", "১০১° ফারেনহাইট", "১০১ কেলভিন", "স্বাভাবিক তাপমাত্রা"], "ans": 1, "exp": "জ্বর মাপার ডাক্তারি থার্মোমিটারে ফারেনহাইট স্কেল ব্যবহৃত হয়।"}], "gyanmulok": [{"q": "তাপ কী?", "a": "তাপ হলো এক প্রকার শক্তি, যার কারণে কোনো কিছু আমাদের ঠান্ডা বা গরম অনুভূত হয়।"}, {"q": "তাপমাত্রা কাকে বলে?", "a": "কোনো বস্তু কতটুকু ঠান্ডা বা গরম লাগছে তা প্রকাশ করার মাত্রাকে তাপমাত্রা বলে।"}, {"q": "তাপ ও তাপমাত্রার একটি মূল পার্থক্য লেখো।", "a": "তাপ হলো এক ধরনের শক্তি, আর তাপমাত্রা হলো কোনো বস্তুর তাপীয় অবস্থার পরিমাপক মাত্রা।"}, {"q": "থার্মোমিটার কী?", "a": "তাপমাত্রা সঠিকভাবে পরিমাপ করার যন্ত্রের নাম হলো থার্মোমিটার।"}, {"q": "পারদ থার্মোমিটারে কোন ধর্ম ব্যবহার করা হয়?", "a": "তাপমাত্রা পরিবর্তনে তরল পারদের আয়তন প্রসারণ ধর্ম ব্যবহার করা হয়।"}, {"q": "মানুষের শরীরের স্বাভাবিক তাপমাত্রা কত?", "a": "৯৮.৪ ডিগ্রি ফারেনহাইট (৯৮.৪°F)।"}, {"q": "হিমাঙ্ক কাকে বলে?", "a": "স্বাভাবিক চাপে যে তাপমাত্রায় বিশুদ্ধ বরফ গলে পানিতে পরিণত হয়, সেই তাপমাত্রাকে হিমাঙ্ক বলে।"}, {"q": "স্ফুটনাঙ্ক কাকে বলে?", "a": "স্বাভাবিক চাপে যে তাপমাত্রায় বিশুদ্ধ পানি ফুটে বাষ্পে পরিণত হয়, সেই তাপমাত্রাকে স্ফুটনাঙ্ক বলে।"}, {"q": "সেলসিয়াস স্কেলকে সেন্টিগ্রেড স্কেল বলা হয় কেন?", "a": "সেলসিয়াস স্কেলে ০° থেকে ১০০° পর্যন্ত ব্যবধানকে সমান ১০০ ভাগে (centum অর্থ একশত ও grade অর্থ ভাগ) ভাগ করা হয় বলে।"}, {"q": "সেলসিয়াস ও ফারেনহাইট স্কেলের মধ্যকার সম্পর্কের সমীকরণটি লেখো।", "a": "C/5 = (F - 32)/9 (যেখানে C = সেলসিয়াস এবং F = ফারেনহাইট তাপমাত্রা)।"}, {"q": "রেললাইনের দুটি লোহার পাতের মাঝে ফাঁক রাখা হয় কেন?", "a": "রেলগাড়ি চলার সময় ঘর্ষণে লোহার পাত গরম হয়ে প্রসারিত হয়; ফাঁক থাকলে পাত বেড়ে ফাঁক পূরণ করে এবং বেঁকে দুর্ঘটনা ঘটে না।"}, {"q": "কঠিন, তরল ও বায়বীয় পদার্থের মধ্যে কোনটি তাপে সবচেয়ে বেশি প্রসারিত হয়?", "a": "বায়বীয় পদার্থ তাপে সবচেয়ে বেশি প্রসারিত হয়।"}, {"q": "বায়ুচাপ কাকে বলে?", "a": "একক ক্ষেত্রফলের উপর বায়ু যে বল প্রয়োগ করে, তাকে বায়ুচাপ বলে।"}, {"q": "বায়ুমণ্ডলে তাপমাত্রা বাড়লে বায়ুচাপ কমে যায় কেন?", "a": "তাপ পেলে বায়ুর ঘনত্ব কমে যায় এবং বায়ু হালকা হয়ে উপরে উঠে যায় বলে বায়ুচাপ কমে যায়।"}, {"q": "তাপ সঞ্চালন কাকে বলে?", "a": "বেশি তাপমাত্রার স্থান থেকে কম তাপমাত্রার স্থানে তাপের স্থান পরিবর্তনকে তাপ সঞ্চালন বলে।"}, {"q": "তাপ সঞ্চালনের তিনটি প্রক্রিয়ার নাম কী কী?", "a": "পরিবহন, পরিচলন ও বিকিরণ।"}, {"q": "পরিবহন পদ্ধতিতে তাপ কীভাবে সঞ্চালিত হয়?", "a": "কঠিন পদার্থের কণাগুলো নিজেরা স্থান পরিবর্তন না করে কেবল কম্পনের মাধ্যমে পাশের কণায় তাপ পৌঁছে দেয়।"}, {"q": "পরিচলন পদ্ধতি কোন কোন পদার্থে ঘটে?", "a": "তরল ও বায়বীয় পদার্থে কণাদের স্থান পরিবর্তনের মাধ্যমে পরিচলন পদ্ধতিতে তাপ সঞ্চালিত হয়।"}, {"q": "তাপ বিকিরণ কী?", "a": "কোনো জড় মাধ্যম ছাড়াই তড়িৎচুম্বকীয় তরঙ্গাকারে উত্তপ্ত বস্তু থেকে তাপ সঞ্চালিত হওয়ার প্রক্রিয়াকে তাপ বিকিরণ বলে।"}, {"q": "বৈশ্বিক উষ্ণায়ন বা গ্লোবাল ওয়ার্মিং কী?", "a": "বায়ুমণ্ডলের কার্বন ডাইঅক্সাইড, জলীয় বাষ্প, মিথেন ইত্যাদি গ্যাস তাপ বিকিরণে বাধা দেওয়ায় পৃথিবীর বায়ুমণ্ডল ধীরে ধীরে উত্তপ্ত হওয়াকে বৈশ্বিক উষ্ণায়ন বলে।"}]}, {"id": "ch10", "number": "অধ্যায় ১০", "title": "বিদ্যুৎ ও চুম্বকের ঘটনা", "subtitle": "আধান বা চার্জ, পরিবাহী-অপরিবাহী, সরল বর্তনী ও চুম্বকের ধর্ম", "icon": "🧲", "color": "#4f46e5", "summaries": [{"title": "১. আধান বা চার্জের উৎপত্তি ও ধর্ম", "points": ["পরমাণু তিনটি কণা নিয়ে গঠিত: প্রোটন (+ ধনাত্মক), ইলেকট্রন (- ঋণাত্মক) ও নিউট্রন (আধান নিরপেক্ষ)। কেন্দ্রে নিউক্লিয়াসে প্রোটন ও নিউট্রন থাকে, আর ইলেকট্রন চারপাশে ঘোরে।", "স্বাভাবিক পরমাণুতে প্রোটন ও ইলেকট্রন সংখ্যা সমান হওয়ায় পরমাণু আধান নিরপেক্ষ। ঘর্ষণের ফলে ইলেকট্রন এক পদার্থ থেকে অন্য পদার্থে চলে যাওয়ায় আধানের সৃষ্টি হয়।", "সিল্কের কাপড় দিয়ে কাচের বোতল ঘষলে কাচ ধনাত্মক (+) ও সিল্কের কাপড় ঋণাত্মক (-) আধানে আহিত হয়। প্লাস্টিকের চিরুনি পশমি কাপড় বা শুকনো চুলে ঘষলে চিরুনি ঋণাত্মক (-) চার্জিত হয়।", "চার্জের ধর্ম: সমধর্মী আধান পরস্পরকে বিকর্ষণ করে এবং বিপরীতধর্মী আধান পরস্পরকে আকর্ষণ করে।"]}, {"title": "২. পরিবাহী, অপরিবাহী, অর্ধপরিবাহী ও স্থির-চলবিদ্যুৎ", "points": ["পরিবাহী: যেসব পদার্থে ইলেকট্রন সহজে চলাচল করে। যেমন: ধাতু (রৌপ্য, তামা, অ্যালুমিনিয়াম) এবং অধাতু কার্বনের রূপ গ্রাফাইট।", "অপরিবাহী: ইলেকট্রন সহজে চলাচল করতে পারে না। যেমন: প্লাস্টিক, গ্লাস, রাবার, শুকনো কাঠ।", "অর্ধপরিবাহী: নিম্ন তাপমাত্রায় অপরিবাহী ও তাপমাত্রা বাড়ালে পরিবাহীর মতো আচরণ করে। যেমন: সিলিকন, জার্মেনিয়াম, গ্যালিয়াম।", "ঘর্ষণের ফলে সৃষ্ট স্থিরবিদ্যুৎ হাত বা ধাতব পদার্থ দিয়ে স্পর্শ করলে মাটিতে চলে যায়। বিদ্যুৎ কোনো পদার্থের মধ্য দিয়ে প্রবাহিত হলে তাকে চলবিদ্যুৎ বলে।"]}, {"title": "৩. সরল বর্তনী ও চলবিদ্যুতের ব্যবহার", "points": ["বিদ্যুৎপ্রবাহ চলার আবদ্ধ পথকে বর্তনী বলে। উৎসের ধনাত্মক প্রান্ত থেকে ঋণাত্মক প্রান্ত পর্যন্ত সম্পূর্ণ পথই বিদ্যুৎবর্তনী।", "বৈদ্যুতিক বাল্ব: ভেতরে সরু টাংস্টেনের তারের কুণ্ডলী থাকে যাকে ফিলামেন্ট বলে; উত্তপ্ত হয়ে এটি আলো বিকিরণ করে। বাল্বের ভেতর বায়ুশূন্য বা নিষ্ক্রিয় গ্যাস থাকে।", "বৈদ্যুতিক হিটার ও ইস্ত্রি: অপরিবাহী চাকতিতে নাইক্রোম তারের কুণ্ডলী থাকে, যা বিদ্যুৎপ্রবাহে উত্তপ্ত হয়ে তাপ বিকিরণ করে।", "বৈদ্যুতিক পাখা: বিদ্যুৎশক্তিকে যান্ত্রিক শক্তিতে রূপান্তর করে এবং গতি নিয়ন্ত্রণে রেগুলেটর ব্যবহৃত হয়।"]}, {"title": "৪. চুম্বকের ধর্ম, প্রকারভেদ ও পৃথিবীর চৌম্বকক্ষেত্র", "points": ["প্রাচীন গ্রিসের ম্যাগনেশিয়ায় রাখাল বালক ম্যাগনাসের নামানুসারে ম্যাগনেট বা চুম্বক নাম হয়।", "চুম্বকের ধর্ম: (১) মুক্তভাবে ঝুলন্ত চুম্বক সর্বদা উত্তর-দক্ষিণমুখী হয়ে থাকে; (২) দুই প্রান্তে আকর্ষণ ক্ষমতা সবচেয়ে বেশি; (৩) সমমেরু বিকর্ষণ ও বিপরীত মেরু আকর্ষণ করে।", "চৌম্বক পদার্থ: লোহা, নিকেল, কোবাল্ট ও অধিকাংশ ইস্পাত। অচৌম্বক পদার্থ: সোনা, রুপা, তামা, অ্যালুমিনিয়াম, কাঠ, প্লাস্টিক।", "কৃত্রিম চুম্বক তৈরির দুটি পদ্ধতি: ঘর্ষণ পদ্ধতি ও বৈদ্যুতিক পদ্ধতি (তার পেঁচিয়ে ব্যাটারির সাথে যুক্ত করলে তড়িৎ চুম্বক তৈরি হয়; তড়িৎ বন্ধ করলে চুম্বকত্ব থাকে না)।", "পৃথিবীর নিজের চৌম্বকত্ব (ভূচুম্বক) থাকায় ঝুলন্ত চুম্বক উত্তর-দক্ষিণ দিক নির্দেশ করে। দণ্ড চুম্বকের উত্তর মেরু উত্তর দিক নির্দেশ করে, কারণ ভূচুম্বকের দক্ষিণ মেরু ভৌগোলিক উত্তর দিকে কাজ করে।"]}], "mcqs": [{"q": "পরমাণুর নিউক্লিয়াসে কোন দুটি কণিকা থাকে?", "opts": ["ইলেকট্রন ও প্রোটন", "প্রোটন ও নিউট্রন", "ইলেকট্রন ও নিউট্রন", "শুধু ইলেকট্রন"], "ans": 1, "exp": "পরমাণুর কেন্দ্রে নিউক্লিয়াস থাকে, যা প্রোটন ও নিউট্রন নিয়ে গঠিত।"}, {"q": "পরমাণু স্বাভাবিক অবস্থায় আধান নিরপেক্ষ হয় কেন?", "opts": ["নিউট্রন বেশি থাকায়", "প্রোটন ও ইলেকট্রনের সংখ্যা সমান থাকায়", "কোনো কণা না থাকায়", "ইলেকট্রন স্থির থাকায়"], "ans": 1, "exp": "প্রোটনের ধনাত্মক ও ইলেকট্রনের ঋণাত্মক চার্জ সমান ও বিপরীতধর্মী হওয়ায় পরমাণু চার্জ নিরপেক্ষ।"}, {"q": "ঘর্ষণের ফলে বস্তুতে আধানের সৃষ্টি হয় আসলে কিসের স্থানান্তরের জন্য?", "opts": ["প্রোটন", "নিউট্রন", "ইলেকট্রন", "নিউক্লিয়াস"], "ans": 2, "exp": "ঘর্ষণের ফলে এক পদার্থ থেকে অন্য পদার্থে ইলেকট্রন চলে যায়।"}, {"q": "কাচের বোতলকে সিল্কের কাপড় দিয়ে ঘষলে বোতলটি কোন আধানে আহিত হয়?", "opts": ["ঋণাত্মক", "ধনাত্মক", "নিরপেক্ষ", "চৌম্বক"], "ans": 1, "exp": "সিল্কের কাপড় কাচ থেকে ইলেকট্রন টেনে নেয়, ফলে কাচ ধনাত্মক ও সিল্ক ঋণাত্মক হয়।"}, {"q": "সমধর্মী দুটি আধান পরস্পরকে কী করে?", "opts": ["আকর্ষণ করে", "বিকর্ষণ করে", "স্থির রাখে", "ধ্বংস করে"], "ans": 1, "exp": "সমধর্মী আধান বিকর্ষণ করে এবং বিপরীতধর্মী আধান আকর্ষণ করে।"}, {"q": "প্লাস্টিকের চিরুনি শুকনো চুলে ঘষে কাগজের টুকরার কাছে ধরলে কাগজ আকৃষ্ট হয় কেন?", "opts": ["চুম্বকত্বের জন্য", "চিরুনি ঋণাত্মক চার্জিত হওয়ায়", "তাপের জন্য", "বায়ুচাপের জন্য"], "ans": 1, "exp": "ঘর্ষণে চিরুনি ইলেকট্রন গ্রহণ করে ঋণাত্মক চার্জিত হয়ে কাগজের টুকরাকে আকর্ষণ করে।"}, {"q": "অধাতু হওয়া সত্ত্বেও কোনটি বিদ্যুৎ সুপরিবাহী?", "opts": ["প্লাস্টিক", "রাবার", "গ্রাফাইট", "কাচ"], "ans": 2, "exp": "কার্বন অধাতু হলেও এর একটি রূপ গ্রাফাইট বিদ্যুৎ সুপরিবাহী।"}, {"q": "নিচের কোনটি অর্ধপরিবাহী (Semiconductor) পদার্থ?", "opts": ["তামা", "রৌপ্য", "সিলিকন ও জার্মেনিয়াম", "রাবার"], "ans": 2, "exp": "সিলিকন, জার্মেনিয়াম ও গ্যালিয়াম অর্ধপরিবাহী পদার্থ।"}, {"q": "অর্ধপরিবাহী পদার্থ নিম্ন তাপমাত্রায় কিসের মতো আচরণ করে?", "opts": ["সুপরিবাহী", "অপরিবাহী", "চুম্বক", "তরল"], "ans": 1, "exp": "নিম্ন তাপমাত্রায় অর্ধপরিবাহী অপরিবাহীর মতো এবং তাপ বাড়ালে পরিবাহীর মতো আচরণ করে।"}, {"q": "আহিত চিরুনিকে হাত দিয়ে স্পর্শ করলে এর স্থিরবিদ্যুৎ কোথায় চলে যায়?", "opts": ["বাতাসে", "হাতের মধ্য দিয়ে মাটিতে", "চুলে", "নষ্ট হয়ে যায়"], "ans": 1, "exp": "মানবদেহ ও ধাতব পদার্থ পরিবাহী হওয়ায় আধান হাতের মধ্য দিয়ে মাটিতে চলে যায়।"}, {"q": "বিদ্যুৎপ্রবাহ চলার আবদ্ধ পথকে কী বলে?", "opts": ["পরিবাহী", "বর্তনী", "ফিলামেন্ট", "রেগুলেটর"], "ans": 1, "exp": "বিদ্যুৎ উৎসের ধনাত্মক থেকে ঋণাত্মক প্রান্ত পর্যন্ত আবদ্ধ পথকে বর্তনী বলে।"}, {"q": "বৈদ্যুতিক বাল্বের ভেতরে কোন ধাতুর সরু কুণ্ডলী (ফিলামেন্ট) থাকে?", "opts": ["তামা", "টাংস্টেন", "লোহা", "নাইক্রোম"], "ans": 1, "exp": "বৈদ্যুতিক বাল্বে সরু টাংস্টেনের তারের ফিলামেন্ট থাকে যা উত্তপ্ত হয়ে আলো দেয়।"}, {"q": "বৈদ্যুতিক হিটার ও ইস্ত্রিতে কোন তারের কুণ্ডলী ব্যবহৃত হয়?", "opts": ["টাংস্টেন", "নাইক্রোম", "অ্যালুমিনিয়াম", "রুপা"], "ans": 1, "exp": "বৈদ্যুতিক হিটার ও ইস্ত্রিতে নাইক্রোম তারের কুণ্ডলী উত্তপ্ত হয়ে তাপ বিকিরণ করে।"}, {"q": "বৈদ্যুতিক পাখার গতি নিয়ন্ত্রণ করার জন্য কী ব্যবহৃত হয়?", "opts": ["ফিলামেন্ট", "রেগুলেটর", "ব্যাটারি", "চুম্বক"], "ans": 1, "exp": "বৈদ্যুতিক পাখার গতি নিয়ন্ত্রণে রেগুলেটর ব্যবহার করা হয়।"}, {"q": "কার নামানুসারে ম্যাগনেট বা চুম্বকের নামকরণ করা হয়?", "opts": ["নিউটন", "ম্যাগনাস", "কোপারনিকাস", "গ্যালিলিও"], "ans": 1, "exp": "গ্রিসের ম্যাগনেশিয়ার রাখাল বালক ম্যাগনাসের নামানুসারে ম্যাগনেট নামকরণ করা হয়।"}, {"q": "একটি দণ্ড চুম্বকের আকর্ষণ ক্ষমতা কোথায় সবচেয়ে বেশি থাকে?", "opts": ["মাঝখানে", "দুই প্রান্তে", "শুধু উত্তর মেরুতে", "সর্বত্র সমান"], "ans": 1, "exp": "লোহার গুঁড়া চুম্বকের দুই প্রান্তে সবচেয়ে বেশি আটকে থাকে; মাঝখানে আকর্ষণ প্রায় শূন্য।"}, {"q": "মুক্তভাবে ঝুলন্ত একটি দণ্ড চুম্বক সর্বদা কোন দিকে মুখ করে স্থির থাকে?", "opts": ["পূর্ব-পশ্চিম", "উত্তর-দক্ষিণ", "উত্তর-পূর্ব", "দক্ষিণ-পশ্চিম"], "ans": 1, "exp": "পৃথিবীর চৌম্বকত্বের কারণে মুক্তভাবে ঝুলন্ত চুম্বক সর্বদা উত্তর-দক্ষিণমুখী হয়ে থাকে।"}, {"q": "চুম্বকের দুটি সমমেরু পরস্পরকে কী করে?", "opts": ["আকর্ষণ করে", "বিকর্ষণ করে", "স্থির থাকে", "ঘোরে"], "ans": 1, "exp": "চুম্বকের সমমেরু পরস্পরকে বিকর্ষণ করে এবং বিপরীত মেরু আকর্ষণ করে।"}, {"q": "নিচের কোনটি চৌম্বক পদার্থ?", "opts": ["তামা", "প্লাস্টিক", "নিকেল ও কোবাল্ট", "কাঠ"], "ans": 2, "exp": "লোহা, নিকেল, কোবাল্ট ও অধিকাংশ ইস্পাত হলো চৌম্বক পদার্থ।"}, {"q": "নিচের কোনটি অচৌম্বক পদার্থ?", "opts": ["লোহা", "নিকেল", "ইস্পাত", "অ্যালুমিনিয়াম"], "ans": 3, "exp": "চুম্বক অ্যালুমিনিয়ামকে আকর্ষণ করে না, তাই এটি অচৌম্বক পদার্থ।"}, {"q": "দণ্ড চুম্বকের উত্তর মেরু দিয়ে লোহার দণ্ডের এক প্রান্ত থেকে অন্য প্রান্তে ঘষলে শুরু প্রান্তে কোন মেরু তৈরি হয়?", "opts": ["দক্ষিণ মেরু", "উত্তর মেরু", "কোনো মেরু নয়", "দুটিই"], "ans": 1, "exp": "যে মেরু দিয়ে ঘর্ষণ শুরু হয়, প্রথম প্রান্তে সেই মেরুই (উত্তর) ও শেষ প্রান্তে বিপরীত মেরু (দক্ষিণ) সৃষ্টি হয়।"}, {"q": "লোহার পেরেকের গায়ে তার পেঁচিয়ে ব্যাটারিতে যুক্ত করলে সেটি কী হিসেবে কাজ করে?", "opts": ["স্থিরবিদ্যুৎ", "বৈদ্যুতিক বা তড়িৎ চুম্বক", "হিটার", "অর্ধপরিবাহী"], "ans": 1, "exp": "তড়িৎ প্রবাহের ফলে পেরেকটি বৈদ্যুতিক চুম্বকে পরিণত হয়।"}, {"q": "বৈদ্যুতিক চুম্বকের তড়িৎ প্রবাহ বন্ধ করলে কী ঘটে?", "opts": ["চুম্বকত্ব বেড়ে যায়", "চুম্বকত্ব নষ্ট হয়ে যায়", "বিস্ফোরণ হয়", "উত্তপ্ত হয়"], "ans": 1, "exp": "তড়িৎ প্রবাহ বন্ধ করলে পেরেকটি আর আলপিনকে আকর্ষণ করে না।"}, {"q": "দণ্ড চুম্বকের উত্তর মেরু উত্তর দিক নির্দেশ করে, কারণ ভৌগোলিক উত্তর দিকে ভূচুম্বকের কোন মেরু থাকে?", "opts": ["উত্তর মেরু", "দক্ষিণ মেরু", "পূর্ব মেরু", "কোনো মেরু নয়"], "ans": 1, "exp": "বিপরীত মেরু আকর্ষণ করে বলে ভূচুম্বকের দক্ষিণ মেরু ভৌগোলিক উত্তর মেরু হিসেবে কাজ করে।"}, {"q": "বাল্বের ভেতরে বায়ুশূন্য রাখার বা নিষ্ক্রিয় গ্যাস ভরার কারণ কী?", "opts": ["আলো কম রাখা", "ফিলামেন্ট যেন পুড়ে নষ্ট না হয়", "ওজন কমানো", "শব্দ বন্ধ করা"], "ans": 1, "exp": "অক্সিজেন থাকলে উত্তপ্ত টাংস্টেন ফিলামেন্ট পুড়ে যেত, তাই বায়ুশূন্য বা নিষ্ক্রিয় গ্যাস থাকে।"}, {"q": "শুকনো চুলে প্লাস্টিকের চিরুনি ঘষলে চিরুনি ও চুলে কী ধরনের চার্জ তৈরি হয়?", "opts": ["একই ধরনের", "বিপরীতধর্মী চার্জ", "কোনো চার্জ নয়", "শুধু ধনাত্মক"], "ans": 1, "exp": "একটি থেকে অন্যটিতে ইলেকট্রন যাওয়ায় দুটি বস্তুতে বিপরীতধর্মী আধান তৈরি হয়।"}, {"q": "যে বিদ্যুৎ এক বস্তু থেকে অন্য বস্তুতে প্রবাহিত হয়ে চলে যায় তাকে কী বলে?", "opts": ["স্থিরবিদ্যুৎ", "চলবিদ্যুৎ", "চুম্বকত্ব", "ঘর্ষণ বিদ্যুৎ"], "ans": 1, "exp": "পরিবাহীর মধ্য দিয়ে প্রবাহিত বিদ্যুৎকে চলবিদ্যুৎ বলে।"}, {"q": "বৈদ্যুতিক ইস্ত্রি কোন নীতির উপর ভিত্তি করে কাজ করে?", "opts": ["আলো উৎপাদন", "তড়িৎ প্রবাহের তাপীয় ফল", "চৌম্বক বিকর্ষণ", "স্থিরবিদ্যুৎ"], "ans": 1, "exp": "নাইক্রোম তারের মধ্য দিয়ে বিদ্যুৎ প্রবাহে উৎপন্ন তাপ ইস্টিরির নিচের লোহার তলকে গরম করে।"}, {"q": "টর্চলাইটে বাল্বের আলো ছড়িয়ে দেওয়ার জন্য সামনে কী ব্যবহার করা হয়?", "opts": ["কাঠ", "কাচ (প্রতিফলক/লেন্স)", "রাবার", "তামা"], "ans": 1, "exp": "বাল্বের আলো ছড়িয়ে দেওয়ার জন্য টর্চলাইটের সামনে একটি কাচ ব্যবহার করা হয়।"}, {"q": "ইলেকট্রনের আধানের প্রকৃতি কেমন?", "opts": ["ধনাত্মক (+)", "ঋণাত্মক (-)", "নিরপেক্ষ", "দ্বৈত"], "ans": 1, "exp": "ইলেকট্রন ঋণাত্মক (-), প্রোটন ধনাত্মক (+) এবং নিউট্রন আধান নিরপেক্ষ।"}], "gyanmulok": [{"q": "বিদ্যুৎ কাকে বলে?", "a": "পরিবাহীর মধ্য দিয়ে ইলেকট্রনের প্রবাহকে বিদ্যুৎ বলে।"}, {"q": "পরমাণু গঠনকারী তিনটি মূল কণিকা কী কী?", "a": "ইলেকট্রন, প্রোটন ও নিউট্রন।"}, {"q": "পরমাণু আধান নিরপেক্ষ হয় কেন?", "a": "একটি পরমাণুতে সমান সংখ্যক ধনাত্মক প্রোটন ও ঋণাত্মক ইলেকট্রন থাকে বলে এটি আধান নিরপেক্ষ হয়।"}, {"q": "চার্জ বা আধানের দুটি মৌলিক ধর্ম লেখো।", "a": "১. সমধর্মী আধান পরস্পরকে বিকর্ষণ করে; ২. বিপরীতধর্মী আধান পরস্পরকে আকর্ষণ করে।"}, {"q": "পরিবাহী পদার্থ কাকে বলে? দুটি উদাহরণ দাও।", "a": "যেসব পদার্থের মধ্য দিয়ে ইলেকট্রন সহজে চলাচল করতে পারে, তাদের পরিবাহী বলে। যেমন: তামা ও রৌপ্য।"}, {"q": "কোন অধাতু বিদ্যুৎ সুপরিবাহী?", "a": "কার্বনের একটি রূপ গ্রাফাইট।"}, {"q": "অর্ধপরিবাহী কাকে বলে? দুটি উদাহরণ দাও।", "a": "যেসব পদার্থ নিম্ন তাপমাত্রায় অপরিবাহী কিন্তু তাপমাত্রা বাড়ালে পরিবাহীর মতো আচরণ করে, তাদের অর্ধপরিবাহী বলে। যেমন: সিলিকন ও জার্মেনিয়াম।"}, {"q": "স্থিরবিদ্যুৎ ও চলবিদ্যুতের পার্থক্য কী?", "a": "ঘর্ষণে সৃষ্ট যে বিদ্যুৎ বস্তুতে আবদ্ধ থাকে তা স্থিরবিদ্যুৎ, আর যে বিদ্যুৎ পরিবাহীর মধ্য দিয়ে এক স্থান থেকে অন্য স্থানে প্রবাহিত হয় তা চলবিদ্যুৎ।"}, {"q": "বিদ্যুৎ বর্তনী কাকে বলে?", "a": "বিদ্যুৎ উৎসের ধনাত্মক প্রান্ত থেকে ঋণাত্মক প্রান্ত পর্যন্ত বিদ্যুৎপ্রবাহ চলার সম্পূর্ণ আবদ্ধ পথকে বর্তনী বলে।"}, {"q": "বৈদ্যুতিক বাল্বের ফিলামেন্ট কী দিয়ে তৈরি?", "a": "সরু টাংস্টেন ধাতুর তার দিয়ে।"}, {"q": "বৈদ্যুতিক হিটার ও ইস্ত্রিতে কোন তারের কুণ্ডলী ব্যবহৃত হয়?", "a": "নাইক্রোম তারের কুণ্ডলী।"}, {"q": "বৈদ্যুতিক পাখায় রেগুলেটরের কাজ কী?", "a": "পাখার ঘূর্ণন গতি নিয়ন্ত্রণ করা।"}, {"q": "চুম্বক বা ম্যাগনেট নামটি কীভাবে এসেছে?", "a": "প্রাচীন গ্রিসের ম্যাগনেশিয়া প্রদেশের ম্যাগনাস নামে এক রাখাল বালকের নামানুসারে।"}, {"q": "চুম্বকের আকর্ষণ ক্ষমতা কোথায় সবচেয়ে বেশি?", "a": "চুম্বকের দুই প্রান্তে বা মেরুতে।"}, {"q": "চৌম্বক পদার্থ কাকে বলে? উদাহরণ দাও।", "a": "যেসব পদার্থকে চুম্বক আকর্ষণ করে, তাদের চৌম্বক পদার্থ বলে। যেমন: লোহা, নিকেল, কোবাল্ট।"}, {"q": "অচৌম্বক পদার্থ কাকে বলে? উদাহরণ দাও।", "a": "যেসব পদার্থকে চুম্বক আকর্ষণ করে না, তাদের অচৌম্বক পদার্থ বলে। যেমন: প্লাস্টিক, কাঠ, তামা।"}, {"q": "কৃত্রিম চুম্বক তৈরির দুটি পদ্ধতির নাম লেখো।", "a": "ঘর্ষণ পদ্ধতি ও বৈদ্যুতিক পদ্ধতি।"}, {"q": "বৈদ্যুতিক চুম্বক কী?", "a": "লোহার পেরেকের গায়ে তার পেঁচিয়ে তড়িৎ প্রবাহিত করলে যে অস্থায়ী চুম্বক তৈরি হয়, তাকে বৈদ্যুতিক চুম্বক বলে।"}, {"q": "মুক্তভাবে ঝুলন্ত চুম্বক কোন দিকে মুখ করে থাকে এবং কেন?", "a": "পৃথিবীর চৌম্বকক্ষেত্র বা ভূচুম্বকের প্রভাবের কারণে সর্বদা উত্তর-দক্ষিণমুখী হয়ে থাকে।"}, {"q": "দণ্ড চুম্বকের উত্তর মেরু উত্তর দিক নির্দেশ করে কেন?", "a": "কারণ ভূচুম্বকের দক্ষিণ মেরু ভৌগোলিক উত্তর মেরু হিসেবে কাজ করে এবং বিপরীত মেরুকে আকর্ষণ করে।"}]}, {"id": "ch11", "number": "অধ্যায় ১১", "title": "পারিপার্শ্বিক পরিবর্তন ও বিভিন্ন ঘটনা", "subtitle": "ভৌত ও রাসায়নিক পরিবর্তন, ধাতুর ক্ষয়রোধ, দহন ও প্রাকৃতিক চক্র", "icon": "🧪", "color": "#7c3aed", "summaries": [{"title": "১. ভৌত ও রাসায়নিক পরিবর্তন", "points": ["ভৌত পরিবর্তন: যে পরিবর্তনে পদার্থের শুধু অবস্থা বা আকার-আকৃতির পরিবর্তন ঘটে কিন্তু নতুন পদার্থের সৃষ্টি হয় না ও মূল উপাদান/ধর্ম অপরিবর্তিত থাকে। যেমন: বরফ গলে পানি, পানির স্ফুটন, কাগজ কেটে ছোট করা, মোম গলে জমে যাওয়া।", "রাসায়নিক পরিবর্তন: যে পরিবর্তনে এক বা একাধিক পদার্থ পরিবর্তিত হয়ে সম্পূর্ণ ভিন্নধর্মী নতুন পদার্থে পরিণত হয়। যেমন: লোহায় মরিচা পড়া (পানিযুক্ত ফেরিক অক্সাইড), মোমবাতি পোড়া, দহন, সালোকসংশ্লেষণ, জীবাশ্ম জ্বালানি তৈরি।"]}, {"title": "২. ধাতুর ক্ষয় ও ক্ষয়রোধের উপায়", "points": ["লোহা বাতাসের অক্সিজেন ও পানির সাথে বিক্রিয়া করে পানিযুক্ত ফেরিক অক্সাইড বা মরিচা তৈরি করে এবং ধীরে ধীরে ক্ষয় হয়। সোনা ও প্লাটিনাম খোলা বাতাসে ক্ষয় হয় না।", "স্টেইনলেস স্টিল: লোহার সাথে কার্বন, নিকেল ও ক্রোমিয়াম মিশিয়ে তৈরি হয়; এতে মরিচা পড়ে না।", "ক্ষয়রোধের ৩টি প্রধান উপায়: ১. গ্যালভানাইজিং (লোহার ওপর জিংক বা দস্তার পাতলা আস্তরণ দেওয়া), ২. পেইন্টিং (রং করা) ও ৩. ইলেকট্রোপ্লেটিং (তড়িৎ বিশ্লেষণের মাধ্যমে নিকেল, ক্রোমিয়াম, টিন, সিলভার বা সোনার পাতলা আবরণ দেওয়া)।"]}, {"title": "৩. দহন, সালোকসংশ্লেষণ ও প্রাকৃতিক চক্র", "points": ["দহন: কোনো পদার্থ বাতাসের অক্সিজেনের সাথে বিক্রিয়া করে তাপ ও আলো উৎপন্ন করার রাসায়নিক পরিবর্তন (যেমন: মোমবাতি জ্বালানো, রান্নার গ্যাস পোড়ানো, দেহকোষে খাদ্য ভেঙে শক্তি উৎপাদন)।", "সালোকসংশ্লেষণ: সূর্যের আলো ও ক্লোরোফিলের সহায়তায় কার্বন ডাইঅক্সাইড + পানি → গ্লুকোজ + অক্সিজেন (রাসায়নিক পরিবর্তন)।", "পানিচক্রের প্রধান ৩টি ভৌত পরিবর্তন: বাষ্পীভবন (পানি → জলীয় বাষ্প), ঘনীভবন (জলীয় বাষ্প → মেঘ/পানিকণা) ও কঠিনীভবন (মেঘের পানিকণা → বরফ)।", "কার্বনচক্র ও অক্সিজেনচক্র পরস্পর ও সালোকসংশ্লেষণের সাথে ঘনিষ্ঠভাবে জড়িত।"]}, {"title": "৪. গুরুত্বপূর্ণ রাসায়নিক বিক্রিয়া (পরীক্ষা)", "points": ["ম্যাগনেসিয়াম রিবন বাতাসের অক্সিজেনে পোড়ালে উজ্জ্বল প্রজ্বলিত শিখাসহ জ্বলে সাদা ছাই বা ম্যাগনেসিয়াম অক্সাইড (MgO) তৈরি হয়।", "চক বা ডিমের খোসা (ক্যালসিয়াম কার্বোনেট, CaCO3) + পাতলা হাইড্রোক্লোরিক এসিড (HCl) → ক্যালসিয়াম ক্লোরাইড + পানি + কার্বন ডাইঅক্সাইড (বুদবুদ বা ফেনা সৃষ্টি করে)।", "ধাতু (ম্যাগনেসিয়াম, জিংক, অ্যালুমিনিয়াম) + পাতলা হাইড্রোক্লোরিক এসিড → হাইড্রোজেন গ্যাসের বুদবুদ উৎপন্ন হয়, যার মুখে জ্বলন্ত দিয়াশলাই ধরলে পপ পপ শব্দ করে জ্বলে।"]}], "mcqs": [{"q": "বরফ গলে পানিতে পরিণত হওয়া কোন ধরনের পরিবর্তন?", "opts": ["রাসায়নিক পরিবর্তন", "ভৌত পরিবর্তন", "জৈব পরিবর্তন", "দহন"], "ans": 1, "exp": "এখানে শুধু অবস্থার পরিবর্তন হয়েছে, নতুন পদার্থ তৈরি হয়নি—তাই এটি ভৌত পরিবর্তন।"}, {"q": "বড় কাগজ কেটে ছোট ছোট টুকরা করা কোন ধরনের পরিবর্তন?", "opts": ["রাসায়নিক", "ভৌত পরিবর্তন", "গাজন", "বাষ্পীভবন"], "ans": 1, "exp": "কাগজের আকার বদলালেও উপাদান ও ধর্ম একই থাকে, তাই এটি ভৌত পরিবর্তন।"}, {"q": "লোহার মরিচার রাসায়নিক নাম কী?", "opts": ["ফেরাস সালফেট", "পানিযুক্ত ফেরিক অক্সাইড", "ক্যালসিয়াম কার্বোনেট", "ম্যাগনেসিয়াম অক্সাইড"], "ans": 1, "exp": "লোহা বাতাসের অক্সিজেন ও পানির সাথে বিক্রিয়া করে পানিযুক্ত ফেরিক অক্সাইড (মরিচা) তৈরি করে।"}, {"q": "নিচের কোন ধাতু খোলা বাতাসে রাখলেও ক্ষয় হয় না?", "opts": ["লোহা", "তামা", "সোনা ও প্লাটিনাম", "অ্যালুমিনিয়াম"], "ans": 2, "exp": "সোনা ও প্লাটিনাম বাতাসে ক্ষয় হয় না বলে গহনা ও মুদ্রা তৈরিতে ব্যবহৃত হয়।"}, {"q": "স্টেইনলেস স্টিল তৈরিতে লোহার সাথে কী কী মেশানো হয়?", "opts": ["তামা ও দস্তা", "কার্বন, নিকেল ও ক্রোমিয়াম", "সোনা ও রুপা", "পারদ ও সিসা"], "ans": 1, "exp": "লোহার সাথে কার্বন, নিকেল ও ক্রোমিয়াম মিশিয়ে মরিচারোধী স্টেইনলেস স্টিল তৈরি হয়।"}, {"q": "লোহার তৈরি দ্রব্যসামগ্রীর উপর দস্তা বা জিংকের পাতলা আস্তরণ দেওয়াকে কী বলে?", "opts": ["পেইন্টিং", "গ্যালভানাইজিং", "ইলেকট্রোপ্লেটিং", "দহন"], "ans": 1, "exp": "লোহার ওপর জিংক (দস্তা)-এর পাতলা আবরণ দেওয়াকে গ্যালভানাইজিং বলে।"}, {"q": "তড়িৎ বিশ্লেষণের সাহায্যে একটি ধাতুর উপর আরেকটি ধাতুর পাতলা আবরণ তৈরির প্রক্রিয়া কী?", "opts": ["গ্যালভানাইজিং", "ইলেকট্রোপ্লেটিং", "পেইন্টিং", "স্ফুটন"], "ans": 1, "exp": "তড়িৎ বিশ্লেষণের মাধ্যমে নিকেল, ক্রোমিয়াম, টিন বা সোনার আবরণ দেওয়াকে ইলেকট্রোপ্লেটিং বলে।"}, {"q": "খাবারের কৌটা ও সাইকেলের হ্যান্ডেলে ক্ষয়রোধে কোন প্রক্রিয়া ব্যবহৃত হয়?", "opts": ["বাষ্পীভবন", "ইলেকট্রোপ্লেটিং", "ঘনীভবন", "গাজন"], "ans": 1, "exp": "খাবারের কৌটা ও সাইকেলে লোহার ওপর টিন বা ক্রোমিয়ামের ইলেকট্রোপ্লেটিং করা হয়।"}, {"q": "মোমবাতি জ্বালানোর সময় কোন কোন পরিবর্তন ঘটে?", "opts": ["শুধু ভৌত", "শুধু রাসায়নিক", "ভৌত ও রাসায়নিক উভয়ই", "কোনোটিই নয়"], "ans": 2, "exp": "মোম গলে নিচে জমে যাওয়া ভৌত পরিবর্তন, আর সলতেয় পুড়ে CO2 ও পানি হওয়া রাসায়নিক পরিবর্তন।"}, {"q": "কোনো পদার্থ বাতাসের অক্সিজেনের সাথে বিক্রিয়া করে তাপ উৎপন্ন করলে তাকে কী বলে?", "opts": ["গলন", "দহন", "ঘনীভবন", "কঠিনীভবন"], "ans": 1, "exp": "বাতাসের অক্সিজেনের সাথে বিক্রিয়া করে তাপ ও আলো উৎপন্ন করার প্রক্রিয়া হলো দহন।"}, {"q": "সালোকসংশ্লেষণ কোন ধরনের পরিবর্তন?", "opts": ["ভৌত পরিবর্তন", "রাসায়নিক পরিবর্তন", "অবস্থার পরিবর্তন", "বাষ্পীভবন"], "ans": 1, "exp": "সালোকসংশ্লেষণে CO2 ও পানি থেকে ভিন্নধর্মী গ্লুকোজ ও অক্সিজেন উৎপন্ন হয়, তাই এটি রাসায়নিক পরিবর্তন।"}, {"q": "সালোকসংশ্লেষণে উদ্ভিদ কোন দুটি উপাদান তৈরি করে?", "opts": ["CO2 ও পানি", "গ্লুকোজ ও অক্সিজেন", "নাইট্রোজেন ও গ্লুকোজ", "লবণ ও পানি"], "ans": 1, "exp": "আলো ও ক্লোরোফিলের সহায়তায় গ্লুকোজ ও অক্সিজেন উৎপন্ন হয়।"}, {"q": "জলীয় বাষ্প ঠান্ডা হয়ে মেঘ বা ক্ষুদ্র পানিকণায় পরিণত হওয়ার প্রক্রিয়া কী?", "opts": ["বাষ্পীভবন", "ঘনীভবন", "কঠিনীভবন", "গলন"], "ans": 1, "exp": "বাষ্প থেকে তরল বা মেঘে পরিণত হওয়ার ভৌত পরিবর্তনকে ঘনীভবন বলে।"}, {"q": "পানিচক্রে মেঘের পানিকণা জমে বরফে পরিণত হওয়াকে কী বলে?", "opts": ["বাষ্পীভবন", "ঘনীভবন", "কঠিনীভবন", "দহন"], "ans": 2, "exp": "তরল পানিকণা ঠান্ডায় কঠিন বরফে পরিণত হওয়াকে কঠিনীভবন বলে।"}, {"q": "পানিচক্রের বাষ্পীভবন, ঘনীভবন ও কঠিনীভবন কোন ধরনের পরিবর্তন?", "opts": ["রাসায়নিক পরিবর্তন", "ভৌত পরিবর্তন", "জৈব পরিবর্তন", "দহন"], "ans": 1, "exp": "এগুলোতে শুধু পানির অবস্থার পরিবর্তন হয়, নতুন কোনো পদার্থ তৈরি হয় না।"}, {"q": "গাছপালা ও প্রাণিদেহ থেকে জীবাশ্ম জ্বালানি (কয়লা, তেল, গ্যাস) তৈরি হওয়া কী ধরনের পরিবর্তন?", "opts": ["ভৌত পরিবর্তন", "রাসায়নিক পরিবর্তন", "কঠিনীভবন", "স্ফুটন"], "ans": 1, "exp": "ব্যাকটেরিয়ার সাহায্যে ভেঙে সম্পূর্ণ ভিন্নধর্মী নতুন পদার্থে পরিণত হয় বলে এটি রাসায়নিক পরিবর্তন।"}, {"q": "ম্যাগনেসিয়াম রিবন বাতাসের অক্সিজেনে পোড়ালে কী উৎপন্ন হয়?", "opts": ["ক্যালসিয়াম অক্সাইড", "ম্যাগনেসিয়াম অক্সাইড", "হাইড্রোজেন গ্যাস", "কার্বন ডাইঅক্সাইড"], "ans": 1, "exp": "ম্যাগনেসিয়াম বাতাসের অক্সিজেনে প্রজ্বলিত শিখাসহ পুড়ে সাদা ম্যাগনেসিয়াম অক্সাইড তৈরি করে।"}, {"q": "চক বা ডিমের খোসায় প্রধানত কোন রাসায়নিক যৌগ থাকে?", "opts": ["ম্যাগনেসিয়াম অক্সাইড", "ক্যালসিয়াম কার্বোনেট", "সোডিয়াম ক্লোরাইড", "সালফিউরিক এসিড"], "ans": 1, "exp": "চক ও ডিমের খোসায় প্রচুর ক্যালসিয়াম কার্বোনেট (CaCO3) থাকে।"}, {"q": "চকের গুঁড়ায় পাতলা হাইড্রোক্লোরিক এসিড যোগ করলে কিসের বুদবুদ ওঠে?", "opts": ["অক্সিজেন", "হাইড্রোজেন", "কার্বন ডাইঅক্সাইড", "নাইট্রোজেন"], "ans": 2, "exp": "CaCO3 ও HCl-এর বিক্রিয়ায় কার্বন ডাইঅক্সাইড গ্যাসের বুদবুদ ও ফেনা ওঠে।"}, {"q": "ম্যাগনেসিয়াম বা জিংক ধাতুর সাথে পাতলা হাইড্রোক্লোরিক এসিডের বিক্রিয়ায় কোন গ্যাস উৎপন্ন হয়?", "opts": ["কার্বন ডাইঅক্সাইড", "হাইড্রোজেন", "অক্সিজেন", "ক্লোরিন"], "ans": 1, "exp": "ধাতু ও এসিডের বিক্রিয়ায় হাইড্রোজেন গ্যাসের বুদবুদ উৎপন্ন হয়।"}, {"q": "টেস্টটিউবের মুখে জ্বলন্ত দিয়াশলাই ধরলে কোন গ্যাস পপ পপ শব্দ করে জ্বলে?", "opts": ["অক্সিজেন", "কার্বন ডাইঅক্সাইড", "হাইড্রোজেন", "নাইট্রোজেন"], "ans": 2, "exp": "হাইড্রোজেন গ্যাসের মুখে জ্বলন্ত দিয়াশলাই ধরলে পপ পপ শব্দ করে জ্বলে।"}, {"q": "দেহকোষে খাদ্য ভেঙে তাপশক্তি উৎপন্ন হওয়া কোন ধরনের প্রক্রিয়া?", "opts": ["গলন", "দহন (রাসায়নিক)", "কঠিনীভবন", "বাষ্পীভবন"], "ans": 1, "exp": "দেহকোষে খাদ্য অক্সিজেনের সাথে বিক্রিয়া করে শক্তি উৎপন্ন করে, যা এক ধরনের দহন।"}, {"q": "পানিচক্রে ভূপৃষ্ঠের পানি সূর্যের তাপে বাষ্প হয়ে উপরে ওঠাকে কী বলে?", "opts": ["ঘনীভবন", "বাষ্পীভবন", "কঠিনীভবন", "বৃষ্টিপাত"], "ans": 1, "exp": "সূর্যতাপে পানি জলীয় বাষ্পে পরিণত হয়ে বায়ুমণ্ডলে প্রবেশ করাকে বাষ্পীভবন বলে।"}, {"q": "লোহার তৈরি হাতুড়ি ও পেরেক মরিচা থেকে বাঁচাতে কী করা যায়?", "opts": ["পানিতে ভিজিয়ে রাখা", "তেল বা গ্রিজে রাখা ও শুকনো স্থানে রাখা", "লবণ পানিতে রাখা", "খোলা রোদে রাখা"], "ans": 1, "exp": "পানি থেকে দূরে শুকনো জায়গায় রাখলে বা তেল/গ্রিজ মাখালে মরিচা পড়ে না।"}, {"q": "চক ও হাইড্রোক্লোরিক এসিডের বিক্রিয়ায় পরিষ্কার দ্রবণ হিসেবে কী থাকে?", "opts": ["ম্যাগনেসিয়াম অক্সাইড", "ক্যালসিয়াম ক্লোরাইড ও পানি", "ফেরিক অক্সাইড", "গ্লুকোজ"], "ans": 1, "exp": "কার্বন ডাইঅক্সাইড উড়ে গেলে ক্যালসিয়াম ক্লোরাইড ও পানির পরিষ্কার দ্রবণ থাকে।"}, {"q": "গ্যালভানাইজিং-এ দস্তার পরিবর্তে আর কীসের আবরণ দেওয়া যায়?", "opts": ["সিসা", "টিন", "পারদ", "কার্বন"], "ans": 1, "exp": "দস্তার পরিবর্তে টিন দিয়েও আবরণ দিয়ে ধাতুকে ক্ষয় হতে রক্ষা করা যায়।"}, {"q": "কার্বনচক্রে বায়ুমণ্ডল থেকে কার্বন ডাইঅক্সাইড শোষণ করে কোন প্রক্রিয়ায়?", "opts": ["দহন", "সালোকসংশ্লেষণ", "শ্বসন", "বাষ্পীভবন"], "ans": 1, "exp": "উদ্ভিদ সালোকসংশ্লেষণের মাধ্যমে বায়ুমণ্ডলের CO2 শোষণ করে।"}, {"q": "উদ্ভিদ ও প্রাণী নিঃশ্বাসের সময় বায়ুমণ্ডলে কোন গ্যাস ছেড়ে দেয়?", "opts": ["অক্সিজেন", "কার্বন ডাইঅক্সাইড", "হাইড্রোজেন", "মিথেন"], "ans": 1, "exp": "উদ্ভিদ ও প্রাণী উভয়ই শ্বসনে বা নিঃশ্বাসের সময় CO2 ত্যাগ করে।"}, {"q": "বাসাবাড়ির রেফ্রিজারেটর, আলমারি ও স্টিলের আসবাবপত্রের ক্ষয়রোধে সাধারণত কী করা হয়?", "opts": ["বাষ্পীভবন", "পেইন্টিং (রং করা)", "দহন", "গলন"], "ans": 1, "exp": "রং বা পেইন্ট করে ধাতব আসবাবপত্রের ক্ষয়রোধ করা হয়।"}, {"q": "মাটির নিচে চুইয়ে সঞ্চিত হওয়া বৃষ্টির পানিকে কী বলে?", "opts": ["সামুদ্রিক পানি", "ভূগর্ভস্থ পানি", "বরফ", "জলীয় বাষ্প"], "ans": 1, "exp": "বৃষ্টির পানি চুইয়ে মাটির নিচে জমা হলে তাকে ভূগর্ভস্থ পানি বলে।"}], "gyanmulok": [{"q": "ভৌত পরিবর্তন কাকে বলে?", "a": "যে পরিবর্তনে পদার্থের শুধু অবস্থা বা আকার-আকৃতির পরিবর্তন ঘটে কিন্তু নতুন পদার্থ সৃষ্টি হয় না ও ধর্ম অপরিবর্তিত থাকে, তাকে ভৌত পরিবর্তন বলে।"}, {"q": "রাসায়নিক পরিবর্তন কাকে বলে?", "a": "যে পরিবর্তনে এক বা একাধিক পদার্থ পরিবর্তিত হয়ে সম্পূর্ণ ভিন্নধর্মী নতুন পদার্থে পরিণত হয়, তাকে রাসায়নিক পরিবর্তন বলে।"}, {"q": "মরিচা কী?", "a": "লোহা বাতাসের অক্সিজেন ও পানির সাথে বিক্রিয়া করে যে পানিযুক্ত ফেরিক অক্সাইড তৈরি করে, তাকে মরিচা বলে।"}, {"q": "স্টেইনলেস স্টিল কীভাবে তৈরি হয়?", "a": "লোহার সাথে কার্বন, নিকেল ও ক্রোমিয়াম মিশিয়ে স্টেইনলেস স্টিল তৈরি হয়।"}, {"q": "ধাতুর ক্ষয়রোধের তিনটি উপায়ের নাম লেখো।", "a": "গ্যালভানাইজিং, পেইন্টিং ও ইলেকট্রোপ্লেটিং।"}, {"q": "গ্যালভানাইজিং কাকে বলে?", "a": "লোহার তৈরি দ্রব্যসামগ্রীর উপর জিংক বা দস্তার পাতলা আস্তরণ দেওয়াকে গ্যালভানাইজিং বলে।"}, {"q": "ইলেকট্রোপ্লেটিং কাকে বলে?", "a": "তড়িৎ বিশ্লেষণের সাহায্যে একটি ধাতুর উপর আরেকটি ধাতুর পাতলা আবরণ তৈরির প্রক্রিয়াকে ইলেকট্রোপ্লেটিং বলে।"}, {"q": "দহন কাকে বলে?", "a": "কোনো পদার্থ বাতাসের অক্সিজেনের সাথে বিক্রিয়া করে তাপ ও আলো উৎপন্ন করার রাসায়নিক পরিবর্তনকে দহন বলে।"}, {"q": "মোমবাতি জ্বালানোতে কীভাবে ভৌত ও রাসায়নিক উভয় পরিবর্তন ঘটে?", "a": "মোমের কিছু অংশ গলে নিচে জমে যাওয়া ভৌত পরিবর্তন এবং সলতের মাধ্যমে পুড়ে CO2 ও পানি তৈরি হওয়া রাসায়নিক পরিবর্তন।"}, {"q": "সালোকসংশ্লেষণের বিক্রিয়াটি লেখো।", "a": "কার্বন ডাইঅক্সাইড + পানি (আলো ও ক্লোরোফিলের উপস্থিতিতে) → গ্লুকোজ + অক্সিজেন।"}, {"q": "পানিচক্র কাকে বলে?", "a": "ভূপৃষ্ঠের পানি বাষ্পীভবন, ঘনীভবন ও বৃষ্টিরূপে পুনরায় ভূপৃষ্ঠে ও সমুদ্রে চক্রাকারে ফিরে আসাকে পানিচক্র বলে।"}, {"q": "বাষ্পীভবন কী?", "a": "সূর্যের তাপে নদ-নদী ও সমুদ্রপৃষ্ঠ থেকে পানি জলীয় বাষ্পে পরিণত হয়ে বায়ুমণ্ডলে প্রবেশ করার প্রক্রিয়াকে বাষ্পীভবন বলে।"}, {"q": "ঘনীভবন কী?", "a": "জলীয় বাষ্প উপরে উঠে ঠান্ডা হয়ে ক্ষুদ্র পানিকণা বা মেঘে পরিণত হওয়ার প্রক্রিয়াকে ঘনীভবন বলে।"}, {"q": "কঠিনীভবন কী?", "a": "মেঘের পানিকণা অতিরিক্ত ঠান্ডায় জমে বরফে পরিণত হওয়ার প্রক্রিয়াকে কঠিনীভবন বলে।"}, {"q": "ভূগর্ভস্থ পানি কী?", "a": "বৃষ্টির পানি চুইয়ে মাটির নিচে গিয়ে যে পানি সঞ্চিত হয়, তাকে ভূগর্ভস্থ পানি বলে।"}, {"q": "ম্যাগনেসিয়াম রিবন বাতাসে পোড়ালে যে সাদা ছাই পাওয়া যায় তার নাম কী?", "a": "ম্যাগনেসিয়াম অক্সাইড।"}, {"q": "চক ও ডিমের খোসায় প্রধানত কী থাকে?", "a": "ক্যালসিয়াম কার্বোনেট (CaCO3)।"}, {"q": "ক্যালসিয়াম কার্বোনেট ও পাতলা হাইড্রোক্লোরিক এসিডের বিক্রিয়ায় কোন গ্যাসের বুদবুদ ওঠে?", "a": "কার্বন ডাইঅক্সাইড গ্যাসের বুদবুদ।"}, {"q": "ধাতু ও পাতলা হাইড্রোক্লোরিক এসিডের বিক্রিয়ায় কোন গ্যাস উৎপন্ন হয়?", "a": "হাইড্রোজেন গ্যাস।"}, {"q": "হাইড্রোজেন গ্যাস শনাক্ত করার পরীক্ষাটি কী?", "a": "উৎপন্ন গ্যাসপূর্ণ টেস্টটিউবের মুখে জ্বলন্ত দিয়াশলাই ধরলে তা 'পপ পপ' শব্দ করে জ্বলে ওঠে।"}]}, {"id": "ch12", "number": "অধ্যায় ১২", "title": "সৌরজগৎ ও আমাদের পৃথিবী", "subtitle": "সৌরজগতের গঠন, গ্রহ-উপগ্রহ, জ্যোতিষ্ক, আহ্নিক ও বার্ষিক গতি", "icon": "🪐", "color": "#0284c7", "summaries": [{"title": "১. সৌরজগৎ ও সূর্যকেন্দ্রিক মডেল", "points": ["প্রাচীনকালে অ্যারিস্টটল ও টলেমি মনে করতেন পৃথিবীকে কেন্দ্র করে সূর্য ঘোরে (পৃথিবীকেন্দ্রিক মতবাদ)। পরবর্তীতে কোপারনিকাস সূর্যকেন্দ্রিক মডেলের প্রস্তাব দেন এবং গ্যালিলিও ও কেপলার এর পক্ষে প্রমাণ দেন।", "সূর্য এবং একে কেন্দ্র করে ঘূর্ণায়মান ৮টি গ্রহ, উপগ্রহ ও অন্যান্য জ্যোতিষ্ক (ধূমকেতু, উল্কা, গ্রহাণু) নিয়ে আমাদের সৌরজগৎ গঠিত।", "সূর্য একটি মাঝারি আকারের নক্ষত্র (জ্বলন্ত গ্যাসপিণ্ড), যা পৃথিবী থেকে প্রায় ১৫ কোটি কিমি দূরে ও আয়তনে পৃথিবীর প্রায় ১৩ লক্ষ গুণ বড়। এতে হাইড্রোজেন গ্যাস হিলিয়াম পরমাণুতে পরিণত হয়ে তাপ ও আলো উৎপন্ন করে।"]}, {"title": "২. আটটি গ্রহ ও উপগ্রহ", "points": ["সূর্যকে কেন্দ্র করে ৮টি গ্রহ ঘুরছে: বুধ (সবচেয়ে কাছের, বায়ুমণ্ডল নেই), শুক্র (সন্ধ্যাতারা/শুকতারা রূপে দেখা যায়), পৃথিবী (জীবনের উপযোগী পরিবেশ), মঙ্গল (লাল গ্রহ, পাতলা বায়ুমণ্ডল), বৃহস্পতি (সবচেয়ে বড় গ্যাসীয় গ্রহ), শনি (বলয় বা রিং আছে), ইউরেনাস ও নেপচুন (গ্যাস ও বরফে তৈরি)।", "২০০৬ সালে প্লুটোকে গ্রহের তালিকা থেকে বাদ দিয়ে ক্ষুদ্র অসম্পূর্ণ গ্রহাণু (বামন গ্রহ) হিসেবে গণ্য করা হয়।", "পৃথিবীর একমাত্র প্রাকৃতিক উপগ্রহ চাঁদ (২৭ দিন ৮ ঘণ্টায় পৃথিবীকে প্রদক্ষিণ করে; ২৯ দিন ১২ ঘণ্টা পরপর অমাবস্যা-পূর্ণিমা হয়)। পৃথিবীর চারপাশে ৬৭০০-এর বেশি কৃত্রিম উপগ্রহ ঘুরছে।"]}, {"title": "৩. ধূমকেতু, উল্কা, গ্রহাণু ও পৃথিবীর আকৃতি", "points": ["গ্রহাণু: গ্রহের চেয়ে ছোট কঠিন শিলাময় বা ধাতব বস্তু। ধূমকেতু: গ্যাস, বরফ ও ধুলিকণা দিয়ে তৈরি, সূর্যের কাছে গেলে ঝাঁটার মতো লেজ দেখা যায় (হ্যালির ধূমকেতু ৭৬ বছর পরপর দেখা যায়: ১৯১০, ১৯৮৬ এবং আবার ২০৬১ সালে)।", "উল্কা: সবচেয়ে ছোট কঠিন জ্যোতিষ্ক যা পৃথিবীর বায়ুমণ্ডলে এসে বাতাসের ঘর্ষণে পুড়ে অগ্নিগোলকের মতো দেখা যায়।", "পৃথিবী কিছুটা কমলালেবুর মতো উত্তর-দক্ষিণে চাপা। এর চার ভাগের তিন ভাগ পানি ও এক ভাগ মাটি। অভিকর্ষ বলের কারণে পৃথিবীপৃষ্ঠের কোনো কিছু ছিটকে পড়ে না।"]}, {"title": "৪. পৃথিবীর আহ্নিক গতি ও বার্ষিক গতি", "points": ["আহ্নিক গতি: পৃথিবী নিজ অক্ষের উপর ২৪ ঘণ্টায় একবার পশ্চিম থেকে পূর্বে আবর্তন করে। এর ফলে দিন ও রাত হয়।", "বার্ষিক গতি: পৃথিবী সূর্যের চারপাশে ৩৬৫ দিন ৬ ঘণ্টায় (১ সৌর বছর) একবার ঘুরে আসে। এর ফলে দিন-রাত ছোট-বড় হয় এবং ঋতুর পরিবর্তন হয়।", "বিশেষ তারিখ (উত্তর গোলার্ধ/বাংলাদেশ): ২১ জুন (সূর্য মাথার ওপর, সবচেয়ে বড় দিন ও ছোট রাত, গ্রীষ্মকাল; দক্ষিণ গোলার্ধে শীত), ২২ ডিসেম্বর (দিন ছোট ও রাত বড়, শীতকাল), ২৩ সেপ্টেম্বর ও ২১ মার্চ (উভয় গোলার্ধে দিন-রাত সমান, যথাক্রমে শরৎ ও বসন্তকাল)।"]}], "mcqs": [{"q": "সূর্যকেন্দ্রিক সৌরজগতের মডেলের প্রস্তাবক কে ছিলেন?", "opts": ["টলেমি", "অ্যারিস্টটল", "কোপারনিকাস", "নিউটন"], "ans": 2, "exp": "কোপারনিকাস পৃথিবীকেন্দ্রিক মডেলের বদলে সূর্যকেন্দ্রিক মডেলের প্রস্তাব করেন।"}, {"q": "সূর্য থেকে পৃথিবীর দূরত্ব প্রায় কত?", "opts": ["১৫ লক্ষ কিমি", "১৫ কোটি কিমি", "১ কোটি কিমি", "৫০ কোটি কিমি"], "ans": 1, "exp": "সূর্য পৃথিবী থেকে প্রায় ১৫ কোটি কিলোমিটার দূরে অবস্থিত।"}, {"q": "সূর্যের আয়তন পৃথিবীর আয়তনের তুলনায় প্রায় কত গুণ বড়?", "opts": ["১ লক্ষ গুণ", "১৩ লক্ষ গুণ", "১ কোটি গুণ", "৫ লক্ষ গুণ"], "ans": 1, "exp": "সূর্য মাঝারি আকারের নক্ষত্র হলেও এর আয়তন পৃথিবীর প্রায় ১৩ লক্ষ গুণ বড়।"}, {"q": "সূর্যে কোন গ্যাস কোন গ্যাসে পরিণত হয়ে প্রচুর শক্তি উৎপন্ন হয়?", "opts": ["হিলিয়াম → অক্সিজেন", "হাইড্রোজেন → হিলিয়াম", "কার্বন → নাইট্রোজেন", "অক্সিজেন → হাইড্রোজেন"], "ans": 1, "exp": "হাইড্রোজেন পরমাণু যুক্ত হয়ে হিলিয়াম পরমাণুতে পরিণত হয়ে তাপ ও আলো উৎপন্ন করে।"}, {"q": "সূর্যের সবচেয়ে কাছের গ্রহ কোনটি, যাতে কোনো বায়ুমণ্ডল নেই?", "opts": ["শুক্র", "বুধ", "মঙ্গল", "পৃথিবী"], "ans": 1, "exp": "বুধ সূর্যের সবচেয়ে কাছের গ্রহ এবং এতে কোনো বায়ুমণ্ডল নেই।"}, {"q": "সন্ধ্যায় সন্ধ্যাতারা এবং ভোরে শুকতারা রূপে আকাশে যেটি দেখা যায় সেটি আসলে কী?", "opts": ["একটি নক্ষত্র", "শুক্র গ্রহ", "বুধ গ্রহ", "ধূমকেতু"], "ans": 1, "exp": "সন্ধ্যাতারা ও শুকতারা কোনো নক্ষত্র নয়, এটি আসলে শুক্র গ্রহ।"}, {"q": "কোন গ্রহকে 'লাল গ্রহ' বলা হয়?", "opts": ["বৃহস্পতি", "মঙ্গল", "শনি", "বুধ"], "ans": 1, "exp": "মঙ্গল গ্রহের পৃষ্ঠ লাল রঙের ও ধূলিময় হওয়ায় একে লাল গ্রহ বলে।"}, {"q": "সৌরজগতের সবচেয়ে বড় গ্রহ কোনটি?", "opts": ["শনি", "বৃহস্পতি", "ইউরেনাস", "নেপচুন"], "ans": 1, "exp": "বৃহস্পতি সৌরজগতের সবচেয়ে বড় গ্রহ এবং এতে কোনো কঠিন পৃষ্ঠ নেই।"}, {"q": "কোন গ্রহকে ঘিরে সুন্দর রিং বা আংটা (বলয়) রয়েছে?", "opts": ["মঙ্গল", "বৃহস্পতি", "শনি", "বুধ"], "ans": 2, "exp": "শনি গ্রহকে ঘিরে কতগুলো রিং বা আংটা রয়েছে।"}, {"q": "কোন গ্রহগুলো গ্যাস ও বরফ দিয়ে গঠিত?", "opts": ["বুধ ও শুক্র", "ইউরেনাস ও নেপচুন", "পৃথিবী ও মঙ্গল", "শুধু বৃহস্পতি"], "ans": 1, "exp": "ইউরেনাস ও নেপচুন গ্রহ গ্যাস ও বরফ দিয়ে গঠিত।"}, {"q": "কত সালে বিজ্ঞানীরা প্লুটোকে গ্রহের তালিকা থেকে বাদ দেন?", "opts": ["১৯৯৮ সালে", "২০০৬ সালে", "২০১০ সালে", "২০০১ সালে"], "ans": 1, "exp": "২০০৬ সালে বিজ্ঞানীরা সিদ্ধান্ত নেন যে প্লুটো একটি ক্ষুদ্র অসম্পূর্ণ গ্রহাণু।"}, {"q": "চাঁদ কত দিনে একবার পৃথিবীকে প্রদক্ষিণ করে?", "opts": ["২৪ ঘণ্টায়", "২৭ দিন ৮ ঘণ্টায়", "২৯ দিন ১২ ঘণ্টায়", "৩০ দিনে"], "ans": 1, "exp": "চাঁদ ২৭ দিন ৮ ঘণ্টায় একবার পৃথিবীকে প্রদক্ষিণ করে।"}, {"q": "কত সময় পরপর অমাবস্যা ও পূর্ণিমা হতে দেখা যায়?", "opts": ["২৭ দিন ৮ ঘণ্টা", "২৯ দিন ১২ ঘণ্টা", "১৫ দিন", "৩১ দিন"], "ans": 1, "exp": "২৯ দিন ১২ ঘণ্টা পরপর অমাবস্যা ও পূর্ণিমা হয়।"}, {"q": "গ্রহের চেয়ে আকারে ছোট কঠিন শিলাময় বা ধাতব বস্তুকে কী বলে?", "opts": ["ধূমকেতু", "গ্রহাণু", "উপগ্রহ", "নক্ষত্র"], "ans": 1, "exp": "গ্রহের চেয়ে ছোট কঠিন শিলাময় বা ধাতব বস্তু হলো গ্রহাণু।"}, {"q": "হ্যালির ধূমকেতু গড়ে কত বছর পরপর পৃথিবী থেকে দেখা যায়?", "opts": ["৫০ বছর", "৭৬ বছর", "১০০ বছর", "২৫ বছর"], "ans": 1, "exp": "হ্যালির ধূমকেতু গড়ে ৭৬ বছর পরপর দেখা যায়।"}, {"q": "১৯৮৬ সালের পর হ্যালির ধূমকেতু আবার কবে দেখা যাওয়ার কথা?", "opts": ["২০৪০ সালে", "২০৬১ সালে", "২০৫০ সালে", "২০৭৬ সালে"], "ans": 1, "exp": "১৯৮৬ + ৭৫/৭৬ = ২০৬১ সালে হ্যালির ধূমকেতু আবার দেখা যাওয়ার কথা।"}, {"q": "রাতের আকাশে হঠাৎ ছুটে যাওয়া আগুনের গোলকগুলো আসলে কী?", "opts": ["ধূমকেতু", "উল্কাপিণ্ড", "উপগ্রহ", "নক্ষত্র"], "ans": 1, "exp": "ক্ষুদ্র কঠিন উল্কাপিণ্ড পৃথিবীর বায়ুমণ্ডলে এসে বায়ুর স্পর্শে পুড়ে অগ্নিগোলকের মতো দেখায়।"}, {"q": "পৃথিবী পৃষ্ঠের কত ভাগ পানি এবং কত ভাগ মাটি?", "opts": ["অর্ধেক পানি ও অর্ধেক মাটি", "চার ভাগের তিন ভাগ পানি ও এক ভাগ মাটি", "দুই ভাগ পানি ও দুই ভাগ মাটি", "চার ভাগের এক ভাগ পানি"], "ans": 1, "exp": "গোলাকার পৃথিবী পৃষ্ঠের ৪ ভাগের ৩ ভাগ পানি এবং ১ ভাগ মাটি।"}, {"q": "পৃথিবী থেকে মানুষ বা বস্তু দূরে ছিটকে পড়ে না কোন বলের কারণে?", "opts": ["চৌম্বক বল", "অভিকর্ষ বল", "তড়িৎ বল", "ঘর্ষণ বল"], "ans": 1, "exp": "অভিকর্ষ বলের কারণে পৃথিবী সবকিছুকে কেন্দ্রের দিকে টেনে ধরে রাখে।"}, {"q": "পৃথিবী নিজ অক্ষের উপর কোন দিক থেকে কোন দিকে আবর্তন করে?", "opts": ["পূর্ব থেকে পশ্চিমে", "পশ্চিম থেকে পূর্বে", "উত্তর থেকে দক্ষিণে", "দক্ষিণ থেকে উত্তরে"], "ans": 1, "exp": "পৃথিবী নিজ অক্ষে ২৪ ঘণ্টায় একবার পশ্চিম থেকে পূর্ব দিকে আবর্তন করে।"}, {"q": "পৃথিবীর আহ্নিক গতির ফলে কী হয়?", "opts": ["ঋতু পরিবর্তন", "দিন ও রাত", "জোয়ার-ভাটা", "দিন-রাত ছোট-বড়"], "ans": 1, "exp": "নিজ অক্ষে আবর্তনের (আহ্নিক গতি) কারণে দিন ও রাত হয়।"}, {"q": "পৃথিবীর বার্ষিক গতির সময়কাল কত?", "opts": ["২৪ ঘণ্টা", "২৯ দিন ১২ ঘণ্টা", "৩৬৫ দিন ৬ ঘণ্টা", "৩৬০ দিন"], "ans": 2, "exp": "পৃথিবী প্রায় ৩৬৫ দিন ৬ ঘণ্টায় (১ সৌর বছর) একবার সূর্যকে প্রদক্ষিণ করে।"}, {"q": "পৃথিবীর বার্ষিক গতির ফলে কী ঘটে?", "opts": ["দিন ও রাত হয়", "দিন-রাত ছোট-বড় হয় ও ঋতু পরিবর্তন হয়", "চাঁদের আকার বদলায়", "ভূমিকম্প হয়"], "ans": 1, "exp": "সূর্যের চারপাশে হেলে ঘোরার (বার্ষিক গতি) কারণে দিন-রাত ছোট-বড় হয় ও ঋতু পরিবর্তিত হয়।"}, {"q": "কোন তারিখে বাংলাদেশ (উত্তর গোলার্ধে) সবচেয়ে লম্বা দিন ও ছোট রাত হয়?", "opts": ["২১ মার্চ", "২১ জুন", "২৩ সেপ্টেম্বর", "২২ ডিসেম্বর"], "ans": 1, "exp": "২১ জুন উত্তর গোলার্ধ সূর্যের দিকে ঝুঁকে থাকায় বাংলাদেশে সবচেয়ে বড় দিন ও ছোট রাত হয়।"}, {"q": "২১ জুন তারিখে দক্ষিণ গোলার্ধের অস্ট্রেলিয়ায় কোন ঋতু থাকে?", "opts": ["গ্রীষ্মকাল", "শীতকাল", "বসন্তকাল", "বর্ষাকাল"], "ans": 1, "exp": "২১ জুন দক্ষিণ গোলার্ধ সূর্য থেকে দূরে থাকায় অস্ট্রেলিয়ায় জুন-আগস্ট শীতকাল।"}, {"q": "কোন কোন তারিখে পৃথিবীর উভয় গোলার্ধে দিন ও রাত সমান হয়?", "opts": ["২১ জুন ও ২২ ডিসেম্বর", "২১ মার্চ ও ২৩ সেপ্টেম্বর", "২১ জুন ও ২১ মার্চ", "২২ ডিসেম্বর ও ২৩ সেপ্টেম্বর"], "ans": 1, "exp": "২১ মার্চ ও ২৩ সেপ্টেম্বর সূর্য বিষুব অঞ্চলের উপর খাড়াভাবে কিরণ দেওয়ায় সর্বত্র দিন-রাত সমান হয়।"}, {"q": "২২ ডিসেম্বর তারিখে বাংলাদেশে দিন ও রাতের দৈর্ঘ্য কেমন হয়?", "opts": ["দিন বড় ও রাত ছোট", "দিন ছোট ও রাত বড়", "দিন ও রাত সমান", "সব সময় দিন"], "ans": 1, "exp": "২২ ডিসেম্বর বাংলাদেশ সূর্য থেকে দূরে অবস্থান করে বলে দিন ছোট, রাত বড় এবং শীতকাল হয়।"}, {"q": "২২ ডিসেম্বর অস্ট্রেলিয়ায় কোন ঋতু বিরাজ করে?", "opts": ["শীতকাল", "গ্রীষ্মকাল", "শরৎকাল", "বসন্তকাল"], "ans": 1, "exp": "২২ ডিসেম্বর দক্ষিণ গোলার্ধ সূর্যের দিকে মুখ করে থাকায় অস্ট্রেলিয়ায় গ্রীষ্মকাল।"}, {"q": "সূর্য সম্পর্কে নিচের কোন তথ্যটি সঠিক?", "opts": ["এটি একটি গ্রহ", "এটি একটি জ্বলন্ত গ্যাসপিণ্ড ও নক্ষত্র", "এটি চাঁদের আলোয় আলোকিত", "এটি পৃথিবীর চেয়ে ছোট"], "ans": 1, "exp": "সূর্য একটি মাঝারি আকারের নক্ষত্র এবং হাইড্রোজেন-হিলিয়ামের জ্বলন্ত গ্যাসপিণ্ড।"}, {"q": "পৃথিবীর চারপাশে মানুষ প্রেরিত কতটির বেশি কৃত্রিম উপগ্রহ ঘুরছে?", "opts": ["৫০০টির বেশি", "১০০০টির বেশি", "৬৭০০-এর বেশি", "১০০টির বেশি"], "ans": 2, "exp": "পাঠ্যবই অনুযায়ী পৃথিবীর চারপাশে ৬৭০০-এর বেশি কৃত্রিম উপগ্রহ ঘুরছে।"}], "gyanmulok": [{"q": "সৌরজগৎ কাকে বলে?", "a": "সূর্য এবং একে কেন্দ্র করে ঘূর্ণায়মান ৮টি গ্রহ, উপগ্রহ, ধূমকেতু, উল্কা, গ্রহাণু ও ফাঁকা জায়গা নিয়ে আমাদের সৌরজগৎ গঠিত।"}, {"q": "সূর্যকেন্দ্রিক মডেলের প্রস্তাবক কে এবং কারা এর প্রমাণ দেন?", "a": "প্রস্তাবক কোপারনিকাস; এবং গ্যালিলিও ও কেপলার এর পক্ষে প্রমাণ হাজির করেন।"}, {"q": "সূর্যে শক্তির উৎস কী?", "a": "সূর্যে হাইড্রোজেন গ্যাসের পরমাণু পরস্পরের সাথে যুক্ত হয়ে হিলিয়াম পরমাণুতে পরিণত হওয়ার প্রক্রিয়ায় প্রচুর তাপ ও আলোকশক্তি উৎপন্ন হয়।"}, {"q": "পৃথিবী থেকে সূর্যের দূরত্ব ও আয়তন তুলনা লেখো।", "a": "দূরত্ব প্রায় ১৫ কোটি কিলোমিটার এবং সূর্যের আয়তন পৃথিবীর তুলনায় প্রায় ১৩ লক্ষ গুণ বড়।"}, {"q": "সন্ধ্যাতারা ও শুকতারা কী?", "a": "এটি কোনো নক্ষত্র নয়, আসলে সূর্যের একটি গ্রহ যার নাম শুক্র।"}, {"q": "মঙ্গল গ্রহকে লাল গ্রহ বলা হয় কেন?", "a": "মঙ্গল গ্রহের পৃষ্ঠ লাল রঙের এবং ধূলিময় হওয়ায় একে লাল গ্রহ বলা হয়।"}, {"q": "সৌরজগতের সবচেয়ে বড় ও সবচেয়ে কাছের গ্রহের নাম লেখো।", "a": "সবচেয়ে বড় গ্রহ বৃহস্পতি এবং সূর্যের সবচেয়ে কাছের গ্রহ বুধ।"}, {"q": "প্লুটোকে কত সালে গ্রহ তালিকা থেকে বাদ দেওয়া হয়?", "a": "২০০৬ সালে বিজ্ঞানীরা সিদ্ধান্ত নেন যে প্লুটো একটি ক্ষুদ্র অসম্পূর্ণ গ্রহাণু।"}, {"q": "চাঁদ কত দিনে একবার পৃথিবীকে প্রদক্ষিণ করে?", "a": "২৭ দিন ৮ ঘণ্টায়।"}, {"q": "অমাবস্যা ও পূর্ণিমা কত সময় পরপর হয়?", "a": "২৯ দিন ১২ ঘণ্টা পরপর।"}, {"q": "কৃত্রিম উপগ্রহ কী কাজে পাঠানো হয়?", "a": "বেতার ও টেলিযোগাযোগ, আবহাওয়া এবং অন্যান্য তথ্য সংগ্রহের জন্য।"}, {"q": "ধূমকেতু কী দিয়ে তৈরি এবং হ্যালির ধূমকেতু কত বছর পরপর দেখা যায়?", "a": "গ্যাস, বরফ ও ধুলিকণা দিয়ে তৈরি; হ্যালির ধূমকেতু গড়ে ৭৬ বছর পরপর দেখা যায়।"}, {"q": "উল্কা কী?", "a": "সৌরজগতের সবচেয়ে ছোট কঠিন জ্যোতিষ্ক যা পৃথিবীর বায়ুমণ্ডলে পৌঁছালে বায়ুর ঘর্ষণে পুড়ে অগ্নিগোলকের মতো দেখা যায়।"}, {"q": "পৃথিবীর আকৃতি কেমন?", "a": "পুরোপুরি গোলাকার নয়, কিছুটা কমলালেবুর মতো উত্তর-দক্ষিণ দিকে চাপা।"}, {"q": "আমরা পৃথিবীপৃষ্ঠ থেকে ছিটকে পড়ে যাই না কেন?", "a": "পৃথিবীর অভিকর্ষ বলের কারণে।"}, {"q": "পৃথিবীর আহ্নিক গতি কাকে বলে?", "a": "পৃথিবী তার নিজ অক্ষের উপর কেন্দ্র করে ২৪ ঘণ্টায় একবার পশ্চিম থেকে পূর্বে আবর্তন করে, একে আহ্নিক গতি বলে।"}, {"q": "পৃথিবীর বার্ষিক গতি কাকে বলে?", "a": "পৃথিবী প্রায় ৩৬৫ দিন ৬ ঘণ্টায় একবার সূর্যের চারপাশে ঘুরে আসে, একে বার্ষিক গতি বলে।"}, {"q": "আহ্নিক ও বার্ষিক গতির মূল ফলাফল কী কী?", "a": "আহ্নিক গতির ফলে দিন ও রাত হয়; বার্ষিক গতির ফলে দিন-রাত ছোট-বড় হয় এবং ঋতুর পরিবর্তন হয়।"}, {"q": "কোন তারিখে বাংলাদেশে সবচেয়ে বড় দিন হয় এবং কোন তারিখে সবচেয়ে ছোট দিন হয়?", "a": "২১ জুন সবচেয়ে বড় দিন (গ্রীষ্মকাল) এবং ২২ ডিসেম্বর সবচেয়ে ছোট দিন (শীতকাল)।"}, {"q": "কোন কোন তারিখে পৃথিবীর সর্বত্র দিন ও রাত সমান হয়?", "a": "২১ মার্চ এবং ২৩ সেপ্টেম্বর।"}]}], "mcqTests": [{"id": "mt_mcq_1", "title": "মডেল টেস্ট ১ (বহুনির্বাচনি)", "subtitle": "সকল অধ্যায় (৪, ৫, ৭, ৯, ১০, ১১, ১২) সমন্বয়ে পূর্ণাঙ্গ ৩০ নম্বরের পরীক্ষা", "questions": [{"q": "শ্বসনের মুখ্য উদ্দেশ্য কী?", "opts": ["খাদ্য তৈরি করা", "স্থৈতিক শক্তিকে গতি ও তাপশক্তিতে রূপান্তর", "রক্ত সঞ্চালন করা", "পানি শোষণ করা"], "ans": 1, "exp": "শ্বসনের মাধ্যমে খাদ্যস্থ রাসায়নিক/স্থৈতিক শক্তি গতিশক্তি ও তাপশক্তিতে রূপান্তরিত হয়।", "ch": "অধ্যায় ৪: শ্বসন"}, {"q": "পানিতে নিমজ্জিত উদ্ভিদ কিসের সাহায্যে অক্সিজেন শোষণ করে?", "opts": ["ফুলকা", "সমগ্র দেহতল", "ট্রাকিয়া", "ফুসফুস"], "ans": 1, "exp": "পানিতে নিমজ্জিত উদ্ভিদ সমগ্র দেহতলের সাহায্যে অক্সিজেন শোষণ করে।", "ch": "অধ্যায় ৪: শ্বসন"}, {"q": "মানব শ্বসনতন্ত্রের কোথায় ভোকাল কর্ড বা স্বররজ্জু থাকে?", "opts": ["নাসা গলবিল", "স্বরযন্ত্র", "ব্রঙ্কাস", "মধ্যচ্ছদা"], "ans": 1, "exp": "গলবিল ও শ্বাসনালির সংযোগস্থলে অবস্থিত স্বরযন্ত্রে ভোকাল কর্ড থাকে।", "ch": "অধ্যায় ৪: শ্বসন"}, {"q": "বক্ষগহ্বর ও উদরগহ্বরকে পৃথক করে রাখে কোনটি?", "opts": ["প্লুরা", "মধ্যচ্ছদা", "ব্রঙ্কাস", "অন্ননালি"], "ans": 1, "exp": "মধ্যচ্ছদা বা ডায়াফ্রাম বক্ষগহ্বর ও উদরগহ্বরকে পৃথক রাখে।", "ch": "অধ্যায় ৪: শ্বসন"}, {"q": "জটিল খাদ্যবস্তুকে সরল ও শোষণ উপযোগী করার প্রক্রিয়াকে কী বলে?", "opts": ["শ্বসন", "পরিপাক", "সংবহন", "রেচন"], "ans": 1, "exp": "এনজাইমের সহায়তায় জটিল খাদ্যকে সরল ও তরল করার প্রক্রিয়াই পরিপাক।", "ch": "অধ্যায় ৫: পরিপাকতন্ত্র ও রক্ত সংবহনতন্ত্র"}, {"q": "অন্ননালির পেশির ক্রমসংকোচন ও প্রসারণকে কী বলে?", "opts": ["ব্যাপন", "পেরিস্টালসিস", "গাজন", "দহন"], "ans": 1, "exp": "পেরিস্টালসিস প্রক্রিয়ায় খাদ্য অন্ননালি দিয়ে পাকস্থলিতে পৌঁছায়।", "ch": "অধ্যায় ৫: পরিপাকতন্ত্র ও রক্ত সংবহনতন্ত্র"}, {"q": "খাদ্যের সারাংশ শোষণের জন্য ইলিয়ামের প্রাচীরে আঙুলের মতো কী থাকে?", "opts": ["প্লুরা", "ভিলাই", "কপাটিকা", "গ্রন্থি"], "ans": 1, "exp": "ইলিয়ামের প্রাচীরে ভিলাই (ভিলাস) থাকে যা ব্যাপন পদ্ধতিতে খাদ্য শোষণ করে।", "ch": "অধ্যায় ৫: পরিপাকতন্ত্র ও রক্ত সংবহনতন্ত্র"}, {"q": "বৃহদান্ত্রে কোন ব্যাকটেরিয়া আঁশযুক্ত খাদ্যের গাজন ঘটায়?", "opts": ["সিগেলা", "E. coli", "এন্টামিবা", "ভিব্রিও"], "ans": 1, "exp": "বৃহদান্ত্রে E. coli নামক ব্যাকটেরিয়া আঁশ জাতীয় খাদ্যের গাজন ঘটায়।", "ch": "অধ্যায় ৫: পরিপাকতন্ত্র ও রক্ত সংবহনতন্ত্র"}, {"q": "বিজ্ঞানের ভাষায় কাজ কখন সম্পন্ন হয়?", "opts": ["শুধু বল প্রয়োগ করলে", "বল প্রয়োগে অবস্থানের পরিবর্তন হলে", "বস্তু স্থির থাকলে", "সময়ের পরিবর্তন হলে"], "ans": 1, "exp": "বল প্রয়োগের ফলে বস্তু বলের দিকে স্থান পরিবর্তন করলে তবেই কাজ হয়।", "ch": "অধ্যায় ৭: শক্তির ব্যবহার"}, {"q": "গুলতিকে পিছনে টেনে ধরলে এতে কোন শক্তি সঞ্চিত হয়?", "opts": ["গতিশক্তি", "স্থিতিশক্তি", "তাপশক্তি", "শব্দশক্তি"], "ans": 1, "exp": "অবস্থানের পরিবর্তনের কারণে সঞ্চিত শক্তি হলো স্থিতিশক্তি।", "ch": "অধ্যায় ৭: শক্তির ব্যবহার"}, {"q": "দুই হাত ঘষলে গরম লাগে—এখানে কোন শক্তির রূপান্তর ঘটে?", "opts": ["তাপ → যান্ত্রিক", "যান্ত্রিক → তাপ", "রাসায়নিক → তাপ", "বিদ্যুৎ → তাপ"], "ans": 1, "exp": "হাত ঘষার যান্ত্রিক শক্তি তাপশক্তিতে রূপান্তরিত হয়।", "ch": "অধ্যায় ৭: শক্তির ব্যবহার"}, {"q": "বৈদ্যুতিক পাখা ঘোরার সময় কোন শক্তির রূপান্তর ঘটে?", "opts": ["বিদ্যুৎ → তাপ", "বিদ্যুৎ → যান্ত্রিক", "যান্ত্রিক → বিদ্যুৎ", "রাসায়নিক → যান্ত্রিক"], "ans": 1, "exp": "বৈদ্যুতিক পাখায় বিদ্যুৎশক্তি যান্ত্রিক শক্তিতে রূপান্তরিত হয়।", "ch": "অধ্যায় ৭: শক্তির ব্যবহার"}, {"q": "পঞ্চ ইন্দ্রিয়ের মধ্যে তাপকে কোন ইন্দ্রিয় দ্বারা অনুভব করা যায়?", "opts": ["চোখ", "কান", "ত্বক", "নাক"], "ans": 2, "exp": "পঞ্চ ইন্দ্রিয়ের মধ্যে তাপকে কেবল ত্বকের সাহায্যে অনুভব করা যায়।", "ch": "অধ্যায় ৯: তাপ ও তাপমাত্রা"}, {"q": "স্বাভাবিক চাপে যে তাপমাত্রায় বিশুদ্ধ বরফ গলে পানিতে পরিণত হয় তাকে কী বলে?", "opts": ["স্ফুটনাঙ্ক", "হিমাঙ্ক", "গলনাঙ্ক", "ঊর্ধ্ব স্থিরাঙ্ক"], "ans": 1, "exp": "যে তাপমাত্রায় বিশুদ্ধ বরফ গলে পানিতে পরিণত হয় তাকে হিমাঙ্ক (নিম্ন স্থিরাঙ্ক) বলে।", "ch": "অধ্যায় ৯: তাপ ও তাপমাত্রা"}, {"q": "একজন খেলোয়াড়ের শরীরের তাপমাত্রা ৩৮° সেলসিয়াস হলে ফারেনহাইট স্কেলে তা কত?", "opts": ["৯৮.৪°F", "১০০.৪°F", "১০১.২°F", "৯৯.৬°F"], "ans": 1, "exp": "C=38 হলে F = (38×9/5) + 32 = 68.4 + 32 = 100.4°F।", "ch": "অধ্যায় ৯: তাপ ও তাপমাত্রা"}, {"q": "রুটি সেঁকার সময় ফুলে ওঠে কেন?", "opts": ["আটার প্রসারণে", "ভেতরের জলীয় বাষ্প তাপ পেয়ে প্রসারিত হওয়ায়", "চুলার বাতাসে", "লবণের কারণে"], "ans": 1, "exp": "রুটির ভেতরের পানি জলীয় বাষ্পে পরিণত হয়ে তাপ পেয়ে প্রসারিত হয়।", "ch": "অধ্যায় ৯: তাপ ও তাপমাত্রা"}, {"q": "পরমাণুর নিউক্লিয়াসে কোন দুটি কণিকা থাকে?", "opts": ["ইলেকট্রন ও প্রোটন", "প্রোটন ও নিউট্রন", "ইলেকট্রন ও নিউট্রন", "শুধু ইলেকট্রন"], "ans": 1, "exp": "পরমাণুর কেন্দ্রে নিউক্লিয়াস থাকে, যা প্রোটন ও নিউট্রন নিয়ে গঠিত।", "ch": "অধ্যায় ১০: বিদ্যুৎ ও চুম্বকের ঘটনা"}, {"q": "প্লাস্টিকের চিরুনি শুকনো চুলে ঘষে কাগজের টুকরার কাছে ধরলে কাগজ আকৃষ্ট হয় কেন?", "opts": ["চুম্বকত্বের জন্য", "চিরুনি ঋণাত্মক চার্জিত হওয়ায়", "তাপের জন্য", "বায়ুচাপের জন্য"], "ans": 1, "exp": "ঘর্ষণে চিরুনি ইলেকট্রন গ্রহণ করে ঋণাত্মক চার্জিত হয়ে কাগজের টুকরাকে আকর্ষণ করে।", "ch": "অধ্যায় ১০: বিদ্যুৎ ও চুম্বকের ঘটনা"}, {"q": "বিদ্যুৎপ্রবাহ চলার আবদ্ধ পথকে কী বলে?", "opts": ["পরিবাহী", "বর্তনী", "ফিলামেন্ট", "রেগুলেটর"], "ans": 1, "exp": "বিদ্যুৎ উৎসের ধনাত্মক থেকে ঋণাত্মক প্রান্ত পর্যন্ত আবদ্ধ পথকে বর্তনী বলে।", "ch": "অধ্যায় ১০: বিদ্যুৎ ও চুম্বকের ঘটনা"}, {"q": "একটি দণ্ড চুম্বকের আকর্ষণ ক্ষমতা কোথায় সবচেয়ে বেশি থাকে?", "opts": ["মাঝখানে", "দুই প্রান্তে", "শুধু উত্তর মেরুতে", "সর্বত্র সমান"], "ans": 1, "exp": "লোহার গুঁড়া চুম্বকের দুই প্রান্তে সবচেয়ে বেশি আটকে থাকে; মাঝখানে আকর্ষণ প্রায় শূন্য।", "ch": "অধ্যায় ১০: বিদ্যুৎ ও চুম্বকের ঘটনা"}, {"q": "বরফ গলে পানিতে পরিণত হওয়া কোন ধরনের পরিবর্তন?", "opts": ["রাসায়নিক পরিবর্তন", "ভৌত পরিবর্তন", "জৈব পরিবর্তন", "দহন"], "ans": 1, "exp": "এখানে শুধু অবস্থার পরিবর্তন হয়েছে, নতুন পদার্থ তৈরি হয়নি—তাই এটি ভৌত পরিবর্তন।", "ch": "অধ্যায় ১১: পারিপার্শ্বিক পরিবর্তন ও বিভিন্ন ঘটনা"}, {"q": "লোহার তৈরি দ্রব্যসামগ্রীর উপর দস্তা বা জিংকের পাতলা আস্তরণ দেওয়াকে কী বলে?", "opts": ["পেইন্টিং", "গ্যালভানাইজিং", "ইলেকট্রোপ্লেটিং", "দহন"], "ans": 1, "exp": "লোহার ওপর জিংক (দস্তা)-এর পাতলা আবরণ দেওয়াকে গ্যালভানাইজিং বলে।", "ch": "অধ্যায় ১১: পারিপার্শ্বিক পরিবর্তন ও বিভিন্ন ঘটনা"}, {"q": "সালোকসংশ্লেষণ কোন ধরনের পরিবর্তন?", "opts": ["ভৌত পরিবর্তন", "রাসায়নিক পরিবর্তন", "অবস্থার পরিবর্তন", "বাষ্পীভবন"], "ans": 1, "exp": "সালোকসংশ্লেষণে CO2 ও পানি থেকে ভিন্নধর্মী গ্লুকোজ ও অক্সিজেন উৎপন্ন হয়, তাই এটি রাসায়নিক পরিবর্তন।", "ch": "অধ্যায় ১১: পারিপার্শ্বিক পরিবর্তন ও বিভিন্ন ঘটনা"}, {"q": "গাছপালা ও প্রাণিদেহ থেকে জীবাশ্ম জ্বালানি (কয়লা, তেল, গ্যাস) তৈরি হওয়া কী ধরনের পরিবর্তন?", "opts": ["ভৌত পরিবর্তন", "রাসায়নিক পরিবর্তন", "কঠিনীভবন", "স্ফুটন"], "ans": 1, "exp": "ব্যাকটেরিয়ার সাহায্যে ভেঙে সম্পূর্ণ ভিন্নধর্মী নতুন পদার্থে পরিণত হয় বলে এটি রাসায়নিক পরিবর্তন।", "ch": "অধ্যায় ১১: পারিপার্শ্বিক পরিবর্তন ও বিভিন্ন ঘটনা"}, {"q": "সূর্যকেন্দ্রিক সৌরজগতের মডেলের প্রস্তাবক কে ছিলেন?", "opts": ["টলেমি", "অ্যারিস্টটল", "কোপারনিকাস", "নিউটন"], "ans": 2, "exp": "কোপারনিকাস পৃথিবীকেন্দ্রিক মডেলের বদলে সূর্যকেন্দ্রিক মডেলের প্রস্তাব করেন।", "ch": "অধ্যায় ১২: সৌরজগৎ ও আমাদের পৃথিবী"}, {"q": "সন্ধ্যায় সন্ধ্যাতারা এবং ভোরে শুকতারা রূপে আকাশে যেটি দেখা যায় সেটি আসলে কী?", "opts": ["একটি নক্ষত্র", "শুক্র গ্রহ", "বুধ গ্রহ", "ধূমকেতু"], "ans": 1, "exp": "সন্ধ্যাতারা ও শুকতারা কোনো নক্ষত্র নয়, এটি আসলে শুক্র গ্রহ।", "ch": "অধ্যায় ১২: সৌরজগৎ ও আমাদের পৃথিবী"}, {"q": "কত সালে বিজ্ঞানীরা প্লুটোকে গ্রহের তালিকা থেকে বাদ দেন?", "opts": ["১৯৯৮ সালে", "২০০৬ সালে", "২০১০ সালে", "২০০১ সালে"], "ans": 1, "exp": "২০০৬ সালে বিজ্ঞানীরা সিদ্ধান্ত নেন যে প্লুটো একটি ক্ষুদ্র অসম্পূর্ণ গ্রহাণু।", "ch": "অধ্যায় ১২: সৌরজগৎ ও আমাদের পৃথিবী"}, {"q": "১৯৮৬ সালের পর হ্যালির ধূমকেতু আবার কবে দেখা যাওয়ার কথা?", "opts": ["২০৪০ সালে", "২০৬১ সালে", "২০৫০ সালে", "২০৭৬ সালে"], "ans": 1, "exp": "১৯৮৬ + ৭৫/৭৬ = ২০৬১ সালে হ্যালির ধূমকেতু আবার দেখা যাওয়ার কথা।", "ch": "অধ্যায় ১২: সৌরজগৎ ও আমাদের পৃথিবী"}, {"q": "কোন রক্তকণিকা দেহের প্রহরীর মতো রোগ-জীবাণু ধ্বংস করে?", "opts": ["লোহিত রক্তকণিকা", "শ্বেত রক্তকণিকা", "অণুচক্রিকা", "প্লেটলেট"], "ans": 1, "exp": "শ্বেত রক্তকণিকা ফ্যাগোসাইটোসিস বা জীবাণু ভক্ষণ করে দেহকে রক্ষা করে।", "ch": "অধ্যায় ৫: পরিপাকতন্ত্র ও রক্ত সংবহনতন্ত্র"}, {"q": "বাল্বের ভেতরে বায়ুশূন্য রাখার বা নিষ্ক্রিয় গ্যাস ভরার কারণ কী?", "opts": ["আলো কম রাখা", "ফিলামেন্ট যেন পুড়ে নষ্ট না হয়", "ওজন কমানো", "শব্দ বন্ধ করা"], "ans": 1, "exp": "অক্সিজেন থাকলে উত্তপ্ত টাংস্টেন ফিলামেন্ট পুড়ে যেত, তাই বায়ুশূন্য বা নিষ্ক্রিয় গ্যাস থাকে।", "ch": "অধ্যায় ১০: বিদ্যুৎ ও চুম্বকের ঘটনা"}]}, {"id": "mt_mcq_2", "title": "মডেল টেস্ট ২ (বহুনির্বাচনি)", "subtitle": "অধ্যায়ভিত্তিক গুরুত্বপূর্ণ ৩০টি বহুনির্বাচনি প্রশ্নের প্র্যাকটিস সেট", "questions": [{"q": "উদ্ভিদ ও প্রাণীর প্রতিটি সজীব কোষে শ্বসন ঘটে কখন?", "opts": ["শুধু দিনে", "শুধু রাতে", "দিন-রাত্রি সব সময়", "শুধু বর্ষাকালে"], "ans": 2, "exp": "শ্বসন প্রক্রিয়া দিন-রাত্রি ২৪ ঘণ্টাই চলতে থাকে।", "ch": "অধ্যায় ৪: শ্বসন"}, {"q": "মাছ ও ব্যাঙাচি কিসের সাহায্যে শ্বাসকার্য চালায়?", "opts": ["ফুসফুস", "ফুলকা", "ত্বক", "পত্ররন্ধ্র"], "ans": 1, "exp": "মাছ ও ব্যাঙাচি ফুলকার সাহায্যে পানিতে দ্রবীভূত অক্সিজেন গ্রহণ করে।", "ch": "অধ্যায় ৪: শ্বসন"}, {"q": "ফুসফুস কোন পর্দা দ্বারা আবৃত থাকে?", "opts": ["পেরিকার্ডিয়াম", "প্লুরা", "ভিলাই", "ঝিল্লি"], "ans": 1, "exp": "ফুসফুস দুই ভাঁজবিশিষ্ট 'প্লুরা' নামক পর্দা দ্বারা আবৃত থাকে।", "ch": "অধ্যায় ৪: শ্বসন"}, {"q": "মধ্যচ্ছদা দেখতে কেমন?", "opts": ["থলির মতো", "প্রসারিত ছাতার মতো", "নলের মতো", "বৃত্তের মতো"], "ans": 1, "exp": "মধ্যচ্ছদা দেখতে অনেকটা প্রসারিত ছাতার মতো।", "ch": "অধ্যায় ৪: শ্বসন"}, {"q": "মানবদেহে খাদ্যের পরিপাক শুরু হয় কোথা থেকে?", "opts": ["পাকস্থলি", "মুখগহ্বর", "ক্ষুদ্রান্ত্র", "অন্ননালি"], "ans": 1, "exp": "মুখগহ্বরে দাঁত ও লালার টায়ালিনের মাধ্যমে পরিপাক শুরু হয়।", "ch": "অধ্যায় ৫: পরিপাকতন্ত্র ও রক্ত সংবহনতন্ত্র"}, {"q": "মানুষের স্থায়ী দাঁতের সংখ্যা মোট কয়টি?", "opts": ["২৮টি", "৩২টি", "৩০টি", "৩৬টি"], "ans": 1, "exp": "মানুষের প্রতি চোয়ালে ১৬টি করে মোট ৩২টি স্থায়ী দাঁত থাকে।", "ch": "অধ্যায় ৫: পরিপাকতন্ত্র ও রক্ত সংবহনতন্ত্র"}, {"q": "মানবদেহের সবচেয়ে বড় গ্রন্থি কোনটি?", "opts": ["অগ্ন্যাশয়", "যকৃৎ", "লালাগ্রন্থি", "গ্যাস্ট্রিক গ্রন্থি"], "ans": 1, "exp": "যকৃৎ (Liver) মানবদেহের সবচেয়ে বড় গ্রন্থি।", "ch": "অধ্যায় ৫: পরিপাকতন্ত্র ও রক্ত সংবহনতন্ত্র"}, {"q": "অ্যামিবিক আমাশয় হয় কিসের আক্রমণে?", "opts": ["সিগেলা ব্যাকটেরিয়া", "এন্টামিবা", "ভাইরাস", "ছত্রাক"], "ans": 1, "exp": "এন্টামিবা নামে এককোষী প্রাণীর আক্রমণে অ্যামিবিক আমাশয় হয়।", "ch": "অধ্যায় ৫: পরিপাকতন্ত্র ও রক্ত সংবহনতন্ত্র"}, {"q": "একজন শিক্ষার্থী দেয়ালে ধাক্কা দিচ্ছে কিন্তু দেয়াল সরছে না; এক্ষেত্রে কাজের পরিমাণ কত?", "opts": ["সর্বোচ্চ", "শূন্য", "খুব বেশি", "ঋণাত্মক"], "ans": 1, "exp": "অবস্থানের পরিবর্তন না হওয়ায় বিজ্ঞানের ভাষায় কাজ শূন্য।", "ch": "অধ্যায় ৭: শক্তির ব্যবহার"}, {"q": "দৌড়াতে থাকা মানুষের মধ্যে যান্ত্রিক শক্তির কোন রূপ থাকে?", "opts": ["স্থিতিশক্তি", "গতিশক্তি", "চুম্বক শক্তি", "পারমাণবিক শক্তি"], "ans": 1, "exp": "গতির কারণে কাজ করার সামর্থ্যই গতিশক্তি।", "ch": "অধ্যায় ৭: শক্তির ব্যবহার"}, {"q": "বাষ্পীয় ইঞ্জিনে কোন শক্তি যান্ত্রিক শক্তিতে রূপান্তরিত হয়?", "opts": ["বিদ্যুৎশক্তি", "তাপশক্তি", "আলোকশক্তি", "শব্দশক্তি"], "ans": 1, "exp": "বাষ্পীয় ইঞ্জিনে তাপশক্তি যান্ত্রিক শক্তিতে রূপান্তরিত হয়ে রেলগাড়ি চালায়।", "ch": "অধ্যায় ৭: শক্তির ব্যবহার"}, {"q": "বিদ্যুৎকোষে কোন শক্তি বিদ্যুৎশক্তিতে রূপান্তরিত হয়?", "opts": ["তাপশক্তি", "রাসায়নিক শক্তি", "আলোকশক্তি", "চুম্বক শক্তি"], "ans": 1, "exp": "বিদ্যুৎকোষে রাসায়নিক বিক্রিয়ার মাধ্যমে রাসায়নিক শক্তি বিদ্যুৎশক্তিতে রূপান্তরিত হয়।", "ch": "অধ্যায় ৭: শক্তির ব্যবহার"}, {"q": "বস্তু তাপ বর্জন করলে কী হয়?", "opts": ["গরম হয়", "ঠান্ডা হয়", "প্রসারিত হয়", "বাষ্প হয়"], "ans": 1, "exp": "বস্তু তাপ গ্রহণ করলে গরম এবং বর্জন করলে ঠান্ডা হয়।", "ch": "অধ্যায় ৯: তাপ ও তাপমাত্রা"}, {"q": "সেলসিয়াস স্কেলে নিম্ন ও ঊর্ধ্ব স্থিরাঙ্কের মধ্যবর্তী ব্যবধানকে কয়টি সমান ভাগে ভাগ করা হয়?", "opts": ["৮০ ভাগ", "১০০ ভাগ", "১৮০ ভাগ", "২১২ ভাগ"], "ans": 1, "exp": "সেলসিয়াস স্কেলে ০° থেকে ১০০° পর্যন্ত ১০০ সমান ভাগে ভাগ করা হয় (সেন্টিগ্রেড)।", "ch": "অধ্যায় ৯: তাপ ও তাপমাত্রা"}, {"q": "তাপ প্রয়োগে কোন পদার্থের প্রসারণ সবচেয়ে বেশি হয়?", "opts": ["কঠিন", "তরল", "বায়বীয়", "ধাতব"], "ans": 2, "exp": "তাপ পেলে কঠিন ও তরলের তুলনায় বায়বীয় পদার্থ সবচেয়ে বেশি প্রসারিত হয়।", "ch": "অধ্যায় ৯: তাপ ও তাপমাত্রা"}, {"q": "খোলা বায়ুমণ্ডলে তাপমাত্রা বাড়লে বায়ুচাপের কী পরিবর্তন হয়?", "opts": ["বায়ুচাপ বাড়ে", "বায়ুচাপ কমে (নিম্নচাপ)", "অপরিবর্তিত থাকে", "শূন্য হয়"], "ans": 1, "exp": "তাপ পেলে বায়ুর ঘনত্ব কমে হালকা হয়ে উপরে উঠে যায়, ফলে বায়ুচাপ কমে যায়।", "ch": "অধ্যায় ৯: তাপ ও তাপমাত্রা"}, {"q": "পরমাণু স্বাভাবিক অবস্থায় আধান নিরপেক্ষ হয় কেন?", "opts": ["নিউট্রন বেশি থাকায়", "প্রোটন ও ইলেকট্রনের সংখ্যা সমান থাকায়", "কোনো কণা না থাকায়", "ইলেকট্রন স্থির থাকায়"], "ans": 1, "exp": "প্রোটনের ধনাত্মক ও ইলেকট্রনের ঋণাত্মক চার্জ সমান ও বিপরীতধর্মী হওয়ায় পরমাণু চার্জ নিরপেক্ষ।", "ch": "অধ্যায় ১০: বিদ্যুৎ ও চুম্বকের ঘটনা"}, {"q": "অধাতু হওয়া সত্ত্বেও কোনটি বিদ্যুৎ সুপরিবাহী?", "opts": ["প্লাস্টিক", "রাবার", "গ্রাফাইট", "কাচ"], "ans": 2, "exp": "কার্বন অধাতু হলেও এর একটি রূপ গ্রাফাইট বিদ্যুৎ সুপরিবাহী।", "ch": "অধ্যায় ১০: বিদ্যুৎ ও চুম্বকের ঘটনা"}, {"q": "বৈদ্যুতিক বাল্বের ভেতরে কোন ধাতুর সরু কুণ্ডলী (ফিলামেন্ট) থাকে?", "opts": ["তামা", "টাংস্টেন", "লোহা", "নাইক্রোম"], "ans": 1, "exp": "বৈদ্যুতিক বাল্বে সরু টাংস্টেনের তারের ফিলামেন্ট থাকে যা উত্তপ্ত হয়ে আলো দেয়।", "ch": "অধ্যায় ১০: বিদ্যুৎ ও চুম্বকের ঘটনা"}, {"q": "মুক্তভাবে ঝুলন্ত একটি দণ্ড চুম্বক সর্বদা কোন দিকে মুখ করে স্থির থাকে?", "opts": ["পূর্ব-পশ্চিম", "উত্তর-দক্ষিণ", "উত্তর-পূর্ব", "দক্ষিণ-পশ্চিম"], "ans": 1, "exp": "পৃথিবীর চৌম্বকত্বের কারণে মুক্তভাবে ঝুলন্ত চুম্বক সর্বদা উত্তর-দক্ষিণমুখী হয়ে থাকে।", "ch": "অধ্যায় ১০: বিদ্যুৎ ও চুম্বকের ঘটনা"}, {"q": "বড় কাগজ কেটে ছোট ছোট টুকরা করা কোন ধরনের পরিবর্তন?", "opts": ["রাসায়নিক", "ভৌত পরিবর্তন", "গাজন", "বাষ্পীভবন"], "ans": 1, "exp": "কাগজের আকার বদলালেও উপাদান ও ধর্ম একই থাকে, তাই এটি ভৌত পরিবর্তন।", "ch": "অধ্যায় ১১: পারিপার্শ্বিক পরিবর্তন ও বিভিন্ন ঘটনা"}, {"q": "তড়িৎ বিশ্লেষণের সাহায্যে একটি ধাতুর উপর আরেকটি ধাতুর পাতলা আবরণ তৈরির প্রক্রিয়া কী?", "opts": ["গ্যালভানাইজিং", "ইলেকট্রোপ্লেটিং", "পেইন্টিং", "স্ফুটন"], "ans": 1, "exp": "তড়িৎ বিশ্লেষণের মাধ্যমে নিকেল, ক্রোমিয়াম, টিন বা সোনার আবরণ দেওয়াকে ইলেকট্রোপ্লেটিং বলে।", "ch": "অধ্যায় ১১: পারিপার্শ্বিক পরিবর্তন ও বিভিন্ন ঘটনা"}, {"q": "সালোকসংশ্লেষণে উদ্ভিদ কোন দুটি উপাদান তৈরি করে?", "opts": ["CO2 ও পানি", "গ্লুকোজ ও অক্সিজেন", "নাইট্রোজেন ও গ্লুকোজ", "লবণ ও পানি"], "ans": 1, "exp": "আলো ও ক্লোরোফিলের সহায়তায় গ্লুকোজ ও অক্সিজেন উৎপন্ন হয়।", "ch": "অধ্যায় ১১: পারিপার্শ্বিক পরিবর্তন ও বিভিন্ন ঘটনা"}, {"q": "ম্যাগনেসিয়াম রিবন বাতাসের অক্সিজেনে পোড়ালে কী উৎপন্ন হয়?", "opts": ["ক্যালসিয়াম অক্সাইড", "ম্যাগনেসিয়াম অক্সাইড", "হাইড্রোজেন গ্যাস", "কার্বন ডাইঅক্সাইড"], "ans": 1, "exp": "ম্যাগনেসিয়াম বাতাসের অক্সিজেনে প্রজ্বলিত শিখাসহ পুড়ে সাদা ম্যাগনেসিয়াম অক্সাইড তৈরি করে।", "ch": "অধ্যায় ১১: পারিপার্শ্বিক পরিবর্তন ও বিভিন্ন ঘটনা"}, {"q": "সূর্য থেকে পৃথিবীর দূরত্ব প্রায় কত?", "opts": ["১৫ লক্ষ কিমি", "১৫ কোটি কিমি", "১ কোটি কিমি", "৫০ কোটি কিমি"], "ans": 1, "exp": "সূর্য পৃথিবী থেকে প্রায় ১৫ কোটি কিলোমিটার দূরে অবস্থিত।", "ch": "অধ্যায় ১২: সৌরজগৎ ও আমাদের পৃথিবী"}, {"q": "কোন গ্রহকে 'লাল গ্রহ' বলা হয়?", "opts": ["বৃহস্পতি", "মঙ্গল", "শনি", "বুধ"], "ans": 1, "exp": "মঙ্গল গ্রহের পৃষ্ঠ লাল রঙের ও ধূলিময় হওয়ায় একে লাল গ্রহ বলে।", "ch": "অধ্যায় ১২: সৌরজগৎ ও আমাদের পৃথিবী"}, {"q": "চাঁদ কত দিনে একবার পৃথিবীকে প্রদক্ষিণ করে?", "opts": ["২৪ ঘণ্টায়", "২৭ দিন ৮ ঘণ্টায়", "২৯ দিন ১২ ঘণ্টায়", "৩০ দিনে"], "ans": 1, "exp": "চাঁদ ২৭ দিন ৮ ঘণ্টায় একবার পৃথিবীকে প্রদক্ষিণ করে।", "ch": "অধ্যায় ১২: সৌরজগৎ ও আমাদের পৃথিবী"}, {"q": "রাতের আকাশে হঠাৎ ছুটে যাওয়া আগুনের গোলকগুলো আসলে কী?", "opts": ["ধূমকেতু", "উল্কাপিণ্ড", "উপগ্রহ", "নক্ষত্র"], "ans": 1, "exp": "ক্ষুদ্র কঠিন উল্কাপিণ্ড পৃথিবীর বায়ুমণ্ডলে এসে বায়ুর স্পর্শে পুড়ে অগ্নিগোলকের মতো দেখায়।", "ch": "অধ্যায় ১২: সৌরজগৎ ও আমাদের পৃথিবী"}, {"q": "বায়ুপ্রবাহকে কাজে লাগিয়ে বিদ্যুৎ উৎপাদন করা হয় কিসের মাধ্যমে?", "opts": ["সৌরকোষ", "উইন্ডমিল বা বায়ুকল", "থার্মোমিটার", "জেনারেটর ছাড়া"], "ans": 1, "exp": "বায়ুকল বা উইন্ডমিল চালিয়ে বহু দেশে বিদ্যুৎ উৎপাদন করা হয়।", "ch": "অধ্যায় ৭: শক্তির ব্যবহার"}, {"q": "গ্যালভানাইজিং-এ দস্তার পরিবর্তে আর কীসের আবরণ দেওয়া যায়?", "opts": ["সিসা", "টিন", "পারদ", "কার্বন"], "ans": 1, "exp": "দস্তার পরিবর্তে টিন দিয়েও আবরণ দিয়ে ধাতুকে ক্ষয় হতে রক্ষা করা যায়।", "ch": "অধ্যায় ১১: পারিপার্শ্বিক পরিবর্তন ও বিভিন্ন ঘটনা"}]}, {"id": "mt_mcq_3", "title": "মডেল টেস্ট ৩ (বহুনির্বাচনি)", "subtitle": "চূড়ান্ত প্রস্তুতির জন্য ৩০টি বাছাইকৃত বহুনির্বাচনি প্রশ্ন", "questions": [{"q": "অক্সিজেনের অনুপস্থিতিতে যে শ্বসন হয় তাকে কী বলে?", "opts": ["সবাত শ্বসন", "অবাত শ্বসন", "বহিঃশ্বসন", "প্রশ্বাস"], "ans": 1, "exp": "অক্সিজেনের অনুপস্থিতিতে ব্যাকটেরিয়ার মতো আদিকোষী জীবে অবাত শ্বসন ঘটে।", "ch": "অধ্যায় ৪: শ্বসন"}, {"q": "নিম্নশ্রেণির প্রাণীতে শ্বসন হয় প্রধানত কিসের মাধ্যমে?", "opts": ["ত্বক ও ট্রাকিয়া", "ফুসফুস ও ফুলকা", "লেন্টিসেল", "স্বরযন্ত্র"], "ans": 0, "exp": "নিম্নশ্রেণির প্রাণীতে প্রধানত ত্বক ও ট্রাকিয়ার মাধ্যমে শ্বসন হয়।", "ch": "অধ্যায় ৪: শ্বসন"}, {"q": "মানবদেহের কোন ফুসফুসটি সামান্য বড়?", "opts": ["বাম ফুসফুস", "ডান ফুসফুস", "উভয়ই সমান", "কোনোটিই নয়"], "ans": 1, "exp": "ডান পাশের ফুসফুসটি বাম পাশের ফুসফুসের চেয়ে সামান্য বড়।", "ch": "অধ্যায় ৪: শ্বসন"}, {"q": "ফুসফুস ও রক্তজালিকার মধ্যে গ্যাসীয় আদান-প্রদানকে কী বলে?", "opts": ["অন্তঃশ্বসন", "বহিঃশ্বসন", "সালোকসংশ্লেষণ", "পরিবহন"], "ans": 1, "exp": "ফুসফুসের বায়ুথলি ও কৈশিকনালির মধ্যে O2 ও CO2 বিনিময়কে বহিঃশ্বসন বলে।", "ch": "অধ্যায় ৪: শ্বসন"}, {"q": "মুখগহ্বরের দুই পাশে কয় জোড়া লালাগ্রন্থি থাকে?", "opts": ["১ জোড়া", "২ জোড়া", "৩ জোড়া", "৪ জোড়া"], "ans": 2, "exp": "মুখগহ্বরের দুই পাশে ৩ জোড়া লালাগ্রন্থি থাকে।", "ch": "অধ্যায় ৫: পরিপাকতন্ত্র ও রক্ত সংবহনতন্ত্র"}, {"q": "পৌষ্টিকনালির কোন অংশে কোনো এনজাইম নিঃসৃত হয় না?", "opts": ["মুখগহ্বর", "গলবিল", "পাকস্থলি", "ক্ষুদ্রান্ত্র"], "ans": 1, "exp": "গলবিলে কোনো এনজাইম নিঃসৃত হয় না, তাই এখানে কোনো পরিপাক হয় না।", "ch": "অধ্যায় ৫: পরিপাকতন্ত্র ও রক্ত সংবহনতন্ত্র"}, {"q": "পিত্তরস কোন জাতীয় খাদ্য হজমে সাহায্য করে?", "opts": ["শর্করা", "স্নেহ জাতীয় খাদ্য", "ভিটামিন", "খনিজ লবণ"], "ans": 1, "exp": "যকৃৎ থেকে উৎপন্ন পিত্তরস স্নেহ জাতীয় খাদ্য হজমে সাহায্য করে।", "ch": "অধ্যায় ৫: পরিপাকতন্ত্র ও রক্ত সংবহনতন্ত্র"}, {"q": "ব্যাসিলারি আমাশয় হয় কোন ব্যাকটেরিয়ার আক্রমণে?", "opts": ["E. coli", "সিগেলা", "এন্টামিবা", "সালমোনেলা"], "ans": 1, "exp": "সিগেলা নামক ব্যাকটেরিয়া অন্ত্রকে আক্রমণ করলে ব্যাসিলারি (রক্ত) আমাশয় হয়।", "ch": "অধ্যায় ৫: পরিপাকতন্ত্র ও রক্ত সংবহনতন্ত্র"}, {"q": "কাজ করার হারকে কী বলে?", "opts": ["শক্তি", "বল", "ক্ষমতা", "ত্বরণ"], "ans": 2, "exp": "মোট কাজকে মোট সময় দিয়ে ভাগ করলে ক্ষমতা পাওয়া যায়; কাজ করার হারই ক্ষমতা।", "ch": "অধ্যায় ৭: শক্তির ব্যবহার"}, {"q": "খাদ্যে ও ব্যাটারিতে কোন ধরনের শক্তি জমা থাকে?", "opts": ["তাপশক্তি", "রাসায়নিক শক্তি", "আলোকশক্তি", "শব্দশক্তি"], "ans": 1, "exp": "খাদ্য, জ্বালানি ও ব্যাটারিতে রাসায়নিক শক্তি সঞ্চিত থাকে।", "ch": "অধ্যায় ৭: শক্তির ব্যবহার"}, {"q": "সোলার প্যানেলের মাধ্যমে সূর্যের আলোকশক্তি কোন শক্তিতে রূপান্তরিত হয়?", "opts": ["চুম্বক শক্তি", "বৈদ্যুতিক শক্তি", "শব্দশক্তি", "পারমাণবিক শক্তি"], "ans": 1, "exp": "সোলার প্যানেল বা সৌরকোষ আলোকশক্তিকে সরাসরি বৈদ্যুতিক শক্তিতে রূপান্তর করে।", "ch": "অধ্যায় ৭: শক্তির ব্যবহার"}, {"q": "পারমাণবিক বিদ্যুৎকেন্দ্রে পারমাণবিক শক্তিকে প্রথমে কোন শক্তিতে রূপান্তর করা হয়?", "opts": ["শব্দশক্তি", "তাপশক্তি", "আলোকশক্তি", "চুম্বক শক্তি"], "ans": 1, "exp": "পারমাণবিক শক্তি প্রথমে তাপশক্তিতে, তারপর টারবাইনে যান্ত্রিক ও জেনারেটরে বিদ্যুৎশক্তিতে রূপান্তরিত হয়।", "ch": "অধ্যায় ৭: শক্তির ব্যবহার"}, {"q": "কোনো বস্তুর তাপীয় অবস্থাকে কী দিয়ে প্রকাশ করা হয়?", "opts": ["ভর", "তাপমাত্রা", "ঘনত্ব", "আয়তন"], "ans": 1, "exp": "কোনো কিছু কতটুকু গরম বা ঠান্ডা তা তাপমাত্রা বা উষ্ণতা দিয়ে প্রকাশ করা হয়।", "ch": "অধ্যায় ৯: তাপ ও তাপমাত্রা"}, {"q": "ফারেনহাইট স্কেলে হিমাঙ্ক ও স্ফুটনাঙ্ক কত?", "opts": ["০° ও ১০০°", "৩২° ও ২১২°", "৩২° ও ১৮০°", "০° ও ২১২°"], "ans": 1, "exp": "ফারেনহাইট স্কেলে নিম্ন স্থিরাঙ্ক ৩২°F এবং ঊর্ধ্ব স্থিরাঙ্ক ২১২°F।", "ch": "অধ্যায় ৯: তাপ ও তাপমাত্রা"}, {"q": "রেললাইনের দুটি লোহার পাতের সংযোগস্থলে ফাঁক রাখা হয় কেন?", "opts": ["সৌন্দর্যের জন্য", "তাপে প্রসারিত হয়ে যেন বেঁকে না যায়", "খরচ কমানোর জন্য", "শব্দ করার জন্য"], "ans": 1, "exp": "চাকার ঘর্ষণে লোহার পাত গরম হয়ে প্রসারিত হলে ফাঁক না থাকলে তা বেঁকে দুর্ঘটনা ঘটত।", "ch": "অধ্যায় ৯: তাপ ও তাপমাত্রা"}, {"q": "যে স্থানে তাপমাত্রা কম সেখানে কিসের সৃষ্টি হয়?", "opts": ["নিম্নচাপ", "উচ্চচাপ", "ঘূর্ণিঝড়", "ভ্যাপসা গরম"], "ans": 1, "exp": "তাপমাত্রা কম হলে বায়ু ভারী থাকে এবং সেখানে উচ্চচাপের সৃষ্টি হয়।", "ch": "অধ্যায় ৯: তাপ ও তাপমাত্রা"}, {"q": "ঘর্ষণের ফলে বস্তুতে আধানের সৃষ্টি হয় আসলে কিসের স্থানান্তরের জন্য?", "opts": ["প্রোটন", "নিউট্রন", "ইলেকট্রন", "নিউক্লিয়াস"], "ans": 2, "exp": "ঘর্ষণের ফলে এক পদার্থ থেকে অন্য পদার্থে ইলেকট্রন চলে যায়।", "ch": "অধ্যায় ১০: বিদ্যুৎ ও চুম্বকের ঘটনা"}, {"q": "নিচের কোনটি অর্ধপরিবাহী (Semiconductor) পদার্থ?", "opts": ["তামা", "রৌপ্য", "সিলিকন ও জার্মেনিয়াম", "রাবার"], "ans": 2, "exp": "সিলিকন, জার্মেনিয়াম ও গ্যালিয়াম অর্ধপরিবাহী পদার্থ।", "ch": "অধ্যায় ১০: বিদ্যুৎ ও চুম্বকের ঘটনা"}, {"q": "বৈদ্যুতিক হিটার ও ইস্ত্রিতে কোন তারের কুণ্ডলী ব্যবহৃত হয়?", "opts": ["টাংস্টেন", "নাইক্রোম", "অ্যালুমিনিয়াম", "রুপা"], "ans": 1, "exp": "বৈদ্যুতিক হিটার ও ইস্ত্রিতে নাইক্রোম তারের কুণ্ডলী উত্তপ্ত হয়ে তাপ বিকিরণ করে।", "ch": "অধ্যায় ১০: বিদ্যুৎ ও চুম্বকের ঘটনা"}, {"q": "চুম্বকের দুটি সমমেরু পরস্পরকে কী করে?", "opts": ["আকর্ষণ করে", "বিকর্ষণ করে", "স্থির থাকে", "ঘোরে"], "ans": 1, "exp": "চুম্বকের সমমেরু পরস্পরকে বিকর্ষণ করে এবং বিপরীত মেরু আকর্ষণ করে।", "ch": "অধ্যায় ১০: বিদ্যুৎ ও চুম্বকের ঘটনা"}, {"q": "লোহার মরিচার রাসায়নিক নাম কী?", "opts": ["ফেরাস সালফেট", "পানিযুক্ত ফেরিক অক্সাইড", "ক্যালসিয়াম কার্বোনেট", "ম্যাগনেসিয়াম অক্সাইড"], "ans": 1, "exp": "লোহা বাতাসের অক্সিজেন ও পানির সাথে বিক্রিয়া করে পানিযুক্ত ফেরিক অক্সাইড (মরিচা) তৈরি করে।", "ch": "অধ্যায় ১১: পারিপার্শ্বিক পরিবর্তন ও বিভিন্ন ঘটনা"}, {"q": "খাবারের কৌটা ও সাইকেলের হ্যান্ডেলে ক্ষয়রোধে কোন প্রক্রিয়া ব্যবহৃত হয়?", "opts": ["বাষ্পীভবন", "ইলেকট্রোপ্লেটিং", "ঘনীভবন", "গাজন"], "ans": 1, "exp": "খাবারের কৌটা ও সাইকেলে লোহার ওপর টিন বা ক্রোমিয়ামের ইলেকট্রোপ্লেটিং করা হয়।", "ch": "অধ্যায় ১১: পারিপার্শ্বিক পরিবর্তন ও বিভিন্ন ঘটনা"}, {"q": "জলীয় বাষ্প ঠান্ডা হয়ে মেঘ বা ক্ষুদ্র পানিকণায় পরিণত হওয়ার প্রক্রিয়া কী?", "opts": ["বাষ্পীভবন", "ঘনীভবন", "কঠিনীভবন", "গলন"], "ans": 1, "exp": "বাষ্প থেকে তরল বা মেঘে পরিণত হওয়ার ভৌত পরিবর্তনকে ঘনীভবন বলে।", "ch": "অধ্যায় ১১: পারিপার্শ্বিক পরিবর্তন ও বিভিন্ন ঘটনা"}, {"q": "চক বা ডিমের খোসায় প্রধানত কোন রাসায়নিক যৌগ থাকে?", "opts": ["ম্যাগনেসিয়াম অক্সাইড", "ক্যালসিয়াম কার্বোনেট", "সোডিয়াম ক্লোরাইড", "সালফিউরিক এসিড"], "ans": 1, "exp": "চক ও ডিমের খোসায় প্রচুর ক্যালসিয়াম কার্বোনেট (CaCO3) থাকে।", "ch": "অধ্যায় ১১: পারিপার্শ্বিক পরিবর্তন ও বিভিন্ন ঘটনা"}, {"q": "সূর্যের আয়তন পৃথিবীর আয়তনের তুলনায় প্রায় কত গুণ বড়?", "opts": ["১ লক্ষ গুণ", "১৩ লক্ষ গুণ", "১ কোটি গুণ", "৫ লক্ষ গুণ"], "ans": 1, "exp": "সূর্য মাঝারি আকারের নক্ষত্র হলেও এর আয়তন পৃথিবীর প্রায় ১৩ লক্ষ গুণ বড়।", "ch": "অধ্যায় ১২: সৌরজগৎ ও আমাদের পৃথিবী"}, {"q": "সৌরজগতের সবচেয়ে বড় গ্রহ কোনটি?", "opts": ["শনি", "বৃহস্পতি", "ইউরেনাস", "নেপচুন"], "ans": 1, "exp": "বৃহস্পতি সৌরজগতের সবচেয়ে বড় গ্রহ এবং এতে কোনো কঠিন পৃষ্ঠ নেই।", "ch": "অধ্যায় ১২: সৌরজগৎ ও আমাদের পৃথিবী"}, {"q": "কত সময় পরপর অমাবস্যা ও পূর্ণিমা হতে দেখা যায়?", "opts": ["২৭ দিন ৮ ঘণ্টা", "২৯ দিন ১২ ঘণ্টা", "১৫ দিন", "৩১ দিন"], "ans": 1, "exp": "২৯ দিন ১২ ঘণ্টা পরপর অমাবস্যা ও পূর্ণিমা হয়।", "ch": "অধ্যায় ১২: সৌরজগৎ ও আমাদের পৃথিবী"}, {"q": "পৃথিবী পৃষ্ঠের কত ভাগ পানি এবং কত ভাগ মাটি?", "opts": ["অর্ধেক পানি ও অর্ধেক মাটি", "চার ভাগের তিন ভাগ পানি ও এক ভাগ মাটি", "দুই ভাগ পানি ও দুই ভাগ মাটি", "চার ভাগের এক ভাগ পানি"], "ans": 1, "exp": "গোলাকার পৃথিবী পৃষ্ঠের ৪ ভাগের ৩ ভাগ পানি এবং ১ ভাগ মাটি।", "ch": "অধ্যায় ১২: সৌরজগৎ ও আমাদের পৃথিবী"}, {"q": "সূর্যের মধ্যে কোন গ্যাস কোন গ্যাসে পরিণত হয়ে তাপ ও আলো উৎপন্ন করে?", "opts": ["অক্সিজেন → নাইট্রোজেন", "হাইড্রোজেন → হিলিয়াম", "কার্বন → মিথেন", "হিলিয়াম → হাইড্রোজেন"], "ans": 1, "exp": "সূর্যে হাইড্রোজেন গ্যাস হিলিয়াম গ্যাসে পরিণত হয়ে প্রচুর তাপ ও আলো উৎপন্ন করে।", "ch": "অধ্যায় ৯: তাপ ও তাপমাত্রা"}, {"q": "২২ ডিসেম্বর অস্ট্রেলিয়ায় কোন ঋতু বিরাজ করে?", "opts": ["শীতকাল", "গ্রীষ্মকাল", "শরৎকাল", "বসন্তকাল"], "ans": 1, "exp": "২২ ডিসেম্বর দক্ষিণ গোলার্ধ সূর্যের দিকে মুখ করে থাকায় অস্ট্রেলিয়ায় গ্রীষ্মকাল।", "ch": "অধ্যায় ১২: সৌরজগৎ ও আমাদের পৃথিবী"}]}], "gyanTests": [{"id": "mt_gyan_1", "title": "জ্ঞানমূলক মডেল টেস্ট ১", "subtitle": "সকল অধ্যায় থেকে বাছাইকৃত ২০টি গুরুত্বপূর্ণ ১ নম্বরের প্রশ্ন (অ্যাক্টিভ রিকল)", "questions": [{"q": "শ্বসন কাকে বলে?", "a": "যে জৈব রাসায়নিক প্রক্রিয়ায় জীবকোষস্থ খাদ্য অক্সিজেনের উপস্থিতি বা অনুপস্থিতিতে জারিত হয়ে গতিশক্তি ও তাপশক্তিতে রূপান্তরিত হয় এবং CO2 ও পানি উৎপন্ন হয়, তাকে শ্বসন বলে।", "ch": "অধ্যায় ৪: শ্বসন"}, {"q": "অবাত শ্বসন কী?", "a": "অক্সিজেনের অনুপস্থিতিতে যে শ্বসন সম্পন্ন হয়, তাকে অবাত শ্বসন বলে (যেমন: ব্যাকটেরিয়ায়)।", "ch": "অধ্যায় ৪: শ্বসন"}, {"q": "মাছ ও ব্যাঙাচি কিসের সাহায্যে শ্বসন সম্পন্ন করে?", "a": "ফুলকার সাহায্যে।", "ch": "অধ্যায় ৪: শ্বসন"}, {"q": "পরিপাক কাকে বলে?", "a": "যে প্রক্রিয়ায় জটিল ও অদ্রবণীয় খাদ্যবস্তু এনজাইমের সহায়তায় সরল, দ্রবণীয় ও দেহের শোষণ উপযোগী উপাদানে পরিণত হয়, তাকে পরিপাক বলে।", "ch": "অধ্যায় ৫: পরিপাকতন্ত্র ও রক্ত সংবহনতন্ত্র"}, {"q": "পেরিস্টালসিস বা ক্রমসংকোচন কী?", "a": "অন্ননালির পেশির পর্যায়ক্রমিক সংকোচন ও প্রসারণের মাধ্যমে খাদ্যবস্তু পাকস্থলিতে পৌঁছানোর প্রক্রিয়াকে পেরিস্টালসিস বলে।", "ch": "অধ্যায় ৫: পরিপাকতন্ত্র ও রক্ত সংবহনতন্ত্র"}, {"q": "মানুষের স্থায়ী দাঁত কয় প্রকার ও কী কী?", "a": "৪ প্রকার: কর্তন, ছেদন, অগ্রপেষণ ও পেষণ দাঁত।", "ch": "অধ্যায় ৫: পরিপাকতন্ত্র ও রক্ত সংবহনতন্ত্র"}, {"q": "বিজ্ঞানের ভাষায় কাজ কাকে বলে?", "a": "কোনো বস্তুর উপর বল প্রয়োগ করে বস্তুটিকে বলের দিকে এক স্থান থেকে অন্য স্থানে সরানো হলে তাকে কাজ বলে।", "ch": "অধ্যায় ৭: শক্তির ব্যবহার"}, {"q": "শক্তি কাকে বলে এবং এর একক কী?", "a": "কাজ করার সামর্থ্যকে শক্তি বলে। শক্তির একক হলো জুল (Joule)।", "ch": "অধ্যায় ৭: শক্তির ব্যবহার"}, {"q": "গতিশক্তি কাকে বলে?", "a": "কোনো বস্তুর গতির জন্য কাজ করার যে সামর্থ্য অর্জিত হয়, তাকে গতিশক্তি বলে।", "ch": "অধ্যায় ৭: শক্তির ব্যবহার"}, {"q": "তাপ কী?", "a": "তাপ হলো এক প্রকার শক্তি, যার কারণে কোনো কিছু আমাদের ঠান্ডা বা গরম অনুভূত হয়।", "ch": "অধ্যায় ৯: তাপ ও তাপমাত্রা"}, {"q": "তাপ ও তাপমাত্রার একটি মূল পার্থক্য লেখো।", "a": "তাপ হলো এক ধরনের শক্তি, আর তাপমাত্রা হলো কোনো বস্তুর তাপীয় অবস্থার পরিমাপক মাত্রা।", "ch": "অধ্যায় ৯: তাপ ও তাপমাত্রা"}, {"q": "পারদ থার্মোমিটারে কোন ধর্ম ব্যবহার করা হয়?", "a": "তাপমাত্রা পরিবর্তনে তরল পারদের আয়তন প্রসারণ ধর্ম ব্যবহার করা হয়।", "ch": "অধ্যায় ৯: তাপ ও তাপমাত্রা"}, {"q": "বিদ্যুৎ কাকে বলে?", "a": "পরিবাহীর মধ্য দিয়ে ইলেকট্রনের প্রবাহকে বিদ্যুৎ বলে।", "ch": "অধ্যায় ১০: বিদ্যুৎ ও চুম্বকের ঘটনা"}, {"q": "পরমাণু আধান নিরপেক্ষ হয় কেন?", "a": "একটি পরমাণুতে সমান সংখ্যক ধনাত্মক প্রোটন ও ঋণাত্মক ইলেকট্রন থাকে বলে এটি আধান নিরপেক্ষ হয়।", "ch": "অধ্যায় ১০: বিদ্যুৎ ও চুম্বকের ঘটনা"}, {"q": "পরিবাহী পদার্থ কাকে বলে? দুটি উদাহরণ দাও।", "a": "যেসব পদার্থের মধ্য দিয়ে ইলেকট্রন সহজে চলাচল করতে পারে, তাদের পরিবাহী বলে। যেমন: তামা ও রৌপ্য।", "ch": "অধ্যায় ১০: বিদ্যুৎ ও চুম্বকের ঘটনা"}, {"q": "ভৌত পরিবর্তন কাকে বলে?", "a": "যে পরিবর্তনে পদার্থের শুধু অবস্থা বা আকার-আকৃতির পরিবর্তন ঘটে কিন্তু নতুন পদার্থ সৃষ্টি হয় না ও ধর্ম অপরিবর্তিত থাকে, তাকে ভৌত পরিবর্তন বলে।", "ch": "অধ্যায় ১১: পারিপার্শ্বিক পরিবর্তন ও বিভিন্ন ঘটনা"}, {"q": "মরিচা কী?", "a": "লোহা বাতাসের অক্সিজেন ও পানির সাথে বিক্রিয়া করে যে পানিযুক্ত ফেরিক অক্সাইড তৈরি করে, তাকে মরিচা বলে।", "ch": "অধ্যায় ১১: পারিপার্শ্বিক পরিবর্তন ও বিভিন্ন ঘটনা"}, {"q": "ধাতুর ক্ষয়রোধের তিনটি উপায়ের নাম লেখো।", "a": "গ্যালভানাইজিং, পেইন্টিং ও ইলেকট্রোপ্লেটিং।", "ch": "অধ্যায় ১১: পারিপার্শ্বিক পরিবর্তন ও বিভিন্ন ঘটনা"}, {"q": "সৌরজগৎ কাকে বলে?", "a": "সূর্য এবং একে কেন্দ্র করে ঘূর্ণায়মান ৮টি গ্রহ, উপগ্রহ, ধূমকেতু, উল্কা, গ্রহাণু ও ফাঁকা জায়গা নিয়ে আমাদের সৌরজগৎ গঠিত।", "ch": "অধ্যায় ১২: সৌরজগৎ ও আমাদের পৃথিবী"}, {"q": "সূর্যে শক্তির উৎস কী?", "a": "সূর্যে হাইড্রোজেন গ্যাসের পরমাণু পরস্পরের সাথে যুক্ত হয়ে হিলিয়াম পরমাণুতে পরিণত হওয়ার প্রক্রিয়ায় প্রচুর তাপ ও আলোকশক্তি উৎপন্ন হয়।", "ch": "অধ্যায় ১২: সৌরজগৎ ও আমাদের পৃথিবী"}]}, {"id": "mt_gyan_2", "title": "জ্ঞানমূলক মডেল টেস্ট ২", "subtitle": "চূড়ান্ত রিভিশনের জন্য ২০টি গুরুত্বপূর্ণ জ্ঞানমূলক প্রশ্ন", "questions": [{"q": "সবাত শ্বসন কী?", "a": "অক্সিজেনের উপস্থিতিতে যে শ্বসন সম্পন্ন হয়, তাকে সবাত শ্বসন বলে।", "ch": "অধ্যায় ৪: শ্বসন"}, {"q": "উদ্ভিদের কোন কোন অংশ দিয়ে শ্বসন বায়ু প্রবেশ করে?", "a": "পাতার পত্ররন্ধ্র (স্টোমাটা), কাণ্ডের লেন্টিসেল এবং অন্তঃকোষীয় স্থানের মাধ্যমে।", "ch": "অধ্যায় ৪: শ্বসন"}, {"q": "শ্বসনতন্ত্র কাকে বলে?", "a": "যে অঙ্গগুলো একত্রে প্রাণীর শ্বসনকার্য চালানোর কাজে অংশ নেয়, তাদের একত্রে শ্বসনতন্ত্র বলে।", "ch": "অধ্যায় ৪: শ্বসন"}, {"q": "এনজাইম কী?", "a": "এনজাইম হলো এমন জৈব রাসায়নিক বস্তু বা অনুঘটক, যা খাদ্যবস্তুর সাথে মিশে রাসায়নিক বিক্রিয়ায় সাহায্য করে কিন্তু বিক্রিয়া শেষে নিজে অপরিবর্তিত থাকে।", "ch": "অধ্যায় ৫: পরিপাকতন্ত্র ও রক্ত সংবহনতন্ত্র"}, {"q": "টায়ালিন কী এবং এর কাজ কী?", "a": "টায়ালিন হলো লালায় অবস্থিত এনজাইম, যা শ্বেতসার জাতীয় খাদ্যকে ভেঙে শর্করায় (মলটোজ) পরিণত করে।", "ch": "অধ্যায় ৫: পরিপাকতন্ত্র ও রক্ত সংবহনতন্ত্র"}, {"q": "ক্ষুদ্রান্ত্রের তিনটি অংশের নাম লেখো।", "a": "ডিওডেনাম, জেজুনাম ও ইলিয়াম।", "ch": "অধ্যায় ৫: পরিপাকতন্ত্র ও রক্ত সংবহনতন্ত্র"}, {"q": "ক্ষমতা কাকে বলে?", "a": "কোনো কাজ করার হারকে (মোট কাজকে মোট সময় দিয়ে ভাগ করে প্রাপ্ত মান) ক্ষমতা বলে।", "ch": "অধ্যায় ৭: শক্তির ব্যবহার"}, {"q": "পৃথিবীতে সকল শক্তির মূল উৎস কী?", "a": "সূর্য।", "ch": "অধ্যায় ৭: শক্তির ব্যবহার"}, {"q": "স্থিতিশক্তি কাকে বলে?", "a": "কোনো বস্তুর অবস্থানের পরিবর্তনের জন্য এর মধ্যে যে শক্তি সঞ্চিত হয়, তাকে স্থিতিশক্তি বলে।", "ch": "অধ্যায় ৭: শক্তির ব্যবহার"}, {"q": "তাপমাত্রা কাকে বলে?", "a": "কোনো বস্তু কতটুকু ঠান্ডা বা গরম লাগছে তা প্রকাশ করার মাত্রাকে তাপমাত্রা বলে।", "ch": "অধ্যায় ৯: তাপ ও তাপমাত্রা"}, {"q": "থার্মোমিটার কী?", "a": "তাপমাত্রা সঠিকভাবে পরিমাপ করার যন্ত্রের নাম হলো থার্মোমিটার।", "ch": "অধ্যায় ৯: তাপ ও তাপমাত্রা"}, {"q": "মানুষের শরীরের স্বাভাবিক তাপমাত্রা কত?", "a": "৯৮.৪ ডিগ্রি ফারেনহাইট (৯৮.৪°F)।", "ch": "অধ্যায় ৯: তাপ ও তাপমাত্রা"}, {"q": "পরমাণু গঠনকারী তিনটি মূল কণিকা কী কী?", "a": "ইলেকট্রন, প্রোটন ও নিউট্রন।", "ch": "অধ্যায় ১০: বিদ্যুৎ ও চুম্বকের ঘটনা"}, {"q": "চার্জ বা আধানের দুটি মৌলিক ধর্ম লেখো।", "a": "১. সমধর্মী আধান পরস্পরকে বিকর্ষণ করে; ২. বিপরীতধর্মী আধান পরস্পরকে আকর্ষণ করে।", "ch": "অধ্যায় ১০: বিদ্যুৎ ও চুম্বকের ঘটনা"}, {"q": "কোন অধাতু বিদ্যুৎ সুপরিবাহী?", "a": "কার্বনের একটি রূপ গ্রাফাইট।", "ch": "অধ্যায় ১০: বিদ্যুৎ ও চুম্বকের ঘটনা"}, {"q": "রাসায়নিক পরিবর্তন কাকে বলে?", "a": "যে পরিবর্তনে এক বা একাধিক পদার্থ পরিবর্তিত হয়ে সম্পূর্ণ ভিন্নধর্মী নতুন পদার্থে পরিণত হয়, তাকে রাসায়নিক পরিবর্তন বলে।", "ch": "অধ্যায় ১১: পারিপার্শ্বিক পরিবর্তন ও বিভিন্ন ঘটনা"}, {"q": "স্টেইনলেস স্টিল কীভাবে তৈরি হয়?", "a": "লোহার সাথে কার্বন, নিকেল ও ক্রোমিয়াম মিশিয়ে স্টেইনলেস স্টিল তৈরি হয়।", "ch": "অধ্যায় ১১: পারিপার্শ্বিক পরিবর্তন ও বিভিন্ন ঘটনা"}, {"q": "গ্যালভানাইজিং কাকে বলে?", "a": "লোহার তৈরি দ্রব্যসামগ্রীর উপর জিংক বা দস্তার পাতলা আস্তরণ দেওয়াকে গ্যালভানাইজিং বলে।", "ch": "অধ্যায় ১১: পারিপার্শ্বিক পরিবর্তন ও বিভিন্ন ঘটনা"}, {"q": "সূর্যকেন্দ্রিক মডেলের প্রস্তাবক কে এবং কারা এর প্রমাণ দেন?", "a": "প্রস্তাবক কোপারনিকাস; এবং গ্যালিলিও ও কেপলার এর পক্ষে প্রমাণ হাজির করেন।", "ch": "অধ্যায় ১২: সৌরজগৎ ও আমাদের পৃথিবী"}, {"q": "পৃথিবী থেকে সূর্যের দূরত্ব ও আয়তন তুলনা লেখো।", "a": "দূরত্ব প্রায় ১৫ কোটি কিলোমিটার এবং সূর্যের আয়তন পৃথিবীর তুলনায় প্রায় ১৩ লক্ষ গুণ বড়।", "ch": "অধ্যায় ১২: সৌরজগৎ ও আমাদের পৃথিবী"}]}]};
+    const STORAGE_KEY = 'class7_science_gamified_v1';
 
-  <script src="../../assets/js/subjects.js"></script>
-  <script src="./content.js"></script>
-  <script src="../../assets/js/audio.js"></script>
-  <script src="../../assets/js/subject.js"></script>
+    const state = {
+      view: 'home', // 'home' | 'chapter' | 'mcq_test' | 'gyan_test'
+      chapterId: null,
+      tab: 'summary', // 'summary' | 'mcq' | 'gyan'
+      stage: 0, // 0..4
+      testId: null,
+      testStage: 0,
+      audioSpeed: 1.0,
+      soundEnabled: true,
+      speakingKey: null,
+      // Persisted progress
+      xp: 0,
+      streak: 0,
+      // mcqProgress[scopeKey][qIdx] = { solved: bool, wrongTries: number[], pointsDelta: number }
+      mcqProgress: {},
+      // gyanProgress[scopeKey][qIdx] = { revealed: bool, status: 'none'|'knew'|'review' }
+      gyanProgress: {}
+    };
+
+    // Load saved progress safely
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        const saved = JSON.parse(raw);
+        if (typeof saved.xp === 'number') state.xp = saved.xp;
+        if (typeof saved.streak === 'number') state.streak = saved.streak;
+        if (typeof saved.soundEnabled === 'boolean') state.soundEnabled = saved.soundEnabled;
+        if (saved.mcqProgress) state.mcqProgress = saved.mcqProgress;
+        if (saved.gyanProgress) state.gyanProgress = saved.gyanProgress;
+      }
+    } catch (e) {}
+
+    function saveProgress() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          xp: state.xp,
+          streak: state.streak,
+          soundEnabled: state.soundEnabled,
+          mcqProgress: state.mcqProgress,
+          gyanProgress: state.gyanProgress
+        }));
+      } catch (e) {}
+    }
+
+    function toBn(num) {
+      const map = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+      return String(num).replace(/\d/g, d => map[d]);
+    }
+
+    function getRank(xp) {
+      if (xp >= 1500) return '🏆 বিজ্ঞান চ্যাম্পিয়ন';
+      if (xp >= 800) return '🚀 জুনিয়র বিজ্ঞানী';
+      if (xp >= 300) return '🔭 বিজ্ঞান অনুসন্ধিৎসু';
+      return '🌱 নতুন শিক্ষার্থী';
+    }
+
+    function showToast(msg) {
+      const el = document.getElementById('toastEl');
+      el.textContent = msg;
+      el.classList.add('show');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => el.classList.remove('show'), 2200);
+    }
+
+    // Web Audio API feedback
+    let audioCtx = null;
+    function playTone(type) {
+      if (!state.soundEnabled) return;
+      try {
+        const Ctx = window.AudioContext || window.webkitAudioContext;
+        if (!Ctx) return;
+        if (!audioCtx) audioCtx = new Ctx();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        const now = audioCtx.currentTime;
+        if (type === 'ok') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(523.25, now);
+          osc.frequency.exponentialRampToValueAtTime(783.99, now + 0.12);
+          gain.gain.setValueAtTime(0.12, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+          osc.start(now);
+          osc.stop(now + 0.25);
+        } else {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(220, now);
+          osc.frequency.linearRampToValueAtTime(165, now + 0.18);
+          gain.gain.setValueAtTime(0.12, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
+          osc.start(now);
+          osc.stop(now + 0.22);
+        }
+      } catch (e) {}
+    }
+
+    // Bangla-only Web Speech API TTS
+    function stopSpeech() {
+      try {
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+        }
+      } catch (e) {}
+      state.speakingKey = null;
+    }
+
+    function pickBanglaVoice() {
+      if (!('speechSynthesis' in window)) return null;
+      const voices = window.speechSynthesis.getVoices() || [];
+      return voices.find(v => v.lang && v.lang.toLowerCase().startsWith('bn-bd'))
+        || voices.find(v => v.lang && v.lang.toLowerCase().startsWith('bn'))
+        || null;
+    }
+
+    function toggleBanglaAudio(key, text) {
+      if (!('speechSynthesis' in window)) {
+        showToast('এই ব্রাউজারে বাংলা অডিও সমর্থন করে না।');
+        return;
+      }
+      if (state.speakingKey === key) {
+        stopSpeech();
+        render();
+        return;
+      }
+      stopSpeech();
+      try {
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'bn-BD';
+        const voice = pickBanglaVoice();
+        if (voice) utter.voice = voice;
+        utter.rate = state.audioSpeed;
+        utter.onend = () => {
+          state.speakingKey = null;
+          render();
+        };
+        utter.onerror = () => {
+          state.speakingKey = null;
+          render();
+        };
+        state.speakingKey = key;
+        window.speechSynthesis.speak(utter);
+        render();
+      } catch (e) {
+        showToast('অডিও চালু করা যায়নি। ফোনে Google বাংলা ভয়েস চালু রাখুন।');
+      }
+    }
+
+    // Modal helper
+    let pendingConfirm = null;
+    function openConfirmModal(title, desc, onConfirm) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalDesc').textContent = desc;
+      pendingConfirm = onConfirm;
+      document.getElementById('confirmModal').classList.add('open');
+    }
+    document.getElementById('modalCancel').addEventListener('click', () => {
+      document.getElementById('confirmModal').classList.remove('open');
+      pendingConfirm = null;
+    });
+    document.getElementById('modalConfirm').addEventListener('click', () => {
+      document.getElementById('confirmModal').classList.remove('open');
+      if (pendingConfirm) pendingConfirm();
+      pendingConfirm = null;
+    });
+
+    function updateHud() {
+      document.getElementById('hudXp').textContent = `⭐ ${toBn(state.xp)} পয়েন্ট`;
+      document.getElementById('hudStreak').textContent = `🔥 ${toBn(state.streak)}`;
+      document.getElementById('hudRank').textContent = getRank(state.xp);
+      document.getElementById('soundToggleBtn').textContent = state.soundEnabled ? '🔊' : '🔇';
+    }
+
+    function getScopeMcqStats(scopeKey, totalCount) {
+      const map = state.mcqProgress[scopeKey] || {};
+      let solved = 0;
+      let score = 0;
+      for (let i = 0; i < totalCount; i++) {
+        if (map[i]) {
+          if (map[i].solved) solved++;
+          score += (map[i].pointsDelta || 0);
+        }
+      }
+      return { solved, score, total: totalCount };
+    }
+
+    function getScopeGyanStats(scopeKey, totalCount) {
+      const map = state.gyanProgress[scopeKey] || {};
+      let knew = 0;
+      for (let i = 0; i < totalCount; i++) {
+        if (map[i] && map[i].status === 'knew') knew++;
+      }
+      return { knew, total: totalCount };
+    }
+
+    function handleMcqClick(scopeKey, qIdx, optIdx, correctIdx) {
+      if (!state.mcqProgress[scopeKey]) state.mcqProgress[scopeKey] = {};
+      const entry = state.mcqProgress[scopeKey][qIdx] || { solved: false, wrongTries: [], pointsDelta: 0 };
+      if (entry.solved) return;
+
+      if (optIdx === correctIdx) {
+        const earned = entry.wrongTries.length === 0 ? 10 : 5;
+        entry.solved = true;
+        entry.pointsDelta += earned;
+        state.xp += earned;
+        state.streak += 1;
+        state.mcqProgress[scopeKey][qIdx] = entry;
+        playTone('ok');
+        showToast(`সঠিক উত্তর! +${toBn(earned)} পয়েন্ট`);
+      } else {
+        if (!entry.wrongTries.includes(optIdx)) {
+          entry.wrongTries.push(optIdx);
+          entry.pointsDelta -= 2;
+          state.xp = Math.max(0, state.xp - 2);
+          state.streak = 0;
+          state.mcqProgress[scopeKey][qIdx] = entry;
+          playTone('err');
+          showToast('ভুল উত্তর! -২ পয়েন্ট, আবার চেষ্টা করো');
+        }
+      }
+      saveProgress();
+      render();
+    }
+
+    function resetMcqScope(scopeKey) {
+      openConfirmModal(
+        'এমসিকিউ রিসেট করবেন?',
+        'এই পরীক্ষার সব উত্তর মুছে যাবে এবং পয়েন্ট নতুন করে শুরু হবে।',
+        () => {
+          const stats = getScopeMcqStats(scopeKey, 50);
+          state.xp = Math.max(0, state.xp - Math.max(0, stats.score));
+          delete state.mcqProgress[scopeKey];
+          state.stage = 0;
+          state.testStage = 0;
+          saveProgress();
+          showToast('রিসেট সম্পন্ন হয়েছে! আবার শুরু করো।');
+          render();
+        }
+      );
+    }
+
+    function toggleGyanReveal(scopeKey, qIdx) {
+      if (!state.gyanProgress[scopeKey]) state.gyanProgress[scopeKey] = {};
+      const entry = state.gyanProgress[scopeKey][qIdx] || { revealed: false, status: 'none' };
+      entry.revealed = !entry.revealed;
+      state.gyanProgress[scopeKey][qIdx] = entry;
+      saveProgress();
+      render();
+    }
+
+    function markGyanStatus(scopeKey, qIdx, status) {
+      if (!state.gyanProgress[scopeKey]) state.gyanProgress[scopeKey] = {};
+      const entry = state.gyanProgress[scopeKey][qIdx] || { revealed: true, status: 'none' };
+      if (entry.status !== 'knew' && status === 'knew') {
+        state.xp += 5;
+        state.streak += 1;
+        playTone('ok');
+        showToast('দারুণ! +৫ পয়েন্ট');
+      } else if (entry.status === 'knew' && status !== 'knew') {
+        state.xp = Math.max(0, state.xp - 5);
+      }
+      entry.status = status;
+      entry.revealed = true;
+      state.gyanProgress[scopeKey][qIdx] = entry;
+      saveProgress();
+      render();
+    }
+
+    function resetGyanScope(scopeKey) {
+      openConfirmModal(
+        'জ্ঞানমূলক রিসেট করবেন?',
+        'সব উত্তর আবার লুকানো অবস্থায় ফিরে যাবে যাতে নতুন করে অনুশীলন করা যায়।',
+        () => {
+          const stats = getScopeGyanStats(scopeKey, 30);
+          state.xp = Math.max(0, state.xp - stats.knew * 5);
+          delete state.gyanProgress[scopeKey];
+          state.stage = 0;
+          state.testStage = 0;
+          saveProgress();
+          showToast('জ্ঞানমূলক রিসেট হয়েছে!');
+          render();
+        }
+      );
+    }
+
+    function renderHome() {
+      let totalSolvedMcq = 0;
+      let totalMcq = 0;
+      let totalGyanKnew = 0;
+      let totalGyan = 0;
+
+      APP_DATA.chapters.forEach(ch => {
+        const m = getScopeMcqStats(ch.id, ch.mcqs.length);
+        const g = getScopeGyanStats(ch.id, ch.gyanmulok.length);
+        totalSolvedMcq += m.solved;
+        totalMcq += m.total;
+        totalGyanKnew += g.knew;
+        totalGyan += g.total;
+      });
+
+      let html = `
+        <section class="hero">
+          <h1>৭ম শ্রেণির বিজ্ঞান — ইন্টারঅ্যাক্টিভ লার্নিং</h1>
+          <p>প্রতিটি অধ্যায়ের সহজ বাংলা সামারি ও অডিও, ৫ ধাপের গেমিফাইড MCQ এবং অ্যাক্টিভ রিকল জ্ঞানমূলক প্রশ্ন দিয়ে প্রস্তুতি নাও।</p>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <strong>${toBn(APP_DATA.chapters.length)}টি</strong>
+              <span>অধ্যায়</span>
+            </div>
+            <div class="hero-stat">
+              <strong>${toBn(totalSolvedMcq)}/${toBn(totalMcq)}</strong>
+              <span>MCQ সম্পন্ন</span>
+            </div>
+            <div class="hero-stat">
+              <strong>${toBn(totalGyanKnew)}/${toBn(totalGyan)}</strong>
+              <span>জ্ঞানমূলক</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="sec-head">
+          <h2>📚 অধ্যায়সমূহ</h2>
+          <span class="sec-badge">৭টি অধ্যায়</span>
+        </div>
+        <div class="grid">
+      `;
+
+      APP_DATA.chapters.forEach(ch => {
+        const m = getScopeMcqStats(ch.id, ch.mcqs.length);
+        const g = getScopeGyanStats(ch.id, ch.gyanmulok.length);
+        const pct = Math.round(((m.solved + g.knew) / (m.total + g.total)) * 100);
+        html += `
+          <div class="card" data-action="open-ch" data-id="${ch.id}">
+            <div class="card-top">
+              <div class="ch-icon" style="background:${ch.color}">${ch.icon}</div>
+              <div>
+                <div class="ch-num">${ch.number}</div>
+                <div class="ch-title">${ch.title}</div>
+                <div class="ch-sub">${ch.subtitle}</div>
+              </div>
+            </div>
+            <div class="progress-wrap">
+              <div class="progress-meta">
+                <span>MCQ: ${toBn(m.solved)}/${toBn(m.total)} • জ্ঞানমূলক: ${toBn(g.knew)}/${toBn(g.total)}</span>
+                <span>${toBn(pct)}%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width:${pct}%"></div>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      html += `</div>
+        <div class="sec-head" style="margin-top:24px;">
+          <h2>🏆 পূর্ণাঙ্গ মডেল টেস্ট (MCQ)</h2>
+          <span class="sec-badge">৩টি × ৩০ প্রশ্ন</span>
+        </div>
+        <div class="grid">
+      `;
+
+      APP_DATA.mcqTests.forEach((mt, idx) => {
+        const stats = getScopeMcqStats(mt.id, mt.questions.length);
+        const pct = Math.round((stats.solved / stats.total) * 100);
+        html += `
+          <div class="card" data-action="open-mcq-test" data-id="${mt.id}">
+            <div class="card-top">
+              <div class="ch-icon" style="background:#4f46e5">📝</div>
+              <div>
+                <div class="ch-num">মডেল টেস্ট ${toBn(idx + 1)}</div>
+                <div class="ch-title">${mt.title}</div>
+                <div class="ch-sub">${mt.subtitle}</div>
+              </div>
+            </div>
+            <div class="progress-wrap">
+              <div class="progress-meta">
+                <span>সম্পন্ন: ${toBn(stats.solved)}/${toBn(stats.total)} • পয়েন্ট: ${toBn(stats.score)}</span>
+                <span>${toBn(pct)}%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width:${pct}%"></div>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      html += `</div>
+        <div class="sec-head" style="margin-top:24px;">
+          <h2>💡 জ্ঞানমূলক মডেল টেস্ট</h2>
+          <span class="sec-badge">২টি × ২০ প্রশ্ন</span>
+        </div>
+        <div class="grid">
+      `;
+
+      APP_DATA.gyanTests.forEach((gt, idx) => {
+        const stats = getScopeGyanStats(gt.id, gt.questions.length);
+        const pct = Math.round((stats.knew / stats.total) * 100);
+        html += `
+          <div class="card" data-action="open-gyan-test" data-id="${gt.id}">
+            <div class="card-top">
+              <div class="ch-icon" style="background:#0d9488">💡</div>
+              <div>
+                <div class="ch-num">জ্ঞানমূলক টেস্ট ${toBn(idx + 1)}</div>
+                <div class="ch-title">${gt.title}</div>
+                <div class="ch-sub">${gt.subtitle}</div>
+              </div>
+            </div>
+            <div class="progress-wrap">
+              <div class="progress-meta">
+                <span>পেরেছি: ${toBn(stats.knew)}/${toBn(stats.total)}</span>
+                <span>${toBn(pct)}%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width:${pct}%"></div>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      html += `</div>`;
+      return html;
+    }
+
+    function renderMcqBlock(scopeKey, questions, stageIdx, stageSize, onStageChange, onReset) {
+      const totalStages = Math.ceil(questions.length / stageSize);
+      const start = stageIdx * stageSize;
+      const slice = questions.slice(start, start + stageSize);
+      const stats = getScopeMcqStats(scopeKey, questions.length);
+      const map = state.mcqProgress[scopeKey] || {};
+      const labels = ['ক', 'খ', 'গ', 'ঘ'];
+
+      let html = `
+        <div class="score-banner">
+          <div>
+            <strong>অগ্রগতি: ${toBn(stats.solved)}/${toBn(stats.total)}টি সঠিক</strong>
+            <div style="font-size:0.82rem;color:var(--text-muted);">১ম চেষ্টায় সঠিক: +১০ • ভুল গেস: -২ • সংশোধিত সঠিক: +৫</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span class="hud-pill xp">স্কোর: ${toBn(stats.score)}</span>
+            <button class="btn btn-sm btn-danger" type="button" data-action="reset-mcq" data-scope="${scopeKey}">🔄 রিসেট</button>
+          </div>
+        </div>
+        <div class="stage-bar">
+          <div class="stage-pills">
+      `;
+
+      for (let s = 0; s < totalStages; s++) {
+        const sStart = s * stageSize;
+        let sDone = true;
+        for (let k = sStart; k < Math.min(sStart + stageSize, questions.length); k++) {
+          if (!map[k] || !map[k].solved) { sDone = false; break; }
+        }
+        html += `<button class="stage-pill ${s === stageIdx ? 'active' : ''} ${sDone ? 'done' : ''}" type="button" data-action="set-stage" data-stage="${s}">সেকশন ${toBn(s + 1)} ${sDone ? '✓' : ''}</button>`;
+      }
+      html += `</div></div>`;
+
+      slice.forEach((item, localIdx) => {
+        const qIdx = start + localIdx;
+        const entry = map[qIdx] || { solved: false, wrongTries: [], pointsDelta: 0 };
+        html += `
+          <div class="q-card">
+            <div class="q-meta">
+              <span>প্রশ্ন ${toBn(qIdx + 1)} / ${toBn(questions.length)}${item.ch ? ' • ' + item.ch : ''}</span>
+              ${entry.pointsDelta !== 0 ? `<span class="q-delta ${entry.pointsDelta > 0 ? 'pos' : 'neg'}">${entry.pointsDelta > 0 ? '+' : ''}${toBn(entry.pointsDelta)} পয়েন্ট</span>` : ''}
+            </div>
+            <div class="q-text">${item.q}</div>
+            <div class="opts">
+        `;
+        item.opts.forEach((opt, oIdx) => {
+          let cls = '';
+          if (entry.solved && oIdx === item.ans) cls = 'correct';
+          else if (entry.wrongTries.includes(oIdx)) cls = 'wrong';
+          const disabled = entry.solved || entry.wrongTries.includes(oIdx) ? 'disabled' : '';
+          html += `
+            <button class="opt-btn ${cls}" type="button" ${disabled} data-action="ans-mcq" data-scope="${scopeKey}" data-q="${qIdx}" data-o="${oIdx}" data-ans="${item.ans}">
+              <span class="opt-tag">${labels[oIdx]}</span>
+              <span>${opt}</span>
+            </button>
+          `;
+        });
+        html += `</div>`;
+        if (entry.solved && item.exp) {
+          html += `<div class="exp-box"><strong>ব্যাখ্যা:</strong> ${item.exp}</div>`;
+        }
+        html += `</div>`;
+      });
+
+      html += `<div style="display:flex;justify-content:space-between;margin-top:12px;gap:8px;">
+        <button class="btn btn-sm" type="button" ${stageIdx === 0 ? 'disabled' : ''} data-action="set-stage" data-stage="${stageIdx - 1}">← আগের সেকশন</button>
+        <button class="btn btn-sm btn-primary" type="button" ${stageIdx >= totalStages - 1 ? 'disabled' : ''} data-action="set-stage" data-stage="${stageIdx + 1}">পরের সেকশন →</button>
+      </div>`;
+
+      return html;
+    }
+
+    function renderGyanBlock(scopeKey, questions, stageIdx, stageSize) {
+      const totalStages = Math.ceil(questions.length / stageSize);
+      const start = stageIdx * stageSize;
+      const slice = questions.slice(start, start + stageSize);
+      const stats = getScopeGyanStats(scopeKey, questions.length);
+      const map = state.gyanProgress[scopeKey] || {};
+
+      let html = `
+        <div class="score-banner">
+          <div>
+            <strong>অ্যাক্টিভ রিকল: ${toBn(stats.knew)}/${toBn(stats.total)}টি আয়ত্ত হয়েছে</strong>
+            <div style="font-size:0.82rem;color:var(--text-muted);">প্রথমে মনে মনে উত্তর ভাবো, তারপর বাটনে ক্লিক করে মিলিয়ে নাও (+৫ পয়েন্ট)</div>
+          </div>
+          <button class="btn btn-sm btn-danger" type="button" data-action="reset-gyan" data-scope="${scopeKey}">🔄 রিসেট</button>
+        </div>
+        <div class="stage-bar">
+          <div class="stage-pills">
+      `;
+
+      for (let s = 0; s < totalStages; s++) {
+        const sStart = s * stageSize;
+        let sDone = true;
+        for (let k = sStart; k < Math.min(sStart + stageSize, questions.length); k++) {
+          if (!map[k] || map[k].status !== 'knew') { sDone = false; break; }
+        }
+        html += `<button class="stage-pill ${s === stageIdx ? 'active' : ''} ${sDone ? 'done' : ''}" type="button" data-action="set-stage" data-stage="${s}">সেকশন ${toBn(s + 1)} ${sDone ? '✓' : ''}</button>`;
+      }
+      html += `</div></div>`;
+
+      slice.forEach((item, localIdx) => {
+        const qIdx = start + localIdx;
+        const entry = map[qIdx] || { revealed: false, status: 'none' };
+        const audioKey = `gyan_${scopeKey}_${qIdx}`;
+        const isPlaying = state.speakingKey === audioKey;
+
+        html += `
+          <div class="q-card">
+            <div class="q-meta">
+              <span>প্রশ্ন ${toBn(qIdx + 1)} / ${toBn(questions.length)}${item.ch ? ' • ' + item.ch : ''}</span>
+              ${entry.status === 'knew' ? '<span class="q-delta pos">✓ পেরেছি (+৫)</span>' : (entry.status === 'review' ? '<span class="q-delta neg">🔁 আবার দেখব</span>' : '')}
+            </div>
+            <div class="q-text">${item.q}</div>
+            <button class="btn btn-sm ${entry.revealed ? '' : 'btn-primary'}" type="button" data-action="toggle-gyan" data-scope="${scopeKey}" data-q="${qIdx}">
+              ${entry.revealed ? '🙈 উত্তর লুকান' : '👁️ উত্তর দেখুন'}
+            </button>
+        `;
+        if (entry.revealed) {
+          html += `
+            <div class="recall-box">
+              <div class="recall-ans"><strong>উত্তর:</strong> ${item.a}</div>
+              <div class="recall-actions">
+                <button class="btn btn-sm ${entry.status === 'knew' ? 'btn-success' : ''}" type="button" data-action="mark-gyan" data-scope="${scopeKey}" data-q="${qIdx}" data-status="knew">✅ পেরেছি (+৫)</button>
+                <button class="btn btn-sm ${entry.status === 'review' ? 'btn-danger' : ''}" type="button" data-action="mark-gyan" data-scope="${scopeKey}" data-q="${qIdx}" data-status="review">🔁 আবার দেখব</button>
+                <button class="audio-btn ${isPlaying ? 'playing' : ''}" type="button" data-action="speak-gyan" data-key="${audioKey}" data-scope="${scopeKey}" data-q="${qIdx}">
+                  ${isPlaying ? '⏹️ থামুন' : '🔊 শুনুন'}
+                </button>
+              </div>
+            </div>
+          `;
+        }
+        html += `</div>`;
+      });
+
+      html += `<div style="display:flex;justify-content:space-between;margin-top:12px;gap:8px;">
+        <button class="btn btn-sm" type="button" ${stageIdx === 0 ? 'disabled' : ''} data-action="set-stage" data-stage="${stageIdx - 1}">← আগের সেকশন</button>
+        <button class="btn btn-sm btn-primary" type="button" ${stageIdx >= totalStages - 1 ? 'disabled' : ''} data-action="set-stage" data-stage="${stageIdx + 1}">পরের সেকশন →</button>
+      </div>`;
+
+      return html;
+    }
+
+    function renderChapterView() {
+      const ch = APP_DATA.chapters.find(c => c.id === state.chapterId);
+      if (!ch) return renderHome();
+
+      let html = `
+        <div class="back-row">
+          <button class="btn btn-sm" type="button" data-action="go-home">← সকল অধ্যায়</button>
+          <span class="sec-badge">${ch.number}</span>
+        </div>
+        <div class="chapter-banner">
+          <div class="ch-icon" style="background:${ch.color}">${ch.icon}</div>
+          <div>
+            <div class="ch-title">${ch.title}</div>
+            <div class="ch-sub">${ch.subtitle}</div>
+          </div>
+        </div>
+        <div class="tabs">
+          <button class="tab-btn ${state.tab === 'summary' ? 'active' : ''}" type="button" data-action="set-tab" data-tab="summary">📖 সামারি</button>
+          <button class="tab-btn ${state.tab === 'mcq' ? 'active' : ''}" type="button" data-action="set-tab" data-tab="mcq">📝 MCQ (${toBn(ch.mcqs.length)})</button>
+          <button class="tab-btn ${state.tab === 'gyan' ? 'active' : ''}" type="button" data-action="set-tab" data-tab="gyan">💡 জ্ঞানমূলক (${toBn(ch.gyanmulok.length)})</button>
+        </div>
+      `;
+
+      if (state.tab === 'summary') {
+        html += `
+          <div class="audio-bar">
+            <span style="font-size:0.84rem;font-weight:700;color:var(--primary-dark);">🔊 বাংলা অডিও গতি:</span>
+            <div class="speed-group">
+              ${[0.85, 1.0, 1.15].map(sp => `
+                <button class="speed-pill ${state.audioSpeed === sp ? 'active' : ''}" type="button" data-action="set-speed" data-speed="${sp}">${toBn(sp)}x</button>
+              `).join('')}
+            </div>
+          </div>
+        `;
+        ch.summaries.forEach((sec, idx) => {
+          const audioKey = `sum_${ch.id}_${idx}`;
+          const isPlaying = state.speakingKey === audioKey;
+          html += `
+            <div class="summary-card">
+              <div class="summary-head">
+                <div class="summary-title">${sec.title}</div>
+                <button class="audio-btn ${isPlaying ? 'playing' : ''}" type="button" data-action="speak-summary" data-key="${audioKey}" data-ch="${ch.id}" data-idx="${idx}">
+                  ${isPlaying ? '⏹️ থামুন' : '🔊 শুনুন'}
+                </button>
+              </div>
+              <ul class="summary-list">
+                ${sec.points.map(pt => `<li>${pt}</li>`).join('')}
+              </ul>
+            </div>
+          `;
+        });
+      } else if (state.tab === 'mcq') {
+        html += renderMcqBlock(ch.id, ch.mcqs, state.stage, 6);
+      } else {
+        html += renderGyanBlock(ch.id, ch.gyanmulok, state.stage, 4);
+      }
+      return html;
+    }
+
+    function renderMcqTestView() {
+      const mt = APP_DATA.mcqTests.find(t => t.id === state.testId);
+      if (!mt) return renderHome();
+      return `
+        <div class="back-row">
+          <button class="btn btn-sm" type="button" data-action="go-home">← হোমে ফিরুন</button>
+          <span class="sec-badge">৩০টি MCQ</span>
+        </div>
+        <div class="chapter-banner">
+          <div class="ch-icon" style="background:#4f46e5">📝</div>
+          <div>
+            <div class="ch-title">${mt.title}</div>
+            <div class="ch-sub">${mt.subtitle}</div>
+          </div>
+        </div>
+        ${renderMcqBlock(mt.id, mt.questions, state.testStage, 6)}
+      `;
+    }
+
+    function renderGyanTestView() {
+      const gt = APP_DATA.gyanTests.find(t => t.id === state.testId);
+      if (!gt) return renderHome();
+      return `
+        <div class="back-row">
+          <button class="btn btn-sm" type="button" data-action="go-home">← হোমে ফিরুন</button>
+          <span class="sec-badge">২০টি জ্ঞানমূলক</span>
+        </div>
+        <div class="chapter-banner">
+          <div class="ch-icon" style="background:#0d9488">💡</div>
+          <div>
+            <div class="ch-title">${gt.title}</div>
+            <div class="ch-sub">${gt.subtitle}</div>
+          </div>
+        </div>
+        ${renderGyanBlock(gt.id, gt.questions, state.testStage, 4)}
+      `;
+    }
+
+    function render() {
+      updateHud();
+      const root = document.getElementById('appRoot');
+      if (state.view === 'home') root.innerHTML = renderHome();
+      else if (state.view === 'chapter') root.innerHTML = renderChapterView();
+      else if (state.view === 'mcq_test') root.innerHTML = renderMcqTestView();
+      else if (state.view === 'gyan_test') root.innerHTML = renderGyanTestView();
+    }
+
+    // Event Delegation
+    document.getElementById('homeBtn').addEventListener('click', () => {
+      stopSpeech();
+      state.view = 'home';
+      render();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    document.getElementById('soundToggleBtn').addEventListener('click', () => {
+      state.soundEnabled = !state.soundEnabled;
+      saveProgress();
+      updateHud();
+      showToast(state.soundEnabled ? 'সাউন্ড চালু করা হয়েছে' : 'সাউন্ড বন্ধ করা হয়েছে');
+    });
+
+    document.getElementById('appRoot').addEventListener('click', (e) => {
+      const target = e.target.closest('[data-action]');
+      if (!target) return;
+      const action = target.dataset.action;
+
+      if (action === 'go-home') {
+        stopSpeech();
+        state.view = 'home';
+        render();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (action === 'open-ch') {
+        stopSpeech();
+        state.view = 'chapter';
+        state.chapterId = target.dataset.id;
+        state.tab = 'summary';
+        state.stage = 0;
+        render();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (action === 'open-mcq-test') {
+        stopSpeech();
+        state.view = 'mcq_test';
+        state.testId = target.dataset.id;
+        state.testStage = 0;
+        render();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (action === 'open-gyan-test') {
+        stopSpeech();
+        state.view = 'gyan_test';
+        state.testId = target.dataset.id;
+        state.testStage = 0;
+        render();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (action === 'set-tab') {
+        stopSpeech();
+        state.tab = target.dataset.tab;
+        state.stage = 0;
+        render();
+      } else if (action === 'set-stage') {
+        const s = parseInt(target.dataset.stage, 10);
+        if (state.view === 'chapter') state.stage = s;
+        else state.testStage = s;
+        render();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (action === 'set-speed') {
+        state.audioSpeed = parseFloat(target.dataset.speed);
+        render();
+      } else if (action === 'speak-summary') {
+        const ch = APP_DATA.chapters.find(c => c.id === target.dataset.ch);
+        const sec = ch && ch.summaries[parseInt(target.dataset.idx, 10)];
+        if (sec) {
+          const text = sec.title + '। ' + sec.points.join(' ');
+          toggleBanglaAudio(target.dataset.key, text);
+        }
+      } else if (action === 'speak-gyan') {
+        const scope = target.dataset.scope;
+        const qIdx = parseInt(target.dataset.q, 10);
+        let item = null;
+        const ch = APP_DATA.chapters.find(c => c.id === scope);
+        if (ch) item = ch.gyanmulok[qIdx];
+        else {
+          const gt = APP_DATA.gyanTests.find(t => t.id === scope);
+          if (gt) item = gt.questions[qIdx];
+        }
+        if (item) toggleBanglaAudio(target.dataset.key, item.q + ' উত্তর: ' + item.a);
+      } else if (action === 'ans-mcq') {
+        handleMcqClick(
+          target.dataset.scope,
+          parseInt(target.dataset.q, 10),
+          parseInt(target.dataset.o, 10),
+          parseInt(target.dataset.ans, 10)
+        );
+      } else if (action === 'reset-mcq') {
+        resetMcqScope(target.dataset.scope);
+      } else if (action === 'toggle-gyan') {
+        toggleGyanReveal(target.dataset.scope, parseInt(target.dataset.q, 10));
+      } else if (action === 'mark-gyan') {
+        markGyanStatus(target.dataset.scope, parseInt(target.dataset.q, 10), target.dataset.status);
+      } else if (action === 'reset-gyan') {
+        resetGyanScope(target.dataset.scope);
+      }
+    });
+
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = () => {};
+    }
+    render();
+  </script>
 </body>
 </html>

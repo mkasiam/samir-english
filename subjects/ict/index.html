@@ -1,15 +1,734 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Class 7 Subject | Class 7 Learning</title>
+  <title>তথ্য ও যোগাযোগ প্রযুক্তি (ICT) | Class 7 Learning</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/css/style.css" />
+  <style>
+    :root {
+      --subject-accent: #4f46e5;
+      --bg-page: #f4f7fb;
+      --bg-surface: #ffffff;
+      --bg-subtle: #eef3fa;
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
+      --primary-light: #eef2ff;
+      --success: #10b981;
+      --success-light: #ecfdf5;
+      --warning: #f59e0b;
+      --warning-light: #fffbeb;
+      --danger: #ef4444;
+      --danger-light: #fef2f2;
+      --font-sans: "Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+      --font-bangla: "Noto Sans Bengali", "Hind Siliguri", "SolaimanLipi", "Kalpurush", sans-serif;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 22px;
+      --radius-full: 9999px;
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+    }
+
+    /* Standalone fallback layout if ../../assets/css/style.css is absent in preview */
+    .ict-fallback-wrap {
+      font-family: var(--font-bangla), var(--font-sans);
+      color: var(--text-primary);
+      background: var(--bg-page);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .ict-shell {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 16px 14px 48px;
+    }
+
+    /* Fallback header & banner styles if external CSS isn't loaded */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .header-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      font-size: 16px;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: var(--primary-light);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+    }
+    .nav-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 13px;
+      border-radius: var(--radius-full);
+      background: var(--bg-subtle);
+      color: var(--text-primary);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid var(--border-color);
+    }
+    .subject-banner {
+      background: linear-gradient(135deg, #4338ca 0%, #4f46e5 55%, #0ea5e9 100%);
+      color: #ffffff;
+      padding: 20px 14px;
+    }
+    .subject-banner-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .subject-title-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .subject-title-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+    .subject-title-row h1 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+    .subject-title-row p {
+      margin: 3px 0 0;
+      font-size: 13.5px;
+      opacity: 0.92;
+    }
+
+    /* ICT App Specific Components (all prefixed .ict- to prevent conflicts) */
+    .ict-hud {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .ict-hud-stats {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+    .ict-stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 11px;
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 700;
+      background: var(--bg-subtle);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+    .ict-stat-pill.is-points {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      border-color: #c7d2fe;
+    }
+    .ict-stat-pill.is-streak {
+      background: var(--warning-light);
+      color: #b45309;
+      border-color: #fde68a;
+    }
+    .ict-hud-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .ict-speed-select {
+      padding: 7px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background: var(--bg-surface);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      min-height: 38px;
+    }
+
+    .ict-section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 18px 0 12px;
+    }
+    .ict-section-heading h2 {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+    .ict-section-badge {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: var(--primary-light);
+      color: var(--primary-dark);
+    }
+
+    .ict-chapter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    .ict-chapter-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+      text-align: left;
+      width: 100%;
+      font-family: inherit;
+    }
+    .ict-chapter-card:hover,
+    .ict-chapter-card:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary);
+      outline: none;
+    }
+    .ict-card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .ict-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .ict-card-num {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 2px;
+    }
+    .ict-card-title {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.35;
+    }
+    .ict-card-desc {
+      margin: 4px 0 0;
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+    .ict-card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-color);
+    }
+    .ict-mini-chip {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: var(--radius-full);
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+    }
+    .ict-mini-chip.is-done {
+      background: var(--success-light);
+      color: #047857;
+    }
+
+    /* Model Test Cards */
+    .ict-test-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--primary);
+      border-radius: var(--radius-md);
+      padding: 15px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+      font-family: inherit;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .ict-test-card.is-gyan {
+      border-left-color: #0d9488;
+    }
+    .ict-test-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Active View Toolbar & Tabs */
+    .ict-back-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .ict-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 44px;
+      padding: 9px 15px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .ict-btn:hover {
+      background: var(--bg-subtle);
+    }
+    .ict-btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+    .ict-btn-primary:hover {
+      background: var(--primary-dark);
+    }
+    .ict-btn-danger {
+      background: var(--danger);
+      color: #ffffff;
+      border-color: var(--danger);
+    }
+    .ict-btn-danger:hover {
+      background: #dc2626;
+    }
+    .ict-btn-success {
+      background: var(--success);
+      color: #ffffff;
+      border-color: var(--success);
+    }
+    .ict-btn-sm {
+      min-height: 38px;
+      padding: 6px 12px;
+      font-size: 13px;
+    }
+
+    .ict-chapter-header-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-left: 5px solid var(--primary);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+    .ict-chapter-header-card h2 {
+      margin: 0 0 4px;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+    .ict-chapter-header-card p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .ict-mode-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+      background: var(--bg-surface);
+      padding: 6px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+    .ict-tab-btn {
+      min-height: 44px;
+      padding: 8px 6px;
+      border: none;
+      border-radius: var(--radius-sm);
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: inherit;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      text-align: center;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .ict-tab-btn.is-active {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    /* Summary Cards */
+    .ict-summary-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .ict-summary-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .ict-summary-card.is-speaking {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-light);
+    }
+    .ict-summary-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .ict-summary-title {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+    .ict-summary-points {
+      margin: 0;
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .ict-summary-points li {
+      font-size: 15px;
+      color: var(--text-primary);
+      line-height: 1.65;
+    }
+
+    /* Stage Selector Pills */
+    .ict-stage-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      margin-bottom: 14px;
+    }
+    .ict-stage-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .ict-stage-pill {
+      min-height: 38px;
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-color);
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .ict-stage-pill.is-active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+    .ict-stage-pill.is-completed {
+      background: var(--success-light);
+      color: #047857;
+      border-color: #a7f3d0;
+    }
+    .ict-stage-pill.is-active.is-completed {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    /* Progress Bar */
+    .ict-progress-wrap {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      margin-bottom: 14px;
+    }
+    .ict-progress-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .ict-progress-track {
+      height: 10px;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+    .ict-progress-fill {
+      height: 100%;
+      background: var(--primary);
+      border-radius: var(--radius-full);
+      transition: width 0.25s ease;
+    }
+
+    /* MCQ Question Card */
+    .ict-q-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .ict-q-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .ict-q-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .ict-q-num {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: var(--radius-full);
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+    .ict-q-text {
+      margin: 0;
+      font-size: 15.5px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+    .ict-options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    @media (min-width: 600px) {
+      .ict-options-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .ict-opt-btn {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 14.5px;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      line-height: 1.4;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .ict-opt-btn:hover:not(:disabled) {
+      background: var(--bg-subtle);
+      border-color: #cbd5e1;
+    }
+    .ict-opt-btn.is-correct {
+      background: var(--success-light);
+      border-color: var(--success);
+      color: #065f46;
+    }
+    .ict-opt-btn.is-wrong {
+      background: var(--danger-light);
+      border-color: var(--danger);
+      color: #991b1b;
+    }
+    .ict-opt-btn:disabled {
+      cursor: default;
+    }
+    .ict-q-feedback {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 13.5px;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+    .ict-q-feedback.is-correct {
+      background: var(--success-light);
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+    .ict-q-feedback.is-wrong {
+      background: var(--danger-light);
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    /* Active Recall Gyanmulok Card */
+    .ict-gyan-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .ict-gyan-ans {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-subtle);
+      border-left: 4px solid var(--primary);
+      font-size: 14.5px;
+      color: var(--text-primary);
+      line-height: 1.6;
+      display: none;
+    }
+    .ict-gyan-ans.is-open {
+      display: block;
+    }
+    .ict-gyan-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .ict-notice {
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--warning-light);
+      border: 1px solid #fde68a;
+      color: #92400e;
+      font-size: 13.5px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: none;
+    }
+    .ict-notice.is-visible {
+      display: block;
+    }
+
+    .ict-summary-footer {
+      background: linear-gradient(135deg, #eef2ff 0%, #ecfdf5 100%);
+      border: 1px solid #c7d2fe;
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .ict-hidden {
+      display: none !important;
+    }
+  </style>
 </head>
-<body>
+<body class="ict-fallback-wrap">
   <header class="site-header">
     <div class="container header-inner">
       <a href="../../index.html" class="brand">
@@ -22,72 +741,1311 @@
     </div>
   </header>
 
-  <section class="subject-banner" id="subject-banner">
+  <section class="subject-banner">
     <div class="container subject-banner-inner">
       <div class="subject-title-row">
-        <div class="subject-title-icon" id="subject-icon" aria-hidden="true">📖</div>
+        <div class="subject-title-icon" aria-hidden="true">💻</div>
         <div>
-          <h1 id="subject-title">Loading Subject...</h1>
-          <p id="subject-subtitle">Class 7 Interactive Learning Module</p>
+          <h1 class="bn-text" lang="bn">তথ্য ও যোগাযোগ প্রযুক্তি (ICT)</h1>
+          <p class="bn-text" lang="bn">সপ্তম শ্রেণি • ৩টি অধ্যায় (অধ্যায় ৩–৫), ৯০টি অধ্যায়ভিত্তিক MCQ, ৬০টি জ্ঞানমূলক ও ৫টি মডেল টেস্ট</p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="container">
-    <div class="progress-wrap" id="progress-wrap">
-      <div class="progress-meta">
-        <span id="progress-text">Lesson 1 of 1</span>
-        <span id="progress-percent">0%</span>
+  <main class="ict-shell">
+    <!-- Gamified HUD -->
+    <div class="ict-hud" aria-label="গেমিফাইড স্কোর ও অডিও নিয়ন্ত্রণ">
+      <div class="ict-hud-stats">
+        <span class="ict-stat-pill is-points">🏆 পয়েন্ট: <strong id="hudPoints">০</strong></span>
+        <span class="ict-stat-pill is-streak">🔥 স্ট্রিক: <strong id="hudStreak">০</strong></span>
+        <span class="ict-stat-pill">✅ সঠিক: <strong id="hudCorrect">০</strong></span>
       </div>
-      <div class="progress-track">
-        <div class="progress-fill" id="progress-fill"></div>
-      </div>
-    </div>
-
-    <div class="selector-panel" id="selector-panel">
-      <div class="control-group">
-        <label for="chapter-select" class="control-label">Chapter</label>
-        <select id="chapter-select" class="select-input"></select>
-      </div>
-      <div class="control-group">
-        <label for="topic-select" class="control-label">Topic</label>
-        <select id="topic-select" class="select-input"></select>
-      </div>
-    </div>
-
-    <div class="learning-toolbar" id="learning-toolbar">
-      <button type="button" class="btn btn-secondary btn-sm" id="toggle-bn-btn">👁️ Hide Bangla</button>
-      <button type="button" class="btn btn-primary btn-sm" id="play-lesson-btn">▶️ Play Full Lesson</button>
-      <button type="button" class="btn btn-danger btn-sm" id="stop-audio-btn">⏹️ Stop</button>
-      <div class="speed-control">
-        <label for="speed-select">Speed</label>
-        <select id="speed-select" class="speed-select" aria-label="Speech speed">
-          <option value="0.75">0.75x</option>
-          <option value="1" selected>1x</option>
-          <option value="1.25">1.25x</option>
+      <div class="ict-hud-controls">
+        <label for="audioRate" style="font-size:13px;font-weight:700;color:var(--text-secondary);">অডিও গতি:</label>
+        <select id="audioRate" class="ict-speed-select" aria-label="অডিও প্লেব্যাক গতি">
+          <option value="0.85">০.৮৫x (ধীরে)</option>
+          <option value="1" selected>১.০x (স্বাভাবিক)</option>
+          <option value="1.15">১.১৫x (দ্রুত)</option>
         </select>
+        <button id="stopAudioBtn" type="button" class="ict-btn ict-btn-danger ict-btn-sm ict-hidden">⏹ অডিও থামুন</button>
       </div>
-      <div class="audio-notice" id="audio-notice" role="status" aria-live="polite"></div>
     </div>
 
-    <main class="lesson-main" id="lesson-main"></main>
+    <div id="audioNotice" class="ict-notice" role="status"></div>
 
-    <nav class="lesson-nav" id="lesson-nav" aria-label="Lesson navigation">
-      <button type="button" class="btn btn-secondary" id="prev-topic-btn">&larr; Previous</button>
-      <button type="button" class="btn btn-primary" id="next-topic-btn">Next &rarr;</button>
-    </nav>
-  </div>
+    <!-- HOME VIEW: Chapters + Model Tests -->
+    <section id="homeView">
+      <div class="ict-section-heading">
+        <h2>📚 অধ্যায়সমূহ (সপ্তম শ্রেণি ICT)</h2>
+        <span class="ict-section-badge">৩টি অধ্যায়</span>
+      </div>
+      <div id="chapterGrid" class="ict-chapter-grid"></div>
 
-  <footer class="site-footer" style="margin-top: 28px;">
-    <div class="container">
-      <p>Class 7 Complete Learning Platform &bull; <a href="../../index.html" style="color:inherit;">Return to Homepage</a></p>
-    </div>
-  </footer>
+      <div class="ict-section-heading" style="margin-top:26px;">
+        <h2>📝 MCQ মডেল টেস্ট (পূর্ণাঙ্গ প্রস্তুতি)</h2>
+        <span class="ict-section-badge">৩টি টেস্ট × ৩০ প্রশ্ন</span>
+      </div>
+      <div id="mcqTestGrid" class="ict-chapter-grid"></div>
 
-  <script src="../../assets/js/subjects.js"></script>
-  <script src="./content.js"></script>
+      <div class="ict-section-heading" style="margin-top:26px;">
+        <h2>💡 জ্ঞানমূলক মডেল টেস্ট (অ্যাক্টিভ রিকল)</h2>
+        <span class="ict-section-badge">২টি টেস্ট × ২০ প্রশ্ন</span>
+      </div>
+      <div id="gyanTestGrid" class="ict-chapter-grid"></div>
+    </section>
+
+    <!-- CHAPTER VIEW -->
+    <section id="chapterView" class="ict-hidden">
+      <div class="ict-back-row">
+        <button id="backFromChapterBtn" type="button" class="ict-btn">← সব অধ্যায়ে ফিরুন</button>
+        <button id="resetChapterBtn" type="button" class="ict-btn ict-btn-sm">🔄 অধ্যায়ের টেস্ট রিসেট</button>
+      </div>
+
+      <div class="ict-chapter-header-card">
+        <h2 id="chapterTitle"></h2>
+        <p id="chapterSubtitle"></p>
+      </div>
+
+      <div class="ict-mode-tabs" role="tablist">
+        <button type="button" class="ict-tab-btn is-active" data-mode="summary">📖 সারসংক্ষেপ</button>
+        <button type="button" class="ict-tab-btn" data-mode="mcq">🎯 MCQ (৩০টি)</button>
+        <button type="button" class="ict-tab-btn" data-mode="gyan">🧠 জ্ঞানমূলক (২০টি)</button>
+      </div>
+
+      <div id="chapterContent"></div>
+    </section>
+
+    <!-- MODEL TEST VIEW -->
+    <section id="testView" class="ict-hidden">
+      <div class="ict-back-row">
+        <button id="backFromTestBtn" type="button" class="ict-btn">← হোমে ফিরুন</button>
+        <button id="resetTestBtn" type="button" class="ict-btn ict-btn-sm">🔄 টেস্ট রিসেট ও নতুন শুরু</button>
+      </div>
+
+      <div class="ict-chapter-header-card">
+        <h2 id="testTitle"></h2>
+        <p id="testSubtitle"></p>
+      </div>
+
+      <div id="testContent"></div>
+    </section>
+  </main>
+
   <script src="../../assets/js/audio.js"></script>
-  <script src="../../assets/js/subject.js"></script>
+  <script>
+  (function () {
+    "use strict";
+
+    // =========================================================================
+    // 1. AUDIO WRAPPER (Uses window.Class7Audio if loaded, else safe fallback)
+    // =========================================================================
+    var currentPlayingBtn = null;
+    var currentPlayingCard = null;
+    var audioRate = 1;
+
+    function getAudioApi() {
+      if (window.Class7Audio && typeof window.Class7Audio.speakText === "function") {
+        return window.Class7Audio;
+      }
+      return {
+        isSupported: typeof window !== "undefined" && "speechSynthesis" in window,
+        speakText: function (text, lang, cb) {
+          cb = cb || {};
+          if (!("speechSynthesis" in window)) {
+            if (cb.onNotice) cb.onNotice("এই ব্রাউজারে অডিও প্লেব্যাক সমর্থিত নয়।");
+            return;
+          }
+          window.speechSynthesis.cancel();
+          var u = new SpeechSynthesisUtterance(text);
+          u.lang = lang === "bn" ? "bn-BD" : "en-US";
+          u.rate = audioRate;
+          u.onstart = function () { if (cb.onStart) cb.onStart(); };
+          u.onend = function () { if (cb.onEnd) cb.onEnd(); };
+          u.onerror = function () { if (cb.onEnd) cb.onEnd(); };
+          window.speechSynthesis.speak(u);
+        },
+        stop: function (onStop) {
+          if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+          if (onStop) onStop();
+        },
+        setRate: function (r) {
+          audioRate = r;
+        }
+      };
+    }
+
+    function showNotice(msg) {
+      var el = document.getElementById("audioNotice");
+      if (!msg) {
+        el.classList.remove("is-visible");
+        el.textContent = "";
+        return;
+      }
+      el.textContent = msg;
+      el.classList.add("is-visible");
+      setTimeout(function () {
+        el.classList.remove("is-visible");
+      }, 5000);
+    }
+
+    function clearPlayingUI() {
+      if (currentPlayingBtn) {
+        currentPlayingBtn.textContent = currentPlayingBtn.dataset.idleLabel || "🔊 বাংলায় শুনুন";
+        currentPlayingBtn.classList.remove("ict-btn-danger");
+        currentPlayingBtn.classList.add("ict-btn-primary");
+      }
+      if (currentPlayingCard) {
+        currentPlayingCard.classList.remove("is-speaking");
+      }
+      currentPlayingBtn = null;
+      currentPlayingCard = null;
+      document.getElementById("stopAudioBtn").classList.add("ict-hidden");
+    }
+
+    function stopAllAudio() {
+      getAudioApi().stop(clearPlayingUI);
+    }
+
+    function toggleBanglaAudio(text, btn, card) {
+      if (currentPlayingBtn === btn) {
+        stopAllAudio();
+        return;
+      }
+      stopAllAudio();
+      var api = getAudioApi();
+      if (api.setRate) api.setRate(audioRate);
+      currentPlayingBtn = btn;
+      currentPlayingCard = card || null;
+      api.speakText(text, "bn", {
+        onStart: function () {
+          btn.textContent = "⏹ থামুন";
+          btn.classList.remove("ict-btn-primary");
+          btn.classList.add("ict-btn-danger");
+          if (card) card.classList.add("is-speaking");
+          document.getElementById("stopAudioBtn").classList.remove("ict-hidden");
+        },
+        onEnd: function () {
+          clearPlayingUI();
+        },
+        onNotice: function (msg) {
+          showNotice(msg);
+        }
+      });
+    }
+
+    // =========================================================================
+    // 2. BENGALI NUMERALS & HELPERS
+    // =========================================================================
+    var BN_DIGITS = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
+    function toBn(num) {
+      return String(num).replace(/\d/g, function (d) { return BN_DIGITS[Number(d)]; });
+    }
+    function shuffleArray(arr) {
+      var copy = arr.slice();
+      for (var i = copy.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = copy[i];
+        copy[i] = copy[j];
+        copy[j] = tmp;
+      }
+      return copy;
+    }
+
+    // =========================================================================
+    // 3. CHAPTER DATA (5 Chapters × Summary + 30 MCQs + 20 Gyanmulok)
+    // =========================================================================
+    var CHAPTERS = [
+      {
+        id: "ch3",
+        num: "অধ্যায় ৩",
+        icon: "🛡️",
+        title: "নিরাপদ ও নৈতিক ব্যবহার",
+        subtitle: "পাঠ ২৩–২৬ (পৃষ্ঠা ৫০–৫৬): কপিরাইট, মুক্ত দর্শন, হ্যাকিং, ভাইরাস ও প্লেজিয়ারিজম",
+        summaries: [
+          {
+            title: "১. বুদ্ধিভিত্তিক সম্পদ ও অনলাইন নিরাপত্তা",
+            points: [
+              "মানুষের জীবনযাপনে দুই ধরনের সম্পদ রয়েছে—বস্তুগত সম্পদ (বাড়ি, গাড়ি) এবং বুদ্ধিভিত্তিক সম্পদ (গান, কবিতা, গবেষণা, সফটওয়্যার)।",
+              "অনলাইনে মত প্রকাশের স্বাধীনতা অপব্যবহার করে হুমকি বা অশালীন মন্তব্য করা এবং ইচ্ছাকৃতভাবে ওয়েবসাইট অচল করা অনৈতিক ও বেআইনি কাজ।",
+              "অপরিচিত ই-মেইল বা লোভনীয় লটারির প্রতারণামূলক বার্তায় সাড়া দেওয়া উচিত নয় এবং ক্রেডিট কার্ডের নম্বর গোপন রাখতে হয়।"
+            ]
+          },
+          {
+            title: "২. কপিরাইট, ফেয়ার ইউজ ও রয়্যালটি",
+            points: [
+              "বুদ্ধিভিত্তিক কাজের (গান, কবিতা, বই, সফটওয়্যার) স্রষ্টার অধিকার সংরক্ষণের আইনকে কপিরাইট আইন বলে।",
+              "মুদ্রণযন্ত্র আবিষ্কারের পর ১৬৬২ সালে যুক্তরাজ্যে সর্বপ্রথম কপিরাইট আইন (Licensing of the Press Act) পাস হয়।",
+              "বাংলাদেশের কপিরাইট আইন (২০০০) অনুযায়ী লেখকের মৃত্যুর পরও ৬০ বছর পর্যন্ত কপিরাইট বলবৎ থাকে।",
+              "বই বিক্রির লভ্যাংশ থেকে লেখক যে অংশ পান তাকে রয়্যালটি বলে। অনুমোদন ছাড়া কপি করলে তাকে পাইরেটেড (Pirated) কপি বলে, তবে পড়ালেখার কাজে ফটোকপি করা 'ফেয়ার ইউজ'।"
+            ]
+          },
+          {
+            title: "৩. মুক্ত দর্শন, কপিলেফট ও ক্রিয়েটিভ কমন্স",
+            points: [
+              "কপিরাইটের বিপরীতে স্রষ্টা যখন শর্তসাপেক্ষে বা বিনামূল্যে কাজটি ব্যবহারের অনুমতি দেন, তাকে মুক্ত দর্শন বা ওপেন সোর্স ফিলোসফি বলে।",
+              "কপিরাইটের একেবারে উল্টো হলো কপিলেফট (Copyleft)—যেখানে স্রষ্টা সবাইকে কপি করার অনুমতি দেন।",
+              "কপিরাইট ও কপিলেফটের মাঝামাঝি লাইসেন্স হলো ক্রিয়েটিভ কমন্স (Creative Commons)।",
+              "ওপেন সোর্স দর্শনের বড় উদাহরণ হলো মুক্ত বিশ্বকোষ উইকিপিডিয়া (www.wikipedia.org)।"
+            ]
+          },
+          {
+            title: "৪. হ্যাকিং, কম্পিউটার ভাইরাস ও প্লেজিয়ারিজম",
+            points: [
+              "অনুমতি ছাড়া অন্যের কম্পিউটার বা ওয়েবসাইটে প্রবেশ করাকে হ্যাকিং বলে। ক্ষতি না করে ঢুকলে 'হোয়াইট হ্যাট হ্যাকার' আর ক্ষতি করলে 'ব্ল্যাক হ্যাট হ্যাকার' বলে।",
+              "১৯৯৯ সালে Melissa ভাইরাস (নির্মাতা ডেভিড স্মিথ, ১০ বছর জেল) এবং ২০০৪ সালে Mydoom Worm ভাইরাস বিশ্বজুড়ে ব্যাপক ক্ষতি করেছিল।",
+              "অন্যের লেখা বা গবেষণা চুরি করে নিজের নামে চালিয়ে দেওয়াকে প্লেজিয়ারিজম (Plagiarism) বলে।",
+              "তথ্যসূত্র বা অন্যের অবদান স্পষ্টভাবে উল্লেখ করলে প্লেজিয়ারিজম হয় না।"
+            ]
+          }
+        ],
+        mcqs: [
+          { q: "সর্বপ্রথম কোন দেশে ১৬৬২ সালে কপিরাইট আইন পাস হয়?", opts: ["যুক্তরাষ্ট্র", "যুক্তরাজ্য", "বাংলাদেশ", "ফ্রান্স"], ans: 1, exp: "১৬৬২ সালে যুক্তরাজ্যের পার্লামেন্টে Licensing of the Press Act পাস হয়।" },
+          { q: "বাংলাদেশের কপিরাইট আইন (২০০০) অনুযায়ী এর মেয়াদ লেখকের মৃত্যুর পর কত বছর?", opts: ["৫০ বছর", "৬০ বছর", "৭০ বছর", "১০০ বছর"], ans: 1, exp: "বাংলাদেশের কপিরাইট আইন ২০০০ অনুযায়ী মেয়াদ ৬০ বছর।" },
+          { q: "বই বিক্রির অর্থ থেকে লেখক যে অংশ পান তাকে কী বলে?", opts: ["পাইরেসি", "রয়্যালটি", "কপিলেফট", "ফেয়ার ইউজ"], ans: 1, exp: "লেখক বই বিক্রির যে অংশ পান তাকে রয়্যালটি বলে।" },
+          { q: "পড়ালেখার কাজে কোনো বই ফটোকপি করা কপিরাইট আইনের আওতায় কী হিসেবে গণ্য?", opts: ["পাইরেসি", "ফেয়ার ইউজ", "হ্যাকিং", "প্লেজিয়ারিজম"], ans: 1, exp: "শিক্ষামূলক বা একাডেমিক কাজে সীমিত কপি করাকে ফেয়ার ইউজ বলে।" },
+          { q: "কপিরাইট আইন ভঙ্গ করে কোনো কিছু নকল করলে তাকে কী বলে?", opts: ["ওপেন সোর্স", "চোরাই বা পাইরেটেড কপি", "ফেয়ার ইউজ", "রয়্যালটি"], ans: 1, exp: "অননুমোদিত কপিকে চোরাই বা Pirated কপি বলে।" },
+          { q: "কপিরাইটের একেবারে উল্টো ধারণা কোনটি?", opts: ["ফেয়ার ইউজ", "কপিলেফট (Copyleft)", "পাইরেসি", "প্লেজিয়ারিজম"], ans: 1, exp: "কপিরাইটের বিপরীতে সবাইকে কপি করার অনুমতি দেওয়াকে কপিলেফট বলে।" },
+          { q: "কপিরাইট ও কপিলেফটের মাঝামাঝি অবস্থানে কোন লাইসেন্স রয়েছে?", opts: ["ক্রিয়েটিভ কমন্স", "পাইরেটেড", "হ্যাকিং", "রয়্যালটি"], ans: 0, exp: "ক্রিয়েটিভ কমন্স লাইসেন্সে স্রষ্টার কিছু অধিকার সংরক্ষিত রেখে ব্যবহারের সুযোগ দেওয়া হয়।" },
+          { q: "মুক্ত দর্শনের আওতায় গড়ে ওঠা জনপ্রিয় বিশ্বকোষ কোনটি?", opts: ["গুগল", "উইকিপিডিয়া", "ফেসবুক", "ইয়াহু"], ans: 1, exp: "উইকিপিডিয়া একটি মুক্ত জ্ঞানভাণ্ডার।" },
+          { q: "যারা অন্যের ওয়েবসাইটে ঢুকে কোনো ক্ষতি না করে বের হয়ে আসে তাদের কী বলে?", opts: ["ব্ল্যাক হ্যাট হ্যাকার", "হোয়াইট হ্যাট হ্যাকার", "পাইরেট", "প্রোগ্রামার"], ans: 1, exp: "ক্ষতি না করে কৌতূহলবশত বা নিরাপত্তার জন্য প্রবেশ করলে White hat hacker বলে।" },
+          { q: "যারা অন্যের সিস্টেমে ঢুকে তথ্য নষ্ট বা ক্ষতি করে তাদের কী বলে?", opts: ["হোয়াইট হ্যাট হ্যাকার", "ব্ল্যাক হ্যাট হ্যাকার", "এথিক্যাল হ্যাকার", "অপারেটর"], ans: 1, exp: "ক্ষতিকারক হ্যাকারদের কালো টুপি বা Black hat hacker বলে।" },
+          { q: "১৯৮৩ সালে মাত্র ১৯ বছরের এক ছেলে কোন দেশের প্রতিরক্ষা বাহিনীর ওয়েবসাইট হ্যাক করেছিল?", opts: ["যুক্তরাজ্য", "যুক্তরাষ্ট্র", "রাশিয়া", "চীন"], ans: 1, exp: "১৯৮৩ সালে ১৯ বছরের এক তরুণ যুক্তরাষ্ট্রের প্রতিরক্ষা বাহিনীর সাইট হ্যাক করেছিল।" },
+          { q: "Mydoom Worm ভাইরাস কত সালের জানুয়ারি মাসে একদিনে আড়াই লক্ষ কম্পিউটার আক্রান্ত করেছিল?", opts: ["১৯৯৯ সালে", "২০০৪ সালে", "২০০৭ সালে", "২০১০ সালে"], ans: 1, exp: "২০০৪ সালের জানুয়ারি মাসে Mydoom Worm আড়াই লক্ষ কম্পিউটার আক্রান্ত করে।" },
+          { q: "১৯৯৯ সালে কোন শক্তিশালী ভাইরাসের কারণে মাইক্রোসফটের ই-মেইল সার্ভার বন্ধ রাখতে হয়েছিল?", opts: ["Mydoom", "Melissa", "ILOVEYOU", "Trojan"], ans: 1, exp: "১৯৯৯ সালে Melissa ভাইরাসের আক্রমণে মাইক্রোসফট ই-মেইল সার্ভার বন্ধ রেখেছিল।" },
+          { q: "Melissa ভাইরাস তৈরি করার অপরাধে ডেভিড স্মিথের কত বছর জেল হয়েছিল?", opts: ["৫ বছর", "১০ বছর", "১৫ বছর", "২ বছর"], ans: 1, exp: "মেলিসা ভাইরাস তৈরির দায়ে ডেভিড স্মিথের ১০ বছর জেল হয়েছিল।" },
+          { q: "অন্যের লেখা চুরি করে নিজের নামে চালিয়ে দেওয়াকে কী বলে?", opts: ["হ্যাকিং", "প্লেজিয়ারিজম", "কপিলেফট", "স্প্যামিং"], ans: 1, exp: "অন্যের লেখা বা সৃষ্টি নিজের নামে প্রকাশ করাকে প্লেজিয়ারিজম বলে।" },
+          { q: "অনলাইনে ক্রেডিট কার্ড প্রতারণার জন্য প্রতারকদের কোনটি জানাই যথেষ্ট?", opts: ["কার্ডের রঙ", "কার্ডের নম্বর", "ব্যাংকের নাম", "ছবি"], ans: 1, exp: "অনলাইনে লেনদেনের জন্য কার্ডের গোপন নম্বর জানলেই প্রতারকরা টাকা তুলে নিতে পারে।" },
+          { q: "কোন সফটওয়্যারগুলো সবাই মিলে পরিবর্তন ও সমৃদ্ধ করতে পারে?", opts: ["পাইরেটেড সফটওয়্যার", "ওপেন সোর্স সফটওয়্যার", "বাণিজ্যিক সফটওয়্যার", "ভাইরাস"], ans: 1, exp: "মুক্ত দর্শনের আওতায় প্রকাশিত ওপেন সোর্স সফটওয়্যার সবাই ব্যবহার ও উন্নয়ন করতে পারে।" },
+          { q: "মুক্ত দর্শনকে ইংরেজিতে কী বলা হয়?", opts: ["Closed Source", "Open Source Philosophy", "Copyright Act", "Fair Use"], ans: 1, exp: "মুক্ত দর্শনকে Open Source Philosophy বলা হয়।" },
+          { q: "নিচের কোনটি বুদ্ধিভিত্তিক সম্পদ?", opts: ["বাড়ি", "গান বা সফটওয়্যার", "গাড়ি", "জমি"], ans: 1, exp: "সৃজনশীল কাজ যেমন গান, কবিতা বা সফটওয়্যার হলো বুদ্ধিভিত্তিক সম্পদ।" },
+          { q: "প্লেজিয়ারিজমের অভিযোগে কোন বিখ্যাত সাংবাদিককে দায়িত্ব থেকে অব্যাহতি দেওয়া হয়েছিল?", opts: ["ফরিদ জাকারিয়া", "ডেভিড স্মিথ", "সালমান খান", "মেহেদী হাসান"], ans: 0, exp: "পাঠ্যবই অনুযায়ী প্লেজিয়ারিজমের কারণে সাংবাদিক ফরিদ জাকারিয়াকে অব্যাহতি দেওয়া হয়েছিল।" },
+          { q: "অপরিচিত ই-মেইলে লটারি জেতার লোভনীয় আশ্বাস কী?", opts: ["সত্য পুরস্কার", "প্রতারণা", "সরকারি অনুদান", "বোনাস"], ans: 1, exp: "অপরিচিত ই-মেইলের লোভনীয় আশ্বাস নিঃসন্দেহে সাইবার প্রতারণা।" },
+          { q: "কম্পিউটারের নিরাপত্তা বাড়াতে কী ব্যবহার করা উচিত?", opts: ["শক্তিশালী পাসওয়ার্ড", "সহজ নাম", "জন্ম তারিখ", "১২৩৪"], ans: 0, exp: "তথ্য সুরক্ষায় শক্তিশালী ও গোপন পাসওয়ার্ড ব্যবহার করা জরুরি।" },
+          { q: "কোনটি ব্যবহার করে প্লেজিয়ারিজম সহজে ধরা যায়?", opts: ["স্ক্যানার", "বিশেষ সফটওয়্যার", "প্রজেক্টর", "প্লটার"], ans: 1, exp: "বর্তমানে প্লেজিয়ারিজম শনাক্ত করার বিশেষ সফটওয়্যার রয়েছে।" },
+          { q: "সাধারণত অধিকাংশ দেশে কপিরাইটের মেয়াদ লেখকের মৃত্যুর পর কত বছর পর্যন্ত থাকে?", opts: ["১০–২০ বছর", "৫০–৭০ বছর", "৫ বছর", "১ বছর"], ans: 1, exp: "সাধারণত ৫০ থেকে ৭০ বছর (কোনো দেশে ১০০ বছর) পর্যন্ত কপিরাইট বলবৎ থাকে।" },
+          { q: "কৃত্রিমভাবে কোনো ওয়েবসাইটে প্রতি সেকেন্ডে শতবার প্রবেশ করে সাইট অচল করে দেওয়া কেমন কাজ?", opts: ["বীরত্বের কাজ", "অনৈতিক ও বেআইনি কাজ", "গবেষণামূলক কাজ", "উন্নয়নমূলক কাজ"], ans: 1, exp: "ইচ্ছাকৃতভাবে ওয়েবসাইট অচল করা অনৈতিক ও বেআইনি।" },
+          { q: "অন্যের লেখা থেকে সাহায্য নিলে প্লেজিয়ারিজম এড়াতে কী করতে হয়?", opts: ["নাম গোপন রাখতে হয়", "মূল লেখকের অবদান স্বীকার করতে হয়", "শব্দ বদলে দিতে হয়", "কিছু বলতে হয় না"], ans: 1, exp: "নিজের লেখায় অন্যের অংশ ব্যবহার করলে স্পষ্টভাবে উৎস ও অবদান উল্লেখ করতে হয়।" },
+          { q: "কম্পিউটার গেমে অতিরিক্ত আসক্তি শিক্ষার্থীদের কোন ক্ষতি করে?", opts: ["বুদ্ধি বাড়ায়", "পড়াশোনা ও শারীরিক-মানসিক ক্ষতি করে", "চোখ ভালো রাখে", "সময় বাঁচায়"], ans: 1, exp: "আসক্তি পড়াশোনা, স্বাস্থ্য ও স্বাভাবিক সামাজিক জীবনকে ব্যাহত করে।" },
+          { q: "বস্তুগত সম্পদ নয় কোনটি?", opts: ["জামা", "টাকা", "কবিতা বা গবেষণা", "গাড়ি"], ans: 2, exp: "কবিতা বা গবেষণা স্পর্শ করা যায় না, এগুলো বুদ্ধিভিত্তিক সম্পদ।" },
+          { q: "সাইবার জগতের বড় অপরাধগুলো সাধারণত কীভাবে ঘটে?", opts: ["চোখের আড়ালে ইন্টারনেটের মাধ্যমে", "বাজারে গিয়ে", "ডাকঘরে", "স্কুল মাঠে"], ans: 0, exp: "লোকচক্ষুর আড়ালে সাইবার জগতে প্রতারণা ও হ্যাকিং ঘটে।" },
+          { q: "নৈতিকতা রক্ষার জন্য ইন্টারনেটে মন্তব্য লেখার সময় কেমন হওয়া উচিত?", opts: ["অশালীন", "যুক্তিসঙ্গত ও শালীন", "মিথ্যা", "আক্রমণাত্মক"], ans: 1, exp: "অনলাইনে মত প্রকাশের সময় শালীনতা ও নৈতিকতা বজায় রাখা উচিত।" }
+        ],
+        gyan: [
+          { q: "বুদ্ধিভিত্তিক সম্পদ কী?", a: "মানুষের সৃজনশীল চিন্তা ও বুদ্ধি দিয়ে তৈরি সম্পদ, যেমন—গান, কবিতা, বই, গবেষণা বা কম্পিউটার প্রোগ্রাম।" },
+          { q: "কপিরাইট আইন কী?", a: "সৃজনশীল সৃষ্টিকর্মের কপি বা অবৈধ পুনরুৎপাদন বন্ধ করে স্রষ্টার অধিকার সংরক্ষণের আইন।" },
+          { q: "কত সালে এবং কোথায় প্রথম কপিরাইট আইন পাস হয়?", a: "১৬৬২ সালে যুক্তরাজ্যের পার্লামেন্টে (Licensing of the Press Act 1662)।" },
+          { q: "বাংলাদেশে কপিরাইট আইনের মেয়াদ কত বছর?", a: "বাংলাদেশের কপিরাইট আইন ২০০০ অনুযায়ী স্রষ্টার মৃত্যুর পর ৬০ বছর।" },
+          { q: "রয়্যালটি কী?", a: "বই বা সৃজনশীল কর্ম বিক্রির মূল্যের যে অংশ লেখক বা স্রষ্টা পান, তাকে রয়্যালটি বলে।" },
+          { q: "পাইরেটেড (Pirated) কপি কী?", a: "কপিরাইট আইন ভঙ্গ করে অনুমোদন ছাড়া কোনো সৃজনশীল কর্ম বা সফটওয়্যার নকল করা হলে তাকে পাইরেটেড কপি বলে।" },
+          { q: "ফেয়ার ইউজ (Fair Use) কী?", a: "পড়ালেখা বা একাডেমিক কাজের প্রয়োজনে অনুমোদন ছাড়াই কোনো বইয়ের অংশবিশেষ ফটোকপি বা ব্যবহার করার স্বাধীনতা।" },
+          { q: "মুক্ত দর্শন (Open Source Philosophy) কী?", a: "যে দর্শনে স্রষ্টা শর্তসাপেক্ষে বা বিনামূল্যে তার সৃজনশীল কাজ সবাইকে ব্যবহার ও পরিমার্জন করার অনুমতি দেন।" },
+          { q: "কপিলেফট (Copyleft) কী?", a: "কপিরাইটের সম্পূর্ণ বিপরীত ব্যবস্থা, যেখানে স্রষ্টা সবাইকে তার কাজ কপি করার সানন্দ অনুমতি দেন।" },
+          { q: "ক্রিয়েটিভ কমন্স (Creative Commons) কী?", a: "কপিরাইট ও কপিলেফটের মাঝামাঝি একটি লাইসেন্স ব্যবস্থা, যেখানে স্রষ্টার কিছু অধিকার সংরক্ষিত থাকে।" },
+          { q: "ওপেন সোর্স সফটওয়্যার কী?", a: "মুক্ত দর্শনের আওতায় প্রকাশিত সফটওয়্যার, যা সবাই বিনামূল্যে ব্যবহার, কপি ও উন্নয়ন করতে পারে।" },
+          { q: "হ্যাকিং কী?", a: "অনুমতি ছাড়া অন্যের কম্পিউটার সিস্টেম বা ওয়েবসাইটের গোপন অংশে প্রবেশ করার প্রক্রিয়া।" },
+          { q: "হোয়াইট হ্যাট হ্যাকার কাকে বলে?", a: "যারা কৌতূহলবশত বা নিরাপত্তা যাচাইয়ের জন্য কোনো ক্ষতি না করে অন্যের সিস্টেমে প্রবেশ করে।" },
+          { q: "ব্ল্যাক হ্যাট হ্যাকার কাকে বলে?", a: "যারা অসৎ উদ্দেশ্যে অন্যের ওয়েবসাইট বা কম্পিউটারে ঢুকে তথ্য চুরি বা ক্ষতি করে।" },
+          { q: "Mydoom Worm কী ক্ষতি করেছিল?", a: "২০০৪ সালের জানুয়ারি মাসে একদিনে আড়াই লক্ষ কম্পিউটারকে আক্রান্ত করেছিল।" },
+          { q: "Melissa ভাইরাস কে তৈরি করেছিলেন?", a: "ডেভিড স্মিথ (১৯৯৯ সালে); এর ফলে তার ১০ বছর জেল হয়েছিল।" },
+          { q: "প্লেজিয়ারিজম (Plagiarism) কী?", a: "অন্যের লেখা, গবেষণা বা সৃজনশীল কাজ চুরি করে নিজের নামে চালিয়ে দেওয়া বা প্রকাশ করা।" },
+          { q: "প্লেজিয়ারিজম থেকে বাঁচার উপায় কী?", a: "নিজের লেখায় অন্যের কোনো তথ্য বা অংশ ব্যবহার করলে স্পষ্টভাবে মূল লেখকের নাম ও উৎস উল্লেখ করা।" },
+          { q: "ইন্টারনেট আসক্তি কী?", a: "প্রয়োজনের অতিরিক্ত সময় কম্পিউটার গেম বা ইন্টারনেটে ডুবে থাকা, যা পড়াশোনা ও স্বাস্থ্যের ক্ষতি করে।" },
+          { q: "মুক্ত জ্ঞানভাণ্ডার উইকিপিডিয়া কোন দর্শনের প্রকাশ?", a: "মুক্ত দর্শন (Open Source Philosophy)-এর প্রকাশ।" }
+        ]
+      },
+      {
+        id: "ch4",
+        num: "অধ্যায় ৪",
+        icon: "⌨️",
+        title: "ওয়ার্ড প্রসেসিং",
+        subtitle: "পাঠ ২৭–৫৪: বাংলা কী-বোর্ড, বিজয়, অভ্র, সম্পাদনা, ফরম্যাটিং ও মুদ্রণ",
+        summaries: [
+          {
+            title: "১. বাংলা কী-বোর্ডের ইতিহাস ও সফটওয়্যার",
+            points: [
+              "কী-বোর্ড হলো ওয়ার্ড প্রসেসরের প্রধান ইনপুট ডিভাইস।",
+              "১৯৬৫ সালে ঢাকা বিশ্ববিদ্যালয়ের অধ্যাপক শহিদ বুদ্ধিজীবী মুনীর চৌধুরী সর্বপ্রথম বাংলা টাইপরাইটারের জন্য বিজ্ঞানসম্মত কী-বোর্ড লে-আউট তৈরি করেন।",
+              "১৯৮৫ সালে 'শহীদ লিপি' সফটওয়্যার প্রবর্তিত হয়; পরে বিজয়, প্রশিকা শব্দ, প্রবর্তনা ও লেখনী আসে।",
+              "২০০৭ সালে মেহেদী হাসান খান বিনামূল্যের ইউনিকোড ভিত্তিক 'অভ্র' (Avro) সফটওয়্যার তৈরি করেন (তিনি ২০২৫ সালে বিজ্ঞান ও প্রযুক্তিতে একুশে পদক পান)।"
+            ]
+          },
+          {
+            title: "২. বিজয় ও অভ্র ব্যবহারের নিয়ম",
+            points: [
+              "বিজয় সফটওয়্যার সচল করতে Ctrl + Alt + B একসাথে চাপতে হয় এবং ফন্ট হিসেবে SutonnyMJ নির্বাচন করতে হয়।",
+              "বিজয়ে দুটি অক্ষর যুক্ত করতে প্রথম অক্ষরের পর ইংরেজি 'g' চাপতে হয়।",
+              "অভ্র সফটওয়্যার সচল করতে F12 কী চাপতে হয় এবং ফন্ট হিসেবে NikoshBAN বা যেকোনো ইউনিকোড ফন্ট নির্বাচন করা হয়।",
+              "অভ্র হলো উচ্চারণভিত্তিক (ফোনেটিক) টাইপিং ব্যবস্থা, যেমন 'ami' লিখলে 'আমি' লেখা হয়।"
+            ]
+          },
+          {
+            title: "৩. ডকুমেন্ট সম্পাদনা (Editing) ও কার্সর নিয়ন্ত্রণ",
+            points: [
+              "ভুল-ত্রুটি ঠিক করাকে সম্পাদনা (Editing) বলে। নির্বাচন (Select) করতে Shift + ডান অ্যারো (→) ব্যবহার করা হয়।",
+              "কাট (Cut) করতে Ctrl + X, কপি (Copy) করতে Ctrl + C এবং পেস্ট (Paste) করতে Ctrl + V চাপতে হয়।",
+              "মুছে ফেলতে Delete বা Backspace কী ব্যবহার করা হয়।",
+              "লাইনের শুরুতে যেতে Home, শেষে যেতে End, ডকুমেন্টের শুরুতে Ctrl + Home এবং ডকুমেন্টের শেষে Ctrl + End চাপতে হয়।"
+            ]
+          },
+          {
+            title: "৪. ডকুমেন্ট ফরম্যাটিং, মুদ্রণ ও ব্যবস্থাপনা",
+            points: [
+              "ডকুমেন্টকে সুন্দর করে সাজানোকে ফরম্যাটিং বলে। ফন্ট ১ পয়েন্ট বড় করতে Ctrl + ] এবং ছোট করতে Ctrl + [ চাপা হয়।",
+              "লেখা বোল্ড করতে Ctrl + B, ইটালিক করতে Ctrl + I এবং আন্ডারলাইন করতে Ctrl + U চাপতে হয়।",
+              "এলাইনমেন্ট ৪ প্রকার: বামে (Ctrl + L), ডানে (Ctrl + R), মাঝে (Ctrl + E) ও জাস্টিফাইড (Ctrl + J)।",
+              "ডকুমেন্ট প্রিন্ট (মুদ্রণ) করতে Ctrl + P চাপতে হয় এবং ফাইল হারানো রোধে নির্দিষ্ট ফোল্ডারে নাম দিয়ে সংরক্ষণ করাকে ডকুমেন্ট ব্যবস্থাপনা বলে।"
+            ]
+          }
+        ],
+        mcqs: [
+          { q: "কে ১৯৬৫ সালে বাংলা টাইপরাইটারের জন্য বিজ্ঞানসম্মত কী-বোর্ড লে-আউট তৈরি করেন?", opts: ["মেহেদী হাসান খান", "শহিদ মুনীর চৌধুরী", "জব্বার", "সালমান খান"], ans: 1, exp: "অধ্যাপক শহিদ মুনীর চৌধুরী ১৯৬৫ সালে প্রথম বিজ্ঞানসম্মত বাংলা কী-বোর্ড লে-আউট তৈরি করেন।" },
+          { q: "শহীদ লিপি সফটওয়্যার কত সালে প্রবর্তিত হয়?", opts: ["১৯৬৫ সালে", "১৯৮৫ সালে", "২০০০ সালে", "২০০৭ সালে"], ans: 1, exp: "১৯৮৫ সালে শহীদ লিপি সফটওয়্যার প্রবর্তিত হয়।" },
+          { q: "ওয়ার্ড প্রসেসরে বিজয় কী-বোর্ড সচল করতে কোন কী একসাথে চাপতে হয়?", opts: ["Ctrl + Alt + V", "Ctrl + Alt + B", "Ctrl + Shift + B", "F12"], ans: 1, exp: "বিজয় সচল করতে Ctrl + Alt + B একসাথে চাপতে হয়।" },
+          { q: "বিজয় কী-বোর্ডে দুটি অক্ষর যুক্ত করতে মাঝখানে কোন ইংরেজি অক্ষর চাপতে হয়?", opts: ["f", "g", "h", "j"], ans: 1, exp: "প্রথম অক্ষর চেপে ইংরেজি 'g' চেপে দ্বিতীয় অক্ষর চাপলে যুক্তবর্ণ হয়।" },
+          { q: "বিজয় সফটওয়্যারে বাংলা লেখার জন্য সাধারণত কোন ফন্ট নির্বাচন করা হয়?", opts: ["NikoshBAN", "SutonnyMJ", "Vrinda", "Arial"], ans: 1, exp: "বিজয় সফটওয়্যারে SutonnyMJ ফন্ট ব্যবহার করা হয়।" },
+          { q: "২০০৭ সালে কে বিনামূল্যের ইউনিকোড সফটওয়্যার 'অভ্র' প্রবর্তন করেন?", opts: ["মুনীর চৌধুরী", "মেহেদী হাসান খান", "ফরিদ জাকারিয়া", "সালমান খান"], ans: 1, exp: "মেহেদী হাসান খান ২০০৭ সালে অভ্র প্রবর্তন করেন।" },
+          { q: "মেহেদী হাসান খান অভ্র আবিষ্কারের জন্য কত সালে একুশে পদক পান?", opts: ["২০২০ সালে", "২০২৫ সালে", "২০২২ সালে", "২০১৮ সালে"], ans: 1, exp: "তিনি ২০২৫ সালে বিজ্ঞান ও প্রযুক্তিতে একুশে পদক পান।" },
+          { q: "অভ্র সফটওয়্যার সচল করতে কোন ফাংশন কী চাপতে হয়?", opts: ["F1", "F5", "F12", "F10"], ans: 2, exp: "অভ্র সফটওয়্যারে বাংলা চালু করতে F12 কী চাপতে হয়।" },
+          { q: "অভ্র সফটওয়্যারের সাথে কোন ইউনিকোড ফন্টটি ব্যবহৃত হয়?", opts: ["SutonnyMJ", "NikoshBAN", "Times New Roman", "Calibri"], ans: 1, exp: "অভ্র সফটওয়্যারে NikoshBAN বা যেকোনো ইউনিকোড ফন্ট ব্যবহৃত হয়।" },
+          { q: "কোনো ডকুমেন্টের অংশবিশেষ কাট (Cut) করার কী-বোর্ড শর্টকাট কী?", opts: ["Ctrl + C", "Ctrl + X", "Ctrl + V", "Ctrl + Z"], ans: 1, exp: "কাট করার শর্টকাট হলো Ctrl + X।" },
+          { q: "কপি (Copy) করার কী-বোর্ড শর্টকাট কোনটি?", opts: ["Ctrl + X", "Ctrl + C", "Ctrl + V", "Ctrl + P"], ans: 1, exp: "কপি করতে Ctrl + C চাপতে হয়।" },
+          { q: "পেস্ট (Paste) শব্দের আক্ষরিক অর্থ কী?", opts: ["কাটা", "আঠা লাগানো", "মুছে ফেলা", "ছাপানো"], ans: 1, exp: "পেস্ট শব্দের আক্ষরিক অর্থ হলো আঠা লাগানো।" },
+          { q: "পেস্ট করার শর্টকাট কী কোনটি?", opts: ["Ctrl + P", "Ctrl + V", "Ctrl + C", "Ctrl + B"], ans: 1, exp: "পেস্ট করার জন্য Ctrl + V চাপতে হয়।" },
+          { q: "কার্সরকে লাইনের শুরুতে নেওয়ার জন্য কোন কী চাপতে হয়?", opts: ["End", "Home", "Ctrl + Home", "Page Up"], ans: 1, exp: "লাইনের শুরুতে কার্সর নিতে Home কী চাপতে হয়।" },
+          { q: "ডকুমেন্টের একেবারে শেষে কার্সর নিতে কোন শর্টকাট ব্যবহার করা হয়?", opts: ["End", "Ctrl + End", "Home", "Ctrl + Down"], ans: 1, exp: "পুরো ডকুমেন্টের শেষে যেতে Ctrl + End চাপতে হয়।" },
+          { q: "লেখার আকার ১ পয়েন্ট বড় করতে কোন শর্টকাট ব্যবহৃত হয়?", opts: ["Ctrl + [", "Ctrl + ]", "Ctrl + B", "Ctrl + +"], ans: 1, exp: "লেখার আকার ১ পয়েন্ট বড় করতে Ctrl + ] চাপতে হয়।" },
+          { q: "লেখা বোল্ড (Bold) করার শর্টকাট কী কোনটি?", opts: ["Ctrl + I", "Ctrl + B", "Ctrl + U", "Ctrl + L"], ans: 1, exp: "বোল্ড করতে Ctrl + B চাপতে হয়।" },
+          { q: "লেখা ইটালিক (Italic) করতে কোন শর্টকাট চাপতে হয়?", opts: ["Ctrl + B", "Ctrl + I", "Ctrl + U", "Ctrl + E"], ans: 1, exp: "ইটালিক করতে Ctrl + I চাপতে হয়।" },
+          { q: "লেখার নিচে দাগ বা আন্ডারলাইন করতে কোন শর্টকাট ব্যবহৃত হয়?", opts: ["Ctrl + L", "Ctrl + U", "Ctrl + J", "Ctrl + R"], ans: 1, exp: "আন্ডারলাইন করতে Ctrl + U চাপতে হয়।" },
+          { q: "প্যারাগ্রাফের এলাইনমেন্ট কত ধরনের হতে পারে?", opts: ["২ ধরনের", "৪ ধরনের", "৩ ধরনের", "৫ ধরনের"], ans: 1, exp: "এলাইনমেন্ট ৪ ধরনের: Left, Right, Center এবং Justified।" },
+          { q: "মাঝখানে (Center) এলাইন করার কী-বোর্ড শর্টকাট কোনটি?", opts: ["Ctrl + C", "Ctrl + E", "Ctrl + M", "Ctrl + L"], ans: 1, exp: "মাঝখানে এলাইন করতে Ctrl + E চাপতে হয়।" },
+          { q: "জাস্টিফাইড (Justified) এলাইন করার শর্টকাট কী?", opts: ["Ctrl + L", "Ctrl + R", "Ctrl + J", "Ctrl + E"], ans: 2, exp: "দুই দিক সমান বা জাস্টিফাইড করতে Ctrl + J চাপতে হয়।" },
+          { q: "ডানদিকে এলাইন করার শর্টকাট কোনটি?", opts: ["Ctrl + L", "Ctrl + R", "Ctrl + D", "Ctrl + E"], ans: 1, exp: "ডানদিকে এলাইন করতে Ctrl + R চাপতে হয়।" },
+          { q: "ডকুমেন্ট প্রিন্ট বা মুদ্রণ করার শর্টকাট কী?", opts: ["Ctrl + V", "Ctrl + P", "Ctrl + S", "Ctrl + M"], ans: 1, exp: "প্রিন্ট করার শর্টকাট হলো Ctrl + P।" },
+          { q: "সাধারণভাবে কোনো ডকুমেন্ট সংরক্ষণ (Save) করলে কোথায় জমা হয়?", opts: ["ডেস্কটপে", "মাই ডকুমেন্ট ফোল্ডারে", "রিসাইকেল বিনে", "ডাউনলোডে"], ans: 1, exp: "সাধারণভাবে ফাইল মাই ডকুমেন্ট (My Documents) ফোল্ডারে সংরক্ষিত হয়।" },
+          { q: "বাংলাদেশ কম্পিউটার কাউন্সিল (BCC) অনুমোদিত কী-বোর্ড লে-আউটের নাম কী?", opts: ["বিজয়", "ন্যাশনাল কী-বোর্ড", "অভ্র", "শহীদ লিপি"], ans: 1, exp: "BCC ন্যাশনাল কী-বোর্ড নামে একটি বাংলা কী-বোর্ড লে-আউট অনুমোদন করেছে।" },
+          { q: "ডকুমেন্টের ভুল-ত্রুটি ঠিক করার প্রক্রিয়াকে কী বলে?", opts: ["ফরম্যাটিং", "সম্পাদনা (Editing)", "মুদ্রণ", "সংরক্ষণ"], ans: 1, exp: "ভুল-ত্রুটি সংশোধন ও পরিবর্তন করাকে সম্পাদনা বা Editing বলে।" },
+          { q: "ডকুমেন্টকে সুন্দর করে সাজানোর কাজকে কী বলে?", opts: ["এডিটিং", "ফরম্যাটিং (Formatting)", "সেভিং", "প্রিন্টিং"], ans: 1, exp: "লেখার আকার, রঙ ও বিন্যাস সাজানোকে ফরম্যাটিং বলে।" },
+          { q: "উচ্চারণভিত্তিক (ফোনেটিক) টাইপিং ব্যবস্থা কোন সফটওয়্যারের বৈশিষ্ট্য?", opts: ["শহীদ লিপি", "অভ্র", "প্রশিকা শব্দ", "লেখনী"], ans: 1, exp: "অভ্র উচ্চারণভিত্তিক (ফোনেটিক) বাংলা টাইপিং ব্যবস্থা।" },
+          { q: "ফাইল হারানো রোধে কাজের ধরন অনুযায়ী নাম দিয়ে ফোল্ডারে রাখাকে কী বলে?", opts: ["ডকুমেন্ট ফরম্যাটিং", "ডকুমেন্ট ব্যবস্থাপনা", "ডকুমেন্ট মুদ্রণ", "কপি পেস্ট"], ans: 1, exp: "সুশৃঙ্খলভাবে ফোল্ডার করে ফাইল সংরক্ষণকে ডকুমেন্ট ব্যবস্থাপনা বলে।" }
+        ],
+        gyan: [
+          { q: "কত সালে এবং কে প্রথম বাংলা টাইপরাইটারের বিজ্ঞানসম্মত কী-বোর্ড লে-আউট তৈরি করেন?", a: "১৯৬৫ সালে ঢাকা বিশ্ববিদ্যালয়ের অধ্যাপক শহিদ বুদ্ধিজীবী মুনীর চৌধুরী।" },
+          { q: "শহীদ লিপি সফটওয়্যার কত সালে প্রবর্তিত হয়?", a: "১৯৮৫ সালে।" },
+          { q: "বিজয় কী-বোর্ড সচল করার শর্টকাট কী কী?", a: "Ctrl + Alt + B।" },
+          { q: "বিজয় কী-বোর্ডে যুক্তবর্ণ লেখার নিয়ম কী?", a: "প্রথম অক্ষরটি চেপে ইংরেজি 'g' চেপে দ্বিতীয় অক্ষরটি চাপতে হয়।" },
+          { q: "অভ্র (Avro) সফটওয়্যার কে এবং কত সালে তৈরি করেন?", a: "২০০৭ সালে মেহেদী হাসান খান (তিনি ২০২৫ সালে একুশে পদক পান)।" },
+          { q: "অভ্র সফটওয়্যার চালু করতে কোন কী চাপতে হয়?", a: "F12 কী।" },
+          { q: "বিজয় ও অভ্র সফটওয়্যারের দুটি জনপ্রিয় ফন্টের নাম লেখো।", a: "বিজয়: SutonnyMJ; অভ্র: NikoshBAN।" },
+          { q: "ডকুমেন্ট সম্পাদনা (Editing) কাকে বলে?", a: "কোনো ডকুমেন্টের ভুল-ত্রুটি সংশোধন, সংযোজন ও বিয়োজন করার প্রক্রিয়াকে সম্পাদনা বলে।" },
+          { q: "কাট, কপি ও পেস্টের কী-বোর্ড শর্টকাট লেখো।", a: "কাট: Ctrl + X, কপি: Ctrl + C, পেস্ট: Ctrl + V।" },
+          { q: "লাইন ও ডকুমেন্টের শুরু এবং শেষে কার্সর নেওয়ার শর্টকাট কী?", a: "লাইনের শুরুতে Home, শেষে End; ডকুমেন্টের শুরুতে Ctrl + Home, শেষে Ctrl + End।" },
+          { q: "ডকুমেন্ট ফরম্যাটিং কাকে বলে?", a: "ডকুমেন্টের লেখা ছোট-বড় করা, বোল্ড-ইটালিক করা ও সুন্দরভাবে সাজানোর কাজকে ফরম্যাটিং বলে।" },
+          { q: "লেখার আকার ১ পয়েন্ট বড় ও ছোট করার শর্টকাট কী?", a: "১ পয়েন্ট বড়: Ctrl + ] এবং ১ পয়েন্ট ছোট: Ctrl + [।" },
+          { q: "বোল্ড, ইটালিক ও আন্ডারলাইন করার শর্টকাট লেখো।", a: "বোল্ড: Ctrl + B, ইটালিক: Ctrl + I, আন্ডারলাইন: Ctrl + U।" },
+          { q: "এলাইনমেন্ট কত প্রকার ও কী কী?", a: "৪ প্রকার: বামদিক (Left), ডানদিক (Right), মাঝখানে (Center) ও জাস্টিফাইড (Justified)।" },
+          { q: "চার ধরনের এলাইনমেন্টের শর্টকাট কী কী?", a: "বামে Ctrl + L, ডানে Ctrl + R, মাঝে Ctrl + E এবং জাস্টিফাইড Ctrl + J।" },
+          { q: "ডকুমেন্ট মুদ্রণ (Print) করার জন্য কোন শর্টকাট ব্যবহৃত হয়?", a: "Ctrl + P।" },
+          { q: "মুদ্রণের জন্য প্রয়োজনীয় ৩টি উপকরণ কী?", a: "১. কম্পিউটারের সাথে সংযুক্ত প্রিন্টার, ২. প্রিন্টারের ড্রাইভার সফটওয়্যার ও ৩. উপযুক্ত কাগজ।" },
+          { q: "ডকুমেন্ট ব্যবস্থাপনা কী?", a: "তৈরি করা ডকুমেন্ট যাতে হারিয়ে না যায় এবং সহজে খুঁজে পাওয়া যায় সেজন্য নির্দিষ্ট ফোল্ডারে নাম দিয়ে সংরক্ষণ করার ব্যবস্থা।" },
+          { q: "উচ্চারণভিত্তিক (ফোনেটিক) টাইপিং কী?", a: "ইংরেজি অক্ষরে বাংলা উচ্চারণ টাইপ করলে স্বয়ংক্রিয়ভাবে বাংলায় রূপান্তরিত হওয়ার পদ্ধতি (যেমন অভ্র)।" },
+          { q: "BCC-এর পূর্ণরূপ কী?", a: "Bangladesh Computer Council (বাংলাদেশ কম্পিউটার কাউন্সিল)।" }
+        ]
+      },
+      {
+        id: "ch5",
+        num: "অধ্যায় ৫",
+        icon: "🌍",
+        title: "শিক্ষায় ইন্টারনেটের ব্যবহার",
+        subtitle: "পাঠ ৫৫–৭০: ই-বুক, অনলাইন কোর্স, উইকিপিডিয়া, খান একাডেমি ও সার্চ ইঞ্জিন",
+        summaries: [
+          {
+            title: "১. শিক্ষায় ইন্টারনেট ও পাঠ্যপুস্তক ডাউনলোড",
+            points: [
+              "বই হারিয়ে গেলে বা প্রয়োজনে NCTB-এর ওয়েবসাইট (www.nctb.gov.bd) থেকে সকল শ্রেণির পাঠ্যপুস্তকের ই-বুক বিনামূল্যে ডাউনলোড করা যায়।",
+              "ইন্টারনেটের মাধ্যমে পাবলিক পরীক্ষার ফলাফল মুহূর্তেই জানা যায় এবং বিশ্ববিদ্যালয়ে ভর্তি পরীক্ষার রেজিস্ট্রেশন (যেমন জাতীয় বিশ্ববিদ্যালয়) ঘরে বসে করা যায়।",
+              "ভার্চুয়াল ক্লাসরুমের মাধ্যমে এক বিশ্ববিদ্যালয়ের শিক্ষকের ক্লাস সারা দেশের শিক্ষার্থীরা শুনতে পারে।"
+            ]
+          },
+          {
+            title: "২. জনপ্রিয় অনলাইন কোর্স ও বাংলা শিক্ষা সাইট",
+            points: [
+              "ইংরেজি ভাষায় বিনামূল্যে কোর্স করার জনপ্রিয় সাইট হলো Coursera (www.coursera.org), edX, Alison এবং MIT OpenCourseWare (ocw.mit.edu)।",
+              "বাংলা ভাষায় কম্পিউটার ও বিভিন্ন বিষয়ে কোর্স করার জন্য shikkhok.com জনপ্রিয়।",
+              "বাংলাদেশ সরকারের শিক্ষা মন্ত্রণালয়ের ওয়েবসাইট www.moedu.gov.bd থেকে শিক্ষানীতি ও পরীক্ষা সংক্রান্ত তথ্য পাওয়া যায়।"
+            ]
+          },
+          {
+            title: "৩. উইকিপিডিয়া ও খান একাডেমি",
+            points: [
+              "উইকিপিডিয়া (www.wikipedia.org) বিশ্বের সবচেয়ে বড় মুক্ত বিশ্বকোষ, যা ২০০-র বেশি ভাষায় চালু আছে। ইংরেজিতে প্রায় ৭০ লক্ষ এবং বাংলায় ১ লক্ষ ৬০ হাজারের বেশি নিবন্ধ রয়েছে।",
+              "বাংলাদেশি বংশোদ্ভূত শিক্ষাবিদ সালমান খান ২০০৬ সালে খান একাডেমি (www.khanacademy.org) প্রতিষ্ঠা করেন, যেখানে প্রায় ১০ হাজার ভিডিও রয়েছে।",
+              "বাংলায় খান একাডেমির বিজ্ঞানের ভিডিও পাওয়া যায় bn.khanacademy.org-এ এবং গণিতের ভিডিও পাওয়া যায় KhanAcademyBangla ইউটিউব চ্যানেলে।"
+            ]
+          },
+          {
+            title: "৪. অন্যান্য শিক্ষামূলক ওয়েবসাইট ও সার্চ ইঞ্জিন",
+            points: [
+              "ইংরেজি ভাষা শেখার জন্য বাংলাদেশে 'বিবিসি জানালা' (bbcjanala.ghoorilearning.com) খুবই জনপ্রিয়।",
+              "গণিতের জন্য www.themathdoctors.org এবং বাংলাদেশ গণিত অলিম্পিয়াডের ফোরাম matholympiad.org.bd ব্যবহৃত হয়।",
+              "প্রোগ্রামিং শেখার জন্য w3schools.com ও tutorialspoint.com এবং বিজ্ঞানের পরীক্ষার জন্য learningscientists.org পরিচিত।",
+              "গুগল বা ইয়াহু সার্চ ইঞ্জিনে সঠিক শব্দ লিখে নিউটনের প্রিন্সিপিয়া বা ডারউইনের দি অরিজিন অব স্পেসিসের মতো মৌলিক গ্রন্থও পাওয়া যায়।"
+            ]
+          }
+        ],
+        mcqs: [
+          { q: "NCTB-এর ওয়েবসাইটের ঠিকানা কোনটি?", opts: ["www.moedu.gov.bd", "www.nctb.gov.bd", "www.shikkhok.com", "www.khanacademy.org"], ans: 1, exp: "জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ডের ওয়েবসাইট www.nctb.gov.bd।" },
+          { q: "NCTB-এর পূর্ণরূপ কী?", opts: ["National Curriculum and Textbook Board", "National Computer Training Board", "New Curriculum Text Book", "National Center for Text"], ans: 0, exp: "NCTB হলো National Curriculum and Textbook Board।" },
+          { q: "বাংলাদেশ সরকারের শিক্ষা মন্ত্রণালয়ের ওয়েবসাইট কোনটি?", opts: ["www.nctb.gov.bd", "www.moedu.gov.bd", "www.wikipedia.org", "www.edx.org"], ans: 1, exp: "শিক্ষা মন্ত্রণালয়ের ওয়েবসাইট www.moedu.gov.bd।" },
+          { q: "ইন্টারনেটের সবচেয়ে বড় মুক্ত বিশ্বকোষ কোনটি?", opts: ["গুগল", "উইকিপিডিয়া", "খান একাডেমি", "কোর্সেরা"], ans: 1, exp: "উইকিপিডিয়া (www.wikipedia.org) সবচেয়ে বড় মুক্ত বিশ্বকোষ।" },
+          { q: "ইংরেজি উইকিপিডিয়াতে প্রায় কত লক্ষ নিবন্ধ রয়েছে?", opts: ["১০ লক্ষ", "৭০ লক্ষ", "১ লক্ষ ৬০ হাজার", "৫ লক্ষ"], ans: 1, exp: "পাঠ্যবই অনুযায়ী ইংরেজি উইকিপিডিয়ায় প্রায় ৭০ লক্ষ নিবন্ধ রয়েছে।" },
+          { q: "বাংলা উইকিপিডিয়াতে কতটি নিবন্ধ রয়েছে?", opts: ["১ লক্ষ ৬০ হাজারের বেশি", "৭০ লক্ষ", "১০ হাজার", "৫০ লক্ষ"], ans: 0, exp: "বাংলা উইকিপিডিয়ায় ১ লক্ষ ৬০ হাজারের বেশি নিবন্ধ আছে।" },
+          { q: "খান একাডেমি কে প্রতিষ্ঠা করেন?", opts: ["মেহেদী হাসান খান", "সালমান খান", "মুনীর চৌধুরী", "বিল গেটস"], ans: 1, exp: "বাংলাদেশি বংশোদ্ভূত শিক্ষাবিদ সালমান খান এটি প্রতিষ্ঠা করেন।" },
+          { q: "সালমান খান কত সালে খান একাডেমি প্রতিষ্ঠা করেন?", opts: ["২০০০ সালে", "২০০৬ সালে", "২০০৭ সালে", "২০১০ সালে"], ans: 1, exp: "২০০৬ সালে সালমান খান খান একাডেমি প্রতিষ্ঠা করেন।" },
+          { q: "খান একাডেমিতে প্রায় কতটি ছোট ছোট শিক্ষামূলক ভিডিও রয়েছে?", opts: ["১ হাজার", "১০ হাজার", "৫০০টি", "১ লক্ষ"], ans: 1, exp: "খান একাডেমিতে প্রায় ১০ হাজার ছোট ছোট ভিডিও রয়েছে।" },
+          { q: "বাংলা ভাষায় খান একাডেমির বিজ্ঞান বিষয়ক পাঠ কোথায় পাওয়া যায়?", opts: ["bn.khanacademy.org", "www.coursera.org", "www.w3schools.com", "ocw.mit.edu"], ans: 0, exp: "bn.khanacademy.org ঠিকানায় বাংলায় বিজ্ঞানের ভিডিও পাওয়া যায়।" },
+          { q: "ইংরেজি ভাষা শেখার জন্য বাংলাদেশে জনপ্রিয় সাইট কোনটি?", opts: ["বিবিসি জানালা", "শিক্ষক ডট কম", "ম্যাথ ডক্টরস", "টিউটোরিয়ালস পয়েন্ট"], ans: 0, exp: "বিবিসি জানালা (bbcjanala.ghoorilearning.com) ইংরেজি শেখার জনপ্রিয় সাইট।" },
+          { q: "বাংলা ভাষায় বিভিন্ন বিষয়ে অনলাইন কোর্স করার জনপ্রিয় সাইট কোনটি?", opts: ["shikkhok.com", "edx.org", "alison.com", "mit.edu"], ans: 0, exp: "shikkhok.com-এ বাংলায় গণিত ও আইসিটিসহ নানা বিষয়ে কোর্স করা যায়।" },
+          { q: "প্রোগ্রামিং ভাষা শেখার জনপ্রিয় ওয়েবসাইট কোনটি?", opts: ["w3schools.com", "wikipedia.org", "moedu.gov.bd", "matholympiad.org.bd"], ans: 0, exp: "w3schools.com ও tutorialspoint.com প্রোগ্রামিং শেখার জনপ্রিয় সাইট।" },
+          { q: "বিশ্বখ্যাত এমআইটি (MIT)-এর উন্মুক্ত কোর্সের ওয়েবসাইট কোনটি?", opts: ["ocw.mit.edu", "www.nctb.gov.bd", "www.themathdoctors.org", "bn.khanacademy.org"], ans: 0, exp: "এমআইটির কোর্স পাওয়া যায় ocw.mit.edu-তে।" },
+          { q: "গণিতের কোনো বিষয় বুঝতে না পারলে কোন সাইটে Dr. Math-কে প্রশ্ন করা যায়?", opts: ["www.themathdoctors.org", "www.w3schools.com", "www.coursera.org", "www.edx.org"], ans: 0, exp: "themathdoctors.org সাইটে Dr. Math-কে প্রশ্ন করা যায়।" },
+          { q: "বাংলাদেশ গণিত অলিম্পিয়াডের প্রশ্নোত্তর ও আলোচনার সাইট কোনটি?", opts: ["matholympiad.org.bd", "learningscientists.org", "shikkhok.com", "khanacademy.org"], ans: 0, exp: "matholympiad.org.bd গণিত অলিম্পিয়াডের ফোরাম সাইট।" },
+          { q: "পরীক্ষা-নিরীক্ষার মাধ্যমে বিজ্ঞানের বিভিন্ন বিষয় জানা যায় কোন ওয়েবসাইটে?", opts: ["learningscientists.org", "w3schools.com", "coursera.org", "nctb.gov.bd"], ans: 0, exp: "learningscientists.org-এ পরীক্ষা-নিরীক্ষার মাধ্যমে বিজ্ঞান শেখা যায়।" },
+          { q: "নিউটনের লেখা বিখ্যাত মৌলিক গ্রন্থের নাম কী?", opts: ["দি অরিজিন অব স্পেসিস", "প্রিন্সিপিয়া ম্যাথমেটিকা", "সপ্তবর্ণা", "আনন্দপাঠ"], ans: 1, exp: "নিউটনের মৌলিক গ্রন্থ হলো প্রিন্সিপিয়া ম্যাথমেটিকা।" },
+          { q: "ডারউইনের লেখা বিখ্যাত গ্রন্থের নাম কী?", opts: ["প্রিন্সিপিয়া ম্যাথমেটিকা", "দি অরিজিন অব স্পেসিস", "ই-বুক", "অ্যাস্ট্রোফিজিক্স"], ans: 1, exp: "চার্লস ডারউইনের বিখ্যাত বই 'দি অরিজিন অব স্পেসিস'।" },
+          { q: "সারা কীভাবে তার হারিয়ে যাওয়া বাংলা বইটি কয়েক ঘণ্টার মধ্যে ফিরে পেয়েছিল?", opts: ["দোকান থেকে কিনে", "NCTB ওয়েবসাইট থেকে ডাউনলোড করে", "বন্ধুর থেকে ধার নিয়ে", "লাইব্রেরি থেকে"], ans: 1, exp: "সারার বাবা NCTB ওয়েবসাইট থেকে ই-বুক ডাউনলোড করে দিয়েছিলেন।" },
+          { q: "প্লুটো যে আর গ্রহ নয়, আকাশ কীভাবে তা জানতে পেরেছিল?", opts: ["ইন্টারনেটে খুঁজে", "বড় ভাইয়ের কাছে", "টেলিভিশনে", "সংবাদপত্রে"], ans: 0, exp: "আকাশ ইন্টারনেটে অনুসন্ধান করে প্লুটো সম্পর্কে সঠিক তথ্য জেনেছিল।" },
+          { q: "সুনাইরা কম্পিউটার প্রোগ্রামিংয়ের আটকে যাওয়া সমস্যার সমাধান কোথায় পেয়েছিল?", opts: ["কম্পিউটার ল্যাংগুয়েজ ফোরামে", "বইয়ের দোকানে", "টেলিফোনে", "লাইব্রেরিতে"], ans: 0, exp: "সুনাইরা কম্পিউটার ল্যাংগুয়েজ ফোরামে প্রশ্ন করে ১ ঘণ্টার মধ্যে উত্তর পেয়েছিল।" },
+          { q: "অনলাইনে পরীক্ষা দেওয়ার সবচেয়ে বড় বাড়তি সুবিধা কী?", opts: ["সময় বেশি লাগে", "ভুল উত্তরের শুদ্ধ উত্তর তাৎক্ষণিক জানা যায়", "খাতা হারায়", "টাকা বেশি লাগে"], ans: 1, exp: "অনলাইন পরীক্ষায় রতন নিজের প্রস্তুতি যাচাই ও ভুলের সঠিক উত্তর জানতে পেরেছিল।" },
+          { q: "ভিডিও শেয়ারিং সাইট হিসেবে নিচের কোনটি সবচেয়ে পরিচিত?", opts: ["উইকিপিডিয়া", "ইউটিউব (YouTube)", "গুগল", "ইয়াহু"], ans: 1, exp: "ইউটিউবে শিক্ষামূলকসহ বিভিন্ন ভিডিও আপলোড ও দেখা যায়।" },
+          { q: "ইংরেজি ভাষায় অনলাইন কোর্স করার সাইট কোনটি?", opts: ["www.coursera.org", "www.moedu.gov.bd", "www.nctb.gov.bd", "www.matholympiad.org.bd"], ans: 0, exp: "Coursera, edX ও Alison ইংরেজি ভাষায় অনলাইন কোর্স করার জনপ্রিয় সাইট।" },
+          { q: "উইকিপিডিয়া কতটি ভাষায় চালু রয়েছে?", opts: ["৫০টি", "১০০টি", "২০০-র বেশি ভাষায়", "১০টি"], ans: 2, exp: "উইকিপিডিয়া প্রায় ২০০-র বেশি ভাষায় চালু রয়েছে।" },
+          { q: "ইন্টারনেট থেকে তথ্য খুঁজে বের করার জন্য কী ব্যবহার করা হয়?", opts: ["সার্চ ইঞ্জিন", "প্রিন্টার", "মাদারবোর্ড", "ওয়ার্ড প্রসেসর"], ans: 0, exp: "গুগল বা ইয়াহুর মতো সার্চ ইঞ্জিন দিয়ে তথ্য খোঁজা হয়।" },
+          { q: "ভার্চুয়াল ক্লাসরুমের প্রধান সুবিধা কী?", opts: ["শুধু এক শহরের ছাত্ররা পড়তে পারে", "সারা দেশের শিক্ষার্থীরা দূর থেকে ক্লাস করতে পারে", "শিক্ষকের প্রয়োজন হয় না", "বই লাগে না"], ans: 1, exp: "ভার্চুয়াল ক্লাসরুমে সারা দেশের শিক্ষার্থীরা যুক্ত হয়ে ক্লাস শুনতে পারে।" },
+          { q: "ই-বুক কম্পিউটারের পর্দায় কেমনভাবে পড়া যায়?", opts: ["পাতা উল্টিয়ে যেকোনো পাতায় যাওয়া যায়", "শুধু প্রথম পাতা দেখা যায়", "প্রিন্ট না করলে পড়া যায় না", "ছবি দেখা যায় না"], ans: 0, exp: "ই-বুকে পাতা উল্টানো যায় এবং সহজেই যেকোনো পাতায় যাওয়া যায়।" },
+          { q: "খান একাডেমির বাংলা বিজ্ঞান ভিডিওগুলো কয়টি ভাগে ভাগ করা আছে?", opts: ["২ ভাগে", "৪ ভাগে (জীববিজ্ঞান, রসায়ন, পদার্থবিজ্ঞান, জৈবরসায়ন)", "৩ ভাগে", "৫ ভাগে"], ans: 1, exp: "এগুলো জীববিজ্ঞান, রসায়ন, পদার্থবিজ্ঞান ও জৈবরসায়ন—এই ৪ ভাগে ভাগ করা।" }
+        ],
+        gyan: [
+          { q: "NCTB-এর পূর্ণরূপ ও ওয়েবসাইট ঠিকানা কী?", a: "National Curriculum and Textbook Board; ওয়েবসাইট: www.nctb.gov.bd।" },
+          { q: "ই-বুক কী?", a: "মুদ্রিত বইয়ের ডিজিটাল সংস্করণ, যা কম্পিউটার বা স্মার্টফোনের পর্দায় পড়া যায়।" },
+          { q: "বাংলাদেশ সরকারের শিক্ষা মন্ত্রণালয়ের ওয়েবসাইট ঠিকানা কী?", a: "www.moedu.gov.bd।" },
+          { q: "উইকিপিডিয়া কী?", a: "স্বেচ্ছাশ্রমের ভিত্তিতে তৈরি ইন্টারনেটের সবচেয়ে বড় মুক্ত বিশ্বকোষ (www.wikipedia.org)।" },
+          { q: "ইংরেজি ও বাংলা উইকিপিডিয়াতে কতটি নিবন্ধ রয়েছে?", a: "ইংরেজিতে প্রায় ৭০ লক্ষ এবং বাংলায় ১ লক্ষ ৬০ হাজারের বেশি নিবন্ধ রয়েছে।" },
+          { q: "খান একাডেমি কে এবং কত সালে প্রতিষ্ঠা করেন?", a: "বাংলাদেশি বংশোদ্ভূত শিক্ষাবিদ সালমান খান ২০০৬ সালে প্রতিষ্ঠা করেন।" },
+          { q: "বাংলা ভাষায় খান একাডেমির বিজ্ঞান ও গণিত ভিডিও কোথায় পাওয়া যায়?", a: "বিজ্ঞান: bn.khanacademy.org এবং গণিত: youtube.com/user/KhanAcademyBangla।" },
+          { q: "বিবিসি জানালা কী?", a: "বাংলাদেশের শিক্ষার্থীদের উপযোগী ইংরেজি ভাষা শেখার একটি জনপ্রিয় বিনামূল্যের ওয়েবসাইট।" },
+          { q: "বাংলা ভাষায় অনলাইন কোর্স করার একটি সাইটের নাম লেখো।", a: "শিক্ষক ডট কম (shikkhok.com)।" },
+          { q: "ইংরেজি ভাষায় বিনামূল্যে কোর্স করার ৩টি সাইটের নাম লেখো।", a: "www.coursera.org, www.edx.org এবং alison.com।" },
+          { q: "MIT-এর উন্মুক্ত কোর্স সাইটের ঠিকানা কী?", a: "ocw.mit.edu।" },
+          { q: "প্রোগ্রামিং শেখার দুটি জনপ্রিয় ওয়েবসাইটের নাম লেখো।", a: "www.w3schools.com এবং www.tutorialspoint.com।" },
+          { q: "www.themathdoctors.org সাইটে কাকে প্রশ্ন করা যায়?", a: "Dr. Math-কে গণিতের যেকোনো অজানা বিষয়ে প্রশ্ন করা যায়।" },
+          { q: "matholympiad.org.bd কী ধরনের সাইট?", a: "বাংলাদেশ গণিত অলিম্পিয়াডের শিক্ষক ও স্বেচ্ছাসেবকদের পরিচালিত গণিত বিষয়ক প্রশ্নোত্তর ফোরাম।" },
+          { q: "learningscientists.org সাইটটি কীসের জন্য ব্যবহৃত হয়?", a: "পরীক্ষা-নিরীক্ষার মাধ্যমে বিজ্ঞানের বিভিন্ন বিষয় জানার জন্য।" },
+          { q: "সার্চ ইঞ্জিন কী?", a: "ইন্টারনেটে থাকা কোটি কোটি ওয়েবসাইট থেকে কাঙ্ক্ষিত তথ্য খুঁজে বের করার টুল (যেমন: গুগল, ইয়াহু)।" },
+          { q: "ভার্চুয়াল ক্লাসরুম কী?", a: "ইন্টারনেটের মাধ্যমে দূরবর্তী স্থান থেকে শিক্ষার্থীরা যে ডিজিটাল শ্রেণিকক্ষে যুক্ত হয়ে ক্লাস করতে পারে।" },
+          { q: "নিউটন ও ডারউইনের দুটি বিখ্যাত মৌলিক গ্রন্থের নাম লেখো।", a: "নিউটন: প্রিন্সিপিয়া ম্যাথমেটিকা; ডারউইন: দি অরিজিন অব স্পেসিস।" },
+          { q: "অনলাইন পরীক্ষার একটি বড় সুবিধা লেখো।", a: "পরীক্ষার পরপরই নিজের প্রস্তুতি যাচাই এবং ভুল উত্তরগুলোর শুদ্ধ উত্তর জানা যায়।" },
+          { q: "উইকিপিডিয়া কতটি ভাষায় চালু আছে?", a: "প্রায় ২০০-র বেশি ভাষায়।" }
+        ]
+      }
+    ];
+
+    // =========================================================================
+    // 4. MODEL TESTS (3 MCQ Model Tests × 30 Qs, 2 Gyanmulok Model Tests × 20 Qs)
+    // =========================================================================
+    function buildMcqModelTests() {
+      // Distribute 30 curated questions per test cleanly across the 3 syllabus chapters (10 per chapter)
+      var tests = [
+        { id: "mt_mcq_1", title: "মডেল টেস্ট ১ (MCQ)", desc: "অধ্যায় ৩, ৪ ও ৫ থেকে বাছাইকৃত ৩০টি বহুনির্বাচনি প্রশ্ন", offset: 0 },
+        { id: "mt_mcq_2", title: "মডেল টেস্ট ২ (MCQ)", desc: "অধ্যায় ৩, ৪ ও ৫ থেকে মধ্যম ও কঠিন মানের ৩০টি প্রশ্ন", offset: 10 },
+        { id: "mt_mcq_3", title: "মডেল টেস্ট ৩ (MCQ)", desc: "চূড়ান্ত পরীক্ষার অনুরূপ ৩০টি গুরুত্বপূর্ণ MCQ", offset: 20 }
+      ];
+      return tests.map(function (t) {
+        var qs = [];
+        CHAPTERS.forEach(function (ch) {
+          for (var i = 0; i < 10; i++) {
+            var item = ch.mcqs[(t.offset + i) % ch.mcqs.length];
+            qs.push({
+              q: item.q,
+              opts: item.opts,
+              ans: item.ans,
+              exp: item.exp + " (" + ch.num + ")"
+            });
+          }
+        });
+        return { id: t.id, title: t.title, desc: t.desc, questions: qs };
+      });
+    }
+
+    function buildGyanModelTests() {
+      var tests = [
+        { id: "mt_gyan_1", title: "জ্ঞানমূলক মডেল টেস্ট ১", desc: "অধ্যায় ৩, ৪ ও ৫ থেকে গুরুত্বপূর্ণ ২০টি জ্ঞানমূলক প্রশ্ন", offset: 0 },
+        { id: "mt_gyan_2", title: "জ্ঞানমূলক মডেল টেস্ট ২", desc: "পরীক্ষায় কমন উপযোগী আরও ২০টি জ্ঞানমূলক প্রশ্ন", offset: 7 }
+      ];
+      var counts = [7, 7, 6];
+      return tests.map(function (t) {
+        var qs = [];
+        CHAPTERS.forEach(function (ch, idx) {
+          var limit = counts[idx] || 6;
+          for (var i = 0; i < limit; i++) {
+            var item = ch.gyan[(t.offset + i) % ch.gyan.length];
+            qs.push({
+              q: item.q,
+              a: item.a,
+              chapter: ch.num
+            });
+          }
+        });
+        return { id: t.id, title: t.title, desc: t.desc, questions: qs };
+      });
+    }
+
+    var MCQ_MODEL_TESTS = buildMcqModelTests();
+    var GYAN_MODEL_TESTS = buildGyanModelTests();
+
+    // =========================================================================
+    // 5. APPLICATION STATE (Gamified Points, Streak, Per-Stage & Test Progress)
+    // =========================================================================
+    var STORAGE_KEY = "class7_ict_gamified_v1";
+    var state = {
+      points: 0,
+      streak: 0,
+      correctCount: 0,
+      activeView: "home", // "home" | "chapter" | "test"
+      activeChapterId: null,
+      activeMode: "summary", // "summary" | "mcq" | "gyan"
+      activeMcqStage: 0, // 0..4 (6 questions each)
+      activeGyanStage: 0, // 0..4 (4 questions each)
+      activeTestId: null,
+      activeTestType: null, // "mcq" | "gyan"
+      // Map of solved MCQs: key -> { solved: bool, wrongIndices: number[] }
+      mcqProgress: {},
+      // Map of gyan recall: key -> "open" | "known" | "unknown"
+      gyanOpen: {},
+      gyanSelf: {}
+    };
+
+    function loadState() {
+      try {
+        var raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          var parsed = JSON.parse(raw);
+          if (parsed && typeof parsed === "object") {
+            state.points = Number(parsed.points) || 0;
+            state.streak = Number(parsed.streak) || 0;
+            state.correctCount = Number(parsed.correctCount) || 0;
+            state.mcqProgress = parsed.mcqProgress || {};
+            state.gyanSelf = parsed.gyanSelf || {};
+          }
+        }
+      } catch (e) {}
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          points: state.points,
+          streak: state.streak,
+          correctCount: state.correctCount,
+          mcqProgress: state.mcqProgress,
+          gyanSelf: state.gyanSelf
+        }));
+      } catch (e) {}
+    }
+
+    function updateHud() {
+      document.getElementById("hudPoints").textContent = toBn(state.points);
+      document.getElementById("hudStreak").textContent = toBn(state.streak);
+      document.getElementById("hudCorrect").textContent = toBn(state.correctCount);
+    }
+
+    // =========================================================================
+    // 6. HOME RENDERER
+    // =========================================================================
+    function getChapterSolvedCount(chId) {
+      var ch = CHAPTERS.find(function (c) { return c.id === chId; });
+      if (!ch) return 0;
+      var count = 0;
+      for (var i = 0; i < ch.mcqs.length; i++) {
+        var entry = state.mcqProgress[chId + "_mcq_" + i];
+        if (entry && entry.solved) count++;
+      }
+      return count;
+    }
+
+    function getTestSolvedCount(testId, total) {
+      var count = 0;
+      for (var i = 0; i < total; i++) {
+        var entry = state.mcqProgress[testId + "_" + i];
+        if (entry && entry.solved) count++;
+      }
+      return count;
+    }
+
+    function renderHome() {
+      state.activeView = "home";
+      stopAllAudio();
+      document.getElementById("homeView").classList.remove("ict-hidden");
+      document.getElementById("chapterView").classList.add("ict-hidden");
+      document.getElementById("testView").classList.add("ict-hidden");
+
+      var chGrid = document.getElementById("chapterGrid");
+      chGrid.innerHTML = "";
+      CHAPTERS.forEach(function (ch) {
+        var solved = getChapterSolvedCount(ch.id);
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "ict-chapter-card";
+        btn.innerHTML =
+          '<div class="ict-card-top">' +
+            '<div class="ict-card-icon">' + ch.icon + '</div>' +
+            '<div>' +
+              '<div class="ict-card-num">' + ch.num + '</div>' +
+              '<h3 class="ict-card-title">' + ch.title + '</h3>' +
+              '<p class="ict-card-desc">' + ch.subtitle + '</p>' +
+            '</div>' +
+          '</div>' +
+          '<div class="ict-card-meta">' +
+            '<span class="ict-mini-chip">📖 ' + toBn(ch.summaries.length) + 'টি পাঠ-সার</span>' +
+            '<span class="ict-mini-chip ' + (solved === ch.mcqs.length ? 'is-done' : '') + '">🎯 MCQ ' + toBn(solved) + '/' + toBn(ch.mcqs.length) + '</span>' +
+            '<span class="ict-mini-chip">🧠 ' + toBn(ch.gyan.length) + 'টি জ্ঞানমূলক</span>' +
+          '</div>';
+        btn.addEventListener("click", function () {
+          openChapter(ch.id, "summary");
+        });
+        chGrid.appendChild(btn);
+      });
+
+      var mcqGrid = document.getElementById("mcqTestGrid");
+      mcqGrid.innerHTML = "";
+      MCQ_MODEL_TESTS.forEach(function (t) {
+        var solved = getTestSolvedCount(t.id, t.questions.length);
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "ict-test-card";
+        btn.innerHTML =
+          '<div>' +
+            '<div class="ict-card-num">🏆 পূর্ণাঙ্গ MCQ পরীক্ষা</div>' +
+            '<h3 class="ict-card-title">' + t.title + '</h3>' +
+            '<p class="ict-card-desc">' + t.desc + '</p>' +
+          '</div>' +
+          '<div class="ict-card-meta">' +
+            '<span class="ict-mini-chip ' + (solved === t.questions.length ? 'is-done' : '') + '">সম্পন্ন: ' + toBn(solved) + '/' + toBn(t.questions.length) + '</span>' +
+            '<span class="ict-mini-chip">+১০ সঠিক / -২ ভুল</span>' +
+          '</div>';
+        btn.addEventListener("click", function () {
+          openModelTest(t.id, "mcq");
+        });
+        mcqGrid.appendChild(btn);
+      });
+
+      var gyanGrid = document.getElementById("gyanTestGrid");
+      gyanGrid.innerHTML = "";
+      GYAN_MODEL_TESTS.forEach(function (t) {
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "ict-test-card is-gyan";
+        btn.innerHTML =
+          '<div>' +
+            '<div class="ict-card-num" style="color:#0d9488;">💡 অ্যাক্টিভ রিকল পরীক্ষা</div>' +
+            '<h3 class="ict-card-title">' + t.title + '</h3>' +
+            '<p class="ict-card-desc">' + t.desc + '</p>' +
+          '</div>' +
+          '<div class="ict-card-meta">' +
+            '<span class="ict-mini-chip">২০টি জ্ঞানমূলক প্রশ্ন</span>' +
+            '<span class="ict-mini-chip">👁️ উত্তর লুকানো মোড</span>' +
+          '</div>';
+        btn.addEventListener("click", function () {
+          openModelTest(t.id, "gyan");
+        });
+        gyanGrid.appendChild(btn);
+      });
+    }
+
+    // =========================================================================
+    // 7. CHAPTER VIEW RENDERER (Summary / 5-Stage MCQ / 5-Stage Gyanmulok)
+    // =========================================================================
+    function openChapter(chId, mode) {
+      state.activeView = "chapter";
+      state.activeChapterId = chId;
+      state.activeMode = mode || "summary";
+      state.activeMcqStage = 0;
+      state.activeGyanStage = 0;
+      stopAllAudio();
+
+      document.getElementById("homeView").classList.add("ict-hidden");
+      document.getElementById("testView").classList.add("ict-hidden");
+      document.getElementById("chapterView").classList.remove("ict-hidden");
+
+      var ch = CHAPTERS.find(function (c) { return c.id === chId; });
+      document.getElementById("chapterTitle").textContent = ch.icon + " " + ch.num + ": " + ch.title;
+      document.getElementById("chapterSubtitle").textContent = ch.subtitle;
+
+      updateModeTabs();
+      renderChapterBody();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function updateModeTabs() {
+      var tabs = document.querySelectorAll(".ict-tab-btn");
+      tabs.forEach(function (btn) {
+        if (btn.dataset.mode === state.activeMode) {
+          btn.classList.add("is-active");
+        } else {
+          btn.classList.remove("is-active");
+        }
+      });
+    }
+
+    function renderChapterBody() {
+      var ch = CHAPTERS.find(function (c) { return c.id === state.activeChapterId; });
+      var container = document.getElementById("chapterContent");
+      container.innerHTML = "";
+
+      if (state.activeMode === "summary") {
+        renderSummaryMode(ch, container);
+      } else if (state.activeMode === "mcq") {
+        renderChapterMcqMode(ch, container);
+      } else {
+        renderChapterGyanMode(ch, container);
+      }
+    }
+
+    function renderSummaryMode(ch, container) {
+      var list = document.createElement("div");
+      list.className = "ict-summary-list";
+
+      ch.summaries.forEach(function (sec) {
+        var card = document.createElement("div");
+        card.className = "ict-summary-card";
+
+        var top = document.createElement("div");
+        top.className = "ict-summary-top";
+
+        var title = document.createElement("h3");
+        title.className = "ict-summary-title";
+        title.textContent = sec.title;
+
+        var audioBtn = document.createElement("button");
+        audioBtn.type = "button";
+        audioBtn.className = "ict-btn ict-btn-primary ict-btn-sm";
+        audioBtn.dataset.idleLabel = "🔊 বাংলায় শুনুন";
+        audioBtn.textContent = "🔊 বাংলায় শুনুন";
+
+        var fullSpeech = sec.title + "। " + sec.points.join(" ");
+        audioBtn.addEventListener("click", function () {
+          toggleBanglaAudio(fullSpeech, audioBtn, card);
+        });
+
+        top.appendChild(title);
+        top.appendChild(audioBtn);
+
+        var ul = document.createElement("ul");
+        ul.className = "ict-summary-points";
+        sec.points.forEach(function (pt) {
+          var li = document.createElement("li");
+          li.textContent = pt;
+          ul.appendChild(li);
+        });
+
+        card.appendChild(top);
+        card.appendChild(ul);
+        list.appendChild(card);
+      });
+
+      container.appendChild(list);
+
+      var footer = document.createElement("div");
+      footer.className = "ict-summary-footer";
+      footer.innerHTML =
+        '<div><strong>সারসংক্ষেপ পড়া শেষ?</strong><div style="font-size:13.5px;color:var(--text-secondary);">এবার ৩০টি MCQ বা ২০টি জ্ঞানমূলক অনুশীলন করে পয়েন্ট জিতে নাও!</div></div>';
+      var goMcq = document.createElement("button");
+      goMcq.type = "button";
+      goMcq.className = "ict-btn ict-btn-primary";
+      goMcq.textContent = "🎯 MCQ টেস্ট শুরু করো";
+      goMcq.addEventListener("click", function () {
+        state.activeMode = "mcq";
+        updateModeTabs();
+        renderChapterBody();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+      footer.appendChild(goMcq);
+      container.appendChild(footer);
+    }
+
+    function renderMcqList(questions, keyPrefix, startIndex, container, onUpdate) {
+      var list = document.createElement("div");
+      list.className = "ict-q-list";
+
+      questions.forEach(function (item, idx) {
+        var globalIdx = startIndex + idx;
+        var qKey = keyPrefix + "_" + globalIdx;
+        var record = state.mcqProgress[qKey] || { solved: false, wrongIndices: [] };
+
+        var card = document.createElement("div");
+        card.className = "ict-q-card";
+
+        var head = document.createElement("div");
+        head.className = "ict-q-head";
+        head.innerHTML =
+          '<div>' +
+            '<span class="ict-q-num">প্রশ্ন ' + toBn(globalIdx + 1) + '</span>' +
+            '<p class="ict-q-text">' + item.q + '</p>' +
+          '</div>';
+
+        var optsGrid = document.createElement("div");
+        optsGrid.className = "ict-options-grid";
+
+        var feedback = document.createElement("div");
+        feedback.className = "ict-q-feedback";
+        feedback.style.display = "none";
+
+        var optionLabels = ["ক", "খ", "গ", "ঘ"];
+        item.opts.forEach(function (optText, optIdx) {
+          var optBtn = document.createElement("button");
+          optBtn.type = "button";
+          optBtn.className = "ict-opt-btn";
+          optBtn.innerHTML = '<span style="font-weight:800;color:var(--primary);">' + optionLabels[optIdx] + '.</span> <span>' + optText + '</span>';
+
+          if (record.wrongIndices.indexOf(optIdx) !== -1) {
+            optBtn.classList.add("is-wrong");
+            optBtn.disabled = true;
+          }
+          if (record.solved && optIdx === item.ans) {
+            optBtn.classList.add("is-correct");
+          }
+          if (record.solved) {
+            optBtn.disabled = true;
+          }
+
+          optBtn.addEventListener("click", function () {
+            if (record.solved) return;
+            if (optIdx === item.ans) {
+              record.solved = true;
+              state.mcqProgress[qKey] = record;
+              state.points += 10;
+              state.streak += 1;
+              state.correctCount += 1;
+              saveState();
+              updateHud();
+
+              optBtn.classList.add("is-correct");
+              var siblings = optsGrid.querySelectorAll(".ict-opt-btn");
+              siblings.forEach(function (b) { b.disabled = true; });
+
+              feedback.className = "ict-q-feedback is-correct";
+              feedback.style.display = "block";
+              feedback.textContent = "✅ দারুণ! (+১০ পয়েন্ট) — " + item.exp;
+              if (onUpdate) onUpdate();
+            } else {
+              if (record.wrongIndices.indexOf(optIdx) === -1) {
+                record.wrongIndices.push(optIdx);
+                state.mcqProgress[qKey] = record;
+                state.points = Math.max(0, state.points - 2);
+                state.streak = 0;
+                saveState();
+                updateHud();
+              }
+              optBtn.classList.add("is-wrong");
+              optBtn.disabled = true;
+              feedback.className = "ict-q-feedback is-wrong";
+              feedback.style.display = "block";
+              feedback.textContent = "❌ ভুল উত্তর! (-২ পয়েন্ট কাটা হয়েছে)। সঠিক উত্তরটি আবার চেষ্টা করো।";
+              if (onUpdate) onUpdate();
+            }
+          });
+
+          optsGrid.appendChild(optBtn);
+        });
+
+        if (record.solved) {
+          feedback.className = "ict-q-feedback is-correct";
+          feedback.style.display = "block";
+          feedback.textContent = "✅ সঠিক উত্তর: " + optionLabels[item.ans] + ". " + item.opts[item.ans] + " — " + item.exp;
+        }
+
+        card.appendChild(head);
+        card.appendChild(optsGrid);
+        card.appendChild(feedback);
+        list.appendChild(card);
+      });
+
+      container.appendChild(list);
+    }
+
+    function renderChapterMcqMode(ch, container) {
+      var perStage = 6;
+      var totalStages = 5;
+
+      // Stage bar
+      var stageBar = document.createElement("div");
+      stageBar.className = "ict-stage-bar";
+
+      var pillsWrap = document.createElement("div");
+      pillsWrap.className = "ict-stage-pills";
+
+      for (var s = 0; s < totalStages; s++) {
+        (function (stageIdx) {
+          var solvedInStage = 0;
+          for (var k = stageIdx * perStage; k < (stageIdx + 1) * perStage; k++) {
+            var rec = state.mcqProgress[ch.id + "_mcq_" + k];
+            if (rec && rec.solved) solvedInStage++;
+          }
+          var pill = document.createElement("button");
+          pill.type = "button";
+          pill.className = "ict-stage-pill" +
+            (state.activeMcqStage === stageIdx ? " is-active" : "") +
+            (solvedInStage === perStage ? " is-completed" : "");
+          pill.textContent = "পর্ব " + toBn(stageIdx + 1) + " (" + toBn(solvedInStage) + "/" + toBn(perStage) + ")";
+          pill.addEventListener("click", function () {
+            state.activeMcqStage = stageIdx;
+            renderChapterBody();
+          });
+          pillsWrap.appendChild(pill);
+        })(s);
+      }
+
+      var resetStageBtn = document.createElement("button");
+      resetStageBtn.type = "button";
+      resetStageBtn.className = "ict-btn ict-btn-sm";
+      resetStageBtn.textContent = "🔄 এই পর্ব রিসেট";
+      resetStageBtn.addEventListener("click", function () {
+        var start = state.activeMcqStage * perStage;
+        for (var k = start; k < start + perStage; k++) {
+          delete state.mcqProgress[ch.id + "_mcq_" + k];
+        }
+        saveState();
+        renderChapterBody();
+      });
+
+      stageBar.appendChild(pillsWrap);
+      stageBar.appendChild(resetStageBtn);
+      container.appendChild(stageBar);
+
+      // Progress bar for chapter
+      var totalSolved = getChapterSolvedCount(ch.id);
+      var pct = Math.round((totalSolved / ch.mcqs.length) * 100);
+      var prog = document.createElement("div");
+      prog.className = "ict-progress-wrap";
+      prog.innerHTML =
+        '<div class="ict-progress-meta">' +
+          '<span>পর্ব ' + toBn(state.activeMcqStage + 1) + ': প্রশ্ন ' + toBn(state.activeMcqStage * perStage + 1) + '–' + toBn((state.activeMcqStage + 1) * perStage) + '</span>' +
+          '<span>মোট সম্পন্ন: ' + toBn(totalSolved) + '/' + toBn(ch.mcqs.length) + ' (' + toBn(pct) + '%)</span>' +
+        '</div>' +
+        '<div class="ict-progress-track"><div class="ict-progress-fill" style="width:' + pct + '%;"></div></div>';
+      container.appendChild(prog);
+
+      var startIdx = state.activeMcqStage * perStage;
+      var slice = ch.mcqs.slice(startIdx, startIdx + perStage);
+      renderMcqList(slice, ch.id + "_mcq", startIdx, container, function () {
+        // Refresh progress bar & pills count in place
+        var newSolved = getChapterSolvedCount(ch.id);
+        var newPct = Math.round((newSolved / ch.mcqs.length) * 100);
+        prog.querySelector(".ict-progress-meta span:last-child").textContent =
+          "মোট সম্পন্ন: " + toBn(newSolved) + "/" + toBn(ch.mcqs.length) + " (" + toBn(newPct) + "%)";
+        prog.querySelector(".ict-progress-fill").style.width = newPct + "%";
+      });
+
+      // Next stage button
+      if (state.activeMcqStage < totalStages - 1) {
+        var nextWrap = document.createElement("div");
+        nextWrap.style.marginTop = "16px";
+        nextWrap.style.textAlign = "right";
+        var nextBtn = document.createElement("button");
+        nextBtn.type = "button";
+        nextBtn.className = "ict-btn ict-btn-primary";
+        nextBtn.textContent = "পরবর্তী পর্ব (পর্ব " + toBn(state.activeMcqStage + 2) + ") →";
+        nextBtn.addEventListener("click", function () {
+          state.activeMcqStage += 1;
+          renderChapterBody();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+        nextWrap.appendChild(nextBtn);
+        container.appendChild(nextWrap);
+      }
+    }
+
+    function renderGyanList(items, keyPrefix, startIndex, container) {
+      var list = document.createElement("div");
+      list.className = "ict-q-list";
+
+      items.forEach(function (item, idx) {
+        var globalIdx = startIndex + idx;
+        var gKey = keyPrefix + "_" + globalIdx;
+        var isOpen = !!state.gyanOpen[gKey];
+        var selfStatus = state.gyanSelf[gKey]; // "known" | "unknown" | undefined
+
+        var card = document.createElement("div");
+        card.className = "ict-gyan-card";
+
+        var qHtml =
+          '<span class="ict-q-num">জ্ঞানমূলক ' + toBn(globalIdx + 1) + (item.chapter ? " • " + item.chapter : "") + '</span>' +
+          '<p class="ict-q-text">' + item.q + '</p>';
+        var qBox = document.createElement("div");
+        qBox.innerHTML = qHtml;
+
+        var ansBox = document.createElement("div");
+        ansBox.className = "ict-gyan-ans" + (isOpen ? " is-open" : "");
+        ansBox.textContent = "উত্তর: " + item.a;
+
+        var actions = document.createElement("div");
+        actions.className = "ict-gyan-actions";
+
+        var toggleBtn = document.createElement("button");
+        toggleBtn.type = "button";
+        toggleBtn.className = "ict-btn ict-btn-primary ict-btn-sm";
+        toggleBtn.textContent = isOpen ? "🙈 উত্তর লুকান" : "👁️ উত্তর দেখুন";
+
+        var listenBtn = document.createElement("button");
+        listenBtn.type = "button";
+        listenBtn.className = "ict-btn ict-btn-sm";
+        listenBtn.dataset.idleLabel = "🔊 উত্তর শুনুন";
+        listenBtn.textContent = "🔊 উত্তর শুনুন";
+        listenBtn.style.display = isOpen ? "inline-flex" : "none";
+        listenBtn.addEventListener("click", function () {
+          toggleBanglaAudio(item.q + "। উত্তর: " + item.a, listenBtn, card);
+        });
+
+        var knownBtn = document.createElement("button");
+        knownBtn.type = "button";
+        knownBtn.className = "ict-btn ict-btn-sm" + (selfStatus === "known" ? " ict-btn-success" : "");
+        knownBtn.textContent = selfStatus === "known" ? "✅ পেরেছি (+৫)" : "✅ পেরেছি";
+        knownBtn.style.display = isOpen ? "inline-flex" : "none";
+
+        var unknownBtn = document.createElement("button");
+        unknownBtn.type = "button";
+        unknownBtn.className = "ict-btn ict-btn-sm" + (selfStatus === "unknown" ? " ict-btn-danger" : "");
+        unknownBtn.textContent = "❌ আবার পড়ব";
+        unknownBtn.style.display = isOpen ? "inline-flex" : "none";
+
+        toggleBtn.addEventListener("click", function () {
+          state.gyanOpen[gKey] = !state.gyanOpen[gKey];
+          var openNow = state.gyanOpen[gKey];
+          ansBox.classList.toggle("is-open", openNow);
+          toggleBtn.textContent = openNow ? "🙈 উত্তর লুকান" : "👁️ উত্তর দেখুন";
+          listenBtn.style.display = openNow ? "inline-flex" : "none";
+          knownBtn.style.display = openNow ? "inline-flex" : "none";
+          unknownBtn.style.display = openNow ? "inline-flex" : "none";
+        });
+
+        knownBtn.addEventListener("click", function () {
+          if (state.gyanSelf[gKey] !== "known") {
+            state.points += 5;
+            state.correctCount += 1;
+          }
+          state.gyanSelf[gKey] = "known";
+          saveState();
+          updateHud();
+          knownBtn.classList.add("ict-btn-success");
+          knownBtn.textContent = "✅ পেরেছি (+৫)";
+          unknownBtn.classList.remove("ict-btn-danger");
+        });
+
+        unknownBtn.addEventListener("click", function () {
+          state.gyanSelf[gKey] = "unknown";
+          saveState();
+          unknownBtn.classList.add("ict-btn-danger");
+          knownBtn.classList.remove("ict-btn-success");
+          knownBtn.textContent = "✅ পেরেছি";
+        });
+
+        actions.appendChild(toggleBtn);
+        actions.appendChild(listenBtn);
+        actions.appendChild(knownBtn);
+        actions.appendChild(unknownBtn);
+
+        card.appendChild(qBox);
+        card.appendChild(ansBox);
+        card.appendChild(actions);
+        list.appendChild(card);
+      });
+
+      container.appendChild(list);
+    }
+
+    function renderChapterGyanMode(ch, container) {
+      var perStage = 4;
+      var totalStages = 5;
+
+      var stageBar = document.createElement("div");
+      stageBar.className = "ict-stage-bar";
+
+      var pillsWrap = document.createElement("div");
+      pillsWrap.className = "ict-stage-pills";
+
+      for (var s = 0; s < totalStages; s++) {
+        (function (stageIdx) {
+          var pill = document.createElement("button");
+          pill.type = "button";
+          pill.className = "ict-stage-pill" + (state.activeGyanStage === stageIdx ? " is-active" : "");
+          pill.textContent = "পর্ব " + toBn(stageIdx + 1) + " (" + toBn(perStage) + "টি)";
+          pill.addEventListener("click", function () {
+            state.activeGyanStage = stageIdx;
+            renderChapterBody();
+          });
+          pillsWrap.appendChild(pill);
+        })(s);
+      }
+
+      var hideAllBtn = document.createElement("button");
+      hideAllBtn.type = "button";
+      hideAllBtn.className = "ict-btn ict-btn-sm";
+      hideAllBtn.textContent = "🙈 সব উত্তর লুকান";
+      hideAllBtn.addEventListener("click", function () {
+        var start = state.activeGyanStage * perStage;
+        for (var k = start; k < start + perStage; k++) {
+          delete state.gyanOpen[ch.id + "_gyan_" + k];
+        }
+        renderChapterBody();
+      });
+
+      stageBar.appendChild(pillsWrap);
+      stageBar.appendChild(hideAllBtn);
+      container.appendChild(stageBar);
+
+      var info = document.createElement("div");
+      info.className = "ict-progress-wrap";
+      info.innerHTML = '<div class="ict-progress-meta" style="margin-bottom:0;"><span>💡 মনে মনে উত্তর ভেবে নিয়ে তারপর <strong>উত্তর দেখুন</strong> বোতামে চাপ দাও (অ্যাক্টিভ রিকল)।</span><span>পর্ব ' + toBn(state.activeGyanStage + 1) + ' / ৫</span></div>';
+      container.appendChild(info);
+
+      var startIdx = state.activeGyanStage * perStage;
+      var slice = ch.gyan.slice(startIdx, startIdx + perStage);
+      renderGyanList(slice, ch.id + "_gyan", startIdx, container);
+
+      if (state.activeGyanStage < totalStages - 1) {
+        var nextWrap = document.createElement("div");
+        nextWrap.style.marginTop = "16px";
+        nextWrap.style.textAlign = "right";
+        var nextBtn = document.createElement("button");
+        nextBtn.type = "button";
+        nextBtn.className = "ict-btn ict-btn-primary";
+        nextBtn.textContent = "পরবর্তী পর্ব (পর্ব " + toBn(state.activeGyanStage + 2) + ") →";
+        nextBtn.addEventListener("click", function () {
+          state.activeGyanStage += 1;
+          renderChapterBody();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+        nextWrap.appendChild(nextBtn);
+        container.appendChild(nextWrap);
+      }
+    }
+
+    // =========================================================================
+    // 8. MODEL TEST VIEW RENDERER
+    // =========================================================================
+    function openModelTest(testId, type) {
+      state.activeView = "test";
+      state.activeTestId = testId;
+      state.activeTestType = type;
+      stopAllAudio();
+
+      document.getElementById("homeView").classList.add("ict-hidden");
+      document.getElementById("chapterView").classList.add("ict-hidden");
+      document.getElementById("testView").classList.remove("ict-hidden");
+
+      renderModelTestBody();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderModelTestBody() {
+      var container = document.getElementById("testContent");
+      container.innerHTML = "";
+
+      if (state.activeTestType === "mcq") {
+        var test = MCQ_MODEL_TESTS.find(function (t) { return t.id === state.activeTestId; });
+        document.getElementById("testTitle").textContent = "📝 " + test.title;
+        document.getElementById("testSubtitle").textContent = test.desc + " • সঠিক +১০ পয়েন্ট, ভুল -২ পয়েন্ট";
+
+        var solved = getTestSolvedCount(test.id, test.questions.length);
+        var pct = Math.round((solved / test.questions.length) * 100);
+        var prog = document.createElement("div");
+        prog.className = "ict-progress-wrap";
+        prog.innerHTML =
+          '<div class="ict-progress-meta">' +
+            '<span>মোট প্রশ্ন: ' + toBn(test.questions.length) + 'টি</span>' +
+            '<span>সম্পন্ন: ' + toBn(solved) + '/' + toBn(test.questions.length) + ' (' + toBn(pct) + '%)</span>' +
+          '</div>' +
+          '<div class="ict-progress-track"><div class="ict-progress-fill" style="width:' + pct + '%;"></div></div>';
+        container.appendChild(prog);
+
+        renderMcqList(test.questions, test.id, 0, container, function () {
+          var newSolved = getTestSolvedCount(test.id, test.questions.length);
+          var newPct = Math.round((newSolved / test.questions.length) * 100);
+          prog.querySelector(".ict-progress-meta span:last-child").textContent =
+            "সম্পন্ন: " + toBn(newSolved) + "/" + toBn(test.questions.length) + " (" + toBn(newPct) + "%)";
+          prog.querySelector(".ict-progress-fill").style.width = newPct + "%";
+        });
+      } else {
+        var gTest = GYAN_MODEL_TESTS.find(function (t) { return t.id === state.activeTestId; });
+        document.getElementById("testTitle").textContent = "💡 " + gTest.title;
+        document.getElementById("testSubtitle").textContent = gTest.desc + " • মনে মনে উত্তর ভেবে যাচাই করো";
+        renderGyanList(gTest.questions, gTest.id, 0, container);
+      }
+    }
+
+    // =========================================================================
+    // 9. EVENT LISTENERS & INIT
+    // =========================================================================
+    document.getElementById("stopAudioBtn").addEventListener("click", stopAllAudio);
+
+    document.getElementById("audioRate").addEventListener("change", function (e) {
+      audioRate = parseFloat(e.target.value) || 1;
+      var api = getAudioApi();
+      if (api.setRate) api.setRate(audioRate);
+    });
+
+    document.getElementById("backFromChapterBtn").addEventListener("click", renderHome);
+    document.getElementById("backFromTestBtn").addEventListener("click", renderHome);
+
+    document.getElementById("resetChapterBtn").addEventListener("click", function () {
+      var ch = CHAPTERS.find(function (c) { return c.id === state.activeChapterId; });
+      if (!ch) return;
+      for (var i = 0; i < ch.mcqs.length; i++) {
+        delete state.mcqProgress[ch.id + "_mcq_" + i];
+      }
+      for (var j = 0; j < ch.gyan.length; j++) {
+        delete state.gyanOpen[ch.id + "_gyan_" + j];
+        delete state.gyanSelf[ch.id + "_gyan_" + j];
+      }
+      saveState();
+      renderChapterBody();
+    });
+
+    document.getElementById("resetTestBtn").addEventListener("click", function () {
+      if (state.activeTestType === "mcq") {
+        var test = MCQ_MODEL_TESTS.find(function (t) { return t.id === state.activeTestId; });
+        if (test) {
+          for (var i = 0; i < test.questions.length; i++) {
+            delete state.mcqProgress[test.id + "_" + i];
+          }
+        }
+      } else {
+        var gTest = GYAN_MODEL_TESTS.find(function (t) { return t.id === state.activeTestId; });
+        if (gTest) {
+          for (var j = 0; j < gTest.questions.length; j++) {
+            delete state.gyanOpen[gTest.id + "_" + j];
+            delete state.gyanSelf[gTest.id + "_" + j];
+          }
+        }
+      }
+      saveState();
+      renderModelTestBody();
+    });
+
+    document.querySelectorAll(".ict-tab-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        state.activeMode = btn.dataset.mode;
+        stopAllAudio();
+        updateModeTabs();
+        renderChapterBody();
+      });
+    });
+
+    loadState();
+    updateHud();
+    renderHome();
+  })();
+  </script>
 </body>
 </html>
