@@ -1,7 +1,8 @@
 /**
  * HOMEPAGE RENDERER (assets/js/home.js)
  * Reads window.CLASS7_SUBJECTS from assets/js/subjects.js
- * and renders colorful mobile-first subject cards.
+ * and renders colorful mobile-first subject cards, automatically
+ * prioritizing the next upcoming exam subject on top (BDT, UTC+06:00).
  */
 
 (function () {
@@ -10,10 +11,40 @@
   const statAvailable = document.getElementById("stat-available");
   const filterButtons = document.querySelectorAll(".filter-btn");
 
-  const subjects = Array.isArray(window.CLASS7_SUBJECTS) ? window.CLASS7_SUBJECTS : [];
+  const rawSubjects = Array.isArray(window.CLASS7_SUBJECTS) ? window.CLASS7_SUBJECTS : [];
   let currentFilter = "all";
 
-  function updateStats() {
+  // Upcoming exam schedule in Bangladesh Standard Time (BDT, +06:00).
+  // Each subject stays at the top until its switchAfter timestamp (12:00 PM BDT on exam day).
+  const EXAM_SCHEDULE = [
+    { id: "mathematics", switchAfter: "2026-11-26T12:00:00+06:00" },
+    { id: "bangladesh-global-studies", switchAfter: "2026-11-29T12:00:00+06:00" },
+    { id: "science", switchAfter: "2026-12-01T12:00:00+06:00" },
+    { id: "religion", switchAfter: "2026-12-02T12:00:00+06:00" },
+    { id: "ict", switchAfter: "2026-12-03T12:00:00+06:00" }
+  ];
+
+  function getOrderedSubjects(nowMs) {
+    const upcomingIds = EXAM_SCHEDULE
+      .filter((entry) => Date.parse(entry.switchAfter) > nowMs)
+      .map((entry) => entry.id);
+
+    if (!upcomingIds.length) {
+      return rawSubjects;
+    }
+
+    const byId = new Map(rawSubjects.map((subject) => [subject.id, subject]));
+    const upcomingSet = new Set(upcomingIds);
+
+    const prioritized = upcomingIds
+      .map((id) => byId.get(id))
+      .filter(Boolean);
+
+    const remaining = rawSubjects.filter((subject) => !upcomingSet.has(subject.id));
+    return [...prioritized, ...remaining];
+  }
+
+  function updateStats(subjects) {
     const availableCount = subjects.filter((s) => s.status === "Available").length;
     if (statTotal) statTotal.textContent = `📚 ${subjects.length} Subjects`;
     if (statAvailable) statAvailable.textContent = `✅ ${availableCount} Available`;
@@ -55,7 +86,8 @@
     if (!grid) return;
     grid.innerHTML = "";
 
-    const filtered = subjects.filter((subject) => {
+    const orderedSubjects = getOrderedSubjects(Date.now());
+    const filtered = orderedSubjects.filter((subject) => {
       if (currentFilter === "all") return true;
       return subject.status === currentFilter;
     });
@@ -76,6 +108,25 @@
     });
   }
 
+  function scheduleNextSwitch() {
+    const nowMs = Date.now();
+    const nextSwitchMs = EXAM_SCHEDULE
+      .map((entry) => Date.parse(entry.switchAfter))
+      .find((ts) => ts > nowMs);
+
+    if (!nextSwitchMs) return;
+
+    const delay = nextSwitchMs - nowMs;
+    // Cap setTimeout to 24 days to avoid 32-bit signed int overflow in browsers
+    const MAX_TIMEOUT = 2073600000;
+    if (delay <= MAX_TIMEOUT) {
+      setTimeout(() => {
+        renderSubjects();
+        scheduleNextSwitch();
+      }, delay + 50);
+    }
+  }
+
   filterButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
       filterButtons.forEach((b) => b.classList.remove("active"));
@@ -85,6 +136,7 @@
     });
   });
 
-  updateStats();
+  updateStats(rawSubjects);
   renderSubjects();
+  scheduleNextSwitch();
 })();
