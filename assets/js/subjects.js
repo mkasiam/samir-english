@@ -47,7 +47,7 @@ window.CLASS7_SUBJECTS = [
     icon: "🌍",
     description: "History, geography, civic life, culture, and global awareness.",
     path: "subjects/bangladesh-global-studies/index.html",
-    status: "Coming Soon",
+    status: "Available",
     accentColor: "#d97706",
     bgTint: "#fffbeb"
   },
@@ -58,7 +58,7 @@ window.CLASS7_SUBJECTS = [
     icon: "💻",
     description: "Digital literacy, hardware, software, internet safety, and basic computing.",
     path: "subjects/ict/index.html",
-    status: "Coming Soon",
+    status: "Available",
     accentColor: "#4f46e5",
     bgTint: "#eef2ff"
   },
@@ -69,7 +69,7 @@ window.CLASS7_SUBJECTS = [
     icon: "🕊️",
     description: "Moral values, ethics, stories, and character-building lessons.",
     path: "subjects/religion/index.html",
-    status: "Coming Soon",
+    status: "Avaiable",
     accentColor: "#db2777",
     bgTint: "#fdf2f8"
   },
